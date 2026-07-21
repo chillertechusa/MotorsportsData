@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import MdNav from '@/components/md-nav'
 import MdFooter from '@/components/md-footer'
-import { DemoBangerPlayer } from '@/components/demo/DemoBangerPlayer'
+import { DemoBangerPlayerClient } from '@/components/demo/DemoBangerPlayerClient'
 import { ArrowRight } from 'lucide-react'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://motorsportsdata.io'
@@ -57,7 +57,7 @@ export default function DemoPage() {
 
         {/* Banger 120s demo player */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-          <DemoBangerPlayer />
+          <DemoBangerPlayerClient />
         </section>
 
         {/* What you saw */}
