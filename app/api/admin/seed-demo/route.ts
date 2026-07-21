@@ -1,9 +1,9 @@
-import { seedDemoTeam } from '@/app/actions/seed-demo-team'
+import { generateDemoTeamData } from '@/app/actions/seed-demo-team'
 import { NextResponse } from 'next/server'
 
 /**
  * POST /api/admin/seed-demo
- * Triggers the demo team seed. Gated by ALLOW_SEED=true env var.
+ * Triggers the demo team data generation. Gated by ALLOW_SEED=true env var.
  * For admin use only.
  */
 export async function POST() {
@@ -15,7 +15,7 @@ export async function POST() {
   }
 
   try {
-    const result = await seedDemoTeam()
+    const result = generateDemoTeamData()
     return NextResponse.json({ success: true, result })
   } catch (error) {
     console.error('[seed-demo] error:', error instanceof Error ? error.message : error)
