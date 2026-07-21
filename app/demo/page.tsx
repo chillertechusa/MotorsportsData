@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Platform Demo — Complete Walkthrough',
     description:
-      'See what\\'s inside: sign-in flow, dashboard, training preparation, live session data, telemetry playback, AI coaching, results analysis, and business impact.',
+      "See what's inside: sign-in flow, dashboard, training preparation, live session data, telemetry playback, AI coaching, results analysis, and business impact.",
     type: 'website',
     url: `${BASE_URL}/demo`,
     images: [{ url: `${BASE_URL}/images/md-hero-bg.png`, width: 1200, height: 630, alt: 'Motorsports Data Platform Demo' }],
