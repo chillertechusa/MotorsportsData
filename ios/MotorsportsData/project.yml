@@ -1,0 +1,38 @@
+name: MotorsportsData
+bundleIdPrefix: com.motorsportsdata
+
+settings:
+  SWIFT_VERSION: 5.9
+  IPHONEOS_DEPLOYMENT_TARGET: 14.0
+  CODE_SIGN_STYLE: Automatic
+
+targets:
+  MotorsportsData:
+    type: application
+    platform: iOS
+    deploymentTarget: 14.0
+    
+    sources:
+      - Sources
+    
+    info:
+      path: Info.plist
+      properties:
+        CFBundleDisplayName: Motorsports Data
+        CFBundleShortVersionString: 1.0.0
+        CFBundleVersion: 1
+        NSLocationWhenInUseUsageDescription: Track your location during racing sessions
+        NSMotionUsageDescription: Measure acceleration and G-forces during sessions
+        UIRequiresFullScreen: false
+        UIStatusBarStyle: UIStatusBarStyleLightContent
+        UIUserInterfaceStyle: Dark
+    
+    dependencies:
+      - target: MotorsportsDataFramework
+    
+  MotorsportsDataFramework:
+    type: framework
+    platform: iOS
+    deploymentTarget: 14.0
+    sources:
+      - Sources

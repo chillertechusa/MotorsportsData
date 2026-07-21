@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Keep auth, admin, API, and private data paths out of the index
+Disallow: /api/
+Disallow: /admin/
+Disallow: /auth/
+Disallow: /data/owner/
+Disallow: /data/team/
+Disallow: /data/mechanic/
+Disallow: /checkout/
+Disallow: /order/
+
+Sitemap: https://motorsportsdata.io/sitemap.xml

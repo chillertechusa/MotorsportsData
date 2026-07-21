@@ -1,0 +1,58 @@
+name: iOS TestFlight Build
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'ios/**'
+      - '.github/workflows/ios-testflight.yml'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'App version (e.g., 1.0.0)'
+        required: false
+        default: '1.0.0'
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Xcode
+        run: sudo xcode-select --switch /Applications/Xcode.app
+
+      - name: Build Release Archive
+        working-directory: ./ios
+        run: |
+          VERSION="${{ github.event.inputs.version || '1.0.0' }}"
+          ./scripts/build-release.sh $VERSION
+
+      - name: Upload to TestFlight
+        working-directory: ./ios
+        env:
+          APPLE_ID_EMAIL: ${{ secrets.APPLE_ID_EMAIL }}
+          APP_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
+        run: |
+          VERSION="${{ github.event.inputs.version || '1.0.0' }}"
+          ./scripts/upload-testflight.sh "build/MotorsportsData-${VERSION}/MotorsportsData.ipa"
+
+      - name: Notify Slack
+        if: always()
+        uses: slackapi/slack-github-action@v1
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK }}
+          payload: |
+            {
+              "text": "iOS TestFlight Build ${{ job.status }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Motorsports Data iOS*\nVersion: ${{ github.event.inputs.version || '1.0.0' }}\nStatus: ${{ job.status }}"
+                  }
+                }
+              ]
+            }

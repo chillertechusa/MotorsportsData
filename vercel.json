@@ -1,0 +1,28 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/health-checks",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/system-health",
+      "schedule": "*/10 * * * *"
+    },
+    {
+      "path": "/api/cron/expiry-alerts",
+      "schedule": "0 9 * * *"
+    },
+    {
+      "path": "/api/cron/abandoned-checkout",
+      "schedule": "0 * * * *"
+    },
+    {
+      "path": "/api/cron/sentinel-sweep",
+      "schedule": "*/15 * * * *"
+    },
+    {
+      "path": "/api/cron/advisor-run",
+      "schedule": "0 6 * * *"
+    }
+  ]
+}
