@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import MdNav from '@/components/md-nav'
 import MdFooter from '@/components/md-footer'
-import { DemoBangerPlayerClient } from '@/components/demo/DemoBangerPlayerClient'
+import PlatformDemo from '@/components/demo/PlatformDemo'
 import { ArrowRight } from 'lucide-react'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://motorsportsdata.io'
@@ -37,27 +37,26 @@ export default function DemoPage() {
           <div className="mb-8">
             <div className="inline-flex items-center gap-2 mb-4">
               <span className="h-0.5 w-6 bg-lime-400" />
-              <span className="font-mono text-xs uppercase tracking-[0.25em] text-lime-400">Live · 32 Sections · Every Metric Moving</span>
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-lime-400">5 Screens · Real Platform · No Video</span>
               <span className="h-0.5 w-6 bg-lime-400" />
             </div>
             <h1
               className="text-zinc-50 uppercase leading-none tracking-tight text-balance mb-4"
               style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: 'clamp(2.5rem, 7vw, 5.5rem)' }}
             >
-              Walk Through the <span className="text-lime-400">Platform</span>
+              See the <span className="text-lime-400">Platform</span> in Action
             </h1>
             <p className="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-3xl text-pretty">
-              Press play to see the complete user journey: sign in as a factory team, check your rider&apos;s readiness,
-              review training prep, dive into live telemetry from a qualifying session, watch AI coaching in action,
-              see competitive analysis with position changes, and view the business impact metrics. 8 scenes, 90 seconds,
-              all the data that drives wins.
+              This is the actual product UI — no mockups, no stock footage. Five screens from the live platform
+              animating in real time: telemetry, AI setup coaching, rider readiness, competitive analysis, and
+              pit box communication. Click any tab to jump directly to a screen.
             </p>
           </div>
         </section>
 
-        {/* Banger 120s demo player */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-          <DemoBangerPlayerClient />
+        {/* Platform UI demo */}
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+          <PlatformDemo />
         </section>
 
         {/* What you saw */}
