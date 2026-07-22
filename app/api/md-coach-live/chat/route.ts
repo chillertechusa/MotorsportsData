@@ -83,7 +83,7 @@ You should:
       temperature: 0.7,
       maxOutputTokens: 200,
     })
-    void logAICall({ route: 'md-coach-live/chat', model: MODEL, inputTokens: usage.promptTokens, outputTokens: usage.completionTokens, latencyMs: Date.now() - t0, finishReason, teamId: auth.teamId })
+    void logAICall({ route: 'md-coach-live/chat', model: MODEL, inputTokens: usage.inputTokens, outputTokens: usage.outputTokens, latencyMs: Date.now() - t0, finishReason, teamId: auth.teamId })
 
     return NextResponse.json({
       ok: true,

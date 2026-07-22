@@ -3,7 +3,7 @@
 import { headers } from 'next/headers'
 import { auth } from '@/lib/auth'
 import { db } from '@/lib/db'
-import { mdRiderProfiles, mdTeams } from '@/lib/db/schema'
+import { mdRiderProfiles, mdTeams, mdTeamMembers } from '@/lib/db/schema'
 import { eq, and } from 'drizzle-orm'
 import { computeAge, ageBracket } from '@/lib/legal'
 
@@ -28,11 +28,11 @@ export async function createRiderProfile(input: CreateRiderProfileInput) {
   if (!session?.user?.id) return { ok: false as const, reason: 'unauthorized' }
   const parentUserId = session.user.id
 
-  // Verify the team belongs to this parent
+  // Verify the parent is a member of this team
   const [team] = await db
-    .select({ id: mdTeams.id })
-    .from(mdTeams)
-    .where(and(eq(mdTeams.id, input.teamId), eq(mdTeams.userId, parentUserId)))
+    .select({ id: mdTeamMembers.teamId })
+    .from(mdTeamMembers)
+    .where(and(eq(mdTeamMembers.teamId, input.teamId), eq(mdTeamMembers.userId, parentUserId)))
     .limit(1)
 
   if (!team) return { ok: false as const, reason: 'team_not_found' }

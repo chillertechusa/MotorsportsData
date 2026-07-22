@@ -3,6 +3,7 @@ import MdNav from '@/components/md-nav'
 import MdHero from '@/components/md-hero'
 import MdFeatures from '@/components/md-features'
 import MdDemo from '@/components/md-demo'
+import MdDemoDetails from '@/components/md-demo-details'
 import MdFreeRiderHero from '@/components/md-free-rider-hero'
 import MdFooter from '@/components/md-footer'
 
@@ -69,6 +70,7 @@ export default function HomePage() {
         <MdHero />
         <MdFeatures />
         <MdDemo />
+        <MdDemoDetails />
         <MdFreeRiderHero />
       </main>
       <MdFooter />

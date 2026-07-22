@@ -1,16 +1,15 @@
 'use client'
 
 import { useState, useTransition } from 'react'
-import Link from 'next/link'
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from 'recharts'
 import {
-  DollarSign, Users, TrendingUp, Zap, Video,
-  ChevronDown, ChevronUp, ArrowLeft, Activity,
-  CreditCard, Cpu, Receipt, RefreshCw, Download, Mail, CheckCircle2, XCircle,
-  Bell, Search, ShoppingBag, ShieldAlert, UserCog, Stethoscope,
-  } from 'lucide-react'
+  DollarSign, Users, TrendingUp, Zap,
+  ChevronDown, ChevronUp, Activity,
+  CreditCard, Receipt, RefreshCw, Download, Mail, CheckCircle2, XCircle,
+  Bell, Search,
+} from 'lucide-react'
 import type { OwnerFinancials, BillingRow } from '@/app/actions/md-owner'
 import { getOwnerFinancials, getBillingHistory, runExpiryAlerts } from '@/app/actions/md-owner'
 import { MD_PLAN_LABELS } from '@/lib/md-plans'
@@ -190,16 +189,17 @@ export default function OwnerConsoleClient({
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans">
 
-      {/* Header */}
+      {/* Slim topbar — nav lives in the sidebar layout */}
       <header className="sticky top-0 z-30 border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-sm">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <Link href="/data" className="flex items-center gap-2 text-zinc-500 hover:text-zinc-200 transition-colors text-sm">
-              <ArrowLeft className="h-4 w-4" />
-              Platform
-            </Link>
-            <span className="text-zinc-700">/</span>
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-lime-400">Owner Console</span>
+        <div className="px-6 h-14 flex items-center justify-between gap-4">
+          <div>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Revenue</p>
+            <p
+              className="text-zinc-50 font-black uppercase leading-none text-lg"
+              style={{ fontFamily: 'var(--font-barlow-condensed)' }}
+            >
+              Dashboard
+            </p>
           </div>
           <div className="flex items-center gap-2">
             <button
@@ -235,76 +235,6 @@ export default function OwnerConsoleClient({
                emailTest.state === 'ok'      ? 'Email OK' :
                emailTest.state === 'err'     ? 'Email Err' : 'Test Email'}
             </button>
-            <Link
-              href="/data/owner/shop"
-              className="flex items-center gap-2 h-8 px-3 rounded-lg bg-zinc-800 border border-zinc-700 hover:bg-zinc-700 transition-colors font-mono text-xs uppercase tracking-wider text-zinc-200"
-            >
-              <ShoppingBag className="h-3.5 w-3.5" />
-              Shop
-            </Link>
-            <Link
-              href="/data/owner/test-agents"
-              className="flex items-center gap-2 h-8 px-3 rounded-lg bg-zinc-800 border border-zinc-700 hover:bg-zinc-700 transition-colors font-mono text-xs uppercase tracking-wider text-zinc-200"
-            >
-              <Activity className="h-3.5 w-3.5" />
-              Test Agents
-            </Link>
-            <Link
-              href="/data/owner/sentinel"
-              className="flex items-center gap-2 h-8 px-3 rounded-lg bg-zinc-800 border border-zinc-700 hover:bg-zinc-700 transition-colors font-mono text-xs uppercase tracking-wider text-zinc-200"
-            >
-              <ShieldAlert className="h-3.5 w-3.5" />
-              Sentinel
-            </Link>
-            <Link
-              href="/data/owner/advisors"
-              className="flex items-center gap-2 h-8 px-3 rounded-lg bg-zinc-800 border border-zinc-700 hover:bg-zinc-700 transition-colors font-mono text-xs uppercase tracking-wider text-zinc-200"
-            >
-              <TrendingUp className="h-3.5 w-3.5" />
-              Advisors
-            </Link>
-            <Link
-              href="/data/owner/account"
-              className="flex items-center gap-2 h-8 px-3 rounded-lg bg-zinc-800 border border-zinc-700 hover:bg-zinc-700 transition-colors font-mono text-xs uppercase tracking-wider text-zinc-200"
-            >
-              <UserCog className="h-3.5 w-3.5" />
-              Account
-            </Link>
-            <Link
-              href="/admin/upload-assets"
-              className="flex items-center gap-2 h-8 px-3 rounded-lg bg-zinc-800 border border-zinc-700 hover:bg-zinc-700 transition-colors font-mono text-xs uppercase tracking-wider text-zinc-200"
-            >
-              <Video className="h-3.5 w-3.5" />
-              Upload Assets
-            </Link>
-            <Link
-              href="/admin/ai-spend"
-              className="flex items-center gap-2 h-8 px-3 rounded-lg bg-zinc-800 border border-zinc-700 hover:bg-zinc-700 transition-colors font-mono text-xs uppercase tracking-wider text-zinc-200"
-            >
-              <Zap className="h-3.5 w-3.5" />
-              AI Spend
-            </Link>
-            <Link
-              href="/data/owner/ceo-doctor"
-              className="flex items-center gap-2 h-8 px-3 rounded-lg bg-lime-400 hover:bg-lime-300 transition-colors font-mono text-xs uppercase tracking-wider text-zinc-950 font-bold"
-            >
-              <Stethoscope className="h-3.5 w-3.5" />
-              CEO Doctor
-            </Link>
-            <Link
-              href="/data/owner/investor"
-              className="flex items-center gap-2 h-8 px-3 rounded-lg bg-zinc-800 border border-zinc-700 hover:bg-zinc-700 transition-colors font-mono text-xs uppercase tracking-wider text-zinc-200"
-            >
-              <TrendingUp className="h-3.5 w-3.5" />
-              Investor View
-            </Link>
-            <Link
-              href="/screen-recorder"
-              className="flex items-center gap-2 h-8 px-3 rounded-lg bg-lime-400/10 border border-lime-400/20 text-lime-400 hover:bg-lime-400/20 transition-colors font-mono text-xs uppercase tracking-wider"
-            >
-              <Video className="h-3.5 w-3.5" />
-              Recorder
-            </Link>
           </div>
         </div>
       </header>

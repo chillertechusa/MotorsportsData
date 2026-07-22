@@ -1,4 +1,15 @@
 {
+  "redirects": [
+    { "source": "/demo",                "destination": "/#demo", "permanent": true },
+    { "source": "/data/demo",           "destination": "/#demo", "permanent": true },
+    { "source": "/privateer/demo",      "destination": "/#demo", "permanent": true },
+    { "source": "/race_team/demo",      "destination": "/#demo", "permanent": true },
+    { "source": "/factory_rig/demo",    "destination": "/#demo", "permanent": true },
+    { "source": "/rookie/demo",         "destination": "/#demo", "permanent": true },
+    { "source": "/agent/demo",          "destination": "/#demo", "permanent": true },
+    { "source": "/wrench/demo",         "destination": "/#demo", "permanent": true },
+    { "source": "/demo-booking",        "destination": "/#demo", "permanent": true }
+  ],
   "crons": [
     {
       "path": "/api/cron/health-checks",

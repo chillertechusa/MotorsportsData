@@ -31,16 +31,18 @@ export const DEMO_SCENES: DemoScene[] = [
   {
     id: 'scene-02-dashboard',
     label: '2. Dashboard',
+    title: 'Rider Dashboard',
     subtitle: 'Readiness overview',
     startTime: 8,
     duration: 10,
     type: 'dashboard',
-    narrative: 'View your rider\\'s current readiness score, recent training trends, and upcoming sessions at a glance.',
+    narrative: "View your rider's current readiness score, recent training trends, and upcoming sessions at a glance.",
     dataHighlights: ['Readiness: 91/100 (Peak)', 'HRV: 68ms | RHR: 36 BPM | Sleep: 6.5h', 'Trend: ↑ Trending up (+13 points)'],
   },
   {
     id: 'scene-03-training-log',
     label: '3. Training',
+    title: 'Training Log',
     subtitle: 'Preparation insights',
     startTime: 18,
     duration: 10,
@@ -51,16 +53,18 @@ export const DEMO_SCENES: DemoScene[] = [
   {
     id: 'scene-04-session-overview',
     label: '4. Session',
+    title: 'Session Overview',
     subtitle: 'Race session detail',
     startTime: 28,
     duration: 12,
     type: 'session',
-    narrative: 'Dive into Saturday\\'s qualifying session. Review lap count, speeds, lean angles, and physical demand.',
+    narrative: "Dive into Saturday's qualifying session. Review lap count, speeds, lean angles, and physical demand.",
     dataHighlights: ['12 laps completed', 'Avg speed: 168.7 km/h | Max: 193.5', 'Avg lean: 60.3° | Max lean: 65.1°'],
   },
   {
     id: 'scene-05-live-telemetry',
     label: '5. Telemetry',
+    title: 'Live Telemetry',
     subtitle: 'Live data feed',
     startTime: 40,
     duration: 15,
@@ -71,6 +75,7 @@ export const DEMO_SCENES: DemoScene[] = [
   {
     id: 'scene-06-ai-coaching',
     label: '6. AI Coaching',
+    title: 'AI Setup Coach',
     subtitle: 'Real-time feedback',
     startTime: 55,
     duration: 12,
@@ -81,6 +86,7 @@ export const DEMO_SCENES: DemoScene[] = [
   {
     id: 'scene-07-competitive-analysis',
     label: '7. Results',
+    title: 'Competitive Analysis',
     subtitle: 'Lap-by-lap comparison',
     startTime: 67,
     duration: 12,
@@ -91,6 +97,7 @@ export const DEMO_SCENES: DemoScene[] = [
   {
     id: 'scene-08-business-metrics',
     label: '8. Impact',
+    title: 'Business Impact',
     subtitle: 'Season metrics',
     startTime: 79,
     duration: 10,
