@@ -68,7 +68,7 @@ export default function MdHero() {
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6 sm:mb-10">
           <Link
-            href="/demo"
+            href="/#demo"
             className="group inline-flex items-center justify-center gap-2 bg-lime-400 text-zinc-950 font-semibold px-6 py-3.5 rounded-lg hover:bg-lime-300 transition-colors"
           >
             <Play className="h-4 w-4" fill="currentColor" />
