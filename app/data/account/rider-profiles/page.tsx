@@ -3,7 +3,7 @@ import { headers } from 'next/headers'
 import Link from 'next/link'
 import { auth } from '@/lib/auth'
 import { db } from '@/lib/db'
-import { mdTeams } from '@/lib/db/schema'
+import { mdTeamMembers } from '@/lib/db/schema'
 import { eq } from 'drizzle-orm'
 import MdLogo from '@/components/md-logo'
 import RiderProfilesDashboard from '@/components/data/rider-profiles-dashboard'
@@ -20,14 +20,14 @@ export default async function RiderProfilesPage() {
   const session = await auth.api.getSession({ headers: await headers() })
   if (!session?.user) redirect('/data/sign-in?redirect=/data/account/rider-profiles')
 
-  // Get the team owned by this parent user
-  const [team] = await db
-    .select({ id: mdTeams.id })
-    .from(mdTeams)
-    .where(eq(mdTeams.userId, session.user.id))
+  // Get the team this user belongs to
+  const [member] = await db
+    .select({ teamId: mdTeamMembers.teamId })
+    .from(mdTeamMembers)
+    .where(eq(mdTeamMembers.userId, session.user.id))
     .limit(1)
 
-  const teamId = team?.id ?? null
+  const teamId = member?.teamId ?? null
 
   return (
     <div className="flex min-h-screen flex-col bg-zinc-950">

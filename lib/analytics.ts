@@ -120,10 +120,6 @@ export async function getAnalyticsSummary(startDate: Date, endDate: Date) {
     const events = await db
       .select()
       .from(mdAnalyticsEvents)
-      .where((e) => {
-        const eventDate = e.createdAt
-        return eventDate ? true : false
-      })
 
     const filteredEvents = events.filter((e) => {
       if (!e.createdAt) return false

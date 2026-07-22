@@ -39,7 +39,7 @@ async function getMechanicAnalytics() {
     })
   )
 
-  return mechanicStats.sort((a, b) => b.totalLapTimeSavings - a.totalLapTimeSavings)
+  return mechanicStats.sort((a, b) => (b.totalLapTimeSavings ?? 0) - (a.totalLapTimeSavings ?? 0))
 }
 
 export default async function MechanicAnalyticsPage() {

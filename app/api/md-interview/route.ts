@@ -103,7 +103,7 @@ export async function POST(req: NextRequest) {
       system: systemPrompt,
       prompt: `INTERVIEW QUESTION: "${questionText}"\n\nRIDER'S ANSWER: "${riderAnswerText}"`,
     })
-    void logAICall({ route: 'md-interview', model: INTERVIEW_MODEL, inputTokens: usage.promptTokens, outputTokens: usage.completionTokens, latencyMs: Date.now() - t0, finishReason, teamId })
+    void logAICall({ route: 'md-interview', model: INTERVIEW_MODEL, inputTokens: usage.inputTokens ?? 0, outputTokens: usage.outputTokens ?? 0, latencyMs: Date.now() - t0, finishReason, teamId })
 
     // Strip markdown fences if model wraps in ```json
     const cleaned = text.replace(/^```json\s*/i, '').replace(/```$/i, '').trim()

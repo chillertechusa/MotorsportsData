@@ -5,7 +5,7 @@ import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from 'recharts'
 import {
-  DollarSign, Users, TrendingUp, Zap,
+  DollarSign, Users, TrendingUp, Zap, Cpu,
   ChevronDown, ChevronUp, Activity,
   CreditCard, Receipt, RefreshCw, Download, Mail, CheckCircle2, XCircle,
   Bell, Search,

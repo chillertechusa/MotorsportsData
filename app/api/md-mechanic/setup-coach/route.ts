@@ -59,7 +59,7 @@ Vehicle performance baseline: ${JSON.stringify(context.metrics)}`
       system: systemPrompt,
       messages: [{ role: 'user', content: message }],
       onFinish: ({ usage, finishReason }) => {
-        void logAICall({ route: 'md-mechanic/setup-coach', model: SETUP_COACH_MODEL, inputTokens: usage.promptTokens, outputTokens: usage.completionTokens, latencyMs: Date.now() - t0, finishReason, teamId: auth.teamId })
+        void logAICall({ route: 'md-mechanic/setup-coach', model: SETUP_COACH_MODEL, inputTokens: usage.inputTokens ?? 0, outputTokens: usage.outputTokens ?? 0, latencyMs: Date.now() - t0, finishReason, teamId: auth.teamId })
       },
     })
 

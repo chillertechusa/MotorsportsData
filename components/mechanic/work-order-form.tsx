@@ -30,7 +30,7 @@ export function WorkOrderForm({ onSubmit }: WorkOrderFormProps) {
   const [currentPart, setCurrentPart] = useState('')
 
   const handleChange = (field: string, value: string | number) => {
-    setFormData(prev => ({ ...prev, [field]: value }))
+    setFormData(prev => ({ ...prev, [field]: String(value) }))
   }
 
   const addPart = () => {

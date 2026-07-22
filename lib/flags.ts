@@ -14,10 +14,6 @@ export const aggressiveDiscountFlag = flag({
   key: 'aggressive-discount-test',
   description: 'Show 30% off annual plans instead of 20%',
   defaultValue: false,
-  variants: {
-    control: { name: '20% off (control)' },
-    variant: { name: '30% off (aggressive)' },
-  },
 })
 
 /**
@@ -28,10 +24,6 @@ export const bundleUpsellFlag = flag({
   key: 'bundle-upsell-test',
   description: 'Show Team Bundle tier as primary upsell',
   defaultValue: false,
-  variants: {
-    control: { name: 'Standard tiers (control)' },
-    variant: { name: 'Bundle upsell (Team Bundle)' },
-  },
 })
 
 /**
@@ -42,10 +34,6 @@ export const eliteTierCapFlag = flag({
   key: 'elite-tier-cap-test',
   description: 'Cap Elite tier at 10 vehicle slots',
   defaultValue: false,
-  variants: {
-    control: { name: 'Unlimited (control)' },
-    variant: { name: 'Capped at 10 (elite-tier-cap)' },
-  },
 })
 
 /**

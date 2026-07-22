@@ -13,6 +13,7 @@
 
 import { db } from '@/lib/db'
 import { mdSquarePlanCatalog, mdTeams, mdSubscriptionEvents } from '@/lib/db/schema'
+import { eq } from 'drizzle-orm'
 
 export interface QACheckoutResult {
   suite: 'qa-checkout'
@@ -100,7 +101,7 @@ export async function runQACheckout(): Promise<QACheckoutResult> {
     const monthlyPlans = await db
       .select()
       .from(mdSquarePlanCatalog)
-      .where((row: any) => row.billing_frequency === 'monthly' || row.billingFrequency === 'monthly')
+      .where(eq(mdSquarePlanCatalog.billingFrequency, 'monthly'))
 
     if (!Array.isArray(monthlyPlans) || monthlyPlans.length === 0) {
       throw new Error('No monthly pricing plans found')
@@ -178,7 +179,7 @@ export async function runQACheckout(): Promise<QACheckoutResult> {
 
   // ──────────────────────────────────────────────────────────────────────────
   // 7. TAX CONFIGURATION
-  // ──────────────────────────────────────────────────────────────────────────
+  // ──────────────────────────────────────────────────���───────────────────────
 
   const taxConfigTest: QACheckoutTest = {
     name: 'Tax calculation configured (Salt Lake City 6.85%)',

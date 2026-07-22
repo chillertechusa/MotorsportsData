@@ -6,7 +6,7 @@
  * drizzle/0_optimize_timeseries_indexes.sql for sub-500ms response times.
  * ═══════════════════════════════════════════════════════════════════════════════ */
 
-import { db } from './drizzle'
+import { db } from './index'
 import {
   mdSessions,
   mdRiderReadiness,

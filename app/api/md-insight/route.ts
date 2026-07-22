@@ -63,7 +63,7 @@ Be direct — no fluff, no greetings, no sign-off. Use specific details from wha
     messages: [{ role: 'user', content: userMessage }],
     maxOutputTokens: 100,
     onFinish: ({ usage, finishReason }) => {
-      void logAICall({ route: 'md-insight', model: INSIGHT_MODEL, inputTokens: usage.promptTokens, outputTokens: usage.completionTokens, latencyMs: Date.now() - t0, finishReason, teamId: auth.teamId })
+      void logAICall({ route: 'md-insight', model: INSIGHT_MODEL, inputTokens: usage.inputTokens ?? 0, outputTokens: usage.outputTokens ?? 0, latencyMs: Date.now() - t0, finishReason, teamId: auth.teamId })
     },
   })
 

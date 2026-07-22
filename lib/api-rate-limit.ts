@@ -24,8 +24,8 @@ export async function validateApiRateLimit(
 
   return {
     allowed: result.allowed,
-    remaining: Math.max(0, rateLimit - result.count),
-    resetIn: result.resetIn,
+    remaining: result.remaining,
+    resetIn: result.resetInSeconds,
   }
 }
 

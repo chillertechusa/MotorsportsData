@@ -74,7 +74,7 @@ export async function POST(req: Request) {
       .limit(5)
 
     const activeAlerts = alerts.filter((a) => {
-      const firedTime = new Date(a.firedAt).getTime()
+      const firedTime = new Date(a.firedAt ?? 0).getTime()
       const now = new Date().getTime()
       return now - firedTime < 24 * 60 * 60 * 1000 // Last 24 hours
     })

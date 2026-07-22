@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
       })),
       maxOutputTokens: 80,
       onFinish: ({ usage, finishReason }) => {
-        void logAICall({ route: 'md-feature-chat', model: FCHAT_MODEL, inputTokens: usage.promptTokens, outputTokens: usage.completionTokens, latencyMs: Date.now() - t0, finishReason })
+        void logAICall({ route: 'md-feature-chat', model: FCHAT_MODEL, inputTokens: usage.inputTokens ?? 0, outputTokens: usage.outputTokens ?? 0, latencyMs: Date.now() - t0, finishReason })
       },
     })
 
