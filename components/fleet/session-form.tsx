@@ -70,7 +70,7 @@ export function SessionForm({ vehicleId, vehicles = [], onSubmit }: SessionFormP
         {/* Vehicle Selection */}
         <div>
           <Label htmlFor="vehicleId">Bike</Label>
-          <Select value={formData.vehicleId} onValueChange={(v) => handleChange('vehicleId', v)}>
+          <Select value={formData.vehicleId ?? ""} onValueChange={(v) => handleChange('vehicleId', v)}>
             <SelectTrigger id="vehicleId" className="border-zinc-800">
               <SelectValue placeholder="Select a bike" />
             </SelectTrigger>
@@ -125,7 +125,7 @@ export function SessionForm({ vehicleId, vehicles = [], onSubmit }: SessionFormP
         {/* Track Conditions */}
         <div>
           <Label htmlFor="trackConditions">Track Conditions</Label>
-          <Select value={formData.trackConditions} onValueChange={(v) => handleChange('trackConditions', v)}>
+          <Select value={formData.trackConditions ?? ""} onValueChange={(v) => handleChange('trackConditions', v)}>
             <SelectTrigger id="trackConditions" className="border-zinc-800">
               <SelectValue />
             </SelectTrigger>
@@ -142,7 +142,7 @@ export function SessionForm({ vehicleId, vehicles = [], onSubmit }: SessionFormP
         {/* Track Surface */}
         <div>
           <Label htmlFor="trackSurface">Surface Type</Label>
-          <Select value={formData.trackSurface} onValueChange={(v) => handleChange('trackSurface', v)}>
+          <Select value={formData.trackSurface ?? ""} onValueChange={(v) => handleChange('trackSurface', v)}>
             <SelectTrigger id="trackSurface" className="border-zinc-800">
               <SelectValue />
             </SelectTrigger>
@@ -275,7 +275,7 @@ export function SessionForm({ vehicleId, vehicles = [], onSubmit }: SessionFormP
         {/* Air Filter */}
         <div>
           <Label htmlFor="airFilterCondition">Air Filter Condition</Label>
-          <Select value={formData.airFilterCondition} onValueChange={(v) => handleChange('airFilterCondition', v)}>
+          <Select value={formData.airFilterCondition ?? ""} onValueChange={(v) => handleChange('airFilterCondition', v)}>
             <SelectTrigger id="airFilterCondition" className="border-zinc-800">
               <SelectValue />
             </SelectTrigger>
@@ -291,7 +291,7 @@ export function SessionForm({ vehicleId, vehicles = [], onSubmit }: SessionFormP
         {/* Engine Map */}
         <div>
           <Label htmlFor="engineMap">Engine Map</Label>
-          <Select value={formData.engineMap} onValueChange={(v) => handleChange('engineMap', v)}>
+          <Select value={formData.engineMap ?? ""} onValueChange={(v) => handleChange('engineMap', v)}>
             <SelectTrigger id="engineMap" className="border-zinc-800">
               <SelectValue />
             </SelectTrigger>

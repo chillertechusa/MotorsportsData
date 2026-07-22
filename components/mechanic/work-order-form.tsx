@@ -103,7 +103,7 @@ export function WorkOrderForm({ onSubmit }: WorkOrderFormProps) {
         {/* Priority */}
         <div>
           <Label htmlFor="priority">Priority</Label>
-          <Select value={formData.priority} onValueChange={(v) => handleChange('priority', v)}>
+          <Select value={formData.priority ?? ""} onValueChange={(v) => handleChange('priority', v)}>
             <SelectTrigger id="priority" className="border-zinc-800">
               <SelectValue />
             </SelectTrigger>

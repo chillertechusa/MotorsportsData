@@ -10,30 +10,33 @@ import { flag } from 'flags/next'
  * Aggressive Discount Test: Show 30% off for annual plans (vs. standard 20%)
  * Measures: conversion lift, LTV impact, cannibalization
  */
-export const aggressiveDiscountFlag = flag({
+export const aggressiveDiscountFlag = flag<boolean>({
   key: 'aggressive-discount-test',
   description: 'Show 30% off annual plans instead of 20%',
   defaultValue: false,
+  decide: () => false,
 })
 
 /**
  * Bundle Upsell Test: Show "Team Bundle" tier ($99/mo for 3 teams vs. $49/mo each)
  * Measures: ARPU, team expansion, attach rate
  */
-export const bundleUpsellFlag = flag({
+export const bundleUpsellFlag = flag<boolean>({
   key: 'bundle-upsell-test',
   description: 'Show Team Bundle tier as primary upsell',
   defaultValue: false,
+  decide: () => false,
 })
 
 /**
  * Elite Tier Cap Test: Limit Elite tier to 10 team slots (vs. unlimited)
  * Measures: willingness to upgrade further (if higher tier exists), LTV per tier
  */
-export const eliteTierCapFlag = flag({
+export const eliteTierCapFlag = flag<boolean>({
   key: 'elite-tier-cap-test',
   description: 'Cap Elite tier at 10 vehicle slots',
   defaultValue: false,
+  decide: () => false,
 })
 
 /**
