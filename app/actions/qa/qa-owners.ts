@@ -12,7 +12,7 @@
  */
 
 import { db } from '@/lib/db'
-import { adminUsers, agentExecutions } from '@/lib/db/schema'
+import { sql } from 'drizzle-orm'
 
 export interface QAOwnersResult {
   suite: 'qa-owners'
@@ -50,10 +50,8 @@ export async function runQAOwners(): Promise<QAOwnersResult> {
     message: 'Admin authentication gated by allowlist (NO RLS — enforced in route handlers)',
   }
   try {
-    const admins = await db.select().from(adminUsers).limit(0)
-    if (!Array.isArray(admins)) {
-      throw new Error('Query did not return array')
-    }
+    const admins = await db.execute(sql`SELECT id FROM admin_users LIMIT 0`)
+    if (!admins) throw new Error('Query failed')
   } catch (error) {
     adminUsersTableTest.status = 'fail'
     adminUsersTableTest.error = String(error)
@@ -89,10 +87,8 @@ export async function runQAOwners(): Promise<QAOwnersResult> {
     message: 'Agent monitoring logs present',
   }
   try {
-    const executions = await db.select().from(agentExecutions).limit(0)
-    if (!Array.isArray(executions)) {
-      throw new Error('Query did not return array')
-    }
+    const executions = await db.execute(sql`SELECT id FROM agent_executions LIMIT 0`)
+    if (!executions) throw new Error('Query failed')
   } catch (error) {
     agentExecutionsTableTest.status = 'fail'
     agentExecutionsTableTest.error = String(error)
@@ -125,7 +121,8 @@ export async function runQAOwners(): Promise<QAOwnersResult> {
   try {
     // Validate audit trail schema by checking one record structure
     // If the table exists and is queryable, the schema is presumed correct
-    const sample = await db.select().from(agentExecutions).limit(1)
+    const sample = await db.execute(sql`SELECT * FROM agent_executions LIMIT 1`)
+    const sampleRows = (sample as any).rows ?? sample
     if (Array.isArray(sample)) {
       if (sample.length > 0) {
         const record = sample[0] as any

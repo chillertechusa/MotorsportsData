@@ -96,7 +96,7 @@ ${setupSummary || 'No setup data recorded'}`
 
     const t0 = Date.now()
     const result = await generateText({ model: COACHING_MODEL, system, prompt })
-    void logAICall({ route: 'md-coaching', model: COACHING_MODEL, inputTokens: result.usage.promptTokens, outputTokens: result.usage.completionTokens, latencyMs: Date.now() - t0, finishReason: result.finishReason, teamId: authResult.teamId })
+    void logAICall({ route: 'md-coaching', model: COACHING_MODEL, inputTokens: result.usage.inputTokens, outputTokens: result.usage.outputTokens, latencyMs: Date.now() - t0, finishReason: result.finishReason, teamId: authResult.teamId })
     const coaching = parseCoaching(result.text)
 
     if (!coaching) {

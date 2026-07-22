@@ -3,35 +3,15 @@ import { Play, ArrowRight } from 'lucide-react'
 import MdHeroTelemetry from '@/components/md-hero-telemetry'
 import MdHeroTelemetryInline from '@/components/md-hero-telemetry-inline'
 
-const HERO_VIDEO_SRC = process.env.HERO_VIDEO_URL ?? '/hero-video.mp4'
-
 export default function MdHero() {
   return (
     <section
       className="relative flex flex-col justify-start overflow-hidden bg-zinc-950 pt-14 min-h-screen min-h-[100svh]"
       aria-label="Hero"
     >
-      {/* ── Full-bleed video background ── */}
+      {/* ── Dark base overlay ── */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <video
-          className="absolute inset-0 h-full w-full object-cover object-center"
-          style={{ opacity: 1 }}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster="/md-hero-banner.png"
-        >
-          <source src={HERO_VIDEO_SRC} type="video/mp4" />
-        </video>
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(105deg, rgba(9,9,11,0.72) 0%, rgba(9,9,11,0.52) 45%, rgba(9,9,11,0.28) 70%, rgba(9,9,11,0.50) 100%)',
-          }}
-        />
+        <div className="absolute inset-0 bg-zinc-950" />
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-zinc-950 to-transparent" />
       </div>
 

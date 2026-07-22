@@ -104,7 +104,7 @@ ${JSON.stringify(context, null, 2)}`
       system,
       prompt: `Athlete's question: ${safePrompt}`,
     })
-    void logAICall({ route: 'md-coach', model: MD_COACH_MODEL, inputTokens: usage.promptTokens, outputTokens: usage.completionTokens, latencyMs: Date.now() - t0, finishReason, teamId: authResult.teamId })
+    void logAICall({ route: 'md-coach', model: MD_COACH_MODEL, inputTokens: usage.inputTokens, outputTokens: usage.outputTokens, latencyMs: Date.now() - t0, finishReason, teamId: authResult.teamId })
 
     return NextResponse.json({ success: true, answer: text })
   } catch (error) {
