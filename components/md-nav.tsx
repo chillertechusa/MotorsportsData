@@ -14,7 +14,8 @@ export default function MdNav() {
   }, [])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/98 backdrop-blur-lg border-b border-zinc-800/40">
+    {/* Banner offset: MdCampaignBanner is 40px tall when visible. Nav uses JS to detect and offset — simpler: just use top-0 and let the banner overlap since the banner is z-[60] and nav is z-50. The hero has pt-14 which accounts for nav only; we add the banner height to hero via CSS var */}
+    <header className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/98 backdrop-blur-lg border-b border-zinc-800/40" style={{ top: 'var(--banner-offset, 0px)' }}>
       {/* Subtle gradient accent at top */}
       <div aria-hidden="true" className="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-lime-400/30 to-transparent" />
 
@@ -25,6 +26,29 @@ export default function MdNav() {
           <Link href="/" className="hover:opacity-80 transition-opacity shrink-0 [&_img]:h-8 sm:[&_img]:h-10 [&_svg]:h-8 sm:[&_svg]:h-10">
             <MdLogo size="sm" asLink={false} />
           </Link>
+
+          {/* Desktop nav links */}
+          <nav className="hidden md:flex items-center gap-6" aria-label="Primary navigation">
+            <Link
+              href="/smx2027"
+              className="flex items-center gap-1.5 font-mono text-xs text-lime-400 uppercase tracking-widest hover:text-lime-300 transition-colors"
+            >
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-lime-400 animate-pulse" aria-hidden="true" />
+              SMX 2027
+            </Link>
+            <Link
+              href="/#team-partner"
+              className="font-mono text-xs text-zinc-400 uppercase tracking-widest hover:text-zinc-100 transition-colors"
+            >
+              Teams
+            </Link>
+            <Link
+              href="/#demo"
+              className="font-mono text-xs text-zinc-400 uppercase tracking-widest hover:text-zinc-100 transition-colors"
+            >
+              Platform
+            </Link>
+          </nav>
 
           {/* Sign In — always visible, far right */}
           <Link

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Play, ArrowRight } from 'lucide-react'
+import { ArrowRight, Flag, Users } from 'lucide-react'
 import MdHeroTelemetry from '@/components/md-hero-telemetry'
 import MdHeroTelemetryInline from '@/components/md-hero-telemetry-inline'
 
@@ -41,9 +41,9 @@ export default function MdHero() {
 
         {/* Eyebrow */}
         <div className="flex items-center gap-2 mb-4">
-          <div className="h-0.5 w-6 sm:w-8 bg-lime-400" />
+          <div className="h-0.5 w-6 sm:w-8 bg-lime-400" aria-hidden="true" />
           <span className="font-mono text-[10px] sm:text-xs text-lime-400 uppercase tracking-[0.25em]">
-            Watch Live Data. Simulated.
+            SMX 2027 Championship — Team Partnerships Open
           </span>
         </div>
 
@@ -56,40 +56,40 @@ export default function MdHero() {
             fontSize: 'clamp(2.6rem, 11vw, 7.5rem)',
           }}
         >
-          Every Lap.{' '}
-          <span className="text-lime-400">Every Data Point.</span>
+          The SMX 2027{' '}
+          <span className="text-lime-400">Data Command Center.</span>
         </h1>
 
         {/* Subheadline */}
         <p className="text-zinc-400 text-sm sm:text-lg md:text-xl leading-relaxed max-w-xl sm:max-w-2xl mb-5 sm:mb-6">
-          Track lap times, suspension deltas, speed, and rider vitals—all in one platform. Built for freelance riders, factory teams, and everyone racing in between.
+          17 rounds. One platform. Live AI support from Anaheim to Las Vegas — so your crew chief makes faster calls and your rider finishes higher.
         </p>
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6 sm:mb-10">
           <Link
-            href="/#demo"
-            className="group inline-flex items-center justify-center gap-2 bg-lime-400 text-zinc-950 font-semibold px-6 py-3.5 rounded-lg hover:bg-lime-300 transition-colors"
+            href="#team-partner"
+            className="group inline-flex items-center justify-center gap-2 bg-lime-400 text-zinc-950 font-bold px-6 py-3.5 hover:bg-lime-300 transition-colors"
           >
-            <Play className="h-4 w-4" fill="currentColor" />
-            Watch Demo
+            <Users className="h-4 w-4" aria-hidden="true" />
+            Apply for Season Partnership
           </Link>
           <Link
-            href="/data/sign-in?redirect=/data"
-            className="inline-flex items-center justify-center gap-2 border border-zinc-600 text-zinc-100 font-semibold px-6 py-3.5 rounded-lg hover:bg-zinc-800/70 backdrop-blur-sm transition-colors"
+            href="/#demo"
+            className="inline-flex items-center justify-center gap-2 border border-zinc-600 text-zinc-100 font-semibold px-6 py-3.5 hover:bg-zinc-800/70 backdrop-blur-sm transition-colors"
           >
-            Start Free
-            <ArrowRight className="h-4 w-4" />
+            See the Platform
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
 
-        {/* Discipline tags — desktop */}
+        {/* Season stats — desktop */}
         <div className="hidden sm:block pt-6 sm:pt-8 border-t border-zinc-800/60">
           <p className="font-mono text-xs text-zinc-600 uppercase tracking-[0.25em] mb-3 sm:mb-4">
-            Real-time telemetry, from rookie to factory rig
+            Full season coverage — every venue, every moto
           </p>
           <div className="flex flex-wrap gap-x-4 gap-y-2 sm:gap-x-6 sm:gap-y-3">
-            {['Mini / Youth', 'Amateur MX', 'Women\u2019s MX', 'Supercross', 'Pro Motocross', 'SMX', 'Factory Teams'].map((tag) => (
+            {['17 Rounds', 'Anaheim → Las Vegas', 'Live AI Every Gate Drop', 'Crew Chief Console', 'Multi-Rider Dashboard', 'Post-Moto Debrief AI'].map((tag) => (
               <span key={tag} className="font-mono text-[10px] sm:text-xs text-zinc-500 uppercase tracking-widest border border-zinc-800 px-2.5 sm:px-3 py-1 bg-zinc-950/60">
                 {tag}
               </span>
@@ -97,29 +97,26 @@ export default function MdHero() {
           </div>
         </div>
 
-        {/* ── MOBILE ONLY: discipline strip + inline telemetry ── */}
+        {/* Mobile only strip */}
         <div className="sm:hidden">
-          {/* Discipline strip */}
           <div className="pt-4 border-t border-zinc-800/60 mb-5">
             <div className="flex flex-wrap gap-x-2 gap-y-2">
-              {['MX', 'Supercross', 'SMX', 'Women\u2019s MX', 'Factory'].map((tag) => (
+              {['17 Rounds', 'Live AI', 'Crew Chief', 'SMX 2027'].map((tag) => (
                 <span key={tag} className="font-mono text-[9px] text-zinc-500 uppercase tracking-widest border border-zinc-800 px-2 py-1 bg-zinc-950/60">
                   {tag}
                 </span>
               ))}
             </div>
           </div>
-
-          {/* Telemetry inline — 2×3 grid so all 6 stats show */}
           <MdHeroTelemetryInline />
         </div>
 
         {/* Stat badges — desktop only */}
         <div className="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 flex-col gap-4">
           {[
-            { label: 'Team Roles', value: '11' },
+            { label: 'Season Rounds', value: '17' },
             { label: 'AI Co-Pilots', value: '4' },
-            { label: 'Tiers, from Free', value: '5' },
+            { label: 'Team Spots Left', value: '10' },
           ].map((stat, i) => (
             <div
               key={stat.label}

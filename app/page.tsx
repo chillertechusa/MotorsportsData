@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
+import MdCampaignBanner from '@/components/md-campaign-banner'
 import MdNav from '@/components/md-nav'
 import MdHero from '@/components/md-hero'
+import MdSeasonTimeline from '@/components/md-season-timeline'
+import MdTeamPartner from '@/components/md-team-partner'
 import MdFeatures from '@/components/md-features'
 import MdDemo from '@/components/md-demo'
 import MdDemoDetails from '@/components/md-demo-details'
@@ -10,14 +13,14 @@ import MdFooter from '@/components/md-footer'
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://motorsportsdata.io'
 
 export const metadata: Metadata = {
-  title: 'Motorsport Data — Peak Performance Starts With Data',
+  title: 'Motorsport Data — SMX 2027 Data Command Center',
   description:
-    'Track your bike, log setups, read telemetry, and let Rig Doctor AI call your next move. One account grows with a rider from youth mini-bikes through Privateer, Race Team, and Factory Rig. Start free, upgrade when ready.',
+    'AI-powered race data platform for the SMX 2027 Championship. Setup coaching, live AI support, and team analytics for every round — from Anaheim to Las Vegas. Team partnerships now open.',
   keywords: [
-    'motorsport data', 'racing platform', 'motocross app', 'youth motocross tracking',
-    'motocross setup logs', 'part lifecycle tracking', 'race coach AI', 'motocross video analysis',
-    'bike telemetry', 'dirt bike maintenance tracker', 'supercross setup', 'rider progression',
-    'womens motocross', 'WMX', 'SMX', 'factory team roles', 'crew chief', 'data analyst', 'Rig Doctor AI',
+    'smx 2027', 'supercross 2027 data', 'smx championship analytics', 'motocross team software 2027',
+    'supercross team data platform', 'race crew chief AI', 'motocross setup logs', 'bike telemetry',
+    'smx data command center', 'motorsport data', 'racing platform', 'privateer smx', 'factory team data',
+    'Rig Doctor AI', 'supercross AI coach', 'smx team partnership',
   ],
   alternates: {
     canonical: BASE_URL,
@@ -33,7 +36,7 @@ export const metadata: Metadata = {
         url: `${BASE_URL}/assets/og-preview.png`,
         width: 1200,
         height: 630,
-        alt: 'Motorsport Data — Comprehensive power sports and racing analytics platform',
+        alt: 'Motorsport Data — SMX 2027 Data Command Center',
       },
     ],
   },
@@ -66,9 +69,12 @@ export default function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
+      <MdCampaignBanner />
       <MdNav />
       <main>
         <MdHero />
+        <MdSeasonTimeline />
+        <MdTeamPartner />
         <MdFeatures />
         <MdDemo />
         <MdDemoDetails />

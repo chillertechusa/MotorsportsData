@@ -3,11 +3,11 @@ import { ShieldCheck, Phone } from 'lucide-react'
 import MdLogo from './md-logo'
 
 const footerLinks = [
-  { label: 'Features', href: '/#features' },
-  { label: 'See It Live', href: '/demo' },
+  { label: 'SMX 2027', href: '/smx2027' },
+  { label: 'Team Partnership', href: '/#team-partner' },
+  { label: 'Season Timeline', href: '/#season' },
+  { label: 'Platform Demo', href: '/#demo' },
   { label: 'Pricing', href: '/data/pricing' },
-  { label: 'Security', href: '/data/security' },
-  { label: 'Buy Merch', href: '/shop' },
   { label: 'Login', href: '/data' },
 ]
 
@@ -30,8 +30,7 @@ export default function MdFooter() {
               <MdLogo size="md" asLink={true} />
             </div>
             <p className="text-zinc-500 text-sm leading-relaxed max-w-xs mb-5">
-              The operating system for a racing career. From the mini-bike in the driveway to
-              the factory rig. Bike, setup, body, mind, and three AI co-pilots — plans from $9/mo.
+              The SMX 2027 data command center. AI crew chief support for every round, from Anaheim to Las Vegas. Built for teams that run on data.
             </p>
             <a
               href="tel:+18884698475"
@@ -106,7 +105,7 @@ export default function MdFooter() {
             &copy; 2026 Motorsport Data. All rights reserved.
           </p>
           <p className="font-mono text-xs text-zinc-700 uppercase tracking-widest">
-            Built for the sport. Owned by the rider.
+            SMX 2027 — Gate Drop to Championship Final.
           </p>
         </div>
       </div>

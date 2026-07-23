@@ -129,7 +129,7 @@ function getAct(progress: number, acts: number): number {
 }
 
 export default function MdDemo() {
-  const [activeTier, setActiveTier] = useState<TierId>('rookie')
+  const [activeTier, setActiveTier] = useState<TierId>('race_team')
   const [progress, setProgress] = useState(0)
   const [playing, setPlaying] = useState(true)
   const rafRef = useRef<number | null>(null)
