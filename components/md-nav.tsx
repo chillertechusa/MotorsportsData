@@ -14,7 +14,6 @@ export default function MdNav() {
   }, [])
 
   return (
-    {/* Banner offset: MdCampaignBanner is 40px tall when visible. Nav uses JS to detect and offset — simpler: just use top-0 and let the banner overlap since the banner is z-[60] and nav is z-50. The hero has pt-14 which accounts for nav only; we add the banner height to hero via CSS var */}
     <header className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/98 backdrop-blur-lg border-b border-zinc-800/40" style={{ top: 'var(--banner-offset, 0px)' }}>
       {/* Subtle gradient accent at top */}
       <div aria-hidden="true" className="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-lime-400/30 to-transparent" />
