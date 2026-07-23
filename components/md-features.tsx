@@ -21,10 +21,10 @@ const pillars = [
   {
     tag: 'the-mechanic',
     title: 'The Mechanic',
-    blurb: 'Your career follows you. Work orders, setup deltas, and rider outcomes — all in your account, from team to team.',
+    blurb: 'Every work order logged, every setup delta tracked, every rider outcome on record. The team has full visibility. The mechanic gets the credit.',
     features: [
       { icon: Wrench, title: 'Work Order Queue', description: 'Multi-bike open, in-progress, and closed work orders with live labor timer and before/after suspension sheets.', highlight: true },
-      { icon: FileText, title: 'Career Portfolio', description: 'Every work order, every setup change, every rider improvement you had a hand in. Yours forever. Take it to the next team.' },
+      { icon: FileText, title: 'Performance Record', description: 'Every work order closed, every setup delta logged, every rider improvement tied to your work. Full credit within the team account.' },
       { icon: Activity, title: 'Mechanic Coach AI', description: 'After closing a work order, AI reads the before/after suspension delta and the rider\'s next session result. Tells you what correlated.' },
       { icon: Briefcase, title: 'Part Vault Integration', description: 'Pull parts from the team\'s vault directly into work orders. Costs tracked automatically. No spreadsheet needed.' },
     ],
