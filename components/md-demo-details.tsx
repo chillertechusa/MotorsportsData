@@ -36,14 +36,14 @@ export default function MdDemoDetails() {
             </h2>
             <ul className="space-y-3">
               {[
-                { color: 'text-lime-400', title: 'Full Lap Telemetry', desc: 'Speed, RPM, lean angle, throttle/brake, suspension travel — every session, every round' },
-                { color: 'text-amber-400', title: 'Crew Chief AI', desc: 'Live setup recommendations during practice and qualifying. Reads your season dataset.' },
+                { color: 'text-amber-400', title: 'Rig Doctor AI', desc: '17-round DOT pre-trip, PM schedule, DEF + DPF alerts, and Class 8 diesel guidance for your hauler driver.' },
+                { color: 'text-sky-400', title: 'Work Order Queue', desc: 'Mechanic console — multi-bike orders, live labor timer, before/after suspension sheets, Career Portfolio.' },
+                { color: 'text-lime-400', title: 'Full Lap Telemetry', desc: 'Speed, RPM, lean angle, throttle/brake, suspension travel — every session, every round.' },
+                { color: 'text-amber-400', title: 'Crew Chief AI', desc: 'Live setup recommendations during practice and qualifying. Reads your season dataset in real time.' },
                 { color: 'text-lime-400', title: 'Post-Moto Debrief', desc: 'Auto-generated after every session. Lap splits, deltas, setup correlation, AI note.' },
                 { color: 'text-amber-400', title: 'Command Rig Access', desc: 'Physical workstation inside the rig at every venue. Plug in. No pass required.' },
                 { color: 'text-lime-400', title: 'Season Intelligence', desc: 'Cross-round setup trending, track-type correlations, championship scenario modeling.' },
-                { color: 'text-amber-400', title: 'R&D Data Layer', desc: 'Development build tracking. Know which changes moved the lap time.' },
-                { color: 'text-lime-400', title: 'Embedded Analyst', desc: 'Command + Factory programs: analyst in your pit or at the rig every race weekend.' },
-                { color: 'text-amber-400', title: 'Full Data Export', desc: 'Your data is yours. Season-end export in any format your engineering team needs.' },
+                { color: 'text-amber-400', title: 'Embedded Analyst', desc: 'Command + Factory programs: analyst in your pit or at the rig every race weekend.' },
               ].map((item, i) => (
                 <li key={i} className="flex gap-3">
                   <CheckCircle2 className={`h-4 w-4 shrink-0 mt-0.5 ${item.color}`} aria-hidden="true" />
@@ -66,11 +66,11 @@ export default function MdDemoDetails() {
             </h2>
             <ul className="space-y-4">
               {[
+                { title: 'Built for the hauler driver and mechanic', desc: 'Nobody in sports tech talks to them. We do — they get their own console, not a shared login.' },
                 { title: 'MoTeC i2 Pro + Pi Toolbox replacement', desc: 'Both are desktop apps you run after the fact. We run live, trackside, during qualifying.' },
                 { title: 'Analyst at every venue', desc: 'You currently fly one in for select rounds. We put one at the rig every single weekend.' },
-                { title: 'No fragmented stack', desc: 'Telemetry, setup logs, fitness, debrief, and team comms — one login, one source of truth.' },
+                { title: 'No fragmented stack', desc: 'Telemetry, setup logs, hauler PM, work orders, debrief — one login, one source of truth.' },
                 { title: 'One sponsor line item', desc: '$42.5K–$127.5K fits cleanly in a corporate partner deck. No 6-vendor negotiation.' },
-                { title: 'Season locked, not month-to-month', desc: 'Both parties commit. Your analyst is there Round 1, Vegas Final, and every round between.' },
               ].map((item) => (
                 <li key={item.title} className="flex gap-3">
                   <span className="text-lime-400 font-bold shrink-0 mt-0.5">&#x2713;</span>

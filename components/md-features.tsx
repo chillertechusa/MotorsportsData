@@ -8,14 +8,14 @@ import MdReveal from './md-reveal'
 
 const pillars = [
   {
-    tag: 'the-machine',
-    title: 'The Machine',
-    blurb: 'Every bike, every part, every setup — one source of truth across the fleet.',
+    tag: 'the-hauler',
+    title: 'The Hauler',
+    blurb: 'The semi driver moves $2M of equipment cross-country for 17 rounds. They have never had a tool built for them. Until now.',
     features: [
-      { icon: Bike, title: 'Fleet Garage', description: 'Track every bike from the PW50 to the factory 450 — hours, rebuilds, and history.' },
-      { icon: Wrench, title: 'Predictive Part Vault', description: 'Engine hours, replacement cycles, and stock levels in real time. Never risk a DNF.' },
-      { icon: ClipboardList, title: 'Universal Setup Sheets', description: 'Clickers, mapping, PSI, sag, gearing, and rider feedback logged for every session.' },
-      { icon: CalendarDays, title: 'Schedule + Track Weather', description: 'Race calendar with live forecast and conditions pulled for every track you ride.' },
+      { icon: Truck, title: 'Rig Doctor AI', description: 'Class 8 diesel guidance in plain English. DPF regens, DEF levels, air brake care, DOT compliance, and PM schedules — proactive, not reactive.', highlight: true },
+      { icon: Wrench, title: 'PM Scheduler', description: 'A, B, and C service intervals tracked by mileage and engine hours across the full 17-round season. No missed maintenance deadline.' },
+      { icon: ClipboardList, title: 'Pre-Trip Inspection', description: 'DOT-aligned checklist. Driver logs status, defects, and clearance to roll before every departure. Auto-archived per round.' },
+      { icon: CalendarDays, title: 'Haul Calendar + Race Sync', description: 'Race calendar integrated with truck schedule — departure times, fuel stops, load sequences, and gate-time targets for every venue.' },
     ],
   },
   {
@@ -30,6 +30,28 @@ const pillars = [
     ],
   },
   {
+    tag: 'the-machine',
+    title: 'The Machine',
+    blurb: 'Every bike, every part, every setup — one source of truth across the fleet.',
+    features: [
+      { icon: Bike, title: 'Fleet Garage', description: 'Track every bike from the PW50 to the factory 450 — hours, rebuilds, and history.' },
+      { icon: Wrench, title: 'Predictive Part Vault', description: 'Engine hours, replacement cycles, and stock levels in real time. Never risk a DNF.' },
+      { icon: ClipboardList, title: 'Universal Setup Sheets', description: 'Clickers, mapping, PSI, sag, gearing, and rider feedback logged for every session.' },
+      { icon: CalendarDays, title: 'Schedule + Track Weather', description: 'Race calendar with live forecast and conditions pulled for every track you ride.' },
+    ],
+  },
+  {
+    tag: 'the-intelligence',
+    title: 'The Intelligence',
+    blurb: 'Four AI co-pilots that turn your data into an unfair advantage on and off the track.',
+    features: [
+      { icon: Compass, title: 'Race Coach AI', description: 'Live setup recommendations during qualifying. Reads your full season dataset and answers in under 30 seconds.', highlight: true },
+      { icon: Video, title: 'Video Analysis', description: 'Upload session footage and get timestamped coach notes tied directly to your lap and setup data.' },
+      { icon: Sparkles, title: 'MD Intel AI', description: 'Ask anything — "what was my spring Pala setup last year?" — and get the exact answer from your race data.' },
+      { icon: DollarSign, title: 'Season Economics', description: 'Track every expense, sponsor deal, and cost-per-result. Know your true profitability before the debrief.' },
+    ],
+  },
+  {
     tag: 'the-rider',
     title: 'The Rider',
     blurb: 'Because the athlete matters as much as the machine — from body to head to career.',
@@ -38,28 +60,6 @@ const pillars = [
       { icon: Brain, title: 'Mental Game', description: 'Check-ins and focus tracking that surface burnout before it costs you a season.' },
       { icon: HeartPulse, title: 'Injury + RTR Protocol', description: 'Concussion-aware injury log with a staged return-to-ride protocol. Included on every plan.' },
       { icon: TrendingUp, title: 'Progression Timeline', description: 'Every first ride, first jump, and first podium — the rider story, saved forever.' },
-    ],
-  },
-  {
-    tag: 'the-intelligence',
-    title: 'The Intelligence',
-    blurb: 'Four AI co-pilots that turn your data into an unfair advantage.',
-    features: [
-      { icon: Compass, title: 'Race Coach AI', description: 'A pocket coach that reads every module you log and tells you if you\u2019re truly race-ready.', highlight: true },
-      { icon: Video, title: 'Video Analysis', description: 'Upload session footage and get timestamped coach notes tied directly to your performance.' },
-      { icon: Sparkles, title: 'MD Intel AI', description: 'Ask your AI any setup question — "what was my spring Pala setup?" — and get the exact answer.' },
-      { icon: DollarSign, title: 'Season Economics', description: 'Track every expense, sponsor deal, and cost-per-result. Know your true profitability.' },
-    ],
-  },
-  {
-    tag: 'the-hauler',
-    title: 'The Hauler',
-    blurb: 'The semi driver holds the whole operation together. Now they have a command center that matches the job.',
-    features: [
-      { icon: Truck, title: 'Rig Doctor AI', description: 'Class 8 diesel maintenance guidance. DPF regens, DEF levels, air brake care, DOT compliance, and PM schedules in plain English.', highlight: true },
-      { icon: Wrench, title: 'PM Scheduler', description: 'Track A, B, and C service intervals by mileage and engine hours. Never miss a maintenance deadline.' },
-      { icon: ClipboardList, title: 'Pre-Trip Inspection', description: 'DOT-aligned checklist. Driver logs status, defects, and clearance to roll before departure.' },
-      { icon: CalendarDays, title: 'Haul Calendar + Race Sync', description: 'Race calendar integrated with truck schedule — departure times, fuel stops, load sequences, and gate-time targets.' },
     ],
   },
 ]

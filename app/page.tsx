@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import MdCampaignBanner from '@/components/md-campaign-banner'
 import MdNav from '@/components/md-nav'
 import MdHero from '@/components/md-hero'
+import MdRoleStrip from '@/components/md-role-strip'
 import MdSeasonTimeline from '@/components/md-season-timeline'
 import MdOnsiteRig from '@/components/md-onsite-rig'
 import MdTeamPartner from '@/components/md-team-partner'
@@ -14,14 +15,15 @@ import MdFooter from '@/components/md-footer'
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://motorsportsdata.io'
 
 export const metadata: Metadata = {
-  title: 'Motorsport Data — SMX 2027 Elite Team Data Command Center',
+  title: 'Motorsport Data — SMX 2027 Racing Management System',
   description:
-    'The SMX 2027 elite team data platform. Our Command Rig deploys to every venue — live AI, embedded analyst, and full season analytics for team programs running the 2027 championship. Three programs. No individual riders.',
+    'The SMX 2027 Racing Management System. A console for every role — hauler driver, mechanic, crew chief, team manager, and data analyst. Live AI, embedded analyst, and full season operations for team programs running the 2027 championship.',
   keywords: [
-    'smx 2027 elite team data', 'supercross 2027 team platform', 'smx command rig', 'smx championship analytics',
-    'motocross team software 2027', 'supercross crew chief AI', 'smx embedded analyst', 'race team data platform',
-    'smx data command center', 'factory smx data program', 'motorsport data', 'smx 2027 elite program',
-    'supercross AI crew chief', 'command partner smx 2027',
+    'smx 2027 racing management system', 'supercross team management platform', 'motocross racing management software',
+    'smx crew chief AI', 'motocross mechanic work order software', 'hauler driver race team app',
+    'smx 2027 team platform', 'supercross data analyst console', 'race team operations software 2027',
+    'smx command rig', 'factory smx data program', 'motorsport data', 'smx 2027 elite program',
+    'supercross team manager dashboard', 'motocross championship analytics',
   ],
   alternates: {
     canonical: BASE_URL,
@@ -48,18 +50,36 @@ export default function HomePage() {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'Motorsport Data',
-    description: 'Track your bike. Log setups. Coach your mind. AI-powered performance data for every rider, from youth through factory racing.',
+    description: 'The SMX 2027 Racing Management System. A purpose-built console for every role on the team — hauler driver, mechanic, crew chief, team manager, and data analyst. Live AI, embedded analyst, and full-season operations across all 17 rounds.',
     url: BASE_URL,
-    image: `${BASE_URL}/images/md-hero-bg.png`,
+    image: `${BASE_URL}/assets/og-preview.png`,
     applicationCategory: 'SportsApplication',
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'USD',
-      price: '9',
-      priceValidUntil: '2026-12-31',
-      description: 'Start free forever. Plans from $9/mo (Rookie) to $2,499/mo (Factory Rig). Full feature access to all.',
-      url: `${BASE_URL}/data/pricing`,
-    },
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'Team Partner',
+        priceCurrency: 'USD',
+        price: '42500',
+        description: 'Team Partner — SMX 2027 full season program. $2,500/mo, 17-round coverage.',
+        url: `${BASE_URL}/#team-partner`,
+      },
+      {
+        '@type': 'Offer',
+        name: 'Command Partner',
+        priceCurrency: 'USD',
+        price: '127500',
+        description: 'Command Partner — SMX 2027 full season with embedded analyst and rig desk at every venue.',
+        url: `${BASE_URL}/#team-partner`,
+      },
+      {
+        '@type': 'Offer',
+        name: 'Factory Command',
+        priceCurrency: 'USD',
+        price: '306000',
+        description: 'Factory Command — manufacturer-backed program with private data infrastructure.',
+        url: `${BASE_URL}/#team-partner`,
+      },
+    ],
     author: {
       '@type': 'Organization',
       name: 'Motorsport Data',
@@ -74,6 +94,7 @@ export default function HomePage() {
       <MdNav />
       <main>
         <MdHero />
+        <MdRoleStrip />
         <MdSeasonTimeline />
         <MdOnsiteRig />
         <MdTeamPartner />
