@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   keywords: [
     'smx 2027', 'supercross 2027 data platform', 'smx championship team analytics',
     'motocross crew chief AI', 'supercross setup data 2027', 'smx team software',
-    'race team data platform', 'smx privateer app', 'supercross analytics tool',
-    'motorsport data smx 2027', 'smx 2027 team partnership',
+    'race team data platform', 'smx command rig', 'elite smx team data',
+    'motorsport data smx 2027', 'smx 2027 elite program', 'factory smx data program',
   ],
   alternates: {
     canonical: `${BASE_URL}/smx2027`,
@@ -46,30 +46,31 @@ const WHY_NOW = [
     copy: 'Full season coverage from Anaheim Round 1 to the Las Vegas Championship Final.',
   },
   {
-    stat: 'Live',
-    unit: 'AI Every Gate Drop',
-    copy: 'Crew chief AI is active during race weekends — ask it anything, get data-backed answers.',
+    stat: '3',
+    unit: 'Elite Programs',
+    copy: 'Team Partner · Command Partner · Factory Command. No solo riders. Teams only.',
   },
   {
-    stat: '10',
-    unit: 'Team Spots',
-    copy: 'First 10 teams receive a direct onboarding call. Founding season pricing locked all 2027.',
+    stat: '5',
+    unit: 'Command Spots',
+    copy: 'Only 5 Command Partner spots available. Includes dedicated analyst + rig desk every round.',
   },
   {
-    stat: '$35',
-    unit: 'Per Round (Team)',
-    copy: 'Season Team plan breaks down to $35/round for full multi-rider command center access.',
+    stat: 'Onsite',
+    unit: 'Every Venue',
+    copy: 'Our Command Rig deploys to all 17 SMX venues. Live data ops parked in your pits.',
   },
 ]
 
 const WHAT_WE_CRUNCH = [
-  'Lap time deltas — session to session, round to round',
+  'Lap time deltas — session to session, round to round, all 17 venues',
   'Suspension setup change history — never repeat a bad setting',
   'Rider readiness score before every gate drop',
   'Post-moto AI debrief — auto-generated after every moto',
-  'Cross-rider comparison — benchmark your roster against each other',
+  'Cross-rider comparison — benchmark your full roster against each other',
   'Season standings tracker + points scenario calculator',
-  'Race weekend chat AI — crew chief asks, platform answers',
+  'Race weekend chat AI — crew chief queries, platform answers in real time',
+  'Command Rig onsite — live data ops parked in the pits every race weekend',
   'Full data export — your numbers, your property, always',
 ]
 
@@ -86,7 +87,7 @@ export default function SMX2027Page() {
             href="#team-partner"
             className="inline-flex items-center gap-2 bg-lime-400 text-zinc-950 font-bold text-xs sm:text-sm px-4 py-2 hover:bg-lime-300 transition-colors"
           >
-            Apply for Season Partnership
+            Apply for Elite Program
             <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
           </Link>
         </div>
@@ -141,7 +142,7 @@ export default function SMX2027Page() {
 
             {/* Subhead */}
             <p className="text-zinc-400 text-base sm:text-xl leading-relaxed max-w-2xl mb-8">
-              We crunch every lap, every setup change, every round of the SMX 2027 Championship — from gate drop in Anaheim to the Las Vegas Final. So your crew chief makes faster calls and your rider finishes higher.
+              Three elite programs. Our Command Rig in your pits. Live AI every gate drop — from Anaheim to Las Vegas. Built exclusively for team programs that run on data and cannot afford to guess.
             </p>
 
             {/* CTAs */}
@@ -151,7 +152,7 @@ export default function SMX2027Page() {
                 className="inline-flex items-center justify-center gap-2 bg-lime-400 text-zinc-950 font-bold px-7 py-4 hover:bg-lime-300 transition-colors text-base"
               >
                 <Users className="h-5 w-5" aria-hidden="true" />
-                Apply for Season Partnership
+                Apply for Elite Program
               </Link>
               <Link
                 href="/"
@@ -260,14 +261,14 @@ export default function SMX2027Page() {
               Your team should be ready at Round 1.
             </h2>
             <p className="text-zinc-800 text-base sm:text-lg mb-8 max-w-xl mx-auto leading-relaxed">
-              First 10 teams get a direct onboarding call. Founding season pricing locked for the full 2027 series. Apply now before spots fill.
+              Only 5 Command Partner spots available. First teams in get embedded analyst support at every round from our rig. No solo riders. No self-serve. Apply now.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="#team-partner"
                 className="inline-flex items-center gap-2 bg-zinc-950 text-lime-400 font-bold px-8 py-4 hover:bg-zinc-800 transition-colors text-base"
               >
-                Apply for Season Partnership &rarr;
+                Apply for Elite Program &rarr;
               </Link>
               <a
                 href="mailto:team@motorsportsdata.io?subject=SMX%202027%20Team%20Partnership%20Inquiry"

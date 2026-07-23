@@ -76,14 +76,14 @@ export default function MdCampaignBanner() {
         <div className="hidden sm:flex items-center gap-2 shrink-0">
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-zinc-950 animate-pulse" aria-hidden="true" />
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-bold">
-            SMX 2027 Season
+            SMX 2027 — Elite Programs
           </span>
         </div>
 
         {/* Center — copy + countdown */}
         <div className="flex items-center gap-3 sm:gap-5 mx-auto sm:mx-0">
           <p className="text-xs sm:text-sm font-semibold leading-none">
-            <span className="hidden sm:inline">Team partnership spots open — </span>
+            <span className="hidden sm:inline">3 elite season programs open — </span>
             Round 1 Anaheim in
           </p>
 
@@ -102,7 +102,7 @@ export default function MdCampaignBanner() {
             href="#team-partner"
             className="hidden sm:inline-flex items-center gap-1 bg-zinc-950 text-lime-400 font-bold text-xs px-3 py-1 rounded hover:bg-zinc-800 transition-colors whitespace-nowrap"
           >
-            Lock In Your Team &rarr;
+            Apply for Elite Program &rarr;
           </Link>
         </div>
 

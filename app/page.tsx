@@ -8,20 +8,20 @@ import MdTeamPartner from '@/components/md-team-partner'
 import MdFeatures from '@/components/md-features'
 import MdDemo from '@/components/md-demo'
 import MdDemoDetails from '@/components/md-demo-details'
-import MdFreeRiderHero from '@/components/md-free-rider-hero'
+
 import MdFooter from '@/components/md-footer'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://motorsportsdata.io'
 
 export const metadata: Metadata = {
-  title: 'Motorsport Data — SMX 2027 Data Command Center',
+  title: 'Motorsport Data — SMX 2027 Elite Team Data Command Center',
   description:
-    'AI-powered race data platform for the SMX 2027 Championship. Setup coaching, live AI support, and team analytics for every round — from Anaheim to Las Vegas. Team partnerships now open.',
+    'The SMX 2027 elite team data platform. Our Command Rig deploys to every venue — live AI, embedded analyst, and full season analytics for team programs running the 2027 championship. Three programs. No individual riders.',
   keywords: [
-    'smx 2027', 'supercross 2027 data', 'smx championship analytics', 'motocross team software 2027',
-    'supercross team data platform', 'race crew chief AI', 'motocross setup logs', 'bike telemetry',
-    'smx data command center', 'motorsport data', 'racing platform', 'privateer smx', 'factory team data',
-    'Rig Doctor AI', 'supercross AI coach', 'smx team partnership',
+    'smx 2027 elite team data', 'supercross 2027 team platform', 'smx command rig', 'smx championship analytics',
+    'motocross team software 2027', 'supercross crew chief AI', 'smx embedded analyst', 'race team data platform',
+    'smx data command center', 'factory smx data program', 'motorsport data', 'smx 2027 elite program',
+    'supercross AI crew chief', 'command partner smx 2027',
   ],
   alternates: {
     canonical: BASE_URL,
@@ -80,7 +80,6 @@ export default function HomePage() {
         <MdFeatures />
         <MdDemo />
         <MdDemoDetails />
-        <MdFreeRiderHero />
       </main>
       <MdFooter />
     </>

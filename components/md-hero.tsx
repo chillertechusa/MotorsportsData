@@ -43,7 +43,7 @@ export default function MdHero() {
         <div className="flex items-center gap-2 mb-4">
           <div className="h-0.5 w-6 sm:w-8 bg-lime-400" aria-hidden="true" />
           <span className="font-mono text-[10px] sm:text-xs text-lime-400 uppercase tracking-[0.25em]">
-            SMX 2027 Championship — Team Partnerships Open
+            SMX 2027 Championship — Elite Programs Now Open
           </span>
         </div>
 
@@ -62,7 +62,7 @@ export default function MdHero() {
 
         {/* Subheadline */}
         <p className="text-zinc-400 text-sm sm:text-lg md:text-xl leading-relaxed max-w-xl sm:max-w-2xl mb-5 sm:mb-6">
-          17 rounds. One platform. Live AI support from Anaheim to Las Vegas — so your crew chief makes faster calls and your rider finishes higher.
+          17 rounds. Our rig in your pits. Elite team programs only — built for programs that run on data and cannot afford to guess.
         </p>
 
         {/* CTAs */}
@@ -72,7 +72,7 @@ export default function MdHero() {
             className="group inline-flex items-center justify-center gap-2 bg-lime-400 text-zinc-950 font-bold px-6 py-3.5 hover:bg-lime-300 transition-colors"
           >
             <Users className="h-4 w-4" aria-hidden="true" />
-            Apply for Season Partnership
+            Apply for Elite Program
           </Link>
           <Link
             href="/#demo"
@@ -86,10 +86,10 @@ export default function MdHero() {
         {/* Season stats — desktop */}
         <div className="hidden sm:block pt-6 sm:pt-8 border-t border-zinc-800/60">
           <p className="font-mono text-xs text-zinc-600 uppercase tracking-[0.25em] mb-3 sm:mb-4">
-            Full season coverage — every venue, every moto
+            Elite team programs — no individual riders
           </p>
           <div className="flex flex-wrap gap-x-4 gap-y-2 sm:gap-x-6 sm:gap-y-3">
-            {['17 Rounds', 'Anaheim → Las Vegas', 'Live AI Every Gate Drop', 'Crew Chief Console', 'Multi-Rider Dashboard', 'Post-Moto Debrief AI'].map((tag) => (
+            {['17 Rounds', 'Anaheim → Las Vegas', 'Command Rig Onsite', 'Embedded Analyst', 'Live AI Every Gate Drop', 'Crew Chief Console'].map((tag) => (
               <span key={tag} className="font-mono text-[10px] sm:text-xs text-zinc-500 uppercase tracking-widest border border-zinc-800 px-2.5 sm:px-3 py-1 bg-zinc-950/60">
                 {tag}
               </span>
@@ -115,8 +115,8 @@ export default function MdHero() {
         <div className="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 flex-col gap-4">
           {[
             { label: 'Season Rounds', value: '17' },
-            { label: 'AI Co-Pilots', value: '4' },
-            { label: 'Team Spots Left', value: '10' },
+            { label: 'Elite Programs', value: '3' },
+            { label: 'Command Spots', value: '5' },
           ].map((stat, i) => (
             <div
               key={stat.label}
