@@ -10,8 +10,8 @@ const SECURITY_HEADERS = [
   { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
   // Stop MIME-type sniffing
   { key: 'X-Content-Type-Options', value: 'nosniff' },
-  // Strict HSTS — 1 year, include subdomains
-  { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains; preload' },
+  // Strict HSTS — 1 year, apex only (no includeSubDomains to avoid www redirect loop)
+  { key: 'Strict-Transport-Security', value: 'max-age=31536000' },
   // Referrer: full URL on same-origin, origin-only on cross-origin HTTPS
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
   // Disable FLoC / Topics
@@ -56,16 +56,9 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // Canonicalize host: 301 www.motorsportsdata.io → motorsportsdata.io (apex).
-      // Without this, every page resolves at BOTH hosts with a 200, creating
-      // duplicate content. The apex is the canonical host used in the sitemap,
-      // metadataBase, and every page's self-referencing canonical.
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.motorsportsdata.io' }],
-        destination: 'https://motorsportsdata.io/:path*',
-        permanent: true,
-      },
+      // NOTE: www → apex redirect is handled by Vercel project settings (Domains tab),
+      // NOT in code. Doing it here AND in Vercel settings creates an infinite loop
+      // (ERR_TOO_MANY_REDIRECTS). Remove from here; keep the Vercel domain redirect active.
 
       // /factory was referenced in old footer but no page exists — send to pricing
       { source: '/factory', destination: '/data/pricing', permanent: true },
