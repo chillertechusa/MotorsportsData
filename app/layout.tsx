@@ -61,26 +61,28 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Motorsport Data — From First Throttle to Factory Ride',
-    description: 'The all-in-one racing platform for the whole rider journey \u2014 bike, setup, body, and three AI co-pilots. Plans from $9/mo.',
+    title: 'OG_MotorsportsData',
+    description:
+      'Comprehensive power sports and racing analytics platform engineered for speed and regional scalability.',
     type: 'website',
     url: BASE_URL,
     siteName: 'Motorsport Data',
     locale: 'en_US',
     images: [
       {
-        url: '/opengraph-image',
+        url: `${BASE_URL}/assets/og-preview.png`,
         width: 1200,
         height: 630,
-        alt: 'Motorsport Data — From First Throttle to Factory Ride',
+        alt: 'Motorsport Data — Comprehensive power sports and racing analytics platform',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Motorsport Data — From First Throttle to Factory Ride',
-    description: 'The all-in-one racing platform for the whole rider journey \u2014 bike, setup, body, and three AI co-pilots. Plans from $9/mo.',
-    images: ['/opengraph-image'],
+    title: 'OG_MotorsportsData',
+    description:
+      'Comprehensive power sports and racing analytics platform engineered for speed and regional scalability.',
+    images: [`${BASE_URL}/assets/og-preview.png`],
   },
   // NOTE: intentionally NO `alternates.canonical` here. A canonical set in the
   // root layout is inherited by every child page that doesn't override it,

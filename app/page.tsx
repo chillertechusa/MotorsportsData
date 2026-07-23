@@ -23,16 +23,17 @@ export const metadata: Metadata = {
     canonical: BASE_URL,
   },
   openGraph: {
-    title: 'Motorsport Data — Peak Performance Starts With Data',
-    description: 'Track bike data, log setups, access AI coaching. Plans from $9/mo to factory operations.',
+    title: 'OG_MotorsportsData',
+    description:
+      'Comprehensive power sports and racing analytics platform engineered for speed and regional scalability.',
     type: 'website',
     url: BASE_URL,
     images: [
       {
-        url: `${BASE_URL}/images/md-hero-bg.png`,
+        url: `${BASE_URL}/assets/og-preview.png`,
         width: 1200,
         height: 630,
-        alt: 'Motorsport Data — Peak Performance Platform',
+        alt: 'Motorsport Data — Comprehensive power sports and racing analytics platform',
       },
     ],
   },
