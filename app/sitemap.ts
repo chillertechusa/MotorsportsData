@@ -29,60 +29,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // ── Data / SaaS platform ───────────────────────────────────────────────
     // NOTE: /data/plans/[tier] all 307 → their canonical pages below, so we list
     // the canonical pages only. /data itself is auth-protected (not indexable).
-    {
-      url: `${BASE_URL}/data/pricing`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.95,
-    },
+    // NOTE: /data/pricing redirects to /#team-partner — not listed separately
+    // to avoid crawl budget waste on a 301. The homepage (priority 1.0) is the
+    // canonical pricing destination.
     {
       url: `${BASE_URL}/data/security`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
-    // ── Canonical tier landing pages (all return 200 directly) ────────────
+    // ── SMX 2027 Elite Program pages ──────────────────────────────────────
+    // Replaces all retired individual tier pages (/rookie, /privateer, etc.)
+    // which have been removed from the platform. The canonical buy-now anchor
+    // is /#team-partner on the homepage; the thank-you page is indexable.
     {
-      url: `${BASE_URL}/rookie`,
+      url: `${BASE_URL}/smx2027/thank-you`,
       lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/privateer`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/race_team`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/factory_rig`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/wrench`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${BASE_URL}/agent`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${BASE_URL}/coach`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.85,
+      changeFrequency: 'yearly',
+      priority: 0.7,
     },
     // ── Mechanic / professional services ──────────────────────────────────
     {

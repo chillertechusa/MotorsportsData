@@ -98,7 +98,7 @@ export default function MdRoleStrip() {
   return (
     <section
       id="roles"
-      className="bg-zinc-950 border-y border-zinc-800/60 py-20 md:py-28"
+      className="bg-zinc-950 border-y border-zinc-800/60 py-14 md:py-20"
       aria-label="Team roles"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -232,7 +232,7 @@ export default function MdRoleStrip() {
         </div>
 
         {/* Bottom anchor */}
-        <div className="mt-10 flex items-center gap-4">
+        <div className="mt-6 flex items-center gap-4">
           <span className="h-px flex-1 bg-zinc-800" aria-hidden="true" />
           <p className="font-mono text-[10px] text-zinc-700 uppercase tracking-[0.25em]">
             One platform · Every role · 17 rounds

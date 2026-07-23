@@ -35,16 +35,19 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://motorsportsdata.io
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Motorsport Data — From First Throttle to Factory Ride',
+    default: 'Motorsport Data — SMX 2027 Racing Management System',
     template: '%s | Motorsport Data',
   },
   description:
-    'The operating system for a racing career. Track the bike, log every setup, coach the rider, and let AI tell you if you\u2019re race-ready \u2014 from the mini-bike in the driveway to the factory rig. Plans from $9/mo.',
+    'The SMX 2027 Racing Management System. A purpose-built console for every role on the team — hauler driver, mechanic, crew chief, team manager, and data analyst. Live AI, embedded analyst, and full-season operations across all 17 rounds.',
   keywords: [
-    'motorsport data', 'motocross app', 'dirt bike maintenance tracker', 'racing platform',
-    'race coach AI', 'motocross setup log', 'part lifecycle tracking', 'youth motocross',
-    'supercross data', 'video analysis motocross', 'rider progression', 'factory mechanic software',
-    'MD Intel', 'MXGP', 'AMA Pro MX', 'motocross injury tracker',
+    'smx 2027 racing management system', 'supercross team management platform',
+    'motocross racing management software', 'smx crew chief AI', 'hauler driver race team app',
+    'motocross mechanic work order software', 'smx 2027 team platform',
+    'supercross data analyst console', 'race team operations software',
+    'smx command rig', 'factory smx data program', 'motorsport data',
+    'supercross team manager dashboard', 'motocross championship analytics',
+    'rig doctor AI', 'smx 2027 elite program',
   ],
   authors: [{ name: 'Motorsport Data', url: BASE_URL }],
   creator: 'Motorsport Data',

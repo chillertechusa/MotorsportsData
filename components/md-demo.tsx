@@ -700,7 +700,7 @@ export default function MdDemo() {
   const RoleIcon = role.icon
 
   return (
-    <section id="demo" className="bg-zinc-950 py-24 md:py-32 relative overflow-hidden">
+    <section id="demo" className="bg-zinc-950 py-16 md:py-20 relative overflow-hidden">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-50"
