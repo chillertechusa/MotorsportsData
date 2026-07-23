@@ -25,7 +25,7 @@ const TIERS = [
       'Exportable full season data — your numbers, your property',
     ],
     cta: 'Apply for Team Partner',
-    href: 'mailto:team@motorsportsdata.io?subject=Team%20Partner%20Application%20%E2%80%94%20SMX%202027',
+    href: 'mailto:motorsportsdata@gmail.com?subject=Team%20Partner%20Application%20%E2%80%94%20SMX%202027',
     popular: false,
   },
   {
@@ -51,7 +51,7 @@ const TIERS = [
       'Direct line to engineering for in-season platform customizations',
     ],
     cta: 'Apply for Command Partner',
-    href: 'mailto:team@motorsportsdata.io?subject=Command%20Partner%20Application%20%E2%80%94%20SMX%202027',
+    href: 'mailto:motorsportsdata@gmail.com?subject=Command%20Partner%20Application%20%E2%80%94%20SMX%202027',
     popular: true,
   },
   {
@@ -77,7 +77,7 @@ const TIERS = [
       'Private data infrastructure — air-gapped from all other teams',
     ],
     cta: 'Contact Us Directly',
-    href: 'mailto:team@motorsportsdata.io?subject=Factory%20Command%20%E2%80%94%20SMX%202027',
+    href: 'mailto:motorsportsdata@gmail.com?subject=Factory%20Command%20%E2%80%94%20SMX%202027',
     popular: false,
   },
 ] as const

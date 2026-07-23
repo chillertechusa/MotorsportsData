@@ -271,7 +271,7 @@ export default function SMX2027Page() {
                 Apply for Elite Program &rarr;
               </Link>
               <a
-                href="mailto:team@motorsportsdata.io?subject=SMX%202027%20Team%20Partnership%20Inquiry"
+                href="mailto:motorsportsdata@gmail.com?subject=SMX%202027%20Elite%20Program%20Inquiry"
                 className="inline-flex items-center gap-2 border-2 border-zinc-950 text-zinc-950 font-bold px-8 py-4 hover:bg-lime-300 transition-colors text-base"
               >
                 Email Us Directly
