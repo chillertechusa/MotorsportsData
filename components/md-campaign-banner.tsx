@@ -45,11 +45,11 @@ function Digit({ value, label }: { value: number; label: string }) {
 }
 
 export default function MdCampaignBanner() {
-  const [dismissed, setDismissed] = useState(true) // start hidden until mount
+  const [dismissed, setDismissed] = useState(true)
   const countdown = useCountdown(ROUND_ONE)
 
   useEffect(() => {
-    const stored = localStorage.getItem('smx27-banner-dismissed')
+    const stored = localStorage.getItem('md-founding-banner-dismissed')
     if (!stored) {
       setDismissed(false)
       document.documentElement.style.setProperty('--banner-offset', '40px')
@@ -57,7 +57,7 @@ export default function MdCampaignBanner() {
   }, [])
 
   function dismiss() {
-    localStorage.setItem('smx27-banner-dismissed', '1')
+    localStorage.setItem('md-founding-banner-dismissed', '1')
     document.documentElement.style.setProperty('--banner-offset', '0px')
     setDismissed(true)
   }
@@ -72,18 +72,18 @@ export default function MdCampaignBanner() {
     >
       <div className="h-full max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3">
 
-        {/* Left — label */}
+        {/* Left — founding label */}
         <div className="hidden sm:flex items-center gap-2 shrink-0">
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-zinc-950 animate-pulse" aria-hidden="true" />
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-bold">
-            SMX 2027 — Elite Programs
+            Founding Season Pricing — 30% off forever
           </span>
         </div>
 
-        {/* Center — copy + countdown */}
+        {/* Center — countdown */}
         <div className="flex items-center gap-3 sm:gap-5 mx-auto sm:mx-0">
           <p className="text-xs sm:text-sm font-semibold leading-none">
-            <span className="hidden sm:inline">3 elite season programs open — </span>
+            <span className="hidden sm:inline">Founding window closes — </span>
             Round 1 Anaheim in
           </p>
 
@@ -99,10 +99,10 @@ export default function MdCampaignBanner() {
           </div>
 
           <Link
-            href="#team-partner"
+            href="#pricing"
             className="hidden sm:inline-flex items-center gap-1 bg-zinc-950 text-lime-400 font-bold text-xs px-3 py-1 rounded hover:bg-zinc-800 transition-colors whitespace-nowrap"
           >
-            Apply for Elite Program &rarr;
+            Claim founding price &rarr;
           </Link>
         </div>
 

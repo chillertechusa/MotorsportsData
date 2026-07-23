@@ -141,3 +141,121 @@ export function isMdPlanId(value: unknown): value is MdPlanId {
  *  They carry it from team to team. That's the lock-in.
  */
 export const MECHANIC_PLAN_ID: MdPlanId = 'wrench'
+
+// ── RMS 4-Tier Platform Plans ─────────────────────────────────────────────
+// These are the four public-facing subscription tiers for the Racing Management System.
+// Monthly prices shown on the pricing page. Annual = 2 months free (~17% off).
+export type RmsPlanId = 'rms_grassroots' | 'rms_privateer' | 'rms_race_team' | 'rms_factory_command'
+
+export const RMS_PLANS: Record<RmsPlanId, {
+  label: string
+  tagline: string
+  monthlyPrice: number        // dollars/mo (billed monthly)
+  annualMonthlyPrice: number  // dollars/mo when billed annually
+  tag: string
+  who: string
+  modules: string[]
+  accent: string
+  accentText: string
+  accentBg: string
+  topBar: string
+  popular: boolean
+  buyNow: boolean             // false = Factory Command (mailto)
+}> = {
+  rms_grassroots: {
+    label: 'Grassroots',
+    tagline: 'Run the dream like a business.',
+    monthlyPrice: 49,
+    annualMonthlyPrice: 41,
+    tag: 'Family Programs',
+    who: 'Mom-and-dad families, youth programs, first-time racers. Up to 2 bikes.',
+    modules: [
+      'Fleet Garage — up to 2 bikes',
+      'Race calendar + event results',
+      'Expense tracker + budget log',
+      'Maintenance + injury log',
+      'Verified rider profile (discoverable 2028)',
+    ],
+    accent: 'border-zinc-600/60',
+    accentText: 'text-zinc-300',
+    accentBg: 'bg-zinc-800/20',
+    topBar: 'bg-zinc-600/50',
+    popular: false,
+    buyNow: true,
+  },
+  rms_privateer: {
+    label: 'Privateer',
+    tagline: 'Every edge counts when you run solo.',
+    monthlyPrice: 199,
+    annualMonthlyPrice: 166,
+    tag: 'Most Popular',
+    who: 'Solo amateur and semi-pro racers. Up to 3 bikes, AI coach included.',
+    modules: [
+      'Everything in Grassroots',
+      'AI setup coach — session recommendations',
+      'Setup sheets + suspension log',
+      'Sponsor tracker + basic ROI',
+      'Rider readiness + HRV tracking',
+      'Verified rider profile (discoverable 2028)',
+    ],
+    accent: 'border-lime-400/60',
+    accentText: 'text-lime-400',
+    accentBg: 'bg-lime-400/5',
+    topBar: 'bg-lime-400',
+    popular: true,
+    buyNow: true,
+  },
+  rms_race_team: {
+    label: 'Race Team',
+    tagline: 'Run your program, not just your bike.',
+    monthlyPrice: 599,
+    annualMonthlyPrice: 499,
+    tag: 'Regional Teams',
+    who: 'Multi-rider regional teams, local sponsors, crew chiefs. Up to 8 bikes.',
+    modules: [
+      'Everything in Privateer',
+      'Team command dashboard — all riders, one view',
+      'Work order queue + mechanic console',
+      'Crew chief AI — live in qualifying',
+      'Sponsor ROI dashboard',
+      'Rig Doctor AI — hauler ops + DOT',
+      'Full expense + P&L reporting',
+    ],
+    accent: 'border-amber-400/40',
+    accentText: 'text-amber-400',
+    accentBg: 'bg-amber-400/5',
+    topBar: 'bg-amber-400/70',
+    popular: false,
+    buyNow: true,
+  },
+  rms_factory_command: {
+    label: 'Factory Command',
+    tagline: 'The full machine. Every venue.',
+    monthlyPrice: 18000,
+    annualMonthlyPrice: 15000,
+    tag: 'Factory Programs',
+    who: 'Manufacturer-backed programs. Embedded analyst. Private data infrastructure.',
+    modules: [
+      'Everything in Race Team',
+      'Command Rig onsite every venue',
+      'Embedded analyst — your pit, every round',
+      'Live telemetry feed (Q1 27)',
+      'Championship scenario modeling',
+      'Private data infrastructure — air-gapped',
+      'Unlimited riders + unlimited staff seats',
+    ],
+    accent: 'border-red-400/40',
+    accentText: 'text-red-400',
+    accentBg: 'bg-red-400/5',
+    topBar: 'bg-red-500/60',
+    popular: false,
+    buyNow: false,
+  },
+}
+
+export const RMS_PLAN_IDS: RmsPlanId[] = [
+  'rms_grassroots',
+  'rms_privateer',
+  'rms_race_team',
+  'rms_factory_command',
+]
