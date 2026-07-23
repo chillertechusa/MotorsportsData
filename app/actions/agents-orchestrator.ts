@@ -1,404 +1,376 @@
-import { HealthCheck, HealthCheckStatus } from '@/lib/health-check-types'
+'use server'
 
-// Import existing agents
+import { HealthCheck } from '@/lib/health-check-types'
 import { runSignupHealthCheck } from './health-agents/signup-agent'
 import { runSigninHealthCheck } from './health-agents/signin-agent'
 import { runCheckoutHealthCheck } from './health-agents/checkout-agent'
 import { runAccountCreationHealthCheck } from './health-agents/account-creation-agent'
 import { runDataIsolationHealthCheck } from './health-agents/data-isolation-agent'
+import { db } from '@/lib/db'
+import { mdTeams, mdVehicles, mdSessions } from '@/lib/db/schema'
+import { sql, desc } from 'drizzle-orm'
 
-/**
- * AGENT GROUP 1: Platform Health Checks (5 agents, every 18 min)
- * Core platform integrity monitoring
- */
+// ─── helpers ────────────────────────────────────────────────────────────────
 
-/**
- * AGENT GROUP 2: Service Manager Ops (7 agents, every 5 min)
- * Dispatch, sessions, coaching, data flow
- */
-
-export async function runDispatchBoardAgent(): Promise<HealthCheck> {
-  const start = Date.now()
-  try {
-    // Verify dispatch queue is accessible and bike assignments are consistent
-    return {
-      id: `dispatch_${Date.now()}`,
-      check_type: 'dispatch_board' as any,
-      status: 'pass',
-      message: 'Dispatch board queue healthy',
-      response_time_ms: Date.now() - start,
-      created_at: new Date().toISOString(),
-    }
-  } catch (e) {
-    return {
-      id: `dispatch_error_${Date.now()}`,
-      check_type: 'dispatch_board' as any,
-      status: 'error',
-      message: 'Dispatch board agent failed',
-      response_time_ms: Date.now() - start,
-      error_details: { error: e instanceof Error ? e.message : String(e) },
-      created_at: new Date().toISOString(),
-    }
+function makeCheck(
+  id: string,
+  type: string,
+  status: HealthCheck['status'],
+  message: string,
+  ms: number,
+  details?: Record<string, unknown>
+): HealthCheck {
+  return {
+    id,
+    check_type: type as any,
+    status,
+    message,
+    response_time_ms: ms,
+    error_details: details,
+    created_at: new Date().toISOString(),
   }
 }
 
-export async function runManagerConsoleAgent(): Promise<HealthCheck> {
+function errCheck(id: string, type: string, msg: string, ms: number, e: unknown): HealthCheck {
+  return makeCheck(id, type, 'error', msg, ms, {
+    error: e instanceof Error ? e.message : String(e),
+  })
+}
+
+// ─── GROUP 1: Platform Health ─────────────────────────────────────────────
+// Delegates to the 5 real health agents already written
+
+// ─── GROUP 2: SMX Checkout & Billing ─────────────────────────────────────
+
+export async function runSquareConnectionAgent(): Promise<HealthCheck> {
   const start = Date.now()
   try {
-    return {
-      id: `manager_console_${Date.now()}`,
-      check_type: 'manager_console' as any,
-      status: 'pass',
-      message: 'Manager console accessible',
-      response_time_ms: Date.now() - start,
-      created_at: new Date().toISOString(),
-    }
+    const hasToken = !!process.env.SQUARE_ACCESS_TOKEN
+    const hasLocation = !!process.env.SQUARE_LOCATION_ID
+    const hasAppId = !!process.env.NEXT_PUBLIC_SQUARE_APPLICATION_ID
+    const allSet = hasToken && hasLocation && hasAppId
+    return makeCheck(
+      `square_conn_${Date.now()}`, 'square_connection',
+      allSet ? 'pass' : 'fail',
+      allSet
+        ? 'Square credentials present (ACCESS_TOKEN, LOCATION_ID, APP_ID)'
+        : `Missing Square env vars: ${[!hasToken && 'SQUARE_ACCESS_TOKEN', !hasLocation && 'SQUARE_LOCATION_ID', !hasAppId && 'NEXT_PUBLIC_SQUARE_APPLICATION_ID'].filter(Boolean).join(', ')}`,
+      Date.now() - start,
+      { token: hasToken, location: hasLocation, appId: hasAppId }
+    )
   } catch (e) {
-    return {
-      id: `manager_console_error_${Date.now()}`,
-      check_type: 'manager_console' as any,
-      status: 'error',
-      message: 'Manager console agent failed',
-      response_time_ms: Date.now() - start,
-      error_details: { error: e instanceof Error ? e.message : String(e) },
-      created_at: new Date().toISOString(),
-    }
+    return errCheck(`square_conn_err_${Date.now()}`, 'square_connection', 'Square connection check failed', Date.now() - start, e)
   }
 }
 
-export async function runTechConsoleAgent(): Promise<HealthCheck> {
+export async function runSMXCheckoutRouteAgent(): Promise<HealthCheck> {
   const start = Date.now()
   try {
-    return {
-      id: `tech_console_${Date.now()}`,
-      check_type: 'tech_console' as any,
-      status: 'pass',
-      message: 'Tech console data flows healthy',
-      response_time_ms: Date.now() - start,
-      created_at: new Date().toISOString(),
-    }
+    const base = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
+
+    // Probe the SMX checkout route with an invalid plan to confirm it's alive (not 404/500)
+    const res = await fetch(`${base}/api/smx/checkout`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ planId: '__probe__' }),
+      signal: AbortSignal.timeout(8000),
+    })
+    // 400 = route exists, rejected bad planId — that's correct
+    const alive = res.status === 400 || res.status === 200
+    return makeCheck(
+      `smx_checkout_route_${Date.now()}`, 'smx_checkout_route',
+      alive ? 'pass' : 'fail',
+      alive
+        ? `SMX checkout route alive (HTTP ${res.status})`
+        : `SMX checkout route returned unexpected HTTP ${res.status}`,
+      Date.now() - start,
+      { http_status: res.status }
+    )
   } catch (e) {
-    return {
-      id: `tech_console_error_${Date.now()}`,
-      check_type: 'tech_console' as any,
-      status: 'error',
-      message: 'Tech console agent failed',
-      response_time_ms: Date.now() - start,
-      error_details: { error: e instanceof Error ? e.message : String(e) },
-      created_at: new Date().toISOString(),
-    }
+    return errCheck(`smx_checkout_err_${Date.now()}`, 'smx_checkout_route', 'SMX checkout route unreachable', Date.now() - start, e)
   }
 }
 
-export async function runJobCloseoutAgent(): Promise<HealthCheck> {
+export async function runSMXThankYouPageAgent(): Promise<HealthCheck> {
   const start = Date.now()
   try {
-    return {
-      id: `job_closeout_${Date.now()}`,
-      check_type: 'job_closeout' as any,
-      status: 'pass',
-      message: 'Job close-out flow operational',
-      response_time_ms: Date.now() - start,
-      created_at: new Date().toISOString(),
-    }
+    const base = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
+    const res = await fetch(`${base}/smx2027/thank-you`, { signal: AbortSignal.timeout(8000) })
+    const ok = res.status === 200
+    return makeCheck(
+      `smx_thankyou_${Date.now()}`, 'smx_thank_you_page',
+      ok ? 'pass' : 'fail',
+      ok ? 'SMX thank-you page renders (HTTP 200)' : `SMX thank-you page returned HTTP ${res.status}`,
+      Date.now() - start,
+      { http_status: res.status }
+    )
   } catch (e) {
-    return {
-      id: `job_closeout_error_${Date.now()}`,
-      check_type: 'job_closeout' as any,
-      status: 'error',
-      message: 'Job close-out agent failed',
-      response_time_ms: Date.now() - start,
-      error_details: { error: e instanceof Error ? e.message : String(e) },
-      created_at: new Date().toISOString(),
-    }
+    return errCheck(`smx_thankyou_err_${Date.now()}`, 'smx_thank_you_page', 'SMX thank-you page unreachable', Date.now() - start, e)
   }
 }
 
-export async function runAICopilotagent(): Promise<HealthCheck> {
+export async function runSMXCampaignPageAgent(): Promise<HealthCheck> {
   const start = Date.now()
   try {
-    return {
-      id: `ai_copilot_${Date.now()}`,
-      check_type: 'ai_copilot' as any,
-      status: 'pass',
-      message: 'Live AI and coaching flows healthy',
-      response_time_ms: Date.now() - start,
-      created_at: new Date().toISOString(),
-    }
+    const base = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
+    const res = await fetch(`${base}/smx2027`, { signal: AbortSignal.timeout(8000) })
+    const ok = res.status === 200
+    return makeCheck(
+      `smx_campaign_${Date.now()}`, 'smx_campaign_page',
+      ok ? 'pass' : 'fail',
+      ok ? 'SMX 2027 campaign page renders (HTTP 200)' : `Campaign page HTTP ${res.status}`,
+      Date.now() - start,
+      { http_status: res.status }
+    )
   } catch (e) {
-    return {
-      id: `ai_copilot_error_${Date.now()}`,
-      check_type: 'ai_copilot' as any,
-      status: 'error',
-      message: 'AI copilot agent failed',
-      response_time_ms: Date.now() - start,
-      error_details: { error: e instanceof Error ? e.message : String(e) },
-      created_at: new Date().toISOString(),
-    }
+    return errCheck(`smx_campaign_err_${Date.now()}`, 'smx_campaign_page', 'SMX campaign page unreachable', Date.now() - start, e)
   }
 }
 
-/**
- * AGENT GROUP 3: Billing & Renewal Monitor (4 agents, every 5 min)
- * Subscription, invoicing, churn, revenue
- */
+// ─── GROUP 3: Data & Telemetry API Layer ─────────────────────────────────
 
-export async function runBillingRenewalAgent(): Promise<HealthCheck> {
+export async function runDatabaseConnectionAgent(): Promise<HealthCheck> {
   const start = Date.now()
   try {
-    return {
-      id: `billing_renewal_${Date.now()}`,
-      check_type: 'billing_renewal' as any,
-      status: 'pass',
-      message: 'Subscriptions and renewals on schedule',
-      response_time_ms: Date.now() - start,
-      created_at: new Date().toISOString(),
-    }
+    await db.execute(sql`SELECT 1`)
+    return makeCheck(
+      `db_conn_${Date.now()}`, 'database_connection',
+      'pass', 'Neon database connection healthy',
+      Date.now() - start
+    )
   } catch (e) {
-    return {
-      id: `billing_renewal_error_${Date.now()}`,
-      check_type: 'billing_renewal' as any,
-      status: 'error',
-      message: 'Billing renewal agent failed',
-      response_time_ms: Date.now() - start,
-      error_details: { error: e instanceof Error ? e.message : String(e) },
-      created_at: new Date().toISOString(),
-    }
+    return errCheck(`db_conn_err_${Date.now()}`, 'database_connection', 'Database connection failed', Date.now() - start, e)
   }
 }
 
-export async function runInvoicingAgent(): Promise<HealthCheck> {
+export async function runTeamsTableAgent(): Promise<HealthCheck> {
   const start = Date.now()
   try {
-    return {
-      id: `invoicing_${Date.now()}`,
-      check_type: 'invoicing' as any,
-      status: 'pass',
-      message: 'Invoice generation and delivery working',
-      response_time_ms: Date.now() - start,
-      created_at: new Date().toISOString(),
-    }
+    const rows = await db.select({ count: sql<number>`count(*)` }).from(mdTeams)
+    const count = Number(rows[0]?.count ?? 0)
+    return makeCheck(
+      `teams_table_${Date.now()}`, 'teams_table',
+      'pass', `md_teams table accessible — ${count} team(s) registered`,
+      Date.now() - start, { team_count: count }
+    )
   } catch (e) {
-    return {
-      id: `invoicing_error_${Date.now()}`,
-      check_type: 'invoicing' as any,
-      status: 'error',
-      message: 'Invoicing agent failed',
-      response_time_ms: Date.now() - start,
-      error_details: { error: e instanceof Error ? e.message : String(e) },
-      created_at: new Date().toISOString(),
-    }
+    return errCheck(`teams_table_err_${Date.now()}`, 'teams_table', 'md_teams table query failed', Date.now() - start, e)
   }
 }
 
-export async function runCSVExportAgent(): Promise<HealthCheck> {
+export async function runFleetTableAgent(): Promise<HealthCheck> {
   const start = Date.now()
   try {
-    return {
-      id: `csv_export_${Date.now()}`,
-      check_type: 'csv_export' as any,
-      status: 'pass',
-      message: 'CSV export pipeline ready',
-      response_time_ms: Date.now() - start,
-      created_at: new Date().toISOString(),
-    }
+    const rows = await db.select({ count: sql<number>`count(*)` }).from(mdVehicles)
+    const count = Number(rows[0]?.count ?? 0)
+    return makeCheck(
+      `fleet_table_${Date.now()}`, 'fleet_table',
+      'pass', `md_vehicles table accessible — ${count} vehicle(s) logged`,
+      Date.now() - start, { vehicle_count: count }
+    )
   } catch (e) {
-    return {
-      id: `csv_export_error_${Date.now()}`,
-      check_type: 'csv_export' as any,
-      status: 'error',
-      message: 'CSV export agent failed',
-      response_time_ms: Date.now() - start,
-      error_details: { error: e instanceof Error ? e.message : String(e) },
-      created_at: new Date().toISOString(),
-    }
+    return errCheck(`fleet_table_err_${Date.now()}`, 'fleet_table', 'md_vehicles table query failed', Date.now() - start, e)
   }
 }
 
-/**
- * AGENT GROUP 4: Sentinel Security & Integrity (5 agents, every 15 min)
- * Auth anomalies, abuse, data isolation, compliance
- */
-
-export async function runBruteForceSentinelAgent(): Promise<HealthCheck> {
+export async function runSessionsAPIAgent(): Promise<HealthCheck> {
   const start = Date.now()
   try {
-    return {
-      id: `brute_force_${Date.now()}`,
-      check_type: 'brute_force_login' as any,
-      status: 'pass',
-      message: 'No brute force login patterns detected',
-      response_time_ms: Date.now() - start,
-      created_at: new Date().toISOString(),
-    }
+    const recent = await db
+      .select({ id: mdSessions.id, createdAt: mdSessions.createdAt })
+      .from(mdSessions)
+      .orderBy(desc(mdSessions.createdAt))
+      .limit(1)
+    const lastSession = recent[0]?.createdAt ?? null
+    return makeCheck(
+      `sessions_api_${Date.now()}`, 'sessions_api',
+      'pass',
+      lastSession
+        ? `Sessions table healthy — last session at ${new Date(lastSession).toLocaleDateString()}`
+        : 'Sessions table accessible (no sessions yet)',
+      Date.now() - start, { last_session: lastSession }
+    )
   } catch (e) {
-    return {
-      id: `brute_force_error_${Date.now()}`,
-      check_type: 'brute_force_login' as any,
-      status: 'error',
-      message: 'Brute force sentinel failed',
-      response_time_ms: Date.now() - start,
-      error_details: { error: e instanceof Error ? e.message : String(e) },
-      created_at: new Date().toISOString(),
-    }
+    return errCheck(`sessions_api_err_${Date.now()}`, 'sessions_api', 'Sessions API/table query failed', Date.now() - start, e)
   }
 }
 
-export async function runAbuseDetectionAgent(): Promise<HealthCheck> {
+// ─── GROUP 4: AI Systems ──────────────────────────────────────────────────
+
+export async function runAIGatewayAgent(): Promise<HealthCheck> {
   const start = Date.now()
   try {
-    return {
-      id: `abuse_detection_${Date.now()}`,
-      check_type: 'ai_abuse_detection' as any,
-      status: 'pass',
-      message: 'No AI/copilot abuse detected',
-      response_time_ms: Date.now() - start,
-      created_at: new Date().toISOString(),
-    }
+    const hasKey = !!process.env.AI_GATEWAY_API_KEY || !!process.env.OPENAI_API_KEY
+    // Probe the md-intel endpoint as a lightweight AI gateway test
+    const base = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
+    const res = await fetch(`${base}/api/md-intel`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: [{ role: 'user', content: '__probe__' }], teamId: '__probe__' }),
+      signal: AbortSignal.timeout(10000),
+    })
+    // 401/403 = route alive but auth-gated (expected without session) — confirms gateway reachable
+    const alive = res.status < 500
+    return makeCheck(
+      `ai_gateway_${Date.now()}`, 'ai_gateway',
+      alive ? 'pass' : 'fail',
+      alive
+        ? `AI gateway reachable — md-intel route HTTP ${res.status} (auth gate = expected)`
+        : `AI gateway returned HTTP ${res.status} — possible outage`,
+      Date.now() - start,
+      { http_status: res.status, has_key_configured: hasKey }
+    )
   } catch (e) {
-    return {
-      id: `abuse_detection_error_${Date.now()}`,
-      check_type: 'ai_abuse_detection' as any,
-      status: 'error',
-      message: 'Abuse detection agent failed',
-      response_time_ms: Date.now() - start,
-      error_details: { error: e instanceof Error ? e.message : String(e) },
-      created_at: new Date().toISOString(),
-    }
+    return errCheck(`ai_gateway_err_${Date.now()}`, 'ai_gateway', 'AI gateway probe failed', Date.now() - start, e)
   }
 }
 
-export async function runBillingAnomalyAgent(): Promise<HealthCheck> {
+export async function runRigDoctorAIAgent(): Promise<HealthCheck> {
   const start = Date.now()
   try {
-    return {
-      id: `billing_anomaly_${Date.now()}`,
-      check_type: 'billing_anomalies' as any,
-      status: 'pass',
-      message: 'No billing anomalies detected',
-      response_time_ms: Date.now() - start,
-      created_at: new Date().toISOString(),
-    }
+    const base = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
+    const res = await fetch(`${base}/api/md-rig-doctor`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: [], teamId: '__probe__' }),
+      signal: AbortSignal.timeout(10000),
+    })
+    const alive = res.status < 500
+    return makeCheck(
+      `rig_doctor_${Date.now()}`, 'rig_doctor_ai',
+      alive ? 'pass' : 'fail',
+      alive
+        ? `Rig Doctor AI route alive (HTTP ${res.status})`
+        : `Rig Doctor AI route error (HTTP ${res.status})`,
+      Date.now() - start, { http_status: res.status }
+    )
   } catch (e) {
-    return {
-      id: `billing_anomaly_error_${Date.now()}`,
-      check_type: 'billing_anomalies' as any,
-      status: 'error',
-      message: 'Billing anomaly agent failed',
-      response_time_ms: Date.now() - start,
-      error_details: { error: e instanceof Error ? e.message : String(e) },
-      created_at: new Date().toISOString(),
-    }
+    return errCheck(`rig_doctor_err_${Date.now()}`, 'rig_doctor_ai', 'Rig Doctor AI probe failed', Date.now() - start, e)
   }
 }
 
-export async function runSubscriptionIntegrityAgent(): Promise<HealthCheck> {
+export async function runCoachAIAgent(): Promise<HealthCheck> {
   const start = Date.now()
   try {
-    return {
-      id: `subscription_integrity_${Date.now()}`,
-      check_type: 'subscription_integrity' as any,
-      status: 'pass',
-      message: 'Subscription data integrity verified',
-      response_time_ms: Date.now() - start,
-      created_at: new Date().toISOString(),
-    }
+    const base = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
+    const res = await fetch(`${base}/api/md-coach`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: [], teamId: '__probe__' }),
+      signal: AbortSignal.timeout(10000),
+    })
+    const alive = res.status < 500
+    return makeCheck(
+      `coach_ai_${Date.now()}`, 'coach_ai',
+      alive ? 'pass' : 'fail',
+      alive
+        ? `Race Coach AI route alive (HTTP ${res.status})`
+        : `Race Coach AI route error (HTTP ${res.status})`,
+      Date.now() - start, { http_status: res.status }
+    )
   } catch (e) {
-    return {
-      id: `subscription_integrity_error_${Date.now()}`,
-      check_type: 'subscription_integrity' as any,
-      status: 'error',
-      message: 'Subscription integrity agent failed',
-      response_time_ms: Date.now() - start,
-      error_details: { error: e instanceof Error ? e.message : String(e) },
-      created_at: new Date().toISOString(),
-    }
+    return errCheck(`coach_ai_err_${Date.now()}`, 'coach_ai', 'Race Coach AI probe failed', Date.now() - start, e)
   }
 }
 
-/**
- * AGENT GROUP 5: Performance & Telemetry (4 agents, every 10 min)
- * API latency, data sync, demo performance
- */
+// ─── GROUP 5: Sentinel Security & Pre-Launch Checks ──────────────────────
 
-export async function runAPILatencyAgent(): Promise<HealthCheck> {
+export async function runEnvSecretsAgent(): Promise<HealthCheck> {
   const start = Date.now()
   try {
-    return {
-      id: `api_latency_${Date.now()}`,
-      check_type: 'api_latency' as any,
-      status: 'pass',
-      message: 'API response times nominal',
-      response_time_ms: Date.now() - start,
-      error_details: { p50_ms: 42, p95_ms: 180, p99_ms: 520 },
-      created_at: new Date().toISOString(),
+    const required: Record<string, string | undefined> = {
+      SQUARE_ACCESS_TOKEN: process.env.SQUARE_ACCESS_TOKEN,
+      SQUARE_LOCATION_ID: process.env.SQUARE_LOCATION_ID,
+      NEXT_PUBLIC_SQUARE_APPLICATION_ID: process.env.NEXT_PUBLIC_SQUARE_APPLICATION_ID,
+      NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
+      CRON_SECRET: process.env.CRON_SECRET,
     }
+    const missing = Object.entries(required).filter(([, v]) => !v).map(([k]) => k)
+    const status: HealthCheck['status'] = missing.length === 0 ? 'pass' : missing.length <= 2 ? 'warning' : 'fail'
+    return makeCheck(
+      `env_secrets_${Date.now()}`, 'env_secrets',
+      status,
+      missing.length === 0
+        ? 'All required environment secrets are set'
+        : `Missing env vars: ${missing.join(', ')}`,
+      Date.now() - start,
+      { missing_count: missing.length, missing_keys: missing }
+    )
   } catch (e) {
-    return {
-      id: `api_latency_error_${Date.now()}`,
-      check_type: 'api_latency' as any,
-      status: 'error',
-      message: 'API latency agent failed',
-      response_time_ms: Date.now() - start,
-      error_details: { error: e instanceof Error ? e.message : String(e) },
-      created_at: new Date().toISOString(),
-    }
+    return errCheck(`env_secrets_err_${Date.now()}`, 'env_secrets', 'Env secrets check failed', Date.now() - start, e)
   }
 }
 
-export async function runTelemetryDataSyncAgent(): Promise<HealthCheck> {
+export async function runPublicHomepageAgent(): Promise<HealthCheck> {
   const start = Date.now()
   try {
-    return {
-      id: `telemetry_sync_${Date.now()}`,
-      check_type: 'telemetry_data_sync' as any,
-      status: 'pass',
-      message: 'Telemetry data flowing and syncing',
-      response_time_ms: Date.now() - start,
-      error_details: { frames_per_sec: 60, sync_lag_ms: 3 },
-      created_at: new Date().toISOString(),
-    }
+    const base = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
+    const res = await fetch(`${base}/`, { signal: AbortSignal.timeout(10000) })
+    const ok = res.status === 200
+    return makeCheck(
+      `homepage_${Date.now()}`, 'public_homepage',
+      ok ? 'pass' : 'fail',
+      ok ? `Homepage renders (HTTP 200, ${Date.now() - start}ms)` : `Homepage returned HTTP ${res.status}`,
+      Date.now() - start, { http_status: res.status }
+    )
   } catch (e) {
-    return {
-      id: `telemetry_sync_error_${Date.now()}`,
-      check_type: 'telemetry_data_sync' as any,
-      status: 'error',
-      message: 'Telemetry sync agent failed',
-      response_time_ms: Date.now() - start,
-      error_details: { error: e instanceof Error ? e.message : String(e) },
-      created_at: new Date().toISOString(),
-    }
+    return errCheck(`homepage_err_${Date.now()}`, 'public_homepage', 'Homepage unreachable', Date.now() - start, e)
   }
 }
 
-export async function runDemoPerformanceAgent(): Promise<HealthCheck> {
+export async function runSignInPageAgent(): Promise<HealthCheck> {
   const start = Date.now()
   try {
-    return {
-      id: `demo_perf_${Date.now()}`,
-      check_type: 'demo_performance' as any,
-      status: 'pass',
-      message: 'Demo 60fps animation smooth',
-      response_time_ms: Date.now() - start,
-      error_details: { avg_fps: 59.8, frame_drops: 0 },
-      created_at: new Date().toISOString(),
-    }
+    const base = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
+    const res = await fetch(`${base}/data/sign-in`, { signal: AbortSignal.timeout(8000) })
+    const ok = res.status === 200
+    return makeCheck(
+      `signin_page_${Date.now()}`, 'signin_page',
+      ok ? 'pass' : 'fail',
+      ok ? 'Sign-in page renders (HTTP 200)' : `Sign-in page HTTP ${res.status}`,
+      Date.now() - start, { http_status: res.status }
+    )
   } catch (e) {
-    return {
-      id: `demo_perf_error_${Date.now()}`,
-      check_type: 'demo_performance' as any,
-      status: 'error',
-      message: 'Demo performance agent failed',
-      response_time_ms: Date.now() - start,
-      error_details: { error: e instanceof Error ? e.message : String(e) },
-      created_at: new Date().toISOString(),
-    }
+    return errCheck(`signin_page_err_${Date.now()}`, 'signin_page', 'Sign-in page unreachable', Date.now() - start, e)
   }
 }
 
-/**
- * Unified Agent Orchestrator — Runs all 24 agents across 5 groups
- */
+export async function runOGImageAgent(): Promise<HealthCheck> {
+  const start = Date.now()
+  try {
+    const base = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
+    const res = await fetch(`${base}/assets/og-preview.png`, { signal: AbortSignal.timeout(8000) })
+    const ok = res.status === 200
+    return makeCheck(
+      `og_image_${Date.now()}`, 'og_image',
+      ok ? 'pass' : 'fail',
+      ok ? 'OG preview image (og-preview.png) accessible' : `OG image missing — HTTP ${res.status}`,
+      Date.now() - start, { http_status: res.status }
+    )
+  } catch (e) {
+    return errCheck(`og_image_err_${Date.now()}`, 'og_image', 'OG image probe failed', Date.now() - start, e)
+  }
+}
+
+// ─── Agent Group Registry ─────────────────────────────────────────────────
 
 export interface AgentGroup {
   name: string
@@ -413,7 +385,7 @@ export interface AgentGroup {
 
 export const AGENT_GROUPS: AgentGroup[] = [
   {
-    name: 'Platform Health Checks',
+    name: 'Platform Health',
     group_id: 'platform_health',
     refresh_interval_min: 18,
     agents: [
@@ -421,53 +393,55 @@ export const AGENT_GROUPS: AgentGroup[] = [
       { id: 'signin', name: 'Sign-In Flow', fn: runSigninHealthCheck },
       { id: 'checkout', name: 'Checkout Flow', fn: runCheckoutHealthCheck },
       { id: 'account_creation', name: 'Account Creation', fn: runAccountCreationHealthCheck },
-      { id: 'data_isolation', name: 'Data Isolation', fn: runDataIsolationHealthCheck },
+      { id: 'data_isolation', name: 'Data Isolation (RLS)', fn: runDataIsolationHealthCheck },
     ],
   },
   {
-    name: 'Service Manager Ops',
-    group_id: 'service_manager_ops',
-    refresh_interval_min: 5,
-    agents: [
-      { id: 'dispatch_board', name: 'Dispatch Board', fn: runDispatchBoardAgent },
-      { id: 'manager_console', name: 'Manager Console', fn: runManagerConsoleAgent },
-      { id: 'tech_console', name: 'Tech Console', fn: runTechConsoleAgent },
-      { id: 'job_closeout', name: 'Job Close-Out', fn: runJobCloseoutAgent },
-      { id: 'ai_copilot', name: 'AI Co-Pilot', fn: runAICopilotagent },
-    ],
-  },
-  {
-    name: 'Billing & Renewal Monitor',
-    group_id: 'billing_renewal',
-    refresh_interval_min: 5,
-    agents: [
-      { id: 'billing_renewal', name: 'Renewal & Subscription M...', fn: runBillingRenewalAgent },
-      { id: 'invoicing', name: 'Invoicing', fn: runInvoicingAgent },
-      { id: 'csv_export', name: 'CSV Export', fn: runCSVExportAgent },
-    ],
-  },
-  {
-    name: 'Sentinel Security & Integrity',
-    group_id: 'sentinel_security',
-    refresh_interval_min: 15,
-    agents: [
-      { id: 'brute_force', name: 'Brute-Force Logins', fn: runBruteForceSentinelAgent },
-      { id: 'ai_abuse', name: 'AI Co-Pilot Abuse', fn: runAbuseDetectionAgent },
-      { id: 'billing_anomalies', name: 'Billing Anomalies', fn: runBillingAnomalyAgent },
-      { id: 'subscription_integrity', name: 'Subscription Integrity', fn: runSubscriptionIntegrityAgent },
-    ],
-  },
-  {
-    name: 'Performance & Telemetry',
-    group_id: 'performance_telemetry',
+    name: 'SMX 2027 Checkout & Billing',
+    group_id: 'smx_checkout',
     refresh_interval_min: 10,
     agents: [
-      { id: 'api_latency', name: 'API Latency', fn: runAPILatencyAgent },
-      { id: 'telemetry_sync', name: 'Telemetry Data Sync', fn: runTelemetryDataSyncAgent },
-      { id: 'demo_perf', name: 'Demo Performance', fn: runDemoPerformanceAgent },
+      { id: 'square_connection', name: 'Square Connection', fn: runSquareConnectionAgent },
+      { id: 'smx_checkout_route', name: 'SMX Checkout Route', fn: runSMXCheckoutRouteAgent },
+      { id: 'smx_campaign_page', name: 'Campaign Page (/smx2027)', fn: runSMXCampaignPageAgent },
+      { id: 'smx_thank_you', name: 'Thank-You Page', fn: runSMXThankYouPageAgent },
+    ],
+  },
+  {
+    name: 'Data & Telemetry API',
+    group_id: 'data_telemetry',
+    refresh_interval_min: 5,
+    agents: [
+      { id: 'database_connection', name: 'Neon DB Connection', fn: runDatabaseConnectionAgent },
+      { id: 'teams_table', name: 'Teams Table', fn: runTeamsTableAgent },
+      { id: 'fleet_table', name: 'Fleet Table', fn: runFleetTableAgent },
+      { id: 'sessions_api', name: 'Sessions API', fn: runSessionsAPIAgent },
+    ],
+  },
+  {
+    name: 'AI Systems',
+    group_id: 'ai_systems',
+    refresh_interval_min: 10,
+    agents: [
+      { id: 'ai_gateway', name: 'Vercel AI Gateway', fn: runAIGatewayAgent },
+      { id: 'rig_doctor', name: 'Rig Doctor AI', fn: runRigDoctorAIAgent },
+      { id: 'coach_ai', name: 'Race Coach AI', fn: runCoachAIAgent },
+    ],
+  },
+  {
+    name: 'Pre-Launch Sentinel',
+    group_id: 'pre_launch_sentinel',
+    refresh_interval_min: 15,
+    agents: [
+      { id: 'env_secrets', name: 'Env Secrets Audit', fn: runEnvSecretsAgent },
+      { id: 'public_homepage', name: 'Homepage Render', fn: runPublicHomepageAgent },
+      { id: 'signin_page', name: 'Sign-In Page', fn: runSignInPageAgent },
+      { id: 'og_image', name: 'OG Preview Image', fn: runOGImageAgent },
     ],
   },
 ]
+
+// ─── Orchestrator ─────────────────────────────────────────────────────────
 
 export async function runAllAgentsAcrossGroups(): Promise<{
   groups: Array<{ group: AgentGroup; checks: HealthCheck[] }>
@@ -490,9 +464,5 @@ export async function runAllAgentsAcrossGroups(): Promise<{
     warnings: allChecks.filter((c) => c.status === 'warning').length,
   }
 
-  return {
-    groups: groupResults,
-    summary,
-    executed_at: new Date().toISOString(),
-  }
+  return { groups: groupResults, summary, executed_at: new Date().toISOString() }
 }

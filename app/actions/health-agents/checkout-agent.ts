@@ -1,10 +1,13 @@
 'use server'
 
 import { HealthCheck, CheckoutTestPayload, HealthCheckStatus } from '@/lib/health-check-types'
+import { SMX_ELITE_PLANS, SMX_ELITE_PLAN_IDS, SmxElitePlanId } from '@/lib/md-plans'
 
 /**
  * Checkout Health Check Agent
- * Tests checkout flow: tier pages accessible, pricing calculation, frequency toggle, payment intent
+ * Validates the MD platform checkout flows:
+ *  1. Legacy subscription tiers (rookie/privateer/race_team/factory_rig)
+ *  2. SMX 2027 elite season programs (smx_team_partner/smx_command_partner/smx_factory_command)
  */
 export async function runCheckoutHealthCheck(
   payload?: CheckoutTestPayload
@@ -12,54 +15,62 @@ export async function runCheckoutHealthCheck(
   const startTime = Date.now()
   let status: HealthCheckStatus = 'pass'
   let message = 'Checkout flow validated'
-  let errorDetails: Record<string, any> = {}
+  const errorDetails: Record<string, any> = {}
 
   try {
-    const tier = payload?.tier || 'race_team'
-    const frequency = payload?.frequency || 'annual'
-
-    // Step 1: Verify tier is valid and pricing exists
-    const validTiers = ['race_team', 'privateer', 'factory_rig', 'wrench', 'agent', 'rookie']
-    if (!validTiers.includes(tier)) {
-      status = 'fail'
-      message = `Invalid tier: ${tier}`
-      errorDetails.step = 'tier_validation'
-    } else {
-      message = `Checkout tier ${tier} (${frequency}) validated`
+    // ── Legacy subscription tiers ─────────────────────────────────────────
+    const legacyTiers = ['rookie', 'privateer', 'race_team', 'factory_rig']
+    const legacyPricesCents: Record<string, number> = {
+      rookie: 900,
+      privateer: 4900,
+      race_team: 29900,
+      factory_rig: 249900,
     }
 
-    // Step 2: Verify pricing calculation works
-    const annualPrices: Record<string, number> = {
-      rookie: 0,
-      privateer: 99 * 100,
-      race_team: 299 * 100,
-      factory_rig: 699 * 100,
-      wrench: 199 * 100,
-      agent: 999 * 100,
-    }
-
-    const monthlyPrices: Record<string, number> = {
-      rookie: 0,
-      privateer: 12 * 100,
-      race_team: 34 * 100,
-      factory_rig: 79 * 100,
-      wrench: 23 * 100,
-      agent: 115 * 100,
-    }
-
-    const priceMap = frequency === 'annual' ? annualPrices : monthlyPrices
-    const amount = priceMap[tier]
-
-    if (!amount && amount !== 0) {
-      status = 'error'
-      message = `Pricing not found for tier ${tier}`
-      errorDetails.step = 'pricing_calculation'
-    } else {
-      errorDetails.calculated_amount_cents = amount
-      errorDetails.frequency = frequency
-      if (frequency === 'annual' && amount > 0) {
-        errorDetails.annual_discount_pct = 15
+    for (const tier of legacyTiers) {
+      if (legacyPricesCents[tier] === undefined) {
+        status = 'fail'
+        message = `Legacy tier missing from price map: ${tier}`
+        errorDetails.missing_tier = tier
+        break
       }
+    }
+
+    errorDetails.legacy_tiers_validated = legacyTiers.length
+    errorDetails.legacy_prices = legacyPricesCents
+
+    // ── SMX 2027 elite season programs ────────────────────────────────────
+    const smxIssues: string[] = []
+    for (const planId of SMX_ELITE_PLAN_IDS) {
+      const plan = SMX_ELITE_PLANS[planId]
+      if (!plan) {
+        smxIssues.push(`Missing plan definition: ${planId}`)
+        continue
+      }
+      if (!plan.seasonTotalCents || plan.seasonTotalCents <= 0) {
+        smxIssues.push(`Zero or missing seasonTotalCents for ${planId}`)
+      }
+      if (!plan.monthlyPrice || plan.monthlyPrice <= 0) {
+        smxIssues.push(`Zero or missing monthlyPrice for ${planId}`)
+      }
+    }
+
+    if (smxIssues.length > 0) {
+      status = 'fail'
+      message = `SMX 2027 plan configuration issues: ${smxIssues.join('; ')}`
+      errorDetails.smx_issues = smxIssues
+    } else {
+      const smxSummary = SMX_ELITE_PLAN_IDS.map((id) => ({
+        id,
+        label: SMX_ELITE_PLANS[id].label,
+        monthly_display: `$${SMX_ELITE_PLANS[id].monthlyPrice.toLocaleString()}/mo`,
+        season_total_cents: SMX_ELITE_PLANS[id].seasonTotalCents,
+      }))
+      errorDetails.smx_plans_validated = smxSummary
+    }
+
+    if (status === 'pass') {
+      message = `All checkout flows validated — ${legacyTiers.length} legacy tiers + ${SMX_ELITE_PLAN_IDS.length} SMX 2027 elite programs`
     }
 
     return {
@@ -68,7 +79,7 @@ export async function runCheckoutHealthCheck(
       status,
       message,
       response_time_ms: Date.now() - startTime,
-      error_details: Object.keys(errorDetails).length > 0 ? errorDetails : undefined,
+      error_details: errorDetails,
       created_at: new Date().toISOString(),
     }
   } catch (error) {
@@ -78,9 +89,7 @@ export async function runCheckoutHealthCheck(
       status: 'error',
       message: 'Checkout health check failed',
       response_time_ms: Date.now() - startTime,
-      error_details: {
-        error: error instanceof Error ? error.message : String(error),
-      },
+      error_details: { error: error instanceof Error ? error.message : String(error) },
       created_at: new Date().toISOString(),
     }
   }

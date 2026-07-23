@@ -34,6 +34,10 @@
     {
       "path": "/api/cron/advisor-run",
       "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/agents-console",
+      "schedule": "*/10 * * * *"
     }
   ]
 }
