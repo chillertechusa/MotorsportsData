@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { CheckCircle2, Flag, Users, Zap, ShieldCheck, ArrowRight } from 'lucide-react'
 import MdLogo from '@/components/md-logo'
 import MdSeasonTimeline from '@/components/md-season-timeline'
+import MdOnsiteRig from '@/components/md-onsite-rig'
 import MdTeamPartner from '@/components/md-team-partner'
 import MdFooter from '@/components/md-footer'
 
@@ -189,6 +190,9 @@ export default function SMX2027Page() {
 
         {/* ── Season Timeline ── */}
         <MdSeasonTimeline />
+
+        {/* ── Onsite Support Rig ── */}
+        <MdOnsiteRig />
 
         {/* ── What We Crunch ── */}
         <section

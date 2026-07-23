@@ -3,6 +3,7 @@ import MdCampaignBanner from '@/components/md-campaign-banner'
 import MdNav from '@/components/md-nav'
 import MdHero from '@/components/md-hero'
 import MdSeasonTimeline from '@/components/md-season-timeline'
+import MdOnsiteRig from '@/components/md-onsite-rig'
 import MdTeamPartner from '@/components/md-team-partner'
 import MdFeatures from '@/components/md-features'
 import MdDemo from '@/components/md-demo'
@@ -74,6 +75,7 @@ export default function HomePage() {
       <main>
         <MdHero />
         <MdSeasonTimeline />
+        <MdOnsiteRig />
         <MdTeamPartner />
         <MdFeatures />
         <MdDemo />

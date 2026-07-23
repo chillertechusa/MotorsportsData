@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { CheckCircle2, ShieldCheck, Users, Zap } from 'lucide-react'
+import { CheckCircle2, ShieldCheck, Truck, Users, Zap } from 'lucide-react'
 
 const TIERS = [
   {
@@ -77,6 +77,7 @@ const TRUST_BADGES = [
   { icon: Users, label: 'First 10 teams get direct onboarding' },
   { icon: Zap, label: 'Founding season pricing — locked all 2027' },
   { icon: ShieldCheck, label: 'Your data never leaves your account' },
+  { icon: Truck, label: 'Onsite command rig at every venue' },
 ]
 
 export default function MdTeamPartner() {
