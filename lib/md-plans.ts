@@ -1,5 +1,70 @@
 export type MdPlanId = 'rookie' | 'privateer' | 'wrench' | 'race_team' | 'factory_rig' | 'agent' | 'fan' | 'coach'
 
+// ── SMX 2027 Elite Season Program IDs ──────────────────────────────────────
+// These are season-length contracts, not recurring subscriptions.
+// Pricing is the FULL SEASON TOTAL in cents (17 rounds, Jan–May 2027).
+export type SmxElitePlanId = 'smx_team_partner' | 'smx_command_partner' | 'smx_factory_command'
+
+export const SMX_ELITE_PLANS: Record<SmxElitePlanId, {
+  label: string
+  monthlyPrice: number        // displayed monthly rate (dollars)
+  seasonTotal: number         // full season total (dollars) — what Square charges
+  seasonTotalCents: number    // Square amount in cents
+  tag: string
+  who: string
+  accent: string
+  accentText: string
+  accentBg: string
+  topBar: string
+  popular: boolean
+}> = {
+  smx_team_partner: {
+    label: 'Team Partner',
+    monthlyPrice: 2500,
+    seasonTotal: 42500,
+    seasonTotalCents: 4250000,   // $42,500.00
+    tag: 'Entry Program',
+    who: '1–3 rider team. Full telemetry, crew chief AI, Command Rig access.',
+    accent: 'border-amber-400/40',
+    accentText: 'text-amber-400',
+    accentBg: 'bg-amber-400/5',
+    topBar: 'bg-amber-400/60',
+    popular: false,
+  },
+  smx_command_partner: {
+    label: 'Command Partner',
+    monthlyPrice: 7500,
+    seasonTotal: 127500,
+    seasonTotalCents: 12750000,  // $127,500.00
+    tag: 'Recommended',
+    who: '4–8 rider program. Dedicated analyst + rig desk at every venue.',
+    accent: 'border-lime-400/60',
+    accentText: 'text-lime-400',
+    accentBg: 'bg-lime-400/5',
+    topBar: 'bg-lime-400',
+    popular: true,
+  },
+  smx_factory_command: {
+    label: 'Factory Command',
+    monthlyPrice: 18000,
+    seasonTotal: 306000,
+    seasonTotalCents: 30600000,  // $306,000.00
+    tag: 'Factory Program',
+    who: 'Manufacturer-backed program. Embedded analyst. Private data infrastructure.',
+    accent: 'border-red-400/40',
+    accentText: 'text-red-400',
+    accentBg: 'bg-red-400/5',
+    topBar: 'bg-red-500/60',
+    popular: false,
+  },
+}
+
+export const SMX_ELITE_PLAN_IDS: SmxElitePlanId[] = [
+  'smx_team_partner',
+  'smx_command_partner',
+  'smx_factory_command',
+]
+
 // Annual pricing (stored in CENTS) — derived from target monthly pricing with 15% markup
 // Target monthly prices: Rookie FREE | Privateer $79 | Wrench $149 | Race Team $399 | Factory Rig $3,999 | Agent $1,199 | Coach $299 | Fan FREE
 // Annual = (monthly × 12) / 1.15

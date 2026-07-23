@@ -85,9 +85,7 @@ export default function MdFeatures() {
             <span className="text-lime-400">One Platform.</span>
           </h2>
           <p className="text-zinc-400 text-lg mt-4 max-w-2xl leading-relaxed">
-            Built with racers and mechanics, not product managers. Five pillars and four AI
-            co-pilots covering the machine, the rider, the mechanic, the hauler, and the
-            intelligence that connects them all.
+            Built with factory teams, mechanics, and haulers — not product managers. Every module your crew chief, analyst, and engineering team touches during a 17-round SMX season, unified in one command center.
           </p>
         </MdReveal>
 
