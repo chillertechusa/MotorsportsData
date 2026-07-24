@@ -1,11 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { validateApiKey } from '@/lib/api-rate-limit'
+import { getSessionTeamId } from '@/lib/md-auth'
 
 /**
  * GET /api/telemetry/laps
- * Query lap data for a session
+ * Query lap data for a session — requires API key or valid session.
  * Query params: sessionId, riderId
  */
 export async function GET(request: NextRequest) {
+  const authHeader = request.headers.get('authorization')
+  const apiKeyRow = authHeader ? await validateApiKey(authHeader) : null
+  const sessionTeamId = apiKeyRow ? null : await getSessionTeamId(request)
+  if (!apiKeyRow && !sessionTeamId) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
   try {
     const { searchParams } = new URL(request.url)
     const sessionId = searchParams.get('sessionId')

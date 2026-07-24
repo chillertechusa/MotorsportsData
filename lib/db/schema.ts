@@ -9,6 +9,12 @@ export const user = pgTable('user', {
   image: text('image'),
   createdAt: timestamp('createdAt').notNull().defaultNow(),
   updatedAt: timestamp('updatedAt').notNull().defaultNow(),
+  // Platform-level moderation columns (added migration 006)
+  banned: boolean('banned').default(false),
+  banReason: text('ban_reason'),
+  bannedAt: timestamp('banned_at'),
+  // Platform-level role: 'user' | 'coach' | 'admin' | 'owner'
+  role: varchar('role', { length: 20 }).default('user'),
 })
 
 export const session = pgTable('session', {

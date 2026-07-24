@@ -8,6 +8,8 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server'
+import { validateApiKey } from '@/lib/api-rate-limit'
+import { getSessionTeamId } from '@/lib/md-auth'
 
 interface TelemetryPoint {
   timestamp: number // Unix ms
@@ -62,6 +64,15 @@ function validateTelemetry(point: any): point is TelemetryPoint {
  * Main ingestion handler
  */
 export async function POST(request: NextRequest) {
+  // Auth: accept either a valid API key (devices) or a live session (browser)
+  const authHeader = request.headers.get('authorization')
+  const apiKeyRow = authHeader ? await validateApiKey(authHeader) : null
+  const sessionTeamId = apiKeyRow ? null : await getSessionTeamId(request)
+
+  if (!apiKeyRow && !sessionTeamId) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
   try {
     const contentType = request.headers.get('content-type')
 
