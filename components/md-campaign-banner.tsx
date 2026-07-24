@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { X } from 'lucide-react'
 
-// SMX 2027 Round 1 — Anaheim, January 10 2027
-const ROUND_ONE = new Date('2027-01-10T20:00:00-08:00')
+// Platform launch — August 31, 2026 at midnight UTC
+const ROUND_ONE = new Date('2026-08-31T23:59:59-07:00')
 
 function useCountdown(target: Date) {
   const calc = () => {
@@ -76,15 +76,15 @@ export default function MdCampaignBanner() {
         <div className="hidden sm:flex items-center gap-2 shrink-0">
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-zinc-950 animate-pulse" aria-hidden="true" />
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-bold">
-            Founding Season Pricing — 30% off forever
+            Founding pricing locks Aug 31 — 30% off forever
           </span>
         </div>
 
         {/* Center — countdown */}
         <div className="flex items-center gap-3 sm:gap-5 mx-auto sm:mx-0">
           <p className="text-xs sm:text-sm font-semibold leading-none">
-            <span className="hidden sm:inline">Founding window closes — </span>
-            Round 1 Anaheim in
+            <span className="hidden sm:inline">Platform launches — </span>
+            Aug 31 in
           </p>
 
           {/* Countdown digits */}
@@ -102,7 +102,7 @@ export default function MdCampaignBanner() {
             href="#pricing"
             className="hidden sm:inline-flex items-center gap-1 bg-zinc-950 text-lime-400 font-bold text-xs px-3 py-1 rounded hover:bg-zinc-800 transition-colors whitespace-nowrap"
           >
-            Claim founding price &rarr;
+            Lock founding price &rarr;
           </Link>
         </div>
 
