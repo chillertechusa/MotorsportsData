@@ -1587,6 +1587,117 @@ export const mdRiderProfiles = pgTable('md_rider_profiles', {
 })
 
 // ── Founding Rigs (Aug 31 2026 enrollment) ────────────────────────────────────
+// ─── COACH BUSINESS OS ────────────────────────────────────────────────────────
+
+/** Athletes / clients managed by a Coach Pro or Academy account. */
+export const mdCoachClients = pgTable('md_coach_clients', {
+  id:                   uuid('id').defaultRandom().primaryKey(),
+  coachTeamId:          text('coach_team_id').notNull(),
+  userId:               text('user_id'),
+  firstName:            varchar('first_name', { length: 100 }).notNull(),
+  lastName:             varchar('last_name', { length: 100 }).notNull(),
+  email:                varchar('email', { length: 255 }),
+  phone:                varchar('phone', { length: 30 }),
+  dateOfBirth:          date('date_of_birth'),
+  discipline:           varchar('discipline', { length: 50 }),
+  classCategory:        varchar('class_category', { length: 100 }),
+  homeTrack:            varchar('home_track', { length: 150 }),
+  sponsorNote:          text('sponsor_note'),
+  emergencyContactName: varchar('emergency_contact_name', { length: 150 }),
+  emergencyContactPhone:varchar('emergency_contact_phone', { length: 30 }),
+  status:               varchar('status', { length: 20 }).notNull().default('active'),
+  notes:                text('notes'),
+  avatarUrl:            text('avatar_url'),
+  enrolledAt:           timestamp('enrolled_at', { withTimezone: true }).defaultNow(),
+  createdAt:            timestamp('created_at', { withTimezone: true }).defaultNow(),
+  updatedAt:            timestamp('updated_at', { withTimezone: true }).defaultNow(),
+})
+
+/** Coaching service packages with price + cadence. */
+export const mdCoachPackages = pgTable('md_coach_packages', {
+  id:            uuid('id').defaultRandom().primaryKey(),
+  coachTeamId:   text('coach_team_id').notNull(),
+  name:          varchar('name', { length: 150 }).notNull(),
+  description:   text('description'),
+  sessionCount:  integer('session_count'),
+  durationWeeks: integer('duration_weeks'),
+  priceCents:    integer('price_cents').notNull(),
+  currency:      varchar('currency', { length: 3 }).notNull().default('USD'),
+  cadence:       varchar('cadence', { length: 20 }).notNull().default('monthly'),
+  isActive:      boolean('is_active').notNull().default(true),
+  createdAt:     timestamp('created_at', { withTimezone: true }).defaultNow(),
+  updatedAt:     timestamp('updated_at', { withTimezone: true }).defaultNow(),
+})
+
+/** A coach-led session (track day, gym, video review, etc). */
+export const mdCoachSessions = pgTable('md_coach_sessions', {
+  id:              uuid('id').defaultRandom().primaryKey(),
+  coachTeamId:     text('coach_team_id').notNull(),
+  title:           varchar('title', { length: 200 }).notNull(),
+  sessionType:     varchar('session_type', { length: 50 }).notNull().default('track'),
+  discipline:      varchar('discipline', { length: 50 }),
+  location:        varchar('location', { length: 200 }),
+  scheduledAt:     timestamp('scheduled_at', { withTimezone: true }).notNull(),
+  durationMinutes: integer('duration_minutes').notNull().default(60),
+  status:          varchar('status', { length: 20 }).notNull().default('scheduled'),
+  notes:           text('notes'),
+  aiDebrief:       text('ai_debrief'),
+  videoUrl:        text('video_url'),
+  createdAt:       timestamp('created_at', { withTimezone: true }).defaultNow(),
+  updatedAt:       timestamp('updated_at', { withTimezone: true }).defaultNow(),
+})
+
+/** Junction — which athletes attended each coaching session. */
+export const mdCoachSessionAthletes = pgTable('md_coach_session_athletes', {
+  id:               uuid('id').defaultRandom().primaryKey(),
+  sessionId:        uuid('session_id').notNull().references(() => mdCoachSessions.id, { onDelete: 'cascade' }),
+  clientId:         uuid('client_id').notNull().references(() => mdCoachClients.id, { onDelete: 'cascade' }),
+  attendanceStatus: varchar('attendance_status', { length: 20 }).notNull().default('invited'),
+  performanceRating:integer('performance_rating'),
+  coachNote:        text('coach_note'),
+  createdAt:        timestamp('created_at', { withTimezone: true }).defaultNow(),
+})
+
+/** Weekly training plans authored by a coach for a specific athlete. */
+export const mdTrainingPlans = pgTable('md_training_plans', {
+  id:              uuid('id').defaultRandom().primaryKey(),
+  coachTeamId:     text('coach_team_id').notNull(),
+  clientId:        uuid('client_id').notNull().references(() => mdCoachClients.id, { onDelete: 'cascade' }),
+  title:           varchar('title', { length: 200 }).notNull(),
+  weekStart:       date('week_start').notNull(),
+  weekEnd:         date('week_end').notNull(),
+  status:          varchar('status', { length: 20 }).notNull().default('draft'),
+  goals:           text('goals'),
+  physicalBlocks:  jsonb('physical_blocks').notNull().default([]),
+  technicalBlocks: jsonb('technical_blocks').notNull().default([]),
+  mentalBlocks:    jsonb('mental_blocks').notNull().default([]),
+  nutritionNotes:  text('nutrition_notes'),
+  aiGenerated:     boolean('ai_generated').notNull().default(false),
+  createdAt:       timestamp('created_at', { withTimezone: true }).defaultNow(),
+  updatedAt:       timestamp('updated_at', { withTimezone: true }).defaultNow(),
+})
+
+/** Per-athlete invoices sent by the coaching business. */
+export const mdCoachInvoices = pgTable('md_coach_invoices', {
+  id:             uuid('id').defaultRandom().primaryKey(),
+  coachTeamId:    text('coach_team_id').notNull(),
+  clientId:       uuid('client_id').notNull().references(() => mdCoachClients.id, { onDelete: 'cascade' }),
+  packageId:      uuid('package_id').references(() => mdCoachPackages.id),
+  invoiceNumber:  varchar('invoice_number', { length: 50 }).notNull(),
+  status:         varchar('status', { length: 20 }).notNull().default('draft'),
+  amountCents:    integer('amount_cents').notNull(),
+  currency:       varchar('currency', { length: 3 }).notNull().default('USD'),
+  dueDate:        date('due_date').notNull(),
+  paidAt:         timestamp('paid_at', { withTimezone: true }),
+  lineItems:      jsonb('line_items').notNull().default([]),
+  notes:          text('notes'),
+  squareInvoiceId:text('square_invoice_id'),
+  createdAt:      timestamp('created_at', { withTimezone: true }).defaultNow(),
+  updatedAt:      timestamp('updated_at', { withTimezone: true }).defaultNow(),
+})
+
+// ─── FOUNDING COHORTS ──────────────────────────────────────────────────────────
+
 /** 50 founding race-team/factory-rig slots — created on successful checkout.
  *  Race Team and Factory Rig consume a slot. Privateer does not.
  */
