@@ -7,7 +7,8 @@ import MdLogo from './md-logo'
 
 const NAV_LINKS = [
   { label: 'Modules', href: '#modules' },
-  { label: 'Platform', href: '#platform' },
+  { label: 'Consoles', href: '#consoles' },
+  { label: 'Co-Pilot', href: '#copilot' },
   { label: 'Agent 2028', href: '#agent', accent: true },
   { label: 'Pricing', href: '#pricing' },
 ]
