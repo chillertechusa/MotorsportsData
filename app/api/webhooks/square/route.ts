@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
   const eventType: string = body?.type ?? ''
   const data = body?.data?.object
 
-  console.log(`[v0] Square webhook verified: ${eventType}`)
+  console.log(`[square] webhook verified: ${eventType}`)
 
   try {
     switch (eventType) {
