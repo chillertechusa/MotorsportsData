@@ -10,6 +10,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { validateApiKey } from '@/lib/api-rate-limit'
 import { getSessionTeamId } from '@/lib/md-auth'
+import { normalizeTelemetryFrame } from '@/lib/telemetry-channels'
 
 interface TelemetryPoint {
   timestamp: number // Unix ms
@@ -95,9 +96,14 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    console.log('[Telemetry] Ingesting', validPoints.length, 'points')
+    // Normalize channel vocabulary per discipline
+    // Each point may carry a disciplineId field; fall back to the team's configured discipline
+    const normalizedPoints = validPoints.map((p) => {
+      const disciplineId = (p as Record<string, unknown>).disciplineId as string | undefined
+      return normalizeTelemetryFrame(p as unknown as Record<string, unknown>, disciplineId)
+    })
 
-    // TODO: Store in TimescaleDB
+    // TODO: Store normalizedPoints in TimescaleDB
     // INSERT INTO telemetry_metrics (time, session_id, rider_id, team_id, ...)
     // VALUES (...)
 
