@@ -64,9 +64,8 @@ export default function MdHero() {
 
         {/* Subheadline */}
         <p className="text-zinc-400 text-sm sm:text-lg md:text-xl leading-relaxed max-w-xl sm:max-w-2xl mb-5 sm:mb-8 text-pretty">
-          From the family pit to the factory rig — one platform for every role on the team.
-          Bike maintenance, setup coaching, crew chief AI, hauler ops, sponsor ROI, and live race intelligence.
-          One login. Every tier.
+          Deals. Contracts. Invoices. Accounting. Sponsor CRM. Work orders. Hauler ops. Crew Chief AI.
+          Every dollar tracked. Every role covered. From the family pit to the factory rig — one platform.
         </p>
 
         {/* CTAs */}
@@ -98,7 +97,9 @@ export default function MdHero() {
               'Privateer — $199/mo',
               'Race Team — $599/mo',
               'Factory Command — $18K/mo',
-              '12 Modules',
+              'Deals + Invoicing',
+              'Accounting P&L',
+              'Sponsor CRM',
               'AI Coach Built In',
               'Zero per-user fees',
             ].map((tag) => (
@@ -113,7 +114,7 @@ export default function MdHero() {
         <div className="sm:hidden">
           <div className="pt-4 border-t border-zinc-800/60 mb-5">
             <div className="flex flex-wrap gap-x-2 gap-y-2">
-              {['$49/mo Start', '12 Modules', 'AI Coach', 'Factory Ready'].map((tag) => (
+              {['$49/mo Start', 'Deals + Invoicing', 'AI Coach', 'Factory Ready'].map((tag) => (
                 <span key={tag} className="font-mono text-[9px] text-zinc-500 uppercase tracking-widest border border-zinc-800 px-2 py-1 bg-zinc-950/60">
                   {tag}
                 </span>
@@ -127,8 +128,8 @@ export default function MdHero() {
         <div className="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 flex-col gap-4">
           {[
             { label: 'Starting at', value: '$49', sub: 'per month' },
-            { label: 'Platform modules', value: '12' , sub: 'live + roadmap' },
-            { label: 'Team roles', value: '6', sub: 'every console covered' },
+            { label: 'Business modules', value: '14', sub: '12 live + roadmap' },
+            { label: 'Team roles covered', value: '6', sub: 'one login each' },
           ].map((stat, i) => (
             <div
               key={stat.label}
