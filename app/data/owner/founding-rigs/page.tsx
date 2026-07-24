@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 import { getSessionTeamId } from '@/lib/md-auth'
-import { getFoundingRigs, FOUNDING_SLOT_CAP } from '@/app/actions/founding-rigs'
+import { getFoundingRigs } from '@/app/actions/founding-rigs'
+import { FOUNDING_SLOT_CAP } from '@/lib/founding-rigs-config'
 import { CheckCircle2, Clock, Users, DollarSign, Lock } from 'lucide-react'
 
 export const metadata = { title: 'Founding Rigs | Owner Console' }

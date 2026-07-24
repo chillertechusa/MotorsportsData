@@ -2,10 +2,8 @@
 
 import { db } from '@/lib/db'
 import { mdFoundingRigs } from '@/lib/db/schema'
-import { count, sql } from 'drizzle-orm'
-
-export const FOUNDING_SLOT_CAP = 50
-export const FOUNDING_ELIGIBLE_PLANS = ['race_team', 'factory_rig'] as const
+import { count } from 'drizzle-orm'
+import { FOUNDING_SLOT_CAP, FOUNDING_ELIGIBLE_PLANS } from '@/lib/founding-rigs-config'
 
 /** Returns { used, remaining, pct } for the slot counter UI. */
 export async function getFoundingSlotStatus() {
