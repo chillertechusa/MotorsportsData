@@ -356,7 +356,7 @@ export const mdSessions = pgTable('md_sessions', {
   windMph: integer('wind_mph'),
   trackSurface: varchar('track_surface', { length: 80 }),
 
-  // ── Setup sheet: tires ────────────────────────────────────────────────────
+  // ── Setup sheet: tires ──────────────────────────────���─────────────────────
   tireFront: varchar('tire_front', { length: 120 }),
   tireRear: varchar('tire_rear', { length: 120 }),
   tirePressureFront: doublePrecision('tire_pressure_front'),
@@ -1594,6 +1594,7 @@ export const mdFoundingRigs = pgTable('md_founding_rigs', {
   id:                 uuid('id').defaultRandom().primaryKey(),
   teamId:             text('team_id').notNull().unique(),
   planId:             varchar('plan_id', { length: 50 }).notNull(),
+  cohort:             varchar('cohort', { length: 30 }).notNull().default('founding_rig'),
   lockedCents:        integer('locked_cents').notNull(),
   frequency:          varchar('frequency', { length: 20 }).notNull().default('monthly'),
   slotNumber:         integer('slot_number').notNull(),

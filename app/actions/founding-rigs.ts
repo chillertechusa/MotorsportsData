@@ -2,19 +2,43 @@
 
 import { db } from '@/lib/db'
 import { mdFoundingRigs } from '@/lib/db/schema'
-import { count } from 'drizzle-orm'
-import { FOUNDING_SLOT_CAP, FOUNDING_ELIGIBLE_PLANS } from '@/lib/founding-rigs-config'
+import { count, eq } from 'drizzle-orm'
+import {
+  FOUNDING_SLOT_CAP,
+  FOUNDING_ELIGIBLE_PLANS,
+  FOUNDING_COACH_CAP,
+  FOUNDING_COACH_ELIGIBLE_PLANS,
+  type FoundingCohort,
+} from '@/lib/founding-rigs-config'
 
-/** Returns { used, remaining, pct } for the slot counter UI. */
+/** Returns status for both independent founding cohorts. */
 export async function getFoundingSlotStatus() {
   try {
-    const [row] = await db.select({ total: count() }).from(mdFoundingRigs)
-    const used = row?.total ?? 0
-    const remaining = Math.max(0, FOUNDING_SLOT_CAP - used)
-    const pct = Math.round((used / FOUNDING_SLOT_CAP) * 100)
-    return { ok: true as const, used, remaining, pct }
+    const [rigRow, coachRow] = await Promise.all([
+      db.select({ total: count() }).from(mdFoundingRigs).where(eq(mdFoundingRigs.cohort, 'founding_rig')),
+      db.select({ total: count() }).from(mdFoundingRigs).where(eq(mdFoundingRigs.cohort, 'founding_coach')),
+    ])
+    const used = rigRow[0]?.total ?? 0
+    const coachUsed = coachRow[0]?.total ?? 0
+    return {
+      ok: true as const,
+      used,
+      remaining: Math.max(0, FOUNDING_SLOT_CAP - used),
+      pct: Math.round((used / FOUNDING_SLOT_CAP) * 100),
+      coachUsed,
+      coachRemaining: Math.max(0, FOUNDING_COACH_CAP - coachUsed),
+      coachPct: Math.round((coachUsed / FOUNDING_COACH_CAP) * 100),
+    }
   } catch {
-    return { ok: true as const, used: 0, remaining: FOUNDING_SLOT_CAP, pct: 0 }
+    return {
+      ok: true as const,
+      used: 0,
+      remaining: FOUNDING_SLOT_CAP,
+      pct: 0,
+      coachUsed: 0,
+      coachRemaining: FOUNDING_COACH_CAP,
+      coachPct: 0,
+    }
   }
 }
 
@@ -26,22 +50,36 @@ export async function allocateFoundingSlot(
   lockedCents: number,
   frequency: 'annual' | 'monthly',
 ): Promise<{ ok: boolean; slotNumber?: number; error?: string }> {
-  if (!FOUNDING_ELIGIBLE_PLANS.includes(planId as typeof FOUNDING_ELIGIBLE_PLANS[number])) {
-    return { ok: true } // Privateer — no slot needed, silent success
-  }
+  const cohort: FoundingCohort | null = FOUNDING_ELIGIBLE_PLANS.includes(
+    planId as typeof FOUNDING_ELIGIBLE_PLANS[number],
+  )
+    ? 'founding_rig'
+    : FOUNDING_COACH_ELIGIBLE_PLANS.includes(
+          planId as typeof FOUNDING_COACH_ELIGIBLE_PLANS[number],
+        )
+      ? 'founding_coach'
+      : null
+
+  if (!cohort) return { ok: true }
+
+  const cap = cohort === 'founding_coach' ? FOUNDING_COACH_CAP : FOUNDING_SLOT_CAP
+  const cohortLabel = cohort === 'founding_coach' ? 'founding coach' : 'founding rig'
 
   try {
-    // Atomic: count existing + insert in a transaction so slots never exceed 50
     const result = await db.transaction(async (tx) => {
-      const [{ total }] = await tx.select({ total: count() }).from(mdFoundingRigs)
+      const [{ total }] = await tx
+        .select({ total: count() })
+        .from(mdFoundingRigs)
+        .where(eq(mdFoundingRigs.cohort, cohort))
       const used = total ?? 0
-      if (used >= FOUNDING_SLOT_CAP) {
-        return { ok: false as const, error: 'All 50 founding slots are now taken. Please contact us.' }
+      if (used >= cap) {
+        return { ok: false as const, error: `All ${cap} ${cohortLabel} spots are now taken. Please contact us.` }
       }
       const slotNumber = used + 1
       await tx.insert(mdFoundingRigs).values({
         teamId,
         planId,
+        cohort,
         lockedCents,
         frequency,
         slotNumber,
