@@ -115,8 +115,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: true,
-        pointsIngested: validPoints.length,
+        pointsIngested: normalizedPoints.length,
         pointsRejected: points.length - validPoints.length,
+        normalized: true,
       },
       { status: 200 }
     )
