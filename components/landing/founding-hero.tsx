@@ -1,12 +1,7 @@
 import Link from 'next/link'
 import { ArrowRight, Lock, Calendar } from 'lucide-react'
-import { getFoundingSlotStatus } from '@/app/actions/founding-rigs'
 
-export default async function FoundingHero() {
-  const slots = await getFoundingSlotStatus()
-  const remaining = slots.remaining
-  const pct = slots.pct
-
+export default function FoundingHero() {
   return (
     <section
       className="relative flex flex-col justify-center overflow-hidden bg-zinc-950 min-h-screen pt-14"
@@ -57,25 +52,6 @@ export default async function FoundingHero() {
             Everything a race operation needs to run as a business&mdash;built entirely for the
             dirt. Join 50 founding teams before the window closes.
           </p>
-
-          {/* Slot progress bar */}
-          <div className="mb-10 max-w-sm">
-            <div className="flex items-center justify-between mb-2">
-              <span className="font-mono text-xs text-zinc-500 uppercase tracking-widest">
-                Founding slots
-              </span>
-              <span className="font-mono text-xs text-lime-400 font-black">
-                {remaining} of 50 remaining
-              </span>
-            </div>
-            <div className="h-1.5 w-full bg-zinc-800 overflow-hidden">
-              <div
-                className="h-full bg-lime-400 transition-all duration-700"
-                style={{ width: `${pct}%` }}
-                aria-label={`${pct}% of founding slots claimed`}
-              />
-            </div>
-          </div>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
