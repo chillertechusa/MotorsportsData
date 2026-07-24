@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 import { getSessionTeamId } from '@/lib/md-auth'
 import { getFoundingRigs } from '@/app/actions/founding-rigs'
-import { FOUNDING_SLOT_CAP } from '@/lib/founding-rigs-config'
+import { FOUNDING_SLOT_CAP, FOUNDING_COACH_CAP } from '@/lib/founding-rigs-config'
 import { CheckCircle2, Clock, Users, DollarSign, Lock } from 'lucide-react'
 
 export const metadata = { title: 'Founding Rigs | Owner Console' }
@@ -13,9 +13,13 @@ export default async function FoundingRigsPage() {
   }
 
   const { rigs } = await getFoundingRigs()
-  const used = rigs.length
+  const teamRigs = rigs.filter((rig) => rig.cohort === 'founding_rig')
+  const coaches = rigs.filter((rig) => rig.cohort === 'founding_coach')
+  const used = teamRigs.length
   const remaining = Math.max(0, FOUNDING_SLOT_CAP - used)
   const pct = Math.round((used / FOUNDING_SLOT_CAP) * 100)
+  const coachUsed = coaches.length
+  const coachRemaining = Math.max(0, FOUNDING_COACH_CAP - coachUsed)
 
   const totalMRR = rigs.reduce((sum, r) => sum + r.lockedCents, 0)
   const onboarded = rigs.filter((r) => r.onboardingComplete).length
@@ -29,20 +33,22 @@ export default async function FoundingRigsPage() {
           className="text-zinc-100 text-4xl uppercase"
           style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900 }}
         >
-          Founding Rigs Cohort
+          Founding Cohorts
         </h1>
         <p className="text-zinc-500 text-sm mt-1">
-          50-slot enrollment &mdash; August 31, 2026 close date
+          Race-team rigs and professional coaches &mdash; tracked independently
         </p>
       </div>
 
       {/* KPI row */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
         {[
-          { label: 'Slots Used', value: `${used} / ${FOUNDING_SLOT_CAP}`, icon: Users, color: 'text-lime-400' },
-          { label: 'Slots Remaining', value: String(remaining), icon: Lock, color: remaining <= 10 ? 'text-red-400' : 'text-zinc-100' },
-          { label: 'Founding MRR', value: `$${(totalMRR / 100).toLocaleString()}`, icon: DollarSign, color: 'text-lime-400' },
-          { label: 'Onboarded', value: `${onboarded} / ${used}`, icon: CheckCircle2, color: 'text-lime-400' },
+          { label: 'Team Rigs', value: `${used} / ${FOUNDING_SLOT_CAP}`, icon: Users, color: 'text-lime-400' },
+          { label: 'Rig Slots Left', value: String(remaining), icon: Lock, color: remaining <= 10 ? 'text-red-400' : 'text-zinc-100' },
+          { label: 'Founding Coaches', value: `${coachUsed} / ${FOUNDING_COACH_CAP}`, icon: Users, color: 'text-lime-400' },
+          { label: 'Coach Spots Left', value: String(coachRemaining), icon: Lock, color: 'text-zinc-100' },
+          { label: 'Combined MRR', value: `$${(totalMRR / 100).toLocaleString()}`, icon: DollarSign, color: 'text-lime-400' },
+          { label: 'Onboarded', value: `${onboarded} / ${rigs.length}`, icon: CheckCircle2, color: 'text-lime-400' },
         ].map(({ label, value, icon: Icon, color }) => (
           <div key={label} className="bg-zinc-900 border border-zinc-800 p-5">
             <div className="flex items-center justify-between mb-3">
@@ -82,7 +88,7 @@ export default async function FoundingRigsPage() {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-zinc-800">
-                {['Slot', 'Team ID', 'Plan', 'Locked Price', 'Frequency', 'Enrolled', 'Onboarding'].map((h) => (
+                {['Cohort / Slot', 'Account ID', 'Plan', 'Locked Price', 'Frequency', 'Enrolled', 'Onboarding'].map((h) => (
                   <th
                     key={h}
                     className="px-5 py-3 text-left font-mono text-[10px] text-zinc-500 uppercase tracking-widest"
@@ -96,6 +102,9 @@ export default async function FoundingRigsPage() {
               {rigs.map((rig) => (
                 <tr key={rig.id} className="border-b border-zinc-800/50 hover:bg-zinc-800/30 transition-colors">
                   <td className="px-5 py-3.5 font-black text-lime-400" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
+                    <span className="block font-mono text-[9px] text-zinc-500 uppercase tracking-widest">
+                      {rig.cohort === 'founding_coach' ? 'Coach' : 'Rig'}
+                    </span>
                     #{String(rig.slotNumber).padStart(2, '0')}
                   </td>
                   <td className="px-5 py-3.5 font-mono text-xs text-zinc-400 max-w-[140px] truncate">
@@ -103,7 +112,13 @@ export default async function FoundingRigsPage() {
                   </td>
                   <td className="px-5 py-3.5">
                     <span className={`font-mono text-[10px] uppercase tracking-widest px-2 py-1 border ${rig.planId === 'factory_rig' ? 'border-zinc-500 text-zinc-300' : 'border-lime-400/40 text-lime-400'}`}>
-                      {rig.planId === 'factory_rig' ? 'Factory Rig' : 'Race Team'}
+                      {rig.planId === 'factory_rig'
+                        ? 'Factory Rig'
+                        : rig.planId === 'coach_pro'
+                          ? 'Coach Pro'
+                          : rig.planId === 'academy'
+                            ? 'Academy'
+                            : 'Race Team'}
                     </span>
                   </td>
                   <td className="px-5 py-3.5 text-zinc-100 font-semibold">
