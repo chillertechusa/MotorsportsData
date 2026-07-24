@@ -3,9 +3,9 @@ import MdCampaignBanner from '@/components/md-campaign-banner'
 import MdNav from '@/components/md-nav'
 import MdHero from '@/components/md-hero'
 import MdModuleGrid from '@/components/md-module-grid'
-import MdFeatures from '@/components/md-features'
-import MdDemo from '@/components/md-demo'
-import MdDemoDetails from '@/components/md-demo-details'
+import MdConsoleShowcase from '@/components/md-console-showcase'
+import MdModuleShowcase from '@/components/md-module-showcase'
+import MdCoPilot from '@/components/md-co-pilot'
 import MdAgentHype from '@/components/md-agent-hype'
 import MdTeamPartner from '@/components/md-team-partner'
 import MdFooter from '@/components/md-footer'
@@ -13,15 +13,14 @@ import MdFooter from '@/components/md-footer'
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://motorsportsdata.io'
 
 export const metadata: Metadata = {
-  title: 'Motorsport Data — Run Your Entire Racing Program. Like a Business.',
+  title: 'Motorsport Data — Run Your Racing Program Like a Business',
   description:
-    'The full racing management system. 14 modules covering every role and every dollar — Deals, Accounting, Logistics, Service Desk, Crew Chief AI, Sponsor CRM, Fleet, Warranty, and more. From the $49/mo family program to the $18K/mo factory rig.',
+    'The racing management system for every program size and every discipline. Deals, accounting, sponsor CRM, service desk, logistics, athlete readiness, and AI co-pilot — from the family pit to the factory rig. MX, NASCAR, karting, drag, off-road.',
   keywords: [
-    'racing management system', 'motocross team management software', 'supercross business platform',
-    'race team accounting software', 'motocross deals contracts invoicing', 'rig doctor AI hauler',
-    'crew chief AI supercross', 'motocross sponsor CRM', 'race team operations software',
-    'smx 2027 team platform', 'factory motocross data platform', 'motorsport data',
-    'racing logistics software', 'motocross work orders', 'supercross team dashboard',
+    'racing management system', 'motorsport business software', 'race team accounting',
+    'sponsor CRM racing', 'motocross team management', 'NASCAR team software',
+    'karting management', 'race team logistics', 'motorsport AI co-pilot',
+    'drag racing management', 'off-road team platform', 'motorsport data',
   ],
   alternates: {
     canonical: BASE_URL,
@@ -49,10 +48,10 @@ export default function HomePage() {
     '@type': 'SoftwareApplication',
     name: 'Motorsport Data',
     description:
-      'The full racing management system. 14 modules covering every role and every dollar — from the $49/mo family program to the $18K/mo factory rig.',
+      'The racing management system for every discipline and program size. Deals, accounting, sponsor CRM, service desk, logistics, AI co-pilot. MX, NASCAR, karting, drag, off-road.',
     url: BASE_URL,
     image: `${BASE_URL}/assets/og-preview.png`,
-    applicationCategory: 'SportsApplication',
+    applicationCategory: 'BusinessApplication',
     offers: [
       {
         '@type': 'Offer',
@@ -106,20 +105,22 @@ export default function HomePage() {
         {/* 1. Hero — "Run your entire racing program. Like a business." */}
         <MdHero />
 
-        {/* 2. Module Grid — 14 modules, ClutchDMS style */}
+        {/* 2. Breadth — all 14 modules at a glance */}
         <MdModuleGrid />
 
-        {/* 3. Features — role-by-role deep dive */}
-        <MdFeatures />
+        {/* 3. Role identity — 6 consoles, lenses, hierarchy, gates */}
+        <MdConsoleShowcase />
 
-        {/* 4. Demo — 5-role E2E walkthrough */}
-        <MdDemo />
-        <MdDemoDetails />
+        {/* 4. Depth — every module with real feature bullets, tier gates, co-pilot badges */}
+        <MdModuleShowcase />
 
-        {/* 5. Agent Hype — 2028 marketplace, email capture */}
+        {/* 5. Forward intelligence — co-pilot acts before you ask */}
+        <MdCoPilot />
+
+        {/* 6. 2028 fuel — agent marketplace */}
         <MdAgentHype />
 
-        {/* 6. Pricing — 4 tiers */}
+        {/* 7. Conversion — 4 tiers */}
         <MdTeamPartner />
       </main>
       <MdFooter />
