@@ -7,6 +7,29 @@ import {
   BarChart3, Settings, ChevronRight,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { useEffect, useState } from 'react'
+import DemoAccountBanner from '@/components/coach/demo-account-banner'
+
+function getDemoCookie(name: string): string {
+  const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`))
+  return match ? decodeURIComponent(match[1]) : ''
+}
+
+function DemoAccountBannerWrapper() {
+  const [demoTeamId, setDemoTeamId] = useState('')
+  const [demoCreatedAt, setDemoCreatedAt] = useState('')
+
+  useEffect(() => {
+    const teamId = getDemoCookie('x-demo-team')
+    if (teamId.startsWith('demo-')) {
+      setDemoTeamId(teamId)
+      setDemoCreatedAt(getDemoCookie('x-demo-created') || new Date().toISOString())
+    }
+  }, [])
+
+  if (!demoTeamId) return null
+  return <DemoAccountBanner teamId={demoTeamId} createdAt={demoCreatedAt} />
+}
 
 const NAV = [
   { href: '/data/coach',          label: 'Command',  icon: BarChart3,     exact: true },
@@ -71,7 +94,8 @@ export default function CoachLayout({ children }: { children: React.ReactNode })
       </aside>
 
       {/* Main */}
-      <main className="flex-1 min-w-0 overflow-auto">
+      <main className="flex-1 min-w-0 overflow-auto flex flex-col">
+        <DemoAccountBannerWrapper />
         {children}
       </main>
     </div>

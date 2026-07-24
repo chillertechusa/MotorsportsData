@@ -8,6 +8,7 @@ import { Toaster } from 'sonner'
 
 import { ServiceWorkerInit } from '@/components/service-worker-init'
 import MdNav from '@/components/md-nav'
+import LaunchCountdownBanner from '@/components/launch-countdown-banner'
 import './globals.css'
 
 const GTM_ID = 'GTM-M3VJNV6L'
@@ -215,6 +216,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
         <CartProvider>
+          {/* Launch countdown — renders above the fixed nav, dismissible */}
+          <LaunchCountdownBanner />
           {/* Fixed navigation — inside CartProvider so CartButton can access cart context */}
           <MdNav />
           <div className="pt-14">

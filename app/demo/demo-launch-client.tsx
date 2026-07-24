@@ -4,263 +4,385 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import {
-  Users, Calendar, ClipboardList, ReceiptText, Brain,
-  ChevronRight, ArrowRight, CheckCircle2, Lock, Zap,
-  BarChart3, Target, Dumbbell
+  Users, CalendarDays, ClipboardList, FileText,
+  BarChart3, Zap, ArrowRight, Clock, CheckCircle2,
+  TrendingUp, DollarSign, Brain, Target, Dumbbell, ChevronRight,
 } from 'lucide-react'
 
-const WHAT_YOULL_SEE = [
-  {
-    icon: Users,
-    label: 'Athlete Roster',
-    detail: '5 athletes across MX/SX, Enduro, and Karting — Tyler, Jade, Mason, Sienna, Brody',
-  },
-  {
-    icon: Calendar,
-    label: 'Upcoming Sessions',
-    detail: 'Tuesday MX gate-start session, video review, past enduro and karting debriefs with AI notes',
-  },
-  {
-    icon: ClipboardList,
-    label: 'Training Plans',
-    detail: "Tyler's pre-race build week, Jade's base block, Sienna's karting season plan — with AI-generated blocks",
-  },
-  {
-    icon: ReceiptText,
-    label: 'Invoicing & Billing',
-    detail: '$1,580 MRR — 3 paid invoices, 2 outstanding, 2 service packages configured',
-  },
-  {
-    icon: Brain,
-    label: 'AI Debriefs',
-    detail: 'Real AI-generated post-session analysis for Mason and Sienna with improvement notes',
-  },
-  {
-    icon: BarChart3,
-    label: 'Business KPIs',
-    detail: 'Revenue, session cadence, athlete utilization, and outstanding AR — at a glance',
-  },
+// ── Static mock data for the product preview ─────────────────────────────────
+
+const MOCK_ATHLETES = [
+  { name: 'Tyler Ramirez',  discipline: 'MX / SX',  cls: '250 Pro',    track: 'Milestone MX',    rating: 4 },
+  { name: 'Jade Kovacs',    discipline: 'MX / SX',  cls: '450 Am',     track: 'Glen Helen',       rating: 4 },
+  { name: 'Mason Webb',     discipline: 'Enduro',   cls: 'Pro Open',   track: 'Snowshoe WV',      rating: 3 },
+  { name: 'Sienna Cruz',    discipline: 'Karting',  cls: 'ROK Senior', track: 'Calspeed Karting', rating: 5 },
+  { name: 'Brody Haines',   discipline: 'MX / SX',  cls: '65cc Youth', track: 'Perris Raceway',   rating: 0 },
 ]
 
-const WHAT_IS_REAL = [
-  'Live database — your demo data actually lives in Neon Postgres',
-  'Real application code — same routes, same queries, same UI as a paying account',
-  'AI debrief notes written for your demo athletes',
-  'No mocks, no fake API responses',
+const MOCK_SESSIONS = [
+  { title: 'Tuesday MX — Gate Starts + Rhythm', type: 'Track', when: 'In 2 days',  athletes: 3, status: 'scheduled' },
+  { title: 'Video Review — Saturday Qualifying', type: 'Video', when: 'In 4 days', athletes: 2, status: 'scheduled' },
+  { title: 'Enduro — Rocky Section Technique',   type: 'Track', when: '3 days ago', athletes: 1, status: 'completed' },
+  { title: 'Karting — Sector Time Optimization', type: 'Track', when: '7 days ago', athletes: 1, status: 'completed' },
 ]
 
-const WHAT_IS_NOT = [
-  'No credit card or account required',
-  'Demo data is isolated — it does not affect real accounts',
-  'The session auto-expires after 60 minutes',
+const MOCK_INVOICES = [
+  { client: 'Tyler Ramirez', desc: 'MX Private Training — July',    amount: '$800',   status: 'paid'  },
+  { client: 'Jade Kovacs',   desc: 'MX Private Training — August',  amount: '$800',   status: 'sent'  },
+  { client: 'Sienna Cruz',   desc: 'Performance Academy — Month 1', amount: '$2,400', status: 'paid'  },
+  { client: 'Mason Webb',    desc: 'Enduro session + AI debrief',   amount: '$450',   status: 'draft' },
 ]
 
-type LaunchState = 'idle' | 'launching' | 'error'
+const DISC_CHIP: Record<string, string> = {
+  'MX / SX': 'text-lime-400 bg-lime-400/10 border-lime-400/20',
+  'Enduro':  'text-sky-400 bg-sky-400/10 border-sky-400/20',
+  'Karting': 'text-violet-400 bg-violet-400/10 border-violet-400/20',
+}
+const STATUS_CHIP: Record<string, string> = {
+  paid:      'text-lime-400 bg-lime-400/10',
+  sent:      'text-amber-400 bg-amber-400/10',
+  draft:     'text-zinc-400 bg-zinc-700/50',
+  scheduled: 'text-sky-400 bg-sky-400/10',
+  completed: 'text-zinc-500 bg-zinc-800/60',
+}
+
+// ── Product OS mockup ─────────────────────────────────────────────────────────
+
+function ProductMockup({ tab }: { tab: 'roster' | 'sessions' | 'billing' }) {
+  return (
+    <div className="rounded-xl border border-zinc-700/50 bg-zinc-900 overflow-hidden shadow-2xl shadow-black/70 select-none">
+      {/* Browser chrome */}
+      <div className="flex items-center gap-2 border-b border-zinc-800 bg-zinc-950/90 px-4 py-2.5">
+        <span className="h-2.5 w-2.5 rounded-full bg-red-500/60" aria-hidden="true" />
+        <span className="h-2.5 w-2.5 rounded-full bg-amber-500/60" aria-hidden="true" />
+        <span className="h-2.5 w-2.5 rounded-full bg-lime-500/60" aria-hidden="true" />
+        <div className="ml-3 flex-1 max-w-sm rounded bg-zinc-800/50 px-3 py-0.5">
+          <span className="font-mono text-[10px] text-zinc-500">motorsportsdata.io/data/coach/{tab}</span>
+        </div>
+        <span className="ml-auto rounded border border-lime-400/20 bg-lime-400/8 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-lime-400">
+          Coach Pro
+        </span>
+      </div>
+
+      {/* App shell */}
+      <div className="flex" style={{ height: 296 }}>
+        {/* Sidebar */}
+        <aside className="w-36 shrink-0 border-r border-zinc-800 bg-zinc-950/50 flex flex-col px-2 py-3 gap-0.5">
+          <p className="px-2 pb-1.5 font-mono text-[8px] uppercase tracking-widest text-zinc-600">Coach OS</p>
+          {[
+            { icon: BarChart3,     label: 'Command'  },
+            { icon: Users,         label: 'Roster',   active: tab === 'roster'   },
+            { icon: CalendarDays,  label: 'Sessions', active: tab === 'sessions' },
+            { icon: ClipboardList, label: 'Plans'     },
+            { icon: DollarSign,    label: 'Billing',  active: tab === 'billing'  },
+          ].map(({ icon: Icon, label, active }) => (
+            <div
+              key={label}
+              className={`flex items-center gap-1.5 rounded px-2 py-1.5 text-[11px] ${
+                active
+                  ? 'bg-lime-400/10 text-lime-400 border border-lime-400/20'
+                  : 'text-zinc-600 border border-transparent'
+              }`}
+            >
+              <Icon className="h-3 w-3 shrink-0" aria-hidden="true" />
+              {label}
+            </div>
+          ))}
+        </aside>
+
+        {/* Content */}
+        <div className="flex-1 overflow-hidden p-3 flex flex-col gap-1.5">
+          {tab === 'roster' && (
+            <>
+              <p className="text-[11px] font-semibold text-zinc-300 mb-0.5">Active Roster — 5 athletes</p>
+              {MOCK_ATHLETES.map((a) => (
+                <div key={a.name} className="flex items-center gap-2 rounded border border-zinc-800/80 bg-zinc-800/25 px-2.5 py-1.5">
+                  <div className="h-5 w-5 rounded-full bg-zinc-700 shrink-0 flex items-center justify-center font-bold text-[9px] text-zinc-300">
+                    {a.name[0]}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-[11px] font-medium text-zinc-200 leading-none">{a.name}</p>
+                    <p className="text-[9px] text-zinc-500 mt-0.5">{a.cls} &middot; {a.track}</p>
+                  </div>
+                  <span className={`shrink-0 rounded border px-1.5 py-0.5 text-[9px] font-medium ${DISC_CHIP[a.discipline] ?? 'text-zinc-400 bg-zinc-700/40 border-zinc-600/30'}`}>
+                    {a.discipline}
+                  </span>
+                  {a.rating > 0 && (
+                    <span className="shrink-0 font-mono text-[9px] text-amber-400">{'★'.repeat(a.rating)}</span>
+                  )}
+                </div>
+              ))}
+            </>
+          )}
+
+          {tab === 'sessions' && (
+            <>
+              <p className="text-[11px] font-semibold text-zinc-300 mb-0.5">Upcoming + Recent</p>
+              {MOCK_SESSIONS.map((s) => (
+                <div key={s.title} className="flex items-center gap-2 rounded border border-zinc-800/80 bg-zinc-800/25 px-2.5 py-1.5">
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-[11px] font-medium text-zinc-200 leading-none">{s.title}</p>
+                    <p className="text-[9px] text-zinc-500 mt-0.5">{s.type} &middot; {s.when} &middot; {s.athletes} athlete{s.athletes !== 1 ? 's' : ''}</p>
+                  </div>
+                  <span className={`shrink-0 rounded px-1.5 py-0.5 text-[9px] font-medium ${STATUS_CHIP[s.status]}`}>
+                    {s.status}
+                  </span>
+                </div>
+              ))}
+            </>
+          )}
+
+          {tab === 'billing' && (
+            <>
+              <div className="flex items-center gap-2 mb-0.5">
+                <div className="rounded border border-lime-400/20 bg-lime-400/8 px-2.5 py-1 text-center">
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-zinc-500">This month</p>
+                  <p className="font-mono text-sm font-bold text-lime-400">$4,050</p>
+                </div>
+                <div className="rounded border border-zinc-700/50 bg-zinc-800/30 px-2.5 py-1 text-center">
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-zinc-500">Outstanding</p>
+                  <p className="font-mono text-sm font-bold text-amber-400">$1,250</p>
+                </div>
+                <div className="rounded border border-zinc-700/50 bg-zinc-800/30 px-2.5 py-1 text-center">
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-zinc-500">Athletes</p>
+                  <p className="font-mono text-sm font-bold text-zinc-200">5</p>
+                </div>
+              </div>
+              {MOCK_INVOICES.map((inv) => (
+                <div key={inv.desc} className="flex items-center gap-2 rounded border border-zinc-800/80 bg-zinc-800/25 px-2.5 py-1.5">
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[11px] font-medium text-zinc-200 leading-none">{inv.client}</p>
+                    <p className="truncate text-[9px] text-zinc-500 mt-0.5">{inv.desc}</p>
+                  </div>
+                  <span className="shrink-0 font-mono text-[11px] text-zinc-200">{inv.amount}</span>
+                  <span className={`shrink-0 rounded px-1.5 py-0.5 text-[9px] font-medium ${STATUS_CHIP[inv.status]}`}>
+                    {inv.status}
+                  </span>
+                </div>
+              ))}
+            </>
+          )}
+        </div>
+      </div>
+
+      {/* AI strip */}
+      <div className="flex items-center gap-2 border-t border-zinc-800 bg-zinc-950/70 px-4 py-2">
+        <Zap className="h-3 w-3 shrink-0 text-lime-400" aria-hidden="true" />
+        <p className="text-[10px] text-zinc-400">
+          <span className="font-semibold text-lime-400">Rig Doctor — </span>
+          {tab === 'roster'   && "Sienna knocked 0.4s off sector 2 last session. Tyler's gate-drop consistency is up 18% this month."}
+          {tab === 'sessions' && 'Tuesday session has 3 confirmed. Recommend adding Mason for the enduro warmup — he has a race in 10 days.'}
+          {tab === 'billing'  && '$800 due from Jade in 7 days. Mason\'s draft invoice is ready to send — pending your review.'}
+        </p>
+      </div>
+    </div>
+  )
+}
+
+// ── Main page ─────────────────────────────────────────────────────────────────
 
 export default function DemoLaunchClient() {
   const router = useRouter()
-  const [state, setState] = useState<LaunchState>('idle')
-  const [error, setError] = useState<string | null>(null)
+  const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
+  const [activeTab, setActiveTab] = useState<'roster' | 'sessions' | 'billing'>('roster')
 
-  async function handleLaunch() {
-    setState('launching')
-    setError(null)
+  async function launch() {
+    setStatus('loading')
+    setErrorMsg('')
     try {
-      const res = await fetch('/api/demo/provision', { method: 'POST' })
+      const res = await fetch('/api/demo/provision', { method: 'POST', credentials: 'include' })
       const data = await res.json()
-      if (!res.ok) throw new Error(data.error ?? 'Provisioning failed')
-      // In production this would follow data.redirectTo with an auth token.
-      // For now, redirect to the coach dashboard.
-      router.push(data.redirectTo ?? '/data/coach')
-    } catch (err) {
-      setState('error')
-      setError(err instanceof Error ? err.message : 'Something went wrong. Try again.')
+      if (!res.ok || !data.success) {
+        setStatus('error')
+        setErrorMsg(data.error ?? 'Provisioning failed — please try again.')
+        return
+      }
+      router.push(data.redirectTo ?? '/data/coach/roster')
+    } catch {
+      setStatus('error')
+      setErrorMsg('Network error — check your connection and try again.')
     }
   }
 
   return (
-    <div className="min-h-screen bg-[--color-background] text-[--color-foreground] flex flex-col">
+    <div className="min-h-screen bg-zinc-950 text-zinc-100">
 
-      {/* Nav bar */}
-      <header className="sticky top-0 z-20 border-b border-[--color-border] bg-[--color-background]/90 backdrop-blur-sm">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 h-14">
-          <Link href="/" className="font-heading font-black text-xl tracking-wide text-[--color-foreground]">
-            MOTORSPORT DATA
-          </Link>
-          <Link
-            href="/auth/sign-up"
-            className="text-sm font-medium text-[--color-muted-foreground] hover:text-[--color-foreground] transition-colors"
-          >
-            Create real account &rarr;
-          </Link>
-        </div>
-      </header>
-
-      <main className="flex-1 max-w-6xl mx-auto px-6 py-16 w-full">
-
-        {/* Hero */}
-        <div className="text-center mb-16">
-          <span className="inline-block font-mono text-[11px] uppercase tracking-[0.2em] text-[--color-primary] bg-[--color-primary]/10 border border-[--color-primary]/20 rounded px-3 py-1 mb-5">
-            Live product demo — no sign-up required
+      {/* ── Hero ── */}
+      <section className="mx-auto max-w-6xl px-6 pt-16 pb-10">
+        <div className="mb-10 flex flex-col items-center gap-4 text-center">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-lime-400/25 bg-lime-400/8 px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-lime-400">
+            <Zap className="h-3 w-3" aria-hidden="true" />
+            Live product — real data — no credit card
           </span>
-          <h1 className="font-heading font-black text-5xl md:text-6xl lg:text-7xl tracking-tight text-balance leading-none mb-5">
-            Walk into a real<br />
-            <span className="text-[--color-primary]">coaching account.</span>
+          <h1
+            className="max-w-2xl text-balance text-5xl font-black leading-none tracking-tight md:text-6xl"
+            style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900 }}
+          >
+            This is what coaches build on.<br />
+            <span className="text-lime-400">Walk in. See it yourself.</span>
           </h1>
-          <p className="text-[--color-muted-foreground] text-lg md:text-xl max-w-2xl mx-auto text-balance leading-relaxed">
-            We&apos;ll spin up a live demo account pre-loaded with real athletes, sessions,
-            training plans, and invoices. You&apos;re clicking around the actual product —
-            not a video, not a tour, not a slide deck.
+          <p className="max-w-xl text-balance text-base leading-relaxed text-zinc-400 md:text-lg">
+            One click provisions a real coaching account — 5 named athletes, 4 sessions,
+            3 training plans, 5 invoices. You are in the actual product, not a slideshow.
           </p>
         </div>
 
-        {/* Two-column layout */}
-        <div className="grid md:grid-cols-2 gap-8 mb-14">
-
-          {/* Left — what you'll see */}
-          <div className="bg-[--color-card] border border-[--color-border] rounded-xl p-7">
-            <h2 className="font-heading font-black text-xl tracking-wide mb-5 text-[--color-foreground] uppercase">
-              What&apos;s loaded in your demo
-            </h2>
-            <div className="flex flex-col gap-4">
-              {WHAT_YOULL_SEE.map(({ icon: Icon, label, detail }) => (
-                <div key={label} className="flex gap-3">
-                  <div className="mt-0.5 shrink-0 w-8 h-8 rounded-md bg-[--color-primary]/10 border border-[--color-primary]/20 flex items-center justify-center">
-                    <Icon className="w-4 h-4 text-[--color-primary]" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-sm text-[--color-foreground] leading-snug">{label}</p>
-                    <p className="text-[--color-muted-foreground] text-xs leading-relaxed mt-0.5">{detail}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right — honesty card + CTA */}
-          <div className="flex flex-col gap-6">
-
-            {/* What's real */}
-            <div className="bg-[--color-card] border border-[--color-border] rounded-xl p-6">
-              <div className="flex items-center gap-2 mb-3">
-                <Zap className="w-4 h-4 text-[--color-primary]" aria-hidden="true" />
-                <h3 className="font-heading font-bold text-base tracking-wide uppercase text-[--color-foreground]">
-                  This is the real product
-                </h3>
-              </div>
-              <ul className="flex flex-col gap-2">
-                {WHAT_IS_REAL.map((line) => (
-                  <li key={line} className="flex items-start gap-2 text-sm text-[--color-muted-foreground]">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[--color-primary] mt-0.5 shrink-0" aria-hidden="true" />
-                    {line}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* What's NOT required */}
-            <div className="bg-[--color-card] border border-[--color-border] rounded-xl p-6">
-              <div className="flex items-center gap-2 mb-3">
-                <Lock className="w-4 h-4 text-[--color-muted-foreground]" aria-hidden="true" />
-                <h3 className="font-heading font-bold text-base tracking-wide uppercase text-[--color-muted-foreground]">
-                  No friction
-                </h3>
-              </div>
-              <ul className="flex flex-col gap-2">
-                {WHAT_IS_NOT.map((line) => (
-                  <li key={line} className="flex items-start gap-2 text-sm text-[--color-muted-foreground]">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-zinc-500 mt-0.5 shrink-0" aria-hidden="true" />
-                    {line}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Launch CTA */}
-            <div className="bg-[--color-primary]/5 border border-[--color-primary]/25 rounded-xl p-6 flex flex-col gap-4">
-              <div>
-                <p className="font-heading font-black text-lg tracking-wide uppercase text-[--color-foreground]">
-                  Ready to see it?
-                </p>
-                <p className="text-[--color-muted-foreground] text-sm mt-1">
-                  Takes about 3 seconds to provision. You&apos;ll land inside the Coach Business OS.
-                </p>
-              </div>
-
-              {error && (
-                <p className="text-red-400 text-sm bg-red-400/10 border border-red-400/20 rounded-md px-3 py-2">
-                  {error}
-                </p>
-              )}
-
+        {/* ── Tab switcher + OS mockup ── */}
+        <div className="mb-10">
+          <div className="mb-4 flex items-center justify-center gap-1" role="tablist" aria-label="Preview section">
+            {(['roster', 'sessions', 'billing'] as const).map((tab) => (
               <button
-                onClick={handleLaunch}
-                disabled={state === 'launching'}
-                className="group w-full flex items-center justify-center gap-2 bg-[--color-primary] text-[--color-primary-foreground] font-heading font-black text-base uppercase tracking-wide rounded-lg py-3.5 px-6 transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
-                aria-label="Launch live demo account"
+                key={tab}
+                role="tab"
+                aria-selected={activeTab === tab}
+                onClick={() => setActiveTab(tab)}
+                className={`rounded px-4 py-1.5 text-xs font-semibold capitalize transition-colors ${
+                  activeTab === tab
+                    ? 'border border-lime-400/25 bg-lime-400/10 text-lime-400'
+                    : 'border border-transparent text-zinc-500 hover:bg-zinc-800/50 hover:text-zinc-300'
+                }`}
               >
-                {state === 'launching' ? (
-                  <>
-                    <span className="inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" aria-hidden="true" />
-                    Provisioning your demo...
-                  </>
-                ) : (
-                  <>
-                    Launch Live Demo
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-                  </>
-                )}
+                {tab}
               </button>
-
-              <p className="text-center text-[--color-muted-foreground] text-xs">
-                Or{' '}
-                <Link href="/auth/sign-up?plan=coach_pro" className="text-[--color-primary] hover:underline">
-                  start a real Coach Pro account
-                </Link>{' '}
-                &mdash; founding pricing available until Aug 31.
-              </p>
-            </div>
+            ))}
           </div>
+          <ProductMockup tab={activeTab} />
         </div>
 
-        {/* Bottom strip — what the product covers */}
-        <div className="border-t border-[--color-border] pt-10">
-          <p className="text-center text-[--color-muted-foreground] text-xs font-mono uppercase tracking-widest mb-6">
-            The demo shows the Coach Business OS — the full platform also includes
+        {/* ── Launch CTA ── */}
+        <div className="flex flex-col items-center gap-3">
+          <button
+            onClick={launch}
+            disabled={status === 'loading'}
+            className="group flex items-center gap-2 rounded-lg bg-lime-400 px-9 py-3.5 text-base font-black tracking-wide text-zinc-950 shadow-lg shadow-lime-400/20 transition-all hover:bg-lime-300 disabled:cursor-not-allowed disabled:opacity-60"
+            style={{ fontFamily: 'var(--font-barlow-condensed)' }}
+          >
+            {status === 'loading' ? (
+              <>
+                <span className="h-4 w-4 animate-spin rounded-full border-2 border-zinc-950/30 border-t-zinc-950" aria-hidden="true" />
+                Provisioning your account...
+              </>
+            ) : (
+              <>
+                Enter the live platform
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+              </>
+            )}
+          </button>
+
+          <p className="flex items-center gap-1.5 text-xs text-zinc-500">
+            <Clock className="h-3 w-3" aria-hidden="true" />
+            Takes about 3 seconds. Demo expires in 2 hours.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+
+          {status === 'error' && (
+            <p role="alert" className="rounded border border-red-400/20 bg-red-400/10 px-3 py-1.5 text-xs text-red-400">
+              {errorMsg}
+            </p>
+          )}
+        </div>
+      </section>
+
+      {/* ── What is inside ── */}
+      <section className="border-t border-zinc-800 bg-zinc-900/40">
+        <div className="mx-auto max-w-6xl px-6 py-10">
+          <p className="mb-6 text-center font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+            What you will find inside
+          </p>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
             {[
-              { icon: Target, label: 'Telemetry & Lap Data', sub: 'Device ingest, session replay, channel normalization across all disciplines' },
-              { icon: Dumbbell, label: 'Rider Health & Readiness', sub: 'Physical, mental, nutrition, injury tracking, RTR protocol' },
-              { icon: BarChart3, label: 'Race Team Operations', sub: 'Parts vault, work orders, expenses, payroll, sponsor ROI' },
-              { icon: Brain, label: 'Rig Doctor AI', sub: 'Setup coaching, debrief analysis, training plan generation, race-day intelligence' },
+              { icon: Users,        label: '5 athletes',        sub: 'Real names, disciplines, home tracks' },
+              { icon: CalendarDays, label: '4 sessions',        sub: '2 upcoming, 2 completed with AI debrief' },
+              { icon: ClipboardList,label: '3 training plans',  sub: 'Physical, technical, and mental blocks' },
+              { icon: FileText,     label: '5 invoices',        sub: 'Full billing cycle — paid, sent, draft' },
+              { icon: Brain,        label: 'AI on every screen',sub: 'Rig Doctor insights per session' },
+              { icon: TrendingUp,   label: '$4,050 MRR',        sub: 'Real month-to-date revenue KPIs' },
             ].map(({ icon: Icon, label, sub }) => (
-              <div key={label} className="bg-[--color-card] border border-[--color-border] rounded-lg p-4">
-                <Icon className="w-5 h-5 text-[--color-primary] mb-2" aria-hidden="true" />
-                <p className="font-semibold text-sm text-[--color-foreground] leading-snug">{label}</p>
-                <p className="text-[--color-muted-foreground] text-xs mt-1 leading-relaxed">{sub}</p>
+              <div key={label} className="rounded-lg border border-zinc-800 bg-zinc-900/60 p-3 text-center">
+                <Icon className="mx-auto mb-2 h-4 w-4 text-lime-400" aria-hidden="true" />
+                <p className="text-xs font-semibold text-zinc-200">{label}</p>
+                <p className="mt-0.5 text-[10px] leading-snug text-zinc-500">{sub}</p>
               </div>
             ))}
           </div>
         </div>
+      </section>
 
-      </main>
+      {/* ── Honesty + conversion strip ── */}
+      <section className="border-t border-zinc-800">
+        <div className="mx-auto max-w-5xl px-6 py-8">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-0 sm:divide-x sm:divide-zinc-800">
+            <div className="flex flex-1 items-start gap-3 sm:pr-8">
+              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-lime-400" aria-hidden="true" />
+              <div>
+                <p className="text-sm font-semibold text-zinc-200">What is real</p>
+                <p className="mt-0.5 text-xs leading-relaxed text-zinc-500">
+                  Live database. Real auth session. Same routes, queries, and UI as a paying account. No mocks.
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-1 items-start gap-3 sm:px-8">
+              <Clock className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" aria-hidden="true" />
+              <div>
+                <p className="text-sm font-semibold text-zinc-200">What is not required</p>
+                <p className="mt-0.5 text-xs leading-relaxed text-zinc-500">
+                  No email. No credit card. No form. One click, you are inside.
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-1 flex-col items-start gap-2 sm:pl-8">
+              <p className="text-xs text-zinc-500">Ready to keep it?</p>
+              <Link
+                href="/checkout/tier?tier=coach_pro&utm_source=demo_bottom"
+                className="flex items-center gap-1.5 rounded-lg border border-lime-400/30 bg-lime-400/8 px-4 py-2 text-sm font-semibold text-lime-400 transition-colors hover:bg-lime-400/15"
+              >
+                Start Coach Pro &mdash; $499/mo
+                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <footer className="border-t border-[--color-border] py-8">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[--color-muted-foreground] text-xs">
+      {/* ── Broader platform capabilities ── */}
+      <section className="border-t border-zinc-800 bg-zinc-900/30">
+        <div className="mx-auto max-w-6xl px-6 py-10">
+          <p className="mb-6 text-center font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+            The demo shows the Coach Business OS — the full platform also includes
+          </p>
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+            {[
+              { icon: Target,   label: 'Telemetry & Lap Data',     sub: 'Device ingest, session replay, channel normalization across all disciplines' },
+              { icon: Dumbbell, label: 'Rider Health & Readiness',  sub: 'Physical, mental, nutrition, injury tracking, RTR protocol' },
+              { icon: BarChart3,label: 'Race Team Operations',      sub: 'Parts vault, work orders, expenses, payroll, sponsor ROI' },
+              { icon: Brain,    label: 'Rig Doctor AI',             sub: 'Setup coaching, debrief analysis, training plan generation, race-day intelligence' },
+            ].map(({ icon: Icon, label, sub }) => (
+              <div key={label} className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4">
+                <Icon className="mb-2 h-5 w-5 text-lime-400" aria-hidden="true" />
+                <p className="text-sm font-semibold leading-snug text-zinc-200">{label}</p>
+                <p className="mt-1 text-xs leading-relaxed text-zinc-500">{sub}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Footer ── */}
+      <footer className="border-t border-zinc-800 py-6">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 md:flex-row">
+          <p className="text-xs text-zinc-600">
             &copy; {new Date().getFullYear()} Motorsport Data &mdash; Chiller Tech Support LLC
           </p>
-          <div className="flex items-center gap-6">
-            <Link href="/legal/privacy" className="text-[--color-muted-foreground] text-xs hover:text-[--color-foreground] transition-colors">Privacy</Link>
-            <Link href="/legal/terms" className="text-[--color-muted-foreground] text-xs hover:text-[--color-foreground] transition-colors">Terms</Link>
-            <Link href="/auth/sign-up" className="text-[--color-primary] text-xs font-medium hover:underline flex items-center gap-1">
-              Get started <ChevronRight className="w-3 h-3" aria-hidden="true" />
+          <div className="flex items-center gap-5">
+            <Link href="/legal/privacy" className="text-xs text-zinc-600 transition-colors hover:text-zinc-400">Privacy</Link>
+            <Link href="/legal/terms"   className="text-xs text-zinc-600 transition-colors hover:text-zinc-400">Terms</Link>
+            <Link href="/account/sign-up?plan=coach_pro" className="flex items-center gap-1 text-xs font-medium text-lime-400 hover:underline">
+              Get started <ChevronRight className="h-3 w-3" aria-hidden="true" />
             </Link>
           </div>
         </div>
       </footer>
-
     </div>
   )
 }
