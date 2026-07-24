@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     url: BASE_URL,
     images: [
       {
-        url: `${BASE_URL}/images/md-hero-bg.png`,
+        url: `${BASE_URL}/assets/og-preview.png`,
         width: 1200,
         height: 630,
         alt: 'Motorsport Data — Race Team Operating System',
