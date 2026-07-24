@@ -1585,3 +1585,19 @@ export const mdRiderProfiles = pgTable('md_rider_profiles', {
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
 })
+
+// ── Founding Rigs (Aug 31 2026 enrollment) ────────────────────────────────────
+/** 50 founding race-team/factory-rig slots — created on successful checkout.
+ *  Race Team and Factory Rig consume a slot. Privateer does not.
+ */
+export const mdFoundingRigs = pgTable('md_founding_rigs', {
+  id:                 uuid('id').defaultRandom().primaryKey(),
+  teamId:             text('team_id').notNull().unique(),
+  planId:             varchar('plan_id', { length: 50 }).notNull(),
+  lockedCents:        integer('locked_cents').notNull(),
+  frequency:          varchar('frequency', { length: 20 }).notNull().default('monthly'),
+  slotNumber:         integer('slot_number').notNull(),
+  enrolledAt:         timestamp('enrolled_at', { withTimezone: true }).defaultNow(),
+  onboardingComplete: boolean('onboarding_complete').notNull().default(false),
+  onboardingData:     jsonb('onboarding_data'),
+})

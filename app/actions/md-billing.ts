@@ -12,6 +12,7 @@ import { trackCheckout, trackSignup } from '@/lib/analytics'
 import { db } from '@/lib/db'
 import { mdTeams, mdTeamMembers } from '@/lib/db/schema'
 import { eq } from 'drizzle-orm'
+import { allocateFoundingSlot } from '@/app/actions/founding-rigs'
 
 /**
  * Idempotent — if the signed-in user already belongs to a team, returns that
@@ -194,6 +195,9 @@ export async function subscribeMdPlan(
       // For now, we log it for audit purposes
       console.log(`[md-billing] SMS opt-in enabled for user ${userId}`)
     }
+
+    // Allocate a founding rig slot for Race Team / Factory Rig plans (non-blocking)
+    void allocateFoundingSlot(teamId, plan, amountCents, frequency)
 
     // Mark any pending abandoned-checkout rows as converted (non-blocking)
     void markCheckoutConverted(userId)
