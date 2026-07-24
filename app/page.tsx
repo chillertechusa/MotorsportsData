@@ -3,23 +3,24 @@ import MdNav from '@/components/md-nav'
 import MdFooter from '@/components/md-footer'
 import FoundingHero from '@/components/landing/founding-hero'
 import Capabilities from '@/components/landing/capabilities'
+import MultiSportDemo from '@/components/landing/multi-sport-demo'
 import FoundingPricing from '@/components/landing/founding-pricing'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://motorsportsdata.io'
 
 export const metadata: Metadata = {
-  title: 'Motorsport Data — The Operating System for Your Race Team',
+  title: 'Motorsport Data — One Platform for Every Racing Program',
   description:
-    'Lap times, telemetry, bike data, rider health, finances, payroll, invoicing, and AI coaching — one platform built for race teams. 50 founding slots open until August 31, 2026.',
+    'The operating system for riders, race teams, and professional coaches across motocross, NASCAR, drag racing, rally, karting, and more. Performance data, race-day operations, and business in one platform.',
   keywords: [
-    'race team management software', 'motocross team platform', 'lap time tracking',
-    'bike telemetry', 'race team operations', 'dirt bike data', 'racing AI coach',
-    'motocross payroll', 'sponsor ROI racing', 'race team finances', 'founding race team',
+    'motorsport management software', 'race team management software', 'motorsport coaching platform',
+    'motocross telemetry', 'NASCAR team software', 'drag racing data', 'rally analytics',
+    'karting data', 'race team operations', 'coaching business software', 'racing AI coach',
   ],
   alternates: { canonical: BASE_URL },
   openGraph: {
-    title: 'Motorsport Data — The Operating System for Your Race Team',
-    description: '50 founding team slots. Lock your price before August 31, 2026.',
+    title: 'Motorsport Data — One Platform. Every Racing Program.',
+    description: 'For riders, race teams, and professional coaches across every discipline.',
     type: 'website',
     url: BASE_URL,
     images: [
@@ -59,6 +60,20 @@ export default function HomePage() {
       },
       {
         '@type': 'Offer',
+        name: 'Coach Pro',
+        priceCurrency: 'USD',
+        price: '499',
+        description: 'Professional coaching business OS — athletes, plans, scheduling, invoicing, and AI.',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Academy',
+        priceCurrency: 'USD',
+        price: '2499',
+        description: 'Elite multi-coach academy and performance-facility operations.',
+      },
+      {
+        '@type': 'Offer',
         name: 'Factory Rig',
         priceCurrency: 'USD',
         price: '3999',
@@ -81,6 +96,7 @@ export default function HomePage() {
       <MdNav />
       <main>
         <FoundingHero />
+        <MultiSportDemo />
         <Capabilities />
         <FoundingPricing />
       </main>

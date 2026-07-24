@@ -11,13 +11,13 @@ const CAPABILITIES = [
   },
   {
     icon: Wrench,
-    title: 'Bike & Setup Log',
-    body: 'Part lifecycle tracking, suspension settings, engine hours, rebuild records. Every change tied to a session result.',
+    title: 'Machine & Setup Log',
+    body: 'Part lifecycle, chassis and suspension settings, engine hours, rebuild records. Every change tied to a session result — bike, kart, or car.',
   },
   {
     icon: Brain,
     title: 'AI Race Engineer',
-    body: 'Rig Doctor AI reads your data and recommends setup changes, flags fatigue, and coaches your rider between motos.',
+    body: 'Rig Doctor AI speaks your discipline — setup calls, performance deltas, fatigue flags, and coaching guidance between runs.',
   },
   {
     icon: HeartPulse,
@@ -36,8 +36,8 @@ const CAPABILITIES = [
   },
   {
     icon: Users,
-    title: 'Team Operations',
-    body: 'Multiple riders, mechanics, coaches, and crew. Role-based access. Assign work orders. Track hours and accountability.',
+    title: 'Roster & Operations',
+    body: 'Riders, athletes, mechanics, coaches, and crew. Role-based access, training plans, work orders, hours, and accountability.',
   },
   {
     icon: BarChart3,

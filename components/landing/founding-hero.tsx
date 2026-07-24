@@ -42,16 +42,31 @@ export default function FoundingHero() {
               fontSize: 'clamp(2.8rem, 9vw, 7rem)',
             }}
           >
-            The Operating System<br />
-            <span className="text-lime-400">For Your Race Team.</span>
+            One Platform.<br />
+            <span className="text-lime-400">Every Racing Program.</span>
           </h1>
 
           {/* Sub-headline */}
-          <p className="text-zinc-400 text-lg sm:text-xl leading-relaxed max-w-2xl mb-10">
-            Lap times. Bike data. Telemetry. Rider health. Team finances. Payroll. Coaching AI.
-            Everything a race operation needs to run as a business&mdash;built entirely for the
-            dirt. Join 50 founding teams before the window closes.
+          <p className="text-zinc-400 text-lg sm:text-xl leading-relaxed max-w-2xl mb-8">
+            The operating system for riders, race teams, and professional coaches&mdash;from
+            motocross to NASCAR, drag racing to rally. Telemetry, performance, race-day operations,
+            and the business behind it all. One platform, built through your lens.
           </p>
+
+          {/* Discipline rail */}
+          <div className="flex flex-wrap gap-2 mb-10" aria-label="Supported motorsport disciplines">
+            {['MX / SX', 'Enduro', 'FMX', 'Flat Track', 'NASCAR', 'Drag', 'Rally', 'Karting'].map((discipline) => (
+              <span
+                key={discipline}
+                className="border border-zinc-800 bg-zinc-900/60 px-2.5 py-1 font-mono text-[10px] text-zinc-500 uppercase tracking-widest"
+              >
+                {discipline}
+              </span>
+            ))}
+            <span className="border border-lime-400/30 bg-lime-400/5 px-2.5 py-1 font-mono text-[10px] text-lime-400 uppercase tracking-widest">
+              + every program
+            </span>
+          </div>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
@@ -63,10 +78,10 @@ export default function FoundingHero() {
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
             <Link
-              href="#capabilities"
+              href="#demo"
               className="inline-flex items-center justify-center gap-2 border border-zinc-700 text-zinc-300 font-semibold text-sm px-8 py-4 hover:border-lime-400/50 hover:text-zinc-100 transition-colors"
             >
-              See What&apos;s Included
+              See It Through Your Lens
             </Link>
           </div>
 
