@@ -73,7 +73,19 @@ const TIER_COPY: Record<MdPlanId, { headline: string; subheading: string; cta: s
     headline: 'Coach More Riders. Win More Championships.',
     subheading: 'Built for coaches managing multiple riders across multiple teams.',
     cta: 'Start Coaching',
-    description: 'Cross-team coaching access, session video analysis with telemetry overlay, AI-powered rider recommendations, and a complete coaching portfolio. Built for Aldon Baker-level coaches.',
+    description: 'Cross-team coaching access, session video analysis with telemetry overlay, AI-powered rider recommendations, and a complete coaching portfolio.',
+  },
+  coach_pro: {
+    headline: 'Your Coaching Business. One Operating System.',
+    subheading: 'Athletes, training plans, scheduling, billing, and performance intelligence.',
+    cta: 'Become a Founding Coach',
+    description: 'Run a professional multi-athlete coaching business across any motorsport discipline with white-glove migration and a permanent founding-rate lock.',
+  },
+  academy: {
+    headline: 'Build the Performance Facility of the Future.',
+    subheading: 'Multi-coach operations and cross-program intelligence at academy scale.',
+    cta: 'Reserve Academy Access',
+    description: 'Coordinate coaches, athletes, sessions, billing, and performance data with a founder-led launch tailored to your facility.',
   },
 }
 
@@ -111,6 +123,8 @@ function getTierDemo(tier: MdPlanId) {
         </div>
       )
     case 'coach':
+    case 'coach_pro':
+    case 'academy':
       return <CoachDemo />
     default:
       return null

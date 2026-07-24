@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { getFeatureStatus } from '@/lib/api-availability'
 import Link from 'next/link'
 import {
@@ -10,7 +10,17 @@ import {
   CheckCircle2, BarChart3, Code, Map
 } from 'lucide-react'
 
-const FEATURES = [
+type Feature = {
+  id: number
+  title: string
+  description: string
+  icon: React.ComponentType<{ className?: string }>
+  color: string
+  accent: string
+  badge?: string
+}
+
+const FEATURES: Feature[] = [
   {
     id: 1,
     title: 'Training Progression',

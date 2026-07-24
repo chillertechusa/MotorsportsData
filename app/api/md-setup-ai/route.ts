@@ -112,7 +112,7 @@ Guidelines:
 
     const t0 = Date.now()
     const { text, usage, finishReason } = await generateText({ model: SETUP_AI_MODEL, system, messages })
-    void logAICall({ route: 'md-setup-ai', model: SETUP_AI_MODEL, inputTokens: usage.promptTokens, outputTokens: usage.completionTokens, latencyMs: Date.now() - t0, finishReason, teamId: authResult.teamId })
+    void logAICall({ route: 'md-setup-ai', model: SETUP_AI_MODEL, inputTokens: usage.inputTokens ?? 0, outputTokens: usage.outputTokens ?? 0, latencyMs: Date.now() - t0, finishReason, teamId: authResult.teamId })
 
     return NextResponse.json({ recommendation: text })
   } catch (e) {

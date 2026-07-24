@@ -6,7 +6,7 @@ import { createAgentAndFanAccounts } from '@/app/actions/create-agent-fan-accoun
 export default function SetupAgentFanPage() {
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<any>(null)
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<string | null | undefined>(null)
 
   const handleCreate = async () => {
     setLoading(true)

@@ -1,4 +1,4 @@
-export type MdPlanId = 'rookie' | 'privateer' | 'wrench' | 'race_team' | 'factory_rig' | 'agent' | 'fan' | 'coach'
+export type MdPlanId = 'rookie' | 'privateer' | 'wrench' | 'race_team' | 'factory_rig' | 'agent' | 'fan' | 'coach' | 'coach_pro' | 'academy'
 
 // Annual pricing (stored in CENTS) — derived from target monthly pricing with 15% markup
 // Target monthly prices: Rookie FREE | Privateer $79 | Wrench $149 | Race Team $399 | Factory Rig $3,999 | Agent $1,199 | Coach $299 | Fan FREE
@@ -11,7 +11,9 @@ export const MD_PLAN_CENTS: Record<MdPlanId, number> = {
   factory_rig: 4156500,  // $41,565/year ($3,999/mo × 12 ÷ 1.15) — professional factory operations
   agent: 1251300,        // $12,513/year ($1,199/mo × 12 ÷ 1.15) — agents & teams (contract negotiation + prospect scouting)
   fan: 0,                // FREE — community spectators
-  coach: 311300,         // $3,113/year ($299/mo × 12 ÷ 1.15) — training coaches (cross-team coaching access)
+  coach: 311300,         // $3,113/year ($299/mo × 12 ÷ 1.15) — legacy training coach plan
+  coach_pro: 520700,     // $5,207/year ($499/mo × 12 ÷ 1.15) — independent coaching businesses
+  academy: 2607700,      // $26,077/year ($2,499/mo × 12 ÷ 1.15) — elite academies and performance facilities
 }
 
 // Billing frequency multiplier: paying monthly costs 15% more than the annual
@@ -56,15 +58,17 @@ export const MD_PLAN_LABELS: Record<MdPlanId, string> = {
   agent: 'Agent',
   fan: 'The Fan',
   coach: 'Coach',
+  coach_pro: 'Coach Pro',
+  academy: 'Academy',
 }
 
-export const MD_PLAN_IDS: MdPlanId[] = ['rookie', 'privateer', 'wrench', 'race_team', 'factory_rig', 'agent', 'fan', 'coach']
+export const MD_PLAN_IDS: MdPlanId[] = ['rookie', 'privateer', 'wrench', 'race_team', 'factory_rig', 'agent', 'fan', 'coach', 'coach_pro', 'academy']
 
 // Tier categories for navigation organization
 export const TIER_CATEGORIES = {
   riders: ['fan', 'rookie', 'privateer'] as const,
   teams: ['race_team', 'factory_rig'] as const,
-  professional: ['wrench', 'agent', 'coach'] as const,
+  professional: ['wrench', 'agent', 'coach', 'coach_pro', 'academy'] as const,
 } as const
 
 export function isMdPlanId(value: unknown): value is MdPlanId {

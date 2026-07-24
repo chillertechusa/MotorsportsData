@@ -41,7 +41,7 @@ export function CohortDashboard() {
       team.riskLevel.toUpperCase(),
     ])
 
-    const csv = [headers, ...rows].map(row => row.map(cell => `"${cell}"`).join(',')).join('\n')
+    const csv = [headers, ...rows].map(row => row.map((cell: unknown) => `"${cell}"`).join(',')).join('\n')
     const blob = new Blob([csv], { type: 'text/csv' })
     const url = window.URL.createObjectURL(blob)
     const a = document.createElement('a')

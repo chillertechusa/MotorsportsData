@@ -14,6 +14,8 @@ const TIER_COLORS: Record<MdPlanId, string> = {
   agent:       'text-violet-300 bg-violet-950 border-violet-800',
   fan:         'text-zinc-400 bg-zinc-900 border-zinc-800',
   coach:       'text-emerald-300 bg-emerald-950 border-emerald-800',
+  coach_pro:   'text-lime-300 bg-lime-950 border-lime-800',
+  academy:     'text-amber-300 bg-amber-950 border-amber-800',
 }
 
 function fmt(cents: number) {

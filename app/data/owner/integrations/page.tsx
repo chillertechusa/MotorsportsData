@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { getSessionTeamId } from '@/lib/md-auth'
 import { IntegrationsManager } from '@/components/integrations/integrations-manager'
+import { SquareBootstrap } from '@/components/integrations/square-bootstrap'
 
 export const metadata: Metadata = {
   title: 'API Keys & Integrations | MD Owner',
@@ -23,6 +24,7 @@ export default async function IntegrationsPage() {
         </p>
       </div>
 
+      <SquareBootstrap />
       <IntegrationsManager />
     </div>
   )

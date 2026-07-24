@@ -30,7 +30,7 @@ export function WorkOrderForm({ onSubmit }: WorkOrderFormProps) {
   const [currentPart, setCurrentPart] = useState('')
 
   const handleChange = (field: string, value: string | number) => {
-    setFormData(prev => ({ ...prev, [field]: value }))
+    setFormData(prev => ({ ...prev, [field]: String(value) }))
   }
 
   const addPart = () => {
@@ -103,7 +103,7 @@ export function WorkOrderForm({ onSubmit }: WorkOrderFormProps) {
         {/* Priority */}
         <div>
           <Label htmlFor="priority">Priority</Label>
-          <Select value={formData.priority} onValueChange={(v) => handleChange('priority', v)}>
+          <Select value={formData.priority ?? ""} onValueChange={(v) => handleChange('priority', v)}>
             <SelectTrigger id="priority" className="border-zinc-800">
               <SelectValue />
             </SelectTrigger>

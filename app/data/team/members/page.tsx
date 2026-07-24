@@ -36,6 +36,7 @@ export default function TeamMembersPage() {
   const [roleFilter, setRoleFilter] = useState('all')
   const [showAddMember, setShowAddMember] = useState(false)
   const [editingMemberId, setEditingMemberId] = useState<string | null>(null)
+  const [editingRole, setEditingRole] = useState<string>('')
 
   // Load team members
   useEffect(() => {

@@ -23,15 +23,19 @@ export async function POST(request: NextRequest) {
   const rawBody = await request.text()
   const signature = request.headers.get('x-square-hmacsha256-signature')
 
-  // In production the signature key must be set. If it is set, enforce it.
-  if (process.env.SQUARE_WEBHOOK_SIGNATURE_KEY) {
+  // In production the signature key MUST be set — hard-fail if missing.
+  if (!process.env.SQUARE_WEBHOOK_SIGNATURE_KEY) {
+    if (process.env.NODE_ENV === 'production') {
+      console.error('[Square webhook] SQUARE_WEBHOOK_SIGNATURE_KEY is not set in production — rejecting all webhook calls')
+      return NextResponse.json({ error: 'webhook verification misconfigured' }, { status: 500 })
+    }
+    console.warn('[Square webhook] SQUARE_WEBHOOK_SIGNATURE_KEY not set — skipping verification (non-production only)')
+  } else {
     const valid = verifySquareWebhookSignature(rawBody, signature, squareWebhookUrl())
     if (!valid) {
-      console.warn('[v0] Square webhook: signature verification FAILED')
+      console.warn('[Square webhook] Signature verification FAILED — rejecting request')
       return NextResponse.json({ error: 'invalid signature' }, { status: 401 })
     }
-  } else {
-    console.warn('[v0] Square webhook: SQUARE_WEBHOOK_SIGNATURE_KEY not set — skipping verification')
   }
 
   let body: any
@@ -44,7 +48,7 @@ export async function POST(request: NextRequest) {
   const eventType: string = body?.type ?? ''
   const data = body?.data?.object
 
-  console.log(`[v0] Square webhook verified: ${eventType}`)
+  console.log(`[square] webhook verified: ${eventType}`)
 
   try {
     switch (eventType) {

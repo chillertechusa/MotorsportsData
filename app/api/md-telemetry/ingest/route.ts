@@ -122,8 +122,8 @@ async function handler(req: NextRequest) {
 
     // Run all three DB operations in parallel
     await Promise.all([
-      db.insert(mdLiveTelemetry).values(telemetryInserts),
-      alerts.length > 0 ? db.insert(mdLiveAlerts).values(alerts) : Promise.resolve(),
+      db.insert(mdLiveTelemetry).values(telemetryInserts).then(() => void 0),
+      (alerts.length > 0 ? db.insert(mdLiveAlerts).values(alerts) : Promise.resolve()).then(() => void 0),
       lastPoint.lapTimeSeconds
         ? db
             .update(mdLiveSessions)

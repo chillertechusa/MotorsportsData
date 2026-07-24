@@ -129,11 +129,11 @@ export default function TierCheckoutClient({ tier, squareReady, appId, locationI
 
       if (res.ok) {
         setSuccess(true)
-        // Brief pause so success state is visible before redirect
+        // Brief pause so success state is visible then route to founding welcome
         setTimeout(() => {
-          router.push('/data')
+          router.push('/welcome')
           router.refresh()
-        }, 2500)
+        }, 2000)
       } else {
         // Parse backend errors and make them user-friendly
         let friendlyError = res.error || 'Payment failed. Please try again.'

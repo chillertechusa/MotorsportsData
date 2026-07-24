@@ -4,9 +4,11 @@ import { Barlow, Barlow_Condensed, Geist_Mono } from 'next/font/google'
 import Script from 'next/script'
 import { CartProvider } from '@/lib/cart-context'
 import CartDrawer from '@/components/store/cart-drawer'
+import { Toaster } from 'sonner'
 
 import { ServiceWorkerInit } from '@/components/service-worker-init'
 import MdNav from '@/components/md-nav'
+import LaunchCountdownBanner from '@/components/launch-countdown-banner'
 import './globals.css'
 
 const GTM_ID = 'GTM-M3VJNV6L'
@@ -216,6 +218,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
         <CartProvider>
+          {/* Launch countdown — renders above the fixed nav, dismissible */}
+          <LaunchCountdownBanner />
           {/* Fixed navigation — inside CartProvider so CartButton can access cart context */}
           <MdNav />
           <div className="pt-14">
@@ -223,6 +227,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
           <CartDrawer />
         </CartProvider>
+        <Toaster richColors position="top-right" />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

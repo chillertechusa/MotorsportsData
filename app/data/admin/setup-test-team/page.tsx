@@ -6,7 +6,7 @@ import { createTestTeamAccount } from '@/app/actions/create-test-team'
 export default function SetupTestTeamPage() {
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<any>(null)
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<string | null | undefined>(null)
 
   const handleSetup = async () => {
     setLoading(true)

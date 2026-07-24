@@ -211,7 +211,7 @@ export function AnalyticsDashboard() {
                   <YAxis stroke="#999" />
                   <Tooltip
                     contentStyle={{ backgroundColor: '#1a1a1a', border: '1px solid #333' }}
-                    formatter={(value: number) => formatCurrency(value)}
+                    formatter={(value) => [formatCurrency(Number(value)), 'Revenue']}
                   />
                   <Bar dataKey="revenue" fill="#ccff00" name="Revenue" />
                 </BarChart>
@@ -237,7 +237,7 @@ export function AnalyticsDashboard() {
                       <Cell key={`cell-${index}`} fill={entry.color} />
                     ))}
                   </Pie>
-                  <Tooltip formatter={(value: number) => value} />
+                  <Tooltip formatter={(value) => [Number(value), 'Count']} />
                 </PieChart>
               </ResponsiveContainer>
             </div>

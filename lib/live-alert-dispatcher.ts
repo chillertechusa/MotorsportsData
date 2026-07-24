@@ -52,7 +52,7 @@ export async function processTelemetryAlerts(
         point.tirePressRear || 0
       )
 
-      if (maxTireTemp > thresholds.tireTempHighCritical) {
+      if (maxTireTemp > (thresholds.tireTempHighCritical ?? 0)) {
         alerts.push({
           alertType: 'TIRE_TEMP',
           severity: 'CRITICAL',
@@ -60,7 +60,7 @@ export async function processTelemetryAlerts(
           triggerData: { tireTemp: maxTireTemp, maxTemp: thresholds.tireTempHighCritical },
           recommendation: 'Reduce pace immediately. Check tire wear and brake balance. Pit for tire change if condition persists.',
         })
-      } else if (maxTireTemp > thresholds.tireTempHighWarn) {
+      } else if (maxTireTemp > (thresholds.tireTempHighWarn ?? 0)) {
         alerts.push({
           alertType: 'TIRE_TEMP',
           severity: 'WARNING',
@@ -73,7 +73,7 @@ export async function processTelemetryAlerts(
 
     // Engine temperature alert
     if (point.engineTempC) {
-      if (point.engineTempC > thresholds.engineTempHighCritical) {
+      if (point.engineTempC > (thresholds.engineTempHighCritical ?? 0)) {
         alerts.push({
           alertType: 'ENGINE_OVERHEAT',
           severity: 'CRITICAL',
@@ -81,7 +81,7 @@ export async function processTelemetryAlerts(
           triggerData: { engineTemp: point.engineTempC, maxTemp: thresholds.engineTempHighCritical },
           recommendation: 'Reduce RPM and pace immediately. Check coolant level. Consider pit stop.',
         })
-      } else if (point.engineTempC > thresholds.engineTempHighWarn) {
+      } else if (point.engineTempC > (thresholds.engineTempHighWarn ?? 0)) {
         alerts.push({
           alertType: 'ENGINE_OVERHEAT',
           severity: 'WARNING',
@@ -98,7 +98,7 @@ export async function processTelemetryAlerts(
       const bestLapTime = Math.min(...lastThreeLaps)
       const currentDelta = point.lapTimeSeconds - bestLapTime
 
-      if (currentDelta > thresholds.paceDropCriticalSeconds) {
+      if (currentDelta > (thresholds.paceDropCriticalSeconds ?? 0)) {
         alerts.push({
           alertType: 'PACE_DROP',
           severity: 'CRITICAL',
@@ -106,7 +106,7 @@ export async function processTelemetryAlerts(
           triggerData: { currentLap: point.lapTimeSeconds, bestLap: bestLapTime, delta: currentDelta },
           recommendation: 'Check tire condition, fuel load, and suspension setup. Review recent inputs.',
         })
-      } else if (currentDelta > thresholds.paceDropWarnSeconds) {
+      } else if (currentDelta > (thresholds.paceDropWarnSeconds ?? 0)) {
         alerts.push({
           alertType: 'PACE_DROP',
           severity: 'WARNING',
