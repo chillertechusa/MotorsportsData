@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { toast } from 'sonner'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 declare global {
@@ -55,7 +56,6 @@ export default function CheckoutClient({
     zip: prefill.zip ?? '',
   })
   const [submitting, setSubmitting] = useState(false)
-  const [error, setError] = useState<string | null>(null)
   const [cardReady, setCardReady] = useState(false)
 
   const cardRef = useRef<any>(null)
@@ -86,7 +86,7 @@ export default function CheckoutClient({
         setCardReady(true)
       } catch (err) {
         console.log('[v0] Square card init error:', err)
-        setError('Could not load the card form. Please refresh.')
+        toast.error('Could not load the card form. Please refresh.')
       }
     }
 
@@ -128,11 +128,10 @@ export default function CheckoutClient({
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setError(null)
 
     const validationError = validate()
     if (validationError) {
-      setError(validationError)
+      toast.error(validationError)
       return
     }
 
@@ -142,13 +141,13 @@ export default function CheckoutClient({
 
       if (squareReady) {
         if (!cardRef.current) {
-          setError('Card form is still loading. Please wait a moment.')
+          toast.error('Card form is still loading. Please wait a moment.')
           setSubmitting(false)
           return
         }
         const result = await cardRef.current.tokenize()
         if (result.status !== 'OK') {
-          setError('Please check your card details and try again.')
+          toast.error('Please check your card details and try again.')
           setSubmitting(false)
           return
         }

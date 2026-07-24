@@ -48,6 +48,7 @@
     "recharts": "^3.9.2",
     "resend": "^6.17.2",
     "shadcn": "^4.8.0",
+    "sonner": "^2.0.7",
     "square": "^44.2.0",
     "svg-to-pdfkit": "^0.1.8",
     "swr": "^2.4.2",

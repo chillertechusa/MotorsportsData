@@ -4,6 +4,7 @@ import { Barlow, Barlow_Condensed, Geist_Mono } from 'next/font/google'
 import Script from 'next/script'
 import { CartProvider } from '@/lib/cart-context'
 import CartDrawer from '@/components/store/cart-drawer'
+import { Toaster } from 'sonner'
 
 import { ServiceWorkerInit } from '@/components/service-worker-init'
 import MdNav from '@/components/md-nav'
@@ -221,6 +222,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
           <CartDrawer />
         </CartProvider>
+        <Toaster richColors position="top-right" />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
