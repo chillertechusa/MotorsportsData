@@ -1,4 +1,4 @@
-import { Analytics } from '@vercel/analytics/next'
+import { VercelAnalytics } from '@/components/vercel-analytics'
 import type { Metadata, Viewport } from 'next'
 import { Barlow, Barlow_Condensed, Geist_Mono } from 'next/font/google'
 import Script from 'next/script'
@@ -228,7 +228,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <CartDrawer />
         </CartProvider>
         <Toaster richColors position="top-right" />
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        {process.env.NODE_ENV === 'production' && <VercelAnalytics />}
       </body>
     </html>
   )
