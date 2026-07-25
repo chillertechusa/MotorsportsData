@@ -3,6 +3,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server'
+import { getSessionTeamId } from '@/lib/md-auth'
 
 interface ControlRequest {
   action: 'start' | 'stop' | 'complete'
@@ -17,6 +18,8 @@ export async function POST(
   request: NextRequest,
   { params }: { params: Promise<Params> }
 ) {
+  const auth = await getSessionTeamId()
+  if (!auth.ok) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   try {
     const { id: sessionId } = await params
     const body: ControlRequest = await request.json()

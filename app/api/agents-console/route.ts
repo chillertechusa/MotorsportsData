@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { runAllAgentsAcrossGroups, AGENT_GROUPS } from '@/app/actions/agents-orchestrator'
+import { getMdOwner } from '@/lib/md-owner-auth'
 
 /**
  * GET /api/agents-console
- * Returns all agent groups and their current status (if cached)
+ * Returns all agent groups and their current status. Owner-only.
  */
 export async function GET(request: NextRequest) {
+  const owner = await getMdOwner()
+  if (!owner) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   try {
     const result = await runAllAgentsAcrossGroups()
     return NextResponse.json(result)
@@ -22,9 +25,11 @@ export async function GET(request: NextRequest) {
 
 /**
  * POST /api/agents-console
- * Manually trigger all agents or specific group
+ * Manually trigger all agents or specific group. Owner-only.
  */
 export async function POST(request: NextRequest) {
+  const owner = await getMdOwner()
+  if (!owner) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   try {
     const body = await request.json().catch(() => ({}))
     const { groupId } = body as { groupId?: string }

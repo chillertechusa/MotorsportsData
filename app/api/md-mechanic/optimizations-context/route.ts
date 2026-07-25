@@ -2,12 +2,15 @@ import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 import { mdMechanicPortfolio, mdMechanicOptimizations } from '@/lib/db/schema'
 import { eq, desc } from 'drizzle-orm'
+import { getSessionTeamId } from '@/lib/md-auth'
 
 /**
  * GET /api/md-mechanic/optimizations-context?mechanicUserId=...
- * Returns mechanic's portfolio context + recent optimizations for AI grounding
+ * Returns mechanic's portfolio context + recent optimizations for AI grounding.
  */
 export async function GET(req: NextRequest) {
+  const auth = await getSessionTeamId()
+  if (!auth.ok) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   try {
     const { searchParams } = new URL(req.url)
     const mechanicUserId = searchParams.get('mechanicUserId')

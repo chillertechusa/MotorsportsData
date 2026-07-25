@@ -5,11 +5,20 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server'
+import { getSessionTeamId } from '@/lib/md-auth'
 
 export async function GET(request: NextRequest) {
+  const auth = await getSessionTeamId()
+  if (!auth.ok) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
   try {
     const searchParams = request.nextUrl.searchParams
     const teamId = searchParams.get('teamId')
+
+    // Caller may only query their own team
+    if (teamId && teamId !== auth.teamId) {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+    }
     const startStr = searchParams.get('start') || '2026-06-01'
     const endStr = searchParams.get('end') || '2026-12-31'
     const period = (searchParams.get('period') || '30d') as '7d' | '30d' | '90d'

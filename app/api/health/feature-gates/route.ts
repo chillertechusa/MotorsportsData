@@ -30,7 +30,6 @@ export async function GET() {
       {
         status: 'error',
         service: 'feature-gates',
-        error: error instanceof Error ? error.message : 'Unknown error',
         timestamp: new Date().toISOString(),
       },
       { status: 500 }

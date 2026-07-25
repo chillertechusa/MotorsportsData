@@ -1,6 +1,7 @@
 import { streamText } from 'ai'
 import { NextRequest } from 'next/server'
 import { logAICall } from '@/lib/ai-cost-logger'
+import { getSessionTeamId } from '@/lib/md-auth'
 
 const FEATURE_CONTEXT: Record<string, string> = {
   fitness: 'You are a fitness and readiness coach. Help the user understand their HRV, sleep, energy, and recovery metrics. Give actionable advice on training load and rest days. Keep responses concise (2–3 sentences max).',
@@ -15,6 +16,8 @@ const FEATURE_CONTEXT: Record<string, string> = {
 }
 
 export async function POST(req: NextRequest) {
+  const auth = await getSessionTeamId()
+  if (!auth.ok) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 })
   try {
     const { feature, messages } = await req.json()
 

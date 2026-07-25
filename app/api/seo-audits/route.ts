@@ -1,15 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { runSeoAuditOrchestrator } from '@/app/actions/seo-audit-orchestrator'
+import { getMdOwner } from '@/lib/md-owner-auth'
 
 // Store latest audit result in memory (for demo purposes)
 let cachedAuditResult: any = null
 let lastAuditTime = 0
 
 /**
- * GET /api/seo-audits
- * Returns the latest SEO audit results
+ * GET /api/seo-audits — Owner-only
  */
 export async function GET(request: NextRequest) {
+  const owner = await getMdOwner()
+  if (!owner) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   try {
     // Return cached result if available
     if (cachedAuditResult && Date.now() - lastAuditTime < 60000) {
@@ -31,10 +33,11 @@ export async function GET(request: NextRequest) {
 }
 
 /**
- * POST /api/seo-audits
- * Triggers a new SEO audit and returns results
+ * POST /api/seo-audits — Owner-only
  */
 export async function POST(request: NextRequest) {
+  const owner = await getMdOwner()
+  if (!owner) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   try {
     // Run the audit
     const results = await runSeoAuditOrchestrator()

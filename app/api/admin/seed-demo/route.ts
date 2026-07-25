@@ -1,12 +1,15 @@
 import { generateDemoTeamData } from '@/app/actions/seed-demo-team'
 import { NextResponse } from 'next/server'
+import { requireMdOwner } from '@/lib/md-owner-auth'
 
 /**
  * POST /api/admin/seed-demo
- * Triggers the demo team data generation. Gated by ALLOW_SEED=true env var.
- * For admin use only.
+ * Triggers the demo team data generation. Owner-only + ALLOW_SEED env guard.
  */
 export async function POST() {
+  const owner = await requireMdOwner()
+  if (!owner) return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 })
+
   if (process.env.ALLOW_SEED !== 'true') {
     return NextResponse.json(
       { success: false, error: 'Seeding is disabled. Set ALLOW_SEED=true to enable.' },

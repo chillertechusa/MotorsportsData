@@ -31,6 +31,6 @@ export async function getMdOwner(): Promise<{ email: string; name: string | null
  */
 export async function requireMdOwner() {
   const owner = await getMdOwner()
-  if (!owner) redirect('/data/sign-in')
+  if (!owner) redirect('/auth/sign-in')
   return owner
 }
