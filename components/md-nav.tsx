@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import MdLogo from './md-logo'
+import DemoButton from './demo-button'
 
 
 export default function MdNav() {
