@@ -17,7 +17,7 @@ async function getTeamId(userId: string) {
 const TYPE_STYLE: Record<string, { dot: string; badge: string }> = {
   race:     { dot: 'bg-red-400',    badge: 'text-red-400 border-red-400/20 bg-red-400/5' },
   practice: { dot: 'bg-zinc-500',   badge: 'text-zinc-400 border-zinc-700 bg-zinc-800' },
-  default:  { dot: 'bg-orange-400', badge: 'text-orange-400 border-orange-400/20 bg-orange-400/5' },
+  default:  { dot: 'bg-sky-400',    badge: 'text-sky-400 border-sky-400/20 bg-sky-400/5' },
 }
 
 export default async function RaceCalendarPage() {
@@ -46,7 +46,7 @@ export default async function RaceCalendarPage() {
           <p className="text-zinc-500 text-sm mt-1">{upcoming.length} upcoming &middot; {past.length} completed</p>
         </div>
         <button
-          className="inline-flex items-center gap-2 bg-orange-400 text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-orange-300 transition-colors"
+          className="inline-flex items-center gap-2 bg-sky-400 text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-sky-300 transition-colors"
           aria-label="Add event (demo — upgrade for full access)"
         >
           <Plus className="h-4 w-4" aria-hidden="true" />

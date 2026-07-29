@@ -46,7 +46,7 @@ const PERSONAS: {
       'Mechanic notes + suspension history per bike',
     ],
     price: 'From $49 / mo',
-    accent: 'orange',
+    accent: 'sky',
   },
   {
     fig: 'FIG 03',
@@ -68,7 +68,6 @@ const PERSONAS: {
 
 const ACCENT_CLASSES: Record<string, { border: string; text: string; bg: string; label: string }> = {
   lime:   { border: 'border-lime-400/30 hover:border-lime-400/60',   text: 'text-lime-400',   bg: 'bg-lime-400',   label: 'bg-lime-400/10 text-lime-400 border-lime-400/20' },
-  orange: { border: 'border-orange-400/30 hover:border-orange-400/60', text: 'text-orange-400', bg: 'bg-orange-400', label: 'bg-orange-400/10 text-orange-400 border-orange-400/20' },
   sky:    { border: 'border-sky-400/30 hover:border-sky-400/60',     text: 'text-sky-400',    bg: 'bg-sky-400',    label: 'bg-sky-400/10 text-sky-400 border-sky-400/20' },
 }
 
@@ -160,8 +159,8 @@ export default function PersonaSelector() {
                 className={`w-full justify-center rounded-none
                   ${p.accent === 'lime'
                     ? 'bg-lime-400 text-zinc-950 hover:bg-lime-300'
-                    : p.accent === 'orange'
-                    ? 'bg-orange-400 text-zinc-950 hover:bg-orange-300'
+                    : p.accent === 'sky'
+                    ? 'bg-sky-400 text-zinc-950 hover:bg-sky-300'
                     : 'bg-sky-400 text-zinc-950 hover:bg-sky-300'
                   }
                 `}

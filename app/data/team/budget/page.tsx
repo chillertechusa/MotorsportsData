@@ -17,7 +17,7 @@ async function getTeamId(userId: string) {
 const CATEGORY_COLORS: Record<string, string> = {
   'Entry Fees': 'text-red-400 border-red-400/20 bg-red-400/5',
   'Travel':     'text-sky-400 border-sky-400/20 bg-sky-400/5',
-  'Parts':      'text-orange-400 border-orange-400/20 bg-orange-400/5',
+  'Parts':      'text-sky-400 border-sky-400/20 bg-sky-400/5',
   'Gear':       'text-lime-400 border-lime-400/20 bg-lime-400/5',
   'Coaching':   'text-violet-400 border-violet-400/20 bg-violet-400/5',
 }
@@ -57,7 +57,7 @@ export default async function BudgetPage() {
           <p className="text-zinc-500 text-sm mt-1">{expenses.length} expense{expenses.length !== 1 ? 's' : ''} recorded</p>
         </div>
         <button
-          className="inline-flex items-center gap-2 bg-orange-400 text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-orange-300 transition-colors"
+          className="inline-flex items-center gap-2 bg-sky-400 text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-sky-300 transition-colors"
           aria-label="Add expense (demo — upgrade for full access)"
         >
           <Plus className="h-4 w-4" aria-hidden="true" />
@@ -69,7 +69,7 @@ export default async function BudgetPage() {
       <div className="grid grid-cols-3 gap-3">
         {[
           { label: 'Total Season',    value: total,    accent: 'text-zinc-100' },
-          { label: 'Spent',           value: paid,     accent: 'text-orange-400' },
+          { label: 'Spent',           value: paid,     accent: 'text-sky-400' },
           { label: 'Upcoming',        value: upcoming, accent: 'text-yellow-400' },
         ].map(({ label, value, accent }) => (
           <div key={label} className="bg-zinc-900 border border-zinc-800 p-5">
@@ -91,7 +91,7 @@ export default async function BudgetPage() {
                 <span className={`text-[9px] font-mono uppercase tracking-wider px-2 py-0.5 border shrink-0 ${colorClass}`}>{cat}</span>
                 <div className="flex-1 min-w-0">
                   <div className="h-1.5 bg-zinc-800 rounded-full overflow-hidden">
-                    <div className="h-full bg-orange-400 rounded-full" style={{ width: `${pct}%` }} aria-label={`${pct}% of budget`} />
+                    <div className="h-full bg-sky-400 rounded-full" style={{ width: `${pct}%` }} aria-label={`${pct}% of budget`} />
                   </div>
                 </div>
                 <div className="text-right shrink-0">
@@ -125,7 +125,7 @@ export default async function BudgetPage() {
                       {new Date(e.expenseDate + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                     </p>
                   </div>
-                  <p className="text-sm font-bold text-orange-400 shrink-0">${(e.amountCents / 100).toLocaleString()}</p>
+                  <p className="text-sm font-bold text-sky-400 shrink-0">${(e.amountCents / 100).toLocaleString()}</p>
                 </div>
               )
             })}

@@ -44,7 +44,7 @@ export default async function MechanicPage() {
           <p className="text-zinc-500 text-sm mt-1">{open.length} open &middot; {closed.length} closed</p>
         </div>
         <button
-          className="inline-flex items-center gap-2 bg-orange-400 text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-orange-300 transition-colors"
+          className="inline-flex items-center gap-2 bg-sky-400 text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-sky-300 transition-colors"
           aria-label="New work order (demo — upgrade for full access)"
         >
           <Plus className="h-4 w-4" aria-hidden="true" />
@@ -64,7 +64,7 @@ export default async function MechanicPage() {
                   <p className="text-xs text-zinc-500 mt-0.5 font-mono">{v.type} &middot; {v.discipline}</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-xs font-mono text-orange-400">{v.engineHours?.toFixed(1)} hrs</p>
+                  <p className="text-xs font-mono text-sky-400">{v.engineHours?.toFixed(1)} hrs</p>
                   <p className="text-[10px] text-zinc-600 font-mono">Engine Hours</p>
                 </div>
               </div>

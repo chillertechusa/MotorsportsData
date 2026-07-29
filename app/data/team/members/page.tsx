@@ -17,7 +17,7 @@ interface TeamMember {
 const ROLE_COLORS: Record<string, string> = {
   owner: 'bg-red-100 text-red-800',
   coach: 'bg-blue-100 text-blue-800',
-  mechanic: 'bg-orange-100 text-orange-800',
+  mechanic: 'bg-sky-100 text-sky-800',
   mechanic_coach: 'bg-purple-100 text-purple-800',
 }
 

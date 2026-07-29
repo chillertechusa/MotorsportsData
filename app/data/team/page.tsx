@@ -47,7 +47,7 @@ export default async function TeamOverviewPage() {
   const sponsorTotal = sponsors.reduce((s, sp) => s + sp.valueCents, 0)
 
   const KPI = [
-    { label: 'YTD Spend',       value: `$${(ytdSpend / 100).toLocaleString()}`,    icon: DollarSign, href: '/data/team/budget',   accent: 'text-orange-400' },
+    { label: 'YTD Spend',       value: `$${(ytdSpend / 100).toLocaleString()}`,    icon: DollarSign, href: '/data/team/budget',   accent: 'text-sky-400' },
     { label: 'Next Race',       value: nextRaces[0]?.eventDate ?? 'None scheduled', icon: CalendarDays, href: '/data/team/calendar', accent: 'text-lime-400' },
     { label: 'Sponsor Value',   value: `$${(sponsorTotal / 100).toLocaleString()}`, icon: Award,       href: '/data/team/sponsors',  accent: 'text-sky-400' },
     { label: 'Open Work Orders',value: String(openWorkOrders.length),               icon: Wrench,      href: '/data/team/mechanic',  accent: 'text-red-400' },
@@ -84,7 +84,7 @@ export default async function TeamOverviewPage() {
         <section aria-labelledby="upcoming-races">
           <div className="flex items-center justify-between mb-3">
             <h2 id="upcoming-races" className="text-sm font-bold uppercase tracking-wider text-zinc-400">Upcoming Races</h2>
-            <Link href="/data/team/calendar" className="text-xs text-zinc-600 hover:text-orange-400 transition-colors flex items-center gap-1">
+            <Link href="/data/team/calendar" className="text-xs text-zinc-600 hover:text-sky-400 transition-colors flex items-center gap-1">
               View all <ArrowRight className="h-3 w-3" aria-hidden="true" />
             </Link>
           </div>
@@ -98,7 +98,7 @@ export default async function TeamOverviewPage() {
                   {e.series && <p className="text-xs text-zinc-500 mt-0.5">{e.series}</p>}
                 </div>
                 <div className="text-right shrink-0">
-                  <p className="text-xs font-mono text-orange-400">{new Date(e.eventDate + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</p>
+                  <p className="text-xs font-mono text-sky-400">{new Date(e.eventDate + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</p>
                   <span className={`text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 mt-1 inline-block border ${
                     e.eventType === 'race' ? 'text-red-400 border-red-400/20 bg-red-400/5' : 'text-zinc-500 border-zinc-700'
                   }`}>{e.eventType}</span>
@@ -112,7 +112,7 @@ export default async function TeamOverviewPage() {
         <section aria-labelledby="recent-expenses">
           <div className="flex items-center justify-between mb-3">
             <h2 id="recent-expenses" className="text-sm font-bold uppercase tracking-wider text-zinc-400">Recent Expenses</h2>
-            <Link href="/data/team/budget" className="text-xs text-zinc-600 hover:text-orange-400 transition-colors flex items-center gap-1">
+            <Link href="/data/team/budget" className="text-xs text-zinc-600 hover:text-sky-400 transition-colors flex items-center gap-1">
               View all <ArrowRight className="h-3 w-3" aria-hidden="true" />
             </Link>
           </div>
@@ -125,7 +125,7 @@ export default async function TeamOverviewPage() {
                   <p className="text-sm text-zinc-200 truncate">{e.description ?? e.category}</p>
                   <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider mt-0.5">{e.category}</p>
                 </div>
-                <p className="text-sm font-bold text-orange-400 shrink-0">${(e.amountCents / 100).toLocaleString()}</p>
+                <p className="text-sm font-bold text-sky-400 shrink-0">${(e.amountCents / 100).toLocaleString()}</p>
               </div>
             ))}
           </div>
@@ -137,7 +137,7 @@ export default async function TeamOverviewPage() {
         <section aria-labelledby="sponsor-summary">
           <div className="flex items-center justify-between mb-3">
             <h2 id="sponsor-summary" className="text-sm font-bold uppercase tracking-wider text-zinc-400">Active Sponsors</h2>
-            <Link href="/data/team/sponsors" className="text-xs text-zinc-600 hover:text-orange-400 transition-colors flex items-center gap-1">
+            <Link href="/data/team/sponsors" className="text-xs text-zinc-600 hover:text-sky-400 transition-colors flex items-center gap-1">
               Manage <ArrowRight className="h-3 w-3" aria-hidden="true" />
             </Link>
           </div>
@@ -161,7 +161,7 @@ export default async function TeamOverviewPage() {
         <section aria-labelledby="open-wo">
           <div className="flex items-center justify-between mb-3">
             <h2 id="open-wo" className="text-sm font-bold uppercase tracking-wider text-zinc-400">Open Work Orders</h2>
-            <Link href="/data/team/mechanic" className="text-xs text-zinc-600 hover:text-orange-400 transition-colors flex items-center gap-1">
+            <Link href="/data/team/mechanic" className="text-xs text-zinc-600 hover:text-sky-400 transition-colors flex items-center gap-1">
               View <ArrowRight className="h-3 w-3" aria-hidden="true" />
             </Link>
           </div>
