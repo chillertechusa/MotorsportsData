@@ -51,7 +51,7 @@ export default async function MembershipsPage() {
           <p className="text-zinc-500 text-sm mt-1">{invoices.length} invoice{invoices.length !== 1 ? 's' : ''}</p>
         </div>
         <button
-          className="inline-flex items-center gap-2 bg-sky-400 text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-sky-300 transition-colors"
+          className="inline-flex items-center gap-2 bg-[var(--color-yamaha)] text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-[var(--color-yamaha-light)] transition-colors"
           aria-label="Create invoice (demo — upgrade for full access)"
         >
           <Plus className="h-4 w-4" aria-hidden="true" />

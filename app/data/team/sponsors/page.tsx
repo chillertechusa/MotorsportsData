@@ -45,7 +45,7 @@ export default async function SponsorsPage() {
           <p className="text-zinc-500 text-sm mt-1">{sponsors.filter(s => s.status === 'active').length} active sponsors</p>
         </div>
         <button
-          className="inline-flex items-center gap-2 bg-sky-400 text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-sky-300 transition-colors"
+          className="inline-flex items-center gap-2 bg-[var(--color-yamaha)] text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-[var(--color-yamaha-light)] transition-colors"
           aria-label="Add sponsor (demo — upgrade for full access)"
         >
           <Plus className="h-4 w-4" aria-hidden="true" />
@@ -58,7 +58,7 @@ export default async function SponsorsPage() {
         {[
           { label: 'Total Value',    value: totalValue,   accent: 'text-zinc-100' },
           { label: 'Cash Sponsors',  value: cashValue,    accent: 'text-lime-400' },
-          { label: 'Product Value',  value: productValue, accent: 'text-sky-400' },
+          { label: 'Product Value',  value: productValue, accent: 'text-[var(--color-yamaha)]' },
         ].map(({ label, value, accent }) => (
           <div key={label} className="bg-zinc-900 border border-zinc-800 p-5">
             <p className={`text-2xl font-black ${accent}`}>${(value / 100).toLocaleString()}</p>
@@ -88,13 +88,13 @@ export default async function SponsorsPage() {
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
                     <span className={`inline-flex items-center gap-1 text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 border ${
-                      s.sponsorType === 'cash' ? 'text-lime-400 border-lime-400/20' : 'text-sky-400 border-sky-400/20'
+                      s.sponsorType === 'cash' ? 'text-lime-400 border-lime-400/20' : 'text-[var(--color-yamaha)] border-[var(--color-yamaha-border)]'
                     }`}>{s.sponsorType}</span>
                     <span className={`inline-flex items-center gap-1 text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 border ${statusCfg.class}`}>
                       <StatusIcon className="h-2.5 w-2.5" aria-hidden="true" />
                       {statusCfg.label}
                     </span>
-                    <span className="text-base font-black text-sky-400">${(s.valueCents / 100).toLocaleString()}</span>
+                    <span className="text-base font-black text-[var(--color-yamaha)]">${(s.valueCents / 100).toLocaleString()}</span>
                   </div>
                 </div>
 

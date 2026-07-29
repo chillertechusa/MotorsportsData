@@ -62,7 +62,7 @@ export default function TeamLayout({ children }: { children: React.ReactNode }) 
                   className={cn(
                     'flex items-center gap-3 px-3 py-2.5 text-sm font-semibold transition-colors',
                     active
-                      ? 'bg-zinc-800 text-sky-400'
+                      ? 'bg-zinc-800 text-[var(--color-yamaha)]'
                       : 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900',
                   )}
                 >
@@ -76,7 +76,7 @@ export default function TeamLayout({ children }: { children: React.ReactNode }) 
           <div className="px-4 pb-6 mt-auto">
             <Link
               href="/auth/sign-up?plan=privateer&utm_source=team_demo"
-              className="block w-full text-center text-xs font-black uppercase tracking-widest bg-sky-400 text-zinc-950 px-3 py-2.5 hover:bg-sky-300 transition-colors"
+              className="block w-full text-center text-xs font-black uppercase tracking-widest bg-[var(--color-yamaha)] text-zinc-950 px-3 py-2.5 hover:bg-[var(--color-yamaha-light)] transition-colors"
             >
               Get Full Access
             </Link>

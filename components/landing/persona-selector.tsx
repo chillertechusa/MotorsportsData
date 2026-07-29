@@ -46,7 +46,7 @@ const PERSONAS: {
       'Mechanic notes + suspension history per bike',
     ],
     price: 'From $49 / mo',
-    accent: 'sky',
+    accent: 'yamaha',
   },
   {
     fig: 'FIG 03',
@@ -62,13 +62,13 @@ const PERSONAS: {
       'Revenue tracking across all programs',
     ],
     price: 'From $299 / mo',
-    accent: 'sky',
+    accent: 'yamaha',
   },
 ]
 
 const ACCENT_CLASSES: Record<string, { border: string; text: string; bg: string; label: string }> = {
   lime:   { border: 'border-lime-400/30 hover:border-lime-400/60',   text: 'text-lime-400',   bg: 'bg-lime-400',   label: 'bg-lime-400/10 text-lime-400 border-lime-400/20' },
-  sky:    { border: 'border-sky-400/30 hover:border-sky-400/60',     text: 'text-sky-400',    bg: 'bg-sky-400',    label: 'bg-sky-400/10 text-sky-400 border-sky-400/20' },
+  yamaha: { border: 'border-[var(--color-yamaha-border)] hover:border-[var(--color-yamaha)]',     text: 'text-[var(--color-yamaha-light)]', bg: 'bg-[var(--color-yamaha)]', label: 'bg-[var(--color-yamaha-faint)] text-[var(--color-yamaha-light)] border-[var(--color-yamaha-border)]' },
 }
 
 export default function PersonaSelector() {
@@ -159,9 +159,9 @@ export default function PersonaSelector() {
                 className={`w-full justify-center rounded-none
                   ${p.accent === 'lime'
                     ? 'bg-lime-400 text-zinc-950 hover:bg-lime-300'
-                    : p.accent === 'sky'
-                    ? 'bg-sky-400 text-zinc-950 hover:bg-sky-300'
-                    : 'bg-sky-400 text-zinc-950 hover:bg-sky-300'
+                    : p.accent === 'yamaha'
+                    ? 'bg-[var(--color-yamaha)] text-zinc-950 hover:bg-[var(--color-yamaha-light)]'
+                    : 'bg-[var(--color-yamaha)] text-zinc-950 hover:bg-[var(--color-yamaha-light)]'
                   }
                 `}
               />

@@ -41,7 +41,7 @@ export default async function CampsPage() {
           <p className="text-zinc-500 text-sm mt-1">{camps.length} camp program{camps.length !== 1 ? 's' : ''} &middot; {sessions.length} track session{sessions.length !== 1 ? 's' : ''}</p>
         </div>
         <button
-          className="inline-flex items-center gap-2 bg-sky-400 text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-sky-300 transition-colors"
+          className="inline-flex items-center gap-2 bg-[var(--color-yamaha)] text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-[var(--color-yamaha-light)] transition-colors"
           aria-label="Create camp (demo — upgrade for full access)"
         >
           <Plus className="h-4 w-4" aria-hidden="true" />
@@ -66,7 +66,7 @@ export default async function CampsPage() {
                   {pkg.description && <p className="text-xs text-zinc-500 mt-1 leading-relaxed">{pkg.description}</p>}
                 </div>
                 <div className="flex items-center gap-3 flex-wrap mt-auto">
-                  <span className="text-lg font-black text-sky-400">${(pkg.priceCents / 100).toLocaleString()}</span>
+                  <span className="text-lg font-black text-[var(--color-yamaha)]">${(pkg.priceCents / 100).toLocaleString()}</span>
                   {pkg.sessionCount && (
                     <span className="text-[9px] font-mono uppercase tracking-wider border border-zinc-700 text-zinc-400 px-1.5 py-0.5">
                       {pkg.sessionCount} sessions
@@ -98,15 +98,15 @@ export default async function CampsPage() {
                   {s.location && <p className="text-xs text-zinc-500 mt-0.5">{s.location}</p>}
                   {s.notes && <p className="text-xs text-zinc-400 mt-2 leading-relaxed line-clamp-2">{s.notes}</p>}
                   {s.aiDebrief && (
-                    <div className="mt-3 bg-zinc-950 border border-sky-400/20 p-3">
-                      <p className="text-[9px] font-mono uppercase tracking-wider text-sky-400 mb-1.5">AI Debrief</p>
+                    <div className="mt-3 bg-zinc-950 border border-[var(--color-yamaha-border)] p-3">
+                      <p className="text-[9px] font-mono uppercase tracking-wider text-[var(--color-yamaha)] mb-1.5">AI Debrief</p>
                       <p className="text-xs text-zinc-400 leading-relaxed">{s.aiDebrief}</p>
                     </div>
                   )}
                 </div>
                 <div className="text-right shrink-0">
                   {s.scheduledAt && (
-                    <p className="text-xs font-mono text-sky-400">
+                    <p className="text-xs font-mono text-[var(--color-yamaha)]">
                       {new Date(s.scheduledAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                     </p>
                   )}

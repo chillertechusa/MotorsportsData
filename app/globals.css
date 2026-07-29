@@ -38,6 +38,13 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
+  /* Yamaha blue — exact #0047AB racing livery color */
+  --color-yamaha:          oklch(0.43 0.19 260);   /* #0047AB */
+  --color-yamaha-light:    oklch(0.58 0.18 260);   /* lighter hover */
+  --color-yamaha-dim:      oklch(0.43 0.19 260 / 0.2);
+  --color-yamaha-faint:    oklch(0.43 0.19 260 / 0.08);
+  --color-yamaha-border:   oklch(0.43 0.19 260 / 0.35);
+
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);

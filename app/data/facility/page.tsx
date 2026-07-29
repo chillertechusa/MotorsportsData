@@ -38,7 +38,7 @@ export default async function FacilityOverviewPage() {
   const pending  = invoices.filter(i => i.status === 'sent').reduce((s, i) => s + i.amountCents, 0)
 
   const KPI = [
-    { label: 'Active Members',    value: String(active.length),              icon: Users,       href: '/data/facility/roster',      accent: 'text-sky-400' },
+    { label: 'Active Members',    value: String(active.length),              icon: Users,       href: '/data/facility/roster',      accent: 'text-[var(--color-yamaha)]' },
     { label: 'Upcoming Sessions', value: String(upcomingSessions.length),     icon: CalendarDays,href: '/data/facility/schedule',    accent: 'text-lime-400' },
     { label: 'Revenue Collected', value: `$${(totalRev / 100).toLocaleString()}`, icon: DollarSign, href: '/data/facility/memberships', accent: 'text-green-400' },
     { label: 'Invoices Pending',  value: `$${(pending / 100).toLocaleString()}`,  icon: Tent,       href: '/data/facility/memberships', accent: 'text-yellow-400' },
@@ -71,7 +71,7 @@ export default async function FacilityOverviewPage() {
       <section aria-labelledby="upcoming-sessions">
         <div className="flex items-center justify-between mb-3">
           <h2 id="upcoming-sessions" className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-500">Upcoming Sessions</h2>
-          <Link href="/data/facility/schedule" className="text-xs text-zinc-600 hover:text-sky-400 transition-colors flex items-center gap-1">
+          <Link href="/data/facility/schedule" className="text-xs text-zinc-600 hover:text-[var(--color-yamaha)] transition-colors flex items-center gap-1">
             View all <ArrowRight className="h-3 w-3" aria-hidden="true" />
           </Link>
         </div>
@@ -88,7 +88,7 @@ export default async function FacilityOverviewPage() {
                 </div>
                 <div className="text-right shrink-0">
                   {s.scheduledAt && (
-                    <p className="text-xs font-mono text-sky-400">
+                    <p className="text-xs font-mono text-[var(--color-yamaha)]">
                       {new Date(s.scheduledAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                     </p>
                   )}
@@ -104,7 +104,7 @@ export default async function FacilityOverviewPage() {
       <section aria-labelledby="member-list">
         <div className="flex items-center justify-between mb-3">
           <h2 id="member-list" className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-500">Members</h2>
-          <Link href="/data/facility/roster" className="text-xs text-zinc-600 hover:text-sky-400 transition-colors flex items-center gap-1">
+          <Link href="/data/facility/roster" className="text-xs text-zinc-600 hover:text-[var(--color-yamaha)] transition-colors flex items-center gap-1">
             Manage <ArrowRight className="h-3 w-3" aria-hidden="true" />
           </Link>
         </div>
@@ -116,7 +116,7 @@ export default async function FacilityOverviewPage() {
               </div>
               <span className="text-xs font-semibold text-zinc-300">{m.firstName} {m.lastName}</span>
               {m.classCategory && (
-                <span className="text-[9px] font-mono text-sky-400 border border-sky-400/20 px-1.5 py-0.5">{m.classCategory}</span>
+                <span className="text-[9px] font-mono text-[var(--color-yamaha)] border border-[var(--color-yamaha-border)] px-1.5 py-0.5">{m.classCategory}</span>
               )}
             </div>
           ))}

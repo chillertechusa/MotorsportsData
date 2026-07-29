@@ -38,7 +38,7 @@ export default async function FacilityRosterPage() {
           <p className="text-zinc-500 text-sm mt-1">{active.length} active &middot; {pending.length} pending</p>
         </div>
         <button
-          className="inline-flex items-center gap-2 bg-sky-400 text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-sky-300 transition-colors"
+          className="inline-flex items-center gap-2 bg-[var(--color-yamaha)] text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-[var(--color-yamaha-light)] transition-colors"
           aria-label="Add member (demo — upgrade for full access)"
         >
           <Plus className="h-4 w-4" aria-hidden="true" />
@@ -56,7 +56,7 @@ export default async function FacilityRosterPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {members.map(m => (
             <article key={m.id} className={`bg-zinc-900 border p-5 flex flex-col gap-4 ${
-              m.status === 'pending' ? 'border-zinc-700 opacity-70' : 'border-zinc-800 hover:border-sky-400/30 transition-colors'
+              m.status === 'pending' ? 'border-zinc-700 opacity-70' : 'border-zinc-800 hover:border-[var(--color-yamaha-border)] transition-colors'
             }`}>
               <div className="flex items-center gap-3">
                 <div className="h-11 w-11 bg-zinc-800 border border-zinc-700 flex items-center justify-center text-sm font-bold text-zinc-200 shrink-0">
@@ -71,7 +71,7 @@ export default async function FacilityRosterPage() {
               </div>
               <div className="flex flex-wrap gap-2">
                 {m.discipline && (
-                  <span className="inline-flex items-center gap-1 font-mono text-[9px] uppercase tracking-wider text-sky-400 border border-sky-400/20 bg-sky-400/5 px-2 py-0.5">
+                  <span className="inline-flex items-center gap-1 font-mono text-[9px] uppercase tracking-wider text-[var(--color-yamaha)] border border-[var(--color-yamaha-border)] bg-[var(--color-yamaha)]/5 px-2 py-0.5">
                     <Tag className="h-2.5 w-2.5" aria-hidden="true" />
                     {m.discipline}
                   </span>
