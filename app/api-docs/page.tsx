@@ -295,7 +295,7 @@ export default function ApiDocsPage() {
         <section className="mb-12 border border-zinc-800 rounded-lg p-8 bg-zinc-900">
           <h2 className="text-2xl font-bold mb-4">HTTP Status Codes</h2>
           <div className="space-y-3 text-zinc-400">
-            <div><span className="font-mono text-lime-400">200</span> — Success</div>
+            <div><span className="font-mono text-green-500">200</span> — Success</div>
             <div><span className="font-mono text-zinc-300">400</span> — Bad request (validation error)</div>
             <div><span className="font-mono text-zinc-300">401</span> — Unauthorized (missing/invalid session)</div>
             <div><span className="font-mono text-zinc-300">403</span> — Forbidden (insufficient tier/permissions)</div>
@@ -309,7 +309,7 @@ export default function ApiDocsPage() {
           <h2 className="text-2xl font-bold mb-4">Support</h2>
           <p className="text-zinc-400">
             For API issues, check the{' '}
-            <a href="https://sentry.io" target="_blank" rel="noopener noreferrer" className="text-lime-400 hover:text-lime-300">
+            <a href="https://sentry.io" target="_blank" rel="noopener noreferrer" className="text-green-500 hover:text-green-400">
               Sentry error logs
             </a>
             {' '}or contact support at support@motorsportsdata.io

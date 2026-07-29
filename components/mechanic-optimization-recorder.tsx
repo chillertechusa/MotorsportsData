@@ -86,7 +86,7 @@ export function MechanicOptimizationRecorder({
       {!isOpen ? (
         <button
           onClick={() => setIsOpen(true)}
-          className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-lime-600 text-white rounded-lg font-semibold hover:bg-lime-500 transition"
+          className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-600 transition"
         >
           <Plus className="w-5 h-5" />
           Record Optimization
@@ -104,7 +104,7 @@ export function MechanicOptimizationRecorder({
                 value={formData.parameter}
                 onChange={(e) => setFormData({ ...formData, parameter: e.target.value })}
                 required
-                className="w-full bg-zinc-700 border border-zinc-600 rounded px-3 py-2 text-foreground focus:outline-none focus:border-lime-500"
+                className="w-full bg-zinc-700 border border-zinc-600 rounded px-3 py-2 text-foreground focus:outline-none focus:border-green-600"
               >
                 <option value="">Select parameter...</option>
                 {COMMON_PARAMETERS.map((param) => (
@@ -128,7 +128,7 @@ export function MechanicOptimizationRecorder({
                   onChange={(e) => setFormData({ ...formData, valueBefore: e.target.value })}
                   required
                   placeholder="e.g., 22 clicks"
-                  className="w-full bg-zinc-700 border border-zinc-600 rounded px-3 py-2 text-foreground focus:outline-none focus:border-lime-500"
+                  className="w-full bg-zinc-700 border border-zinc-600 rounded px-3 py-2 text-foreground focus:outline-none focus:border-green-600"
                 />
               </div>
               <div>
@@ -141,7 +141,7 @@ export function MechanicOptimizationRecorder({
                   onChange={(e) => setFormData({ ...formData, valueAfter: e.target.value })}
                   required
                   placeholder="e.g., 18 clicks"
-                  className="w-full bg-zinc-700 border border-zinc-600 rounded px-3 py-2 text-foreground focus:outline-none focus:border-lime-500"
+                  className="w-full bg-zinc-700 border border-zinc-600 rounded px-3 py-2 text-foreground focus:outline-none focus:border-green-600"
                 />
               </div>
             </div>
@@ -156,7 +156,7 @@ export function MechanicOptimizationRecorder({
                 onChange={(e) => setFormData({ ...formData, rationale: e.target.value })}
                 placeholder="Why did you make this change? What improvement do you expect?"
                 rows={3}
-                className="w-full bg-zinc-700 border border-zinc-600 rounded px-3 py-2 text-foreground focus:outline-none focus:border-lime-500"
+                className="w-full bg-zinc-700 border border-zinc-600 rounded px-3 py-2 text-foreground focus:outline-none focus:border-green-600"
               />
             </div>
 
@@ -171,7 +171,7 @@ export function MechanicOptimizationRecorder({
                 value={formData.estimatedDelta}
                 onChange={(e) => setFormData({ ...formData, estimatedDelta: e.target.value })}
                 placeholder="e.g., -0.3 for 0.3s faster"
-                className="w-full bg-zinc-700 border border-zinc-600 rounded px-3 py-2 text-foreground focus:outline-none focus:border-lime-500"
+                className="w-full bg-zinc-700 border border-zinc-600 rounded px-3 py-2 text-foreground focus:outline-none focus:border-green-600"
               />
               <p className="text-xs text-muted-foreground mt-1">
                 Negative values = faster laps. This helps train our AI on your accuracy.
@@ -183,7 +183,7 @@ export function MechanicOptimizationRecorder({
               <button
                 type="submit"
                 disabled={isLoading}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-lime-600 text-white rounded font-semibold hover:bg-lime-500 disabled:opacity-50 transition"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-white rounded font-semibold hover:bg-green-600 disabled:opacity-50 transition"
               >
                 {isLoading && <Loader2 className="w-4 h-4 animate-spin" />}
                 {isLoading ? 'Recording...' : 'Record Optimization'}

@@ -46,7 +46,7 @@ export default function SetupFinalTeamsPage() {
         <button
           onClick={handleCreateAccounts}
           disabled={loading}
-          className="w-full px-8 py-4 bg-lime-400 text-zinc-950 font-black uppercase tracking-widest rounded-xl hover:bg-lime-300 disabled:opacity-50 transition-colors mb-8"
+          className="w-full px-8 py-4 bg-green-500 text-zinc-950 font-black uppercase tracking-widest rounded-xl hover:bg-green-400 disabled:opacity-50 transition-colors mb-8"
         >
           {loading ? 'Creating Accounts...' : 'CREATE FINAL ACCOUNTS'}
         </button>

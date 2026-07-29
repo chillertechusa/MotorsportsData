@@ -44,7 +44,7 @@ export function FeatureGateModal({
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-800">
           <div className="flex items-center gap-2">
-            <Lock className="w-5 h-5 text-lime-400" />
+            <Lock className="w-5 h-5 text-green-500" />
             <h3 className="font-bold text-foreground">{featureName}</h3>
           </div>
           <button
@@ -63,8 +63,8 @@ export function FeatureGateModal({
           </p>
 
           {status?.upsellTier && (
-            <div className="bg-lime-950 border border-lime-700 rounded p-4">
-              <p className="text-sm text-lime-200">
+            <div className="bg-zinc-950 border border-green-800 rounded p-4">
+              <p className="text-sm text-green-300">
                 Unlock at{' '}
                 <span className="font-bold">
                   {TIER_LABELS[status.upsellTier as keyof typeof TIER_LABELS] ||
@@ -100,7 +100,7 @@ export function FeatureGateModal({
           <button
             onClick={handleUpgrade}
             disabled={isLoading || clicked}
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-lime-600 text-black rounded font-semibold hover:bg-lime-500 disabled:opacity-50 transition"
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-black rounded font-semibold hover:bg-green-600 disabled:opacity-50 transition"
           >
             {clicked ? 'Processing...' : 'Upgrade Now'}
             <ArrowRight className="w-4 h-4" />
@@ -139,7 +139,7 @@ export function withFeatureGate<P extends object>(
             </p>
             <button
               onClick={() => setShowModal(true)}
-              className="px-6 py-2 bg-lime-600 text-black rounded font-semibold hover:bg-lime-500 transition"
+              className="px-6 py-2 bg-green-600 text-black rounded font-semibold hover:bg-green-600 transition"
             >
               Upgrade Plan
             </button>

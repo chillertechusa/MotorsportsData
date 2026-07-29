@@ -15,7 +15,7 @@ export default function RookiePage() {
       <section className="px-8 py-20 max-w-6xl mx-auto">
         <div className="space-y-6 mb-12">
           <h1 className="text-5xl md:text-6xl font-black tracking-tight">
-            Log Every Ride. <span className="text-lime-400">Forever Free.</span>
+            Log Every Ride. <span className="text-green-500">Forever Free.</span>
           </h1>
           <p className="text-xl text-zinc-300 max-w-2xl leading-relaxed">
             Unlimited lap logging, unlimited data storage, complete data ownership. No paywall. No ads. No catch. Everything you track belongs to you.
@@ -25,7 +25,7 @@ export default function RookiePage() {
         <div className="flex flex-col md:flex-row gap-4">
           <Link
             href="/rookie/demo"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-lime-500 text-black font-bold rounded hover:bg-lime-400 transition"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-black font-bold rounded hover:bg-green-500 transition"
           >
             See What You Get <ArrowRight className="h-5 w-5" />
           </Link>
@@ -43,7 +43,7 @@ export default function RookiePage() {
         <p className="text-sm text-zinc-500 uppercase tracking-widest mb-8">Why riders choose free rider</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="space-y-2">
-            <p className="text-3xl font-black text-lime-400">100%</p>
+            <p className="text-3xl font-black text-green-500">100%</p>
             <p className="text-sm text-zinc-400">Your Data</p>
           </div>
           <div className="space-y-2">
@@ -72,7 +72,7 @@ export default function RookiePage() {
           {/* Unlimited Logging */}
           <div className="border border-zinc-800 bg-zinc-900 bg-opacity-50 p-8 rounded-lg space-y-4">
             <div className="flex items-center gap-3">
-              <Database className="h-6 w-6 text-lime-400" />
+              <Database className="h-6 w-6 text-green-500" />
               <h3 className="text-xl font-bold">Unlimited Logging</h3>
             </div>
             <p className="text-zinc-300 text-sm leading-relaxed">
@@ -80,19 +80,19 @@ export default function RookiePage() {
             </p>
             <ul className="space-y-2 text-sm text-zinc-400">
               <li className="flex gap-2">
-                <CheckCircle className="h-4 w-4 text-lime-400 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                 Unlimited sessions & unlimited storage
               </li>
               <li className="flex gap-2">
-                <CheckCircle className="h-4 w-4 text-lime-400 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                 Never lose a lap to storage limits
               </li>
               <li className="flex gap-2">
-                <CheckCircle className="h-4 w-4 text-lime-400 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                 Auto-backup to cloud (no setup needed)
               </li>
               <li className="flex gap-2">
-                <CheckCircle className="h-4 w-4 text-lime-400 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                 Access from any device, anywhere
               </li>
             </ul>
@@ -223,7 +223,7 @@ export default function RookiePage() {
               <ul className="space-y-2">
                 {tier.features.map((f) => (
                   <li key={f} className="flex gap-2 text-zinc-400 text-xs">
-                    <CheckCircle className="h-3 w-3 text-lime-400 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="h-3 w-3 text-green-500 mt-0.5 flex-shrink-0" />
                     {f}
                   </li>
                 ))}
@@ -250,7 +250,7 @@ export default function RookiePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/data/sign-in?mode=sign-up&redirect=/data"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-lime-500 text-black font-bold rounded hover:bg-lime-400 transition"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-green-600 text-black font-bold rounded hover:bg-green-500 transition"
             >
               Create Free Account <ArrowRight className="h-5 w-5" />
             </Link>

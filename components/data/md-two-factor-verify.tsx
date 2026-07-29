@@ -13,7 +13,7 @@ export default function MdTwoFactorVerify({ callbackURL }: { callbackURL: string
   const [useBackup, setUseBackup] = useState(false)
 
   const inputClass =
-    'w-full rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400/30 transition-colors'
+    'w-full rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500/30 transition-colors'
 
   async function handleVerify() {
     if (!code) {
@@ -52,8 +52,8 @@ export default function MdTwoFactorVerify({ callbackURL }: { callbackURL: string
   return (
     <div className="w-full max-w-md rounded-2xl border border-zinc-800 bg-zinc-900 p-8">
       <div className="mb-5 flex justify-center">
-        <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-lime-400/10 border border-lime-400/20">
-          <ShieldCheck className="h-8 w-8 text-lime-400" />
+        <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-green-500/10 border border-green-500/20">
+          <ShieldCheck className="h-8 w-8 text-green-500" />
         </div>
       </div>
 
@@ -91,7 +91,7 @@ export default function MdTwoFactorVerify({ callbackURL }: { callbackURL: string
       <button
         onClick={handleVerify}
         disabled={loading || !code}
-        className="w-full h-12 rounded-xl bg-lime-400 text-zinc-950 font-bold uppercase tracking-wider text-sm hover:bg-lime-300 transition-colors disabled:opacity-40 flex items-center justify-center gap-2 mb-4"
+        className="w-full h-12 rounded-xl bg-green-500 text-zinc-950 font-bold uppercase tracking-wider text-sm hover:bg-green-400 transition-colors disabled:opacity-40 flex items-center justify-center gap-2 mb-4"
       >
         {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <>Verify <ArrowRight className="h-4 w-4" /></>}
       </button>

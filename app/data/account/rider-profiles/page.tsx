@@ -59,7 +59,7 @@ export default async function RiderProfilesPage() {
             </Link>
             <Link
               href="/data/account/rider-profiles"
-              className="px-4 py-2.5 text-sm font-medium text-zinc-100 border-b-2 border-lime-400"
+              className="px-4 py-2.5 text-sm font-medium text-zinc-100 border-b-2 border-green-500"
             >
               Rider Profiles
             </Link>
@@ -81,7 +81,7 @@ export default async function RiderProfilesPage() {
               </p>
               <Link
                 href="/data/pricing"
-                className="mt-4 inline-flex items-center gap-2 rounded-lg bg-lime-400 text-zinc-950 font-semibold text-sm px-5 py-2.5 hover:bg-lime-300 transition-colors"
+                className="mt-4 inline-flex items-center gap-2 rounded-lg bg-green-500 text-zinc-950 font-semibold text-sm px-5 py-2.5 hover:bg-green-400 transition-colors"
               >
                 View Plans
               </Link>

@@ -81,7 +81,7 @@ export function AgentsConsole() {
   const getStatusColor = (status: HealthCheck['status']) => {
     switch (status) {
       case 'pass':
-        return 'border-lime-500/30 bg-lime-950/20 text-lime-400'
+        return 'border-green-600/30 bg-zinc-950/20 text-green-500'
       case 'fail':
         return 'border-orange-500/30 bg-orange-950/20 text-orange-400'
       case 'error':
@@ -96,7 +96,7 @@ export function AgentsConsole() {
   const getStatusIcon = (status: HealthCheck['status']) => {
     switch (status) {
       case 'pass':
-        return <CheckCircle2 className="h-4 w-4 text-lime-400" />
+        return <CheckCircle2 className="h-4 w-4 text-green-500" />
       case 'fail':
         return <AlertTriangle className="h-4 w-4 text-orange-400" />
       case 'error':
@@ -122,7 +122,7 @@ export function AgentsConsole() {
         <button
           onClick={runAllAgents}
           disabled={loading}
-          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-lime-400 text-zinc-950 font-semibold hover:bg-lime-300 disabled:opacity-50 transition-colors"
+          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-500 text-zinc-950 font-semibold hover:bg-green-400 disabled:opacity-50 transition-colors"
         >
           <PlayCircle className="h-4 w-4" />
           {loading ? 'Running...' : 'Test All Agents'}
@@ -131,9 +131,9 @@ export function AgentsConsole() {
 
       {/* Summary */}
       <div className="grid grid-cols-4 gap-3">
-        <div className="rounded-lg bg-zinc-900/50 border border-lime-500/20 px-4 py-3">
+        <div className="rounded-lg bg-zinc-900/50 border border-green-600/20 px-4 py-3">
           <p className="text-xs text-zinc-500 font-mono uppercase tracking-wider">Passing</p>
-          <p className="text-2xl font-bold text-lime-400 mt-1">{totalSummary.passed}</p>
+          <p className="text-2xl font-bold text-green-500 mt-1">{totalSummary.passed}</p>
         </div>
         <div className="rounded-lg bg-zinc-900/50 border border-orange-500/20 px-4 py-3">
           <p className="text-xs text-zinc-500 font-mono uppercase tracking-wider">Failed</p>

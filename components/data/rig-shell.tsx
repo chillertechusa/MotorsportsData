@@ -192,7 +192,7 @@ function TwoFactorGate({ onSignOut }: { onSignOut: () => void }) {
         </p>
         <Link
           href="/data/account/2fa"
-          className="inline-flex items-center gap-2 rounded-xl bg-lime-400 px-6 py-3 text-sm font-bold uppercase tracking-wider text-zinc-950 hover:bg-lime-300 transition-colors"
+          className="inline-flex items-center gap-2 rounded-xl bg-green-500 px-6 py-3 text-sm font-bold uppercase tracking-wider text-zinc-950 hover:bg-green-400 transition-colors"
         >
           Enable 2FA Now
           <ArrowRight className="h-4 w-4" />
@@ -328,7 +328,7 @@ export default function RigShell() {
                 }}
                 className={`w-full flex items-center gap-4 rounded-xl px-4 h-16 text-left transition-colors ${
                   active
-                    ? 'bg-lime-400 text-zinc-950'
+                    ? 'bg-green-500 text-zinc-950'
                     : disabled
                       ? 'text-zinc-700 cursor-not-allowed'
                       : 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 active:bg-zinc-800'
@@ -350,7 +350,7 @@ export default function RigShell() {
         {/* Connection status */}
         <div className="shrink-0 px-4 pt-4">
           <div className="flex items-center gap-3 rounded-xl bg-zinc-950 px-4 py-3">
-            <Signal className="h-5 w-5 text-lime-400" />
+            <Signal className="h-5 w-5 text-green-500" />
             <div className="leading-tight">
               <p className="text-sm font-semibold text-zinc-200">Rig Online</p>
               <p className="text-xs text-zinc-500">
@@ -368,12 +368,12 @@ export default function RigShell() {
               <img
                 src={session.user.image || "/placeholder.svg"}
                 alt={session.user.name || 'Profile'}
-                className="h-10 w-10 shrink-0 rounded-full object-cover ring-2 ring-lime-400/30"
+                className="h-10 w-10 shrink-0 rounded-full object-cover ring-2 ring-green-500/30"
               />
             ) : (
               <span
                 aria-hidden="true"
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-lime-400 text-zinc-950 text-sm font-black uppercase tracking-tight"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-500 text-zinc-950 text-sm font-black uppercase tracking-tight"
               >
                 {initials(session?.user?.name)}
               </span>
@@ -392,7 +392,7 @@ export default function RigShell() {
               <Link
                 href="/data/owner"
                 onClick={() => setMobileOpen(false)}
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-xs uppercase tracking-wider text-lime-400 hover:text-lime-300 hover:bg-lime-400/10 transition-colors font-semibold"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-xs uppercase tracking-wider text-green-500 hover:text-green-400 hover:bg-green-500/10 transition-colors font-semibold"
               >
                 <ShieldCheck className="h-4 w-4 shrink-0" />
                 Owner Console
@@ -426,7 +426,7 @@ export default function RigShell() {
             </Link>
             <button
               onClick={handleSignOut}
-              className="w-full flex items-center gap-3 rounded-lg px-3 py-2 text-xs uppercase tracking-wider text-zinc-400 hover:text-lime-400 hover:bg-zinc-800 transition-colors"
+              className="w-full flex items-center gap-3 rounded-lg px-3 py-2 text-xs uppercase tracking-wider text-zinc-400 hover:text-green-500 hover:bg-zinc-800 transition-colors"
             >
               <LogOut className="h-4 w-4 shrink-0" />
               Sign Out
@@ -462,7 +462,7 @@ export default function RigShell() {
                 Mechanic
               </span>
             )}
-            <span className="h-2.5 w-2.5 rounded-full bg-lime-400 animate-pulse" />
+            <span className="h-2.5 w-2.5 rounded-full bg-green-500 animate-pulse" />
             <span className="text-sm text-zinc-400 hidden sm:inline">Live Session</span>
           </div>
         </header>

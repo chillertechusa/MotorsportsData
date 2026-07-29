@@ -44,7 +44,7 @@ function NumberStepper({
         </div>
         <button
           onClick={() => onChange(+(value + step).toFixed(1))}
-          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-lime-400 text-zinc-950 active:bg-lime-300 transition-colors"
+          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-green-500 text-zinc-950 active:bg-green-400 transition-colors"
           aria-label={`Increase ${label}`}
         >
           <Plus className="h-5 w-5" />
@@ -73,7 +73,7 @@ function Dropdown({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full h-14 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-lg font-semibold text-zinc-100 focus:border-lime-400 focus:outline-none appearance-none"
+        className="w-full h-14 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-lg font-semibold text-zinc-100 focus:border-green-500 focus:outline-none appearance-none"
       >
         {options.length === 0 && <option value="">No vehicles</option>}
         {options.map((o, i) => (
@@ -189,7 +189,7 @@ export default function ViewSessionLogs({ vehicles }: { vehicles: Vehicle[] }) {
           <button
             onClick={() => setTab('new')}
             className={`flex items-center gap-2 h-10 px-4 rounded-lg text-sm font-bold uppercase tracking-wide transition-colors ${
-              tab === 'new' ? 'bg-lime-400 text-zinc-950' : 'text-zinc-400 hover:text-zinc-100'
+              tab === 'new' ? 'bg-green-500 text-zinc-950' : 'text-zinc-400 hover:text-zinc-100'
             }`}
           >
             <ClipboardPen className="h-4 w-4" /> New Entry
@@ -197,7 +197,7 @@ export default function ViewSessionLogs({ vehicles }: { vehicles: Vehicle[] }) {
           <button
             onClick={() => setTab('history')}
             className={`flex items-center gap-2 h-10 px-4 rounded-lg text-sm font-bold uppercase tracking-wide transition-colors ${
-              tab === 'history' ? 'bg-lime-400 text-zinc-950' : 'text-zinc-400 hover:text-zinc-100'
+              tab === 'history' ? 'bg-green-500 text-zinc-950' : 'text-zinc-400 hover:text-zinc-100'
             }`}
           >
             <History className="h-4 w-4" /> History
@@ -231,7 +231,7 @@ export default function ViewSessionLogs({ vehicles }: { vehicles: Vehicle[] }) {
                       onClick={() => setExpandedId(open ? null : s.id)}
                       className="w-full flex items-center gap-4 px-5 py-4 text-left"
                     >
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-lime-400/15 text-lime-400">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-green-500/15 text-green-500">
                         <MapPin className="h-5 w-5" />
                       </span>
                       <div className="flex-1 min-w-0">
@@ -285,7 +285,7 @@ export default function ViewSessionLogs({ vehicles }: { vehicles: Vehicle[] }) {
               value={track}
               onChange={(e) => setTrack(e.target.value)}
               placeholder="e.g. Washougal, Thunder Valley"
-              className="w-full h-14 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-lg font-semibold text-zinc-100 placeholder:text-zinc-600 focus:border-lime-400 focus:outline-none"
+              className="w-full h-14 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-lg font-semibold text-zinc-100 placeholder:text-zinc-600 focus:border-green-500 focus:outline-none"
             />
           </div>
         </div>
@@ -325,7 +325,7 @@ export default function ViewSessionLogs({ vehicles }: { vehicles: Vehicle[] }) {
               type="button"
               onClick={() => setLapTimedSession((v) => !v)}
               className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors focus:outline-none ${
-                lapTimedSession ? 'bg-lime-400' : 'bg-zinc-700'
+                lapTimedSession ? 'bg-green-500' : 'bg-zinc-700'
               }`}
               aria-pressed={lapTimedSession}
               aria-label="Toggle lap timing"
@@ -344,7 +344,7 @@ export default function ViewSessionLogs({ vehicles }: { vehicles: Vehicle[] }) {
                 <div className="flex items-center gap-2">
                   <button onClick={() => setBestLapMin((v) => Math.max(0, v - 1))} className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-800 text-zinc-200 active:bg-zinc-700"><Minus className="h-4 w-4" /></button>
                   <span className="flex-1 text-center text-2xl font-black text-zinc-50 tabular-nums">{bestLapMin}</span>
-                  <button onClick={() => setBestLapMin((v) => v + 1)} className="flex h-10 w-10 items-center justify-center rounded-lg bg-lime-400 text-zinc-950 active:bg-lime-300"><Plus className="h-4 w-4" /></button>
+                  <button onClick={() => setBestLapMin((v) => v + 1)} className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-500 text-zinc-950 active:bg-green-400"><Plus className="h-4 w-4" /></button>
                 </div>
               </div>
               <span className="text-3xl font-black text-zinc-500 mb-1">:</span>
@@ -353,7 +353,7 @@ export default function ViewSessionLogs({ vehicles }: { vehicles: Vehicle[] }) {
                 <div className="flex items-center gap-2">
                   <button onClick={() => setBestLapSec((v) => Math.max(0, +(v - 0.1).toFixed(1)))} className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-800 text-zinc-200 active:bg-zinc-700"><Minus className="h-4 w-4" /></button>
                   <span className="flex-1 text-center text-2xl font-black text-zinc-50 tabular-nums">{bestLapSec.toFixed(1)}</span>
-                  <button onClick={() => setBestLapSec((v) => +(Math.min(59.9, v + 0.1)).toFixed(1))} className="flex h-10 w-10 items-center justify-center rounded-lg bg-lime-400 text-zinc-950 active:bg-lime-300"><Plus className="h-4 w-4" /></button>
+                  <button onClick={() => setBestLapSec((v) => +(Math.min(59.9, v + 0.1)).toFixed(1))} className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-500 text-zinc-950 active:bg-green-400"><Plus className="h-4 w-4" /></button>
                 </div>
               </div>
               <p className="text-zinc-500 text-sm mb-1 whitespace-nowrap">
@@ -374,7 +374,7 @@ export default function ViewSessionLogs({ vehicles }: { vehicles: Vehicle[] }) {
             onChange={(e) => setFeedback(e.target.value)}
             rows={5}
             placeholder="Front felt harsh over braking bumps, rear squatted on corner exit..."
-            className="w-full rounded-xl bg-zinc-900 border border-zinc-800 p-4 text-lg text-zinc-100 placeholder:text-zinc-600 focus:border-lime-400 focus:outline-none resize-none"
+            className="w-full rounded-xl bg-zinc-900 border border-zinc-800 p-4 text-lg text-zinc-100 placeholder:text-zinc-600 focus:border-green-500 focus:outline-none resize-none"
           />
         </div>
 
@@ -388,7 +388,7 @@ export default function ViewSessionLogs({ vehicles }: { vehicles: Vehicle[] }) {
           onClick={save}
           disabled={saving}
           className={`w-full h-16 rounded-2xl flex items-center justify-center gap-3 text-lg font-black uppercase tracking-wide transition-colors disabled:opacity-60 ${
-            saved ? 'bg-lime-300 text-zinc-950' : 'bg-lime-400 text-zinc-950 active:bg-lime-300'
+            saved ? 'bg-green-400 text-zinc-950' : 'bg-green-500 text-zinc-950 active:bg-green-400'
           }`}
         >
           {saving ? (

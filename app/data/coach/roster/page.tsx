@@ -20,7 +20,7 @@ async function RosterContent() {
         </div>
         <Link
           href="/data/coach/roster/new"
-          className="inline-flex items-center gap-2 bg-lime-400 text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-lime-300 transition-colors"
+          className="inline-flex items-center gap-2 bg-green-500 text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-green-400 transition-colors"
         >
           <Plus className="h-4 w-4" aria-hidden="true" />
           Add Athlete
@@ -33,7 +33,7 @@ async function RosterContent() {
           <p className="text-zinc-400 text-base font-semibold mb-1">Your roster is empty.</p>
           <p className="text-zinc-600 text-sm mb-4">Add your first athlete to start building training plans and scheduling sessions.</p>
           <Link href="/data/coach/roster/new"
-            className="inline-flex items-center gap-2 bg-lime-400 text-zinc-950 text-sm font-bold px-5 py-2.5 hover:bg-lime-300 transition-colors">
+            className="inline-flex items-center gap-2 bg-green-500 text-zinc-950 text-sm font-bold px-5 py-2.5 hover:bg-green-400 transition-colors">
             <Plus className="h-4 w-4" /> Add First Athlete
           </Link>
         </div>
@@ -41,7 +41,7 @@ async function RosterContent() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {active.map((c) => (
             <Link key={c.id} href={`/data/coach/roster/${c.id}`}
-              className="bg-zinc-900 border border-zinc-800 hover:border-lime-400/40 transition-colors p-5 flex flex-col gap-4">
+              className="bg-zinc-900 border border-zinc-800 hover:border-green-500/40 transition-colors p-5 flex flex-col gap-4">
               <div className="flex items-center gap-3">
                 <div className="h-11 w-11 bg-zinc-800 border border-zinc-700 flex items-center justify-center text-sm font-bold text-zinc-200 shrink-0">
                   {c.firstName[0]}{c.lastName[0]}
@@ -54,7 +54,7 @@ async function RosterContent() {
 
               <div className="flex flex-wrap gap-2">
                 {c.discipline && (
-                  <span className="inline-flex items-center gap-1 font-mono text-[9px] uppercase tracking-wider text-lime-400 border border-lime-400/20 bg-lime-400/5 px-2 py-0.5">
+                  <span className="inline-flex items-center gap-1 font-mono text-[9px] uppercase tracking-wider text-green-500 border border-green-500/20 bg-green-500/5 px-2 py-0.5">
                     <Tag className="h-2.5 w-2.5" aria-hidden="true" />
                     {c.discipline}
                   </span>
@@ -76,7 +76,7 @@ async function RosterContent() {
                 <span className="text-xs text-zinc-600">
                   Enrolled {c.enrolledAt ? new Date(c.enrolledAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '—'}
                 </span>
-                <span className="font-mono text-[9px] uppercase tracking-wider text-lime-400">View &rarr;</span>
+                <span className="font-mono text-[9px] uppercase tracking-wider text-green-500">View &rarr;</span>
               </div>
             </Link>
           ))}

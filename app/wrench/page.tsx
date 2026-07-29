@@ -43,7 +43,7 @@ export default function WrenchPage() {
         <p className="text-sm text-zinc-500 uppercase tracking-widest mb-8">Built for professional mechanics</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="space-y-2">
-            <p className="text-3xl font-black text-lime-400">100%</p>
+            <p className="text-3xl font-black text-green-500">100%</p>
             <p className="text-sm text-zinc-400">Yours to export</p>
           </div>
           <div className="space-y-2">

@@ -61,7 +61,7 @@ export default function Capabilities() {
     <section id="capabilities" className="bg-zinc-900 border-t border-zinc-800 py-24 md:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-14">
-          <p className="font-mono text-xs text-lime-400 uppercase tracking-[0.3em] mb-4">
+          <p className="font-mono text-xs text-green-500 uppercase tracking-[0.3em] mb-4">
             // one platform
           </p>
           <h2
@@ -79,7 +79,7 @@ export default function Capabilities() {
           {CAPABILITIES.map(({ icon: Icon, title, body }) => (
             <div key={title} className="flex flex-col gap-4 bg-zinc-900 p-7 hover:bg-zinc-800/60 transition-colors">
               <div className="flex items-center justify-center h-10 w-10 border border-zinc-700 bg-zinc-950">
-                <Icon className="h-5 w-5 text-lime-400" aria-hidden="true" />
+                <Icon className="h-5 w-5 text-green-500" aria-hidden="true" />
               </div>
               <h3
                 className="text-zinc-100 text-lg uppercase leading-tight"

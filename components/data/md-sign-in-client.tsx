@@ -176,13 +176,13 @@ export default function MdSignInClient({
   }
 
   const inputClass =
-    'w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-zinc-50 placeholder:text-zinc-500 focus:border-lime-400 focus:outline-none transition-colors text-sm'
+    'w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-zinc-50 placeholder:text-zinc-500 focus:border-green-500 focus:outline-none transition-colors text-sm'
 
   return (
     <div className="w-full max-w-sm">
       {/* Heading */}
       <div className="mb-8 text-center">
-        <p className="font-mono text-xs uppercase tracking-[0.3em] text-lime-400 mb-2">
+        <p className="font-mono text-xs uppercase tracking-[0.3em] text-green-500 mb-2">
           Motorsport Data
         </p>
         <h1 className="text-3xl font-black uppercase tracking-tight text-zinc-50">
@@ -275,7 +275,7 @@ export default function MdSignInClient({
                     <button
                       type="button"
                       onClick={() => { setMode('sign-in'); setDateOfBirth('') }}
-                      className="text-lime-400 hover:underline font-medium"
+                      className="text-green-500 hover:underline font-medium"
                     >
                       Sign in here.
                     </button>
@@ -286,8 +286,8 @@ export default function MdSignInClient({
 
             {/* Guardian details — only for under-13 (COPPA verifiable parental consent) */}
             {needsGuardian && (
-              <div className="space-y-3 rounded-xl border border-lime-400/30 bg-lime-400/5 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wider text-lime-400">
+              <div className="space-y-3 rounded-xl border border-green-500/30 bg-green-500/5 p-4">
+                <p className="text-xs font-semibold uppercase tracking-wider text-green-500">
                   Parent / Guardian Consent
                 </p>
                 <input
@@ -332,14 +332,14 @@ export default function MdSignInClient({
                 type="checkbox"
                 checked={tosAgreed}
                 onChange={(e) => { setTosAgreed(e.target.checked); if (error) setError(null) }}
-                className="mt-0.5 h-4 w-4 shrink-0 appearance-none rounded-sm border border-zinc-600 bg-zinc-900 checked:bg-lime-400 checked:border-lime-400 focus:outline-none focus:ring-2 focus:ring-lime-400/50 cursor-pointer transition-colors"
+                className="mt-0.5 h-4 w-4 shrink-0 appearance-none rounded-sm border border-zinc-600 bg-zinc-900 checked:bg-green-500 checked:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/50 cursor-pointer transition-colors"
               />
               <span className="text-xs text-zinc-400 leading-relaxed select-none">
                 {needsGuardian ? 'As the parent/guardian, I have' : 'I have'} read and agree to the{' '}
                 {SIGNUP_REQUIRED_DOCS.map((doc, i) => (
                   <span key={doc.key}>
                     {i > 0 && (i === SIGNUP_REQUIRED_DOCS.length - 1 ? ', and ' : ', ')}
-                    <Link href={doc.href} target="_blank" className="text-lime-400 hover:underline font-medium">
+                    <Link href={doc.href} target="_blank" className="text-green-500 hover:underline font-medium">
                       {doc.title}
                     </Link>
                   </span>
@@ -354,7 +354,7 @@ export default function MdSignInClient({
           <div className="flex justify-end">
             <Link
               href="/data/forgot-password"
-              className="text-xs text-zinc-500 hover:text-lime-400 transition-colors"
+              className="text-xs text-zinc-500 hover:text-green-500 transition-colors"
             >
               Forgot password?
             </Link>
@@ -370,7 +370,7 @@ export default function MdSignInClient({
         <button
           type="submit"
           disabled={loading || blockedAsMinor}
-          className="w-full h-12 rounded-xl bg-lime-400 text-zinc-950 font-black uppercase tracking-wider text-sm hover:bg-lime-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="w-full h-12 rounded-xl bg-green-500 text-zinc-950 font-black uppercase tracking-wider text-sm hover:bg-green-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
           {loading ? (
             <Loader2 className="h-4 w-4 animate-spin" />
@@ -390,7 +390,7 @@ export default function MdSignInClient({
             Already have an account?{' '}
             <button
               onClick={() => { setMode('sign-in'); setError(null); resetSignupFields() }}
-              className="text-lime-400 hover:underline font-semibold"
+              className="text-green-500 hover:underline font-semibold"
             >
               Sign In
             </button>
@@ -400,7 +400,7 @@ export default function MdSignInClient({
             New to Motorsport Data?{' '}
             <button
               onClick={() => { setMode('sign-up'); setError(null); resetSignupFields() }}
-              className="text-lime-400 hover:underline font-semibold"
+              className="text-green-500 hover:underline font-semibold"
             >
               Create account
             </button>

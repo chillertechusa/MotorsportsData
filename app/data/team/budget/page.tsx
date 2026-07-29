@@ -18,7 +18,7 @@ const CATEGORY_COLORS: Record<string, string> = {
   'Entry Fees': 'text-red-400 border-red-400/20 bg-red-400/5',
   'Travel':     'text-[var(--color-yamaha)] border-[var(--color-yamaha-border)] bg-[var(--color-yamaha)]/5',
   'Parts':      'text-[var(--color-yamaha)] border-[var(--color-yamaha-border)] bg-[var(--color-yamaha)]/5',
-  'Gear':       'text-lime-400 border-lime-400/20 bg-lime-400/5',
+  'Gear':       'text-green-500 border-green-500/20 bg-green-500/5',
   'Coaching':   'text-violet-400 border-violet-400/20 bg-violet-400/5',
 }
 const defaultColor = 'text-zinc-400 border-zinc-700 bg-zinc-800'

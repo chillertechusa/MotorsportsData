@@ -96,7 +96,7 @@ export default function OwnerLegalPage() {
           </div>
           <a
             href="/data/owner/consent"
-            className="inline-flex items-center gap-2 rounded-lg border border-lime-400/30 bg-lime-400/10 px-4 py-2 text-sm font-semibold text-lime-400 hover:bg-lime-400/20 transition-colors"
+            className="inline-flex items-center gap-2 rounded-lg border border-green-500/30 bg-green-500/10 px-4 py-2 text-sm font-semibold text-green-500 hover:bg-green-500/20 transition-colors"
           >
             View Consent Audit
           </a>
@@ -118,7 +118,7 @@ export default function OwnerLegalPage() {
           {legalDocs.map((doc) => (
             <div
               key={doc.id}
-              className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 hover:border-lime-400/20 transition-colors"
+              className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 hover:border-green-500/20 transition-colors"
             >
               <div className="flex items-start justify-between mb-4">
                 <div>
@@ -163,7 +163,7 @@ export default function OwnerLegalPage() {
                 >
                   {copyStates[doc.id] ? (
                     <>
-                      <Check className="h-4 w-4 text-lime-400" />
+                      <Check className="h-4 w-4 text-green-500" />
                       Copied
                     </>
                   ) : (
@@ -183,7 +183,7 @@ export default function OwnerLegalPage() {
           <ul className="space-y-2 text-sm text-zinc-400">
             {reviewChecklist.map((item) => (
               <li key={item} className="flex items-start gap-3">
-                <span className="mt-0.5 shrink-0 text-lime-400">—</span>
+                <span className="mt-0.5 shrink-0 text-green-500">—</span>
                 <span>{item}</span>
               </li>
             ))}

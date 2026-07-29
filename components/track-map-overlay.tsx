@@ -39,7 +39,7 @@ export function TrackMapOverlay({
     <div className="bg-zinc-900 border border-zinc-800 rounded-lg overflow-hidden">
       {/* Header */}
       <div className="bg-zinc-800 px-6 py-4 flex items-center gap-2">
-        <Map className="w-5 h-5 text-lime-400" />
+        <Map className="w-5 h-5 text-green-500" />
         <h3 className="font-bold text-foreground">{trackName}</h3>
       </div>
 
@@ -53,7 +53,7 @@ export function TrackMapOverlay({
             stroke="currentColor"
             strokeWidth="2"
             fill="none"
-            className="text-lime-500"
+            className="text-green-600"
           />
         </svg>
 
@@ -93,7 +93,7 @@ export function TrackMapOverlay({
                   transform: `rotate(${(rider.speed / 150) * 360}deg)`,
                 }}
               >
-                <div className="absolute top-0 left-1/2 w-0.5 h-3 bg-lime-400 transform -translate-x-1/2" />
+                <div className="absolute top-0 left-1/2 w-0.5 h-3 bg-green-500 transform -translate-x-1/2" />
               </div>
             )}
           </div>

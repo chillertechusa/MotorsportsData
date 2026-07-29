@@ -43,7 +43,7 @@ export default function PrivateerPage() {
         <p className="text-sm text-zinc-500 uppercase tracking-widest mb-8">Built for the independent rider</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="space-y-2">
-            <p className="text-3xl font-black text-lime-400">Unlimited</p>
+            <p className="text-3xl font-black text-green-500">Unlimited</p>
             <p className="text-sm text-zinc-400">Sessions &amp; setup logs</p>
           </div>
           <div className="space-y-2">
@@ -159,7 +159,7 @@ export default function PrivateerPage() {
           {/* Racing Resume */}
           <div className="border border-zinc-800 bg-zinc-900 bg-opacity-50 p-8 rounded-lg space-y-4">
             <div className="flex items-center gap-3">
-              <Trophy className="h-6 w-6 text-lime-400" />
+              <Trophy className="h-6 w-6 text-green-500" />
               <h3 className="text-xl font-bold">Racing Resume Builder</h3>
             </div>
             <p className="text-zinc-300 text-sm leading-relaxed">
@@ -167,19 +167,19 @@ export default function PrivateerPage() {
             </p>
             <ul className="space-y-2 text-sm text-zinc-400">
               <li className="flex gap-2">
-                <CheckCircle className="h-4 w-4 text-lime-400 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                 Auto-generated stats & highlights
               </li>
               <li className="flex gap-2">
-                <CheckCircle className="h-4 w-4 text-lime-400 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                 Shareable public profile URL
               </li>
               <li className="flex gap-2">
-                <CheckCircle className="h-4 w-4 text-lime-400 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                 Video clips & lap records
               </li>
               <li className="flex gap-2">
-                <CheckCircle className="h-4 w-4 text-lime-400 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                 Downloadable PDF resume
               </li>
             </ul>

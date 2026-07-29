@@ -70,7 +70,7 @@ function formatDelta(d: ReturnType<typeof delta>, suffix = '%'): string {
 
 // ── Mini bar chart (pure CSS) ─────────────────────────────────────────────────
 
-function BarChart({ data, max, color = 'bg-lime-400' }: { data: number[]; max: number; color?: string }) {
+function BarChart({ data, max, color = 'bg-green-500' }: { data: number[]; max: number; color?: string }) {
   return (
     <div className="flex items-end gap-0.5 h-12">
       {data.map((v, i) => (
@@ -135,7 +135,7 @@ function LapTrendLine({ points }: { points: LapPoint[] }) {
       </svg>
       <div className="flex justify-between text-xs text-zinc-500 mt-1">
         <span>Session 1</span>
-        <span className="text-lime-400 font-medium">PB: {formatLap(minLap)}</span>
+        <span className="text-green-500 font-medium">PB: {formatLap(minLap)}</span>
         <span>Session {timed.length}</span>
       </div>
     </div>
@@ -168,7 +168,7 @@ function KpiCard({
       <div className="text-2xl font-black text-zinc-50 tabular-nums">{value}</div>
       {sub && <div className="text-xs text-zinc-500">{sub}</div>}
       {d && d.pct != null && (
-        <div className={`flex items-center gap-1 text-xs font-medium ${d.improved ? 'text-lime-400' : 'text-red-400'}`}>
+        <div className={`flex items-center gap-1 text-xs font-medium ${d.improved ? 'text-green-500' : 'text-red-400'}`}>
           {d.improved ? <ArrowUpRight className="h-3 w-3" /> : <ArrowDownRight className="h-3 w-3" />}
           {formatDelta(d)} vs prior year
         </div>
@@ -244,7 +244,7 @@ export function ViewHistoricalAnalytics() {
           <ChevronRight className="h-4 w-4" />
         </button>
         <span className="text-xs text-zinc-500 ml-1">vs {year - 1}</span>
-        {loading && <div className="ml-auto h-4 w-4 rounded-full border-2 border-lime-400 border-t-transparent animate-spin" />}
+        {loading && <div className="ml-auto h-4 w-4 rounded-full border-2 border-green-500 border-t-transparent animate-spin" />}
       </div>
 
       {error && (
@@ -275,7 +275,7 @@ export function ViewHistoricalAnalytics() {
           {/* Sessions per month */}
           <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
             <h3 className="text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-4">Sessions per Month</h3>
-            <BarChart data={data.monthlyBreakdown.map((m) => m.sessions)} max={maxSessions} color="bg-lime-400" />
+            <BarChart data={data.monthlyBreakdown.map((m) => m.sessions)} max={maxSessions} color="bg-green-500" />
             <div className="flex justify-between text-xs text-zinc-500 mt-2">
               {['Jan', 'Apr', 'Jul', 'Oct'].map((l) => <span key={l}>{l}</span>)}
             </div>
@@ -298,7 +298,7 @@ export function ViewHistoricalAnalytics() {
           <div className="px-5 py-3 border-b border-zinc-800 flex items-center justify-between">
             <h3 className="text-xs font-semibold uppercase tracking-widest text-zinc-400">Year-over-Year</h3>
             <div className="flex gap-4 text-xs text-zinc-500">
-              <span className="text-lime-400 font-bold">{year}</span>
+              <span className="text-green-500 font-bold">{year}</span>
               <span>{year - 1}</span>
             </div>
           </div>
@@ -315,11 +315,11 @@ export function ViewHistoricalAnalytics() {
                 return (
                   <tr key={label} className="border-b border-zinc-800/50 last:border-0">
                     <td className="px-5 py-2.5 text-zinc-400">{label}</td>
-                    <td className="px-5 py-2.5 text-lime-400 font-bold tabular-nums text-right">{fmt(curr as number)}</td>
+                    <td className="px-5 py-2.5 text-green-500 font-bold tabular-nums text-right">{fmt(curr as number)}</td>
                     <td className="px-5 py-2.5 text-zinc-500 tabular-nums text-right">{fmt(prior as number)}</td>
                     <td className="px-5 py-2.5 text-right tabular-nums">
                       {d2.pct != null ? (
-                        <span className={`flex items-center justify-end gap-1 text-xs font-medium ${d2.improved ? 'text-lime-400' : 'text-red-400'}`}>
+                        <span className={`flex items-center justify-end gap-1 text-xs font-medium ${d2.improved ? 'text-green-500' : 'text-red-400'}`}>
                           {d2.improved ? <ArrowUpRight className="h-3 w-3" /> : <ArrowDownRight className="h-3 w-3" />}
                           {formatDelta(d2)}
                         </span>
@@ -353,7 +353,7 @@ export function ViewHistoricalAnalytics() {
                   <div className="text-xs text-zinc-500">{v.hours}h &middot; {v.tracks} track{v.tracks !== 1 ? 's' : ''}</div>
                 </div>
                 <div className="text-right shrink-0 w-20">
-                  <div className="text-sm font-bold text-lime-400 tabular-nums">{formatLap(v.bestLap)}</div>
+                  <div className="text-sm font-bold text-green-500 tabular-nums">{formatLap(v.bestLap)}</div>
                   <div className="text-xs text-zinc-500">best lap</div>
                 </div>
               </div>
@@ -390,7 +390,7 @@ export function ViewHistoricalAnalytics() {
                       )}
                     </td>
                     <td className="px-5 py-2 text-right tabular-nums text-zinc-400">{m.hours > 0 ? `${m.hours}h` : '—'}</td>
-                    <td className="px-5 py-2 text-right tabular-nums font-medium text-lime-400">{m.bestLap != null ? formatLap(m.bestLap) : '—'}</td>
+                    <td className="px-5 py-2 text-right tabular-nums font-medium text-green-500">{m.bestLap != null ? formatLap(m.bestLap) : '—'}</td>
                   </tr>
                 ))}
               </tbody>

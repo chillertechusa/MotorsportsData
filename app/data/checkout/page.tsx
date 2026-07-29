@@ -25,9 +25,9 @@ function PaymentsNotConfigured({ plan }: { plan: MdPlanId }) {
         </h2>
         <p className="text-zinc-400 text-sm leading-relaxed mb-6">
           Square API credentials have not been added to this environment yet. Add{' '}
-          <code className="text-lime-400 font-mono text-xs">SQUARE_ACCESS_TOKEN</code>,{' '}
-          <code className="text-lime-400 font-mono text-xs">SQUARE_LOCATION_ID</code>, and{' '}
-          <code className="text-lime-400 font-mono text-xs">NEXT_PUBLIC_SQUARE_APPLICATION_ID</code>{' '}
+          <code className="text-green-500 font-mono text-xs">SQUARE_ACCESS_TOKEN</code>,{' '}
+          <code className="text-green-500 font-mono text-xs">SQUARE_LOCATION_ID</code>, and{' '}
+          <code className="text-green-500 font-mono text-xs">NEXT_PUBLIC_SQUARE_APPLICATION_ID</code>{' '}
           to Vercel environment variables to enable card checkout.
         </p>
         <Link

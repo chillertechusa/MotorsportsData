@@ -52,14 +52,14 @@ export function SquareBootstrap() {
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <CreditCard className="h-5 w-5 text-lime-400" />
+            <CreditCard className="h-5 w-5 text-green-500" />
             <CardTitle className="text-base font-semibold text-zinc-100">
               Square Billing Catalog
             </CardTitle>
           </div>
           <div className="flex items-center gap-2">
             {healthOk === true && (
-              <Badge variant="outline" className="border-lime-500/40 text-lime-400 text-xs">
+              <Badge variant="outline" className="border-green-600/40 text-green-500 text-xs">
                 <CheckCircle2 className="mr-1 h-3 w-3" /> Connected
               </Badge>
             )}
@@ -102,7 +102,7 @@ export function SquareBootstrap() {
             size="sm"
             onClick={() => runBootstrap(false)}
             disabled={status === 'loading'}
-            className="bg-lime-500 hover:bg-lime-400 text-zinc-900 font-semibold text-xs"
+            className="bg-green-600 hover:bg-green-500 text-zinc-900 font-semibold text-xs"
           >
             {status === 'loading' ? (
               <RefreshCw className="mr-1.5 h-3.5 w-3.5 animate-spin" />
@@ -127,13 +127,13 @@ export function SquareBootstrap() {
           <div
             className={`rounded-md border px-4 py-3 text-xs font-mono space-y-1 ${
               result.ok
-                ? 'border-lime-500/30 bg-lime-950/30 text-lime-300'
+                ? 'border-green-600/30 bg-zinc-950/30 text-green-400'
                 : 'border-red-500/30 bg-red-950/30 text-red-300'
             }`}
           >
             {result.ok ? (
               <>
-                <p className="font-semibold text-lime-400">Catalog bootstrap successful</p>
+                <p className="font-semibold text-green-500">Catalog bootstrap successful</p>
                 {result.created && result.created.length > 0 && (
                   <p>Created plans: {result.created.join(', ')}</p>
                 )}

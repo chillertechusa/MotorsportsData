@@ -15,7 +15,7 @@ async function getTeamId(userId: string) {
 }
 
 const STATUS_CONFIG = {
-  active:  { icon: CheckCircle2, class: 'text-lime-400 border-lime-400/20 bg-lime-400/5',   label: 'Active' },
+  active:  { icon: CheckCircle2, class: 'text-green-500 border-green-500/20 bg-green-500/5',   label: 'Active' },
   pending: { icon: Clock,        class: 'text-yellow-400 border-yellow-400/20 bg-yellow-400/5', label: 'Pending' },
   expired: { icon: AlertCircle,  class: 'text-red-400 border-red-400/20 bg-red-400/5',    label: 'Expired' },
 }
@@ -57,7 +57,7 @@ export default async function SponsorsPage() {
       <div className="grid grid-cols-3 gap-3">
         {[
           { label: 'Total Value',    value: totalValue,   accent: 'text-zinc-100' },
-          { label: 'Cash Sponsors',  value: cashValue,    accent: 'text-lime-400' },
+          { label: 'Cash Sponsors',  value: cashValue,    accent: 'text-green-500' },
           { label: 'Product Value',  value: productValue, accent: 'text-[var(--color-yamaha)]' },
         ].map(({ label, value, accent }) => (
           <div key={label} className="bg-zinc-900 border border-zinc-800 p-5">
@@ -88,7 +88,7 @@ export default async function SponsorsPage() {
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
                     <span className={`inline-flex items-center gap-1 text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 border ${
-                      s.sponsorType === 'cash' ? 'text-lime-400 border-lime-400/20' : 'text-[var(--color-yamaha)] border-[var(--color-yamaha-border)]'
+                      s.sponsorType === 'cash' ? 'text-green-500 border-green-500/20' : 'text-[var(--color-yamaha)] border-[var(--color-yamaha-border)]'
                     }`}>{s.sponsorType}</span>
                     <span className={`inline-flex items-center gap-1 text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 border ${statusCfg.class}`}>
                       <StatusIcon className="h-2.5 w-2.5" aria-hidden="true" />

@@ -52,8 +52,8 @@ export function AgentRoster({
         {/* Header */}
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-lime-400/10 ring-1 ring-lime-400/30">
-              <Briefcase className="h-5 w-5 text-lime-400" />
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-green-500/10 ring-1 ring-green-500/30">
+              <Briefcase className="h-5 w-5 text-green-500" />
             </div>
             <div>
               <p className="font-mono text-xs uppercase tracking-[0.25em] text-zinc-500">Agent Portal</p>
@@ -63,7 +63,7 @@ export function AgentRoster({
           <span
             className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ${
               account.verificationStatus === 'verified'
-                ? 'bg-lime-400/10 text-lime-300 ring-1 ring-lime-400/30'
+                ? 'bg-green-500/10 text-green-400 ring-1 ring-green-500/30'
                 : 'bg-amber-400/10 text-amber-300 ring-1 ring-amber-400/30'
             }`}
           >
@@ -109,10 +109,10 @@ export function AgentRoster({
 
 function EntitlementGate() {
   return (
-    <div className="mb-8 overflow-hidden rounded-2xl border border-lime-400/30 bg-gradient-to-br from-lime-400/10 to-zinc-900/40 p-6">
+    <div className="mb-8 overflow-hidden rounded-2xl border border-green-500/30 bg-gradient-to-br from-green-500/10 to-zinc-900/40 p-6">
       <div className="flex items-start gap-4">
-        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-lime-400/15">
-          <Lock className="h-5 w-5 text-lime-300" />
+        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-green-500/15">
+          <Lock className="h-5 w-5 text-green-400" />
         </div>
         <div className="flex-1">
           <h2 className="text-lg font-black">Activate your subscription to unlock rider data</h2>
@@ -123,7 +123,7 @@ function EntitlementGate() {
           </p>
           <Link
             href="/checkout/tier?tier=agent"
-            className="mt-4 inline-flex items-center gap-2 rounded-xl bg-lime-400 px-5 py-2.5 text-sm font-black uppercase tracking-widest text-zinc-950 transition-colors hover:bg-lime-300"
+            className="mt-4 inline-flex items-center gap-2 rounded-xl bg-green-500 px-5 py-2.5 text-sm font-black uppercase tracking-widest text-zinc-950 transition-colors hover:bg-green-400"
           >
             Activate subscription
             <ArrowRight className="h-4 w-4" />
@@ -137,7 +137,7 @@ function EntitlementGate() {
 function Stat({ label, value }: { label: string; value: number }) {
   return (
     <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 px-4 py-3">
-      <p className="text-2xl font-black text-lime-400">{value}</p>
+      <p className="text-2xl font-black text-green-500">{value}</p>
       <p className="font-mono text-xs uppercase tracking-widest text-zinc-500">{label}</p>
     </div>
   )
@@ -186,7 +186,7 @@ function RequestAccess({ entitled }: { entitled: boolean }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search riders by name…"
-            className="w-full rounded-lg border border-zinc-800 bg-zinc-950 py-2.5 pl-9 pr-4 text-sm text-zinc-100 placeholder:text-zinc-600 outline-none focus:border-lime-400/60 focus:ring-1 focus:ring-lime-400/40"
+            className="w-full rounded-lg border border-zinc-800 bg-zinc-950 py-2.5 pl-9 pr-4 text-sm text-zinc-100 placeholder:text-zinc-600 outline-none focus:border-green-500/60 focus:ring-1 focus:ring-green-500/40"
           />
         </div>
         <button
@@ -216,7 +216,7 @@ function RequestAccess({ entitled }: { entitled: boolean }) {
               <button
                 onClick={() => handleRequest(r.teamId, r.riderName)}
                 disabled={isRequesting}
-                className="rounded-lg border border-lime-400/40 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-lime-300 transition-colors hover:bg-lime-400/10 disabled:opacity-50"
+                className="rounded-lg border border-green-500/40 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-green-400 transition-colors hover:bg-green-500/10 disabled:opacity-50"
               >
                 Request
               </button>
@@ -243,7 +243,7 @@ function RosterRow({ entry, entitled }: { entry: Entry; entitled: boolean }) {
         <div className="flex items-center gap-2">
           <p className="truncate font-bold text-zinc-100">{entry.riderName}</p>
           {isGranted ? (
-            <span className="inline-flex items-center gap-1 rounded-full bg-lime-400/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-lime-300">
+            <span className="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-green-400">
               <CheckCircle2 className="h-3 w-3" /> Granted
             </span>
           ) : (
@@ -262,7 +262,7 @@ function RosterRow({ entry, entitled }: { entry: Entry; entitled: boolean }) {
           <>
             <Link
               href={`/data/agent/rider/${entry.teamId}`}
-              className="rounded-lg bg-lime-400 px-3 py-2 text-xs font-black uppercase tracking-widest text-zinc-950 transition-colors hover:bg-lime-300"
+              className="rounded-lg bg-green-500 px-3 py-2 text-xs font-black uppercase tracking-widest text-zinc-950 transition-colors hover:bg-green-400"
             >
               View Profile
             </Link>

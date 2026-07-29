@@ -68,7 +68,7 @@ export function SetupAIRecommender({ vehicles }: { vehicles: Vehicle[] }) {
           <select
             value={selectedVehicle}
             onChange={(e) => setSelectedVehicle(e.target.value)}
-            className="w-full bg-zinc-950 border border-zinc-800 rounded px-4 py-2 text-zinc-100 focus:outline-none focus:border-lime-400"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded px-4 py-2 text-zinc-100 focus:outline-none focus:border-green-500"
           >
             {vehicles.map((v) => (
               <option key={v.id} value={v.id}>
@@ -102,7 +102,7 @@ export function SetupAIRecommender({ vehicles }: { vehicles: Vehicle[] }) {
                   <div
                     className={`max-w-md p-4 rounded-lg ${
                       msg.role === 'user'
-                        ? 'bg-lime-400 text-zinc-950'
+                        ? 'bg-green-500 text-zinc-950'
                         : 'bg-zinc-800 text-zinc-100 border border-zinc-700'
                     }`}
                   >
@@ -132,12 +132,12 @@ export function SetupAIRecommender({ vehicles }: { vehicles: Vehicle[] }) {
               if (e.key === 'Enter' && !e.nativeEvent.isComposing && !loading) sendMessage()
             }}
             placeholder="Ask a setup question..."
-            className="flex-1 bg-zinc-900 border border-zinc-800 rounded px-4 py-3 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-lime-400"
+            className="flex-1 bg-zinc-900 border border-zinc-800 rounded px-4 py-3 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-green-500"
           />
           <button
             onClick={sendMessage}
             disabled={loading || !input.trim()}
-            className="bg-lime-400 text-zinc-950 p-3 rounded font-black hover:bg-lime-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="bg-green-500 text-zinc-950 p-3 rounded font-black hover:bg-green-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             <Send className="h-5 w-5" />
           </button>

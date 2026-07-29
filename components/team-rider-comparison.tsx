@@ -43,8 +43,8 @@ export function TeamRiderComparison({
         <div className="flex items-center gap-2">
           {isLive && (
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-lime-500 rounded-full animate-pulse"></div>
-              <span className="text-xs text-lime-400 font-semibold">LIVE</span>
+              <div className="w-2 h-2 bg-green-600 rounded-full animate-pulse"></div>
+              <span className="text-xs text-green-500 font-semibold">LIVE</span>
             </div>
           )}
         </div>
@@ -93,7 +93,7 @@ export function TeamRiderComparison({
               >
                 {/* Position */}
                 <td className="px-6 py-4 text-center">
-                  <span className="text-lg font-bold text-lime-400">
+                  <span className="text-lg font-bold text-green-500">
                     {rider.position}
                   </span>
                 </td>
@@ -114,7 +114,7 @@ export function TeamRiderComparison({
                 </td>
 
                 {/* Best Lap */}
-                <td className="px-6 py-4 text-right font-mono font-semibold text-lime-400">
+                <td className="px-6 py-4 text-right font-mono font-semibold text-green-500">
                   {formatTime(rider.bestLapTime)}
                 </td>
 
@@ -123,7 +123,7 @@ export function TeamRiderComparison({
                   <span
                     className={
                       (rider.gapToLeader ?? 0) <= 0
-                        ? 'text-lime-400 font-bold'
+                        ? 'text-green-500 font-bold'
                         : ''
                     }
                   >

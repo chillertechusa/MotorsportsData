@@ -80,7 +80,7 @@ export function LiveRaceDashboard({ sessionId, riderId, riderName, riderNumber }
           <p className="text-sm text-zinc-400 mt-1">Live Race Telemetry</p>
         </div>
         <div className="flex items-center gap-3">
-          <div className={`h-3 w-3 rounded-full animate-pulse ${isLive ? 'bg-lime-500' : 'bg-zinc-700'}`} />
+          <div className={`h-3 w-3 rounded-full animate-pulse ${isLive ? 'bg-green-600' : 'bg-zinc-700'}`} />
           <span className="text-sm font-bold text-zinc-300">
             {subscriberCount} coach{subscriberCount !== 1 ? 'es' : ''} watching
           </span>
@@ -94,7 +94,7 @@ export function LiveRaceDashboard({ sessionId, riderId, riderName, riderNumber }
           { icon: Zap, label: 'Power', value: Math.round(metrics.power), unit: 'W', color: 'text-yellow-500' },
           { icon: Gauge, label: 'Speed', value: metrics.speed.toFixed(1), unit: 'mph', color: 'text-blue-500' },
           { icon: Activity, label: 'Cadence', value: Math.round(metrics.cadence), unit: 'rpm', color: 'text-purple-500' },
-          { icon: TrendingUp, label: 'Readiness', value: metrics.readinessScore, unit: '%', color: 'text-lime-500' },
+          { icon: TrendingUp, label: 'Readiness', value: metrics.readinessScore, unit: '%', color: 'text-green-600' },
         ].map((item) => {
           const Icon = item.icon
           return (
@@ -124,10 +124,10 @@ export function LiveRaceDashboard({ sessionId, riderId, riderName, riderNumber }
           <p className="text-2xl font-black text-blue-400">{metrics.lastLapTime}</p>
         </div>
 
-        <div className="border border-lime-500/30 bg-lime-500/5 rounded-lg p-4">
-          <Trophy className="h-5 w-5 text-lime-500 mb-2" />
-          <p className="text-xs text-lime-400 mb-1">Best Lap</p>
-          <p className="text-2xl font-black text-lime-400">{metrics.bestLapTime}</p>
+        <div className="border border-green-600/30 bg-green-600/5 rounded-lg p-4">
+          <Trophy className="h-5 w-5 text-green-600 mb-2" />
+          <p className="text-xs text-green-500 mb-1">Best Lap</p>
+          <p className="text-2xl font-black text-green-500">{metrics.bestLapTime}</p>
         </div>
       </div>
 

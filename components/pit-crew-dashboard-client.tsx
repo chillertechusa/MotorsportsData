@@ -69,9 +69,9 @@ export function PitCrewDashboardClient({
           </p>
         </div>
         {isLive && (
-          <div className="flex items-center gap-2 px-4 py-2 bg-lime-950 border border-lime-700 rounded-lg">
-            <div className="w-2 h-2 bg-lime-400 rounded-full animate-pulse"></div>
-            <span className="text-lime-300 font-semibold">LIVE</span>
+          <div className="flex items-center gap-2 px-4 py-2 bg-zinc-950 border border-green-800 rounded-lg">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span className="text-green-400 font-semibold">LIVE</span>
           </div>
         )}
       </div>
@@ -81,10 +81,10 @@ export function PitCrewDashboardClient({
         {/* Active Riders */}
         <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Wrench className="w-5 h-5 text-lime-400" />
+            <Wrench className="w-5 h-5 text-green-500" />
             <span className="text-sm text-muted-foreground">Active Riders</span>
           </div>
-          <div className="text-3xl font-bold text-lime-400">{riders.length}</div>
+          <div className="text-3xl font-bold text-green-500">{riders.length}</div>
         </div>
 
         {/* Session Time */}

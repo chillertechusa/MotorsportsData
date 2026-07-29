@@ -205,12 +205,12 @@ export function CoachAIContextBrief({ riderId, onDataLoaded }: CoachAIContextBri
 
       {/* Recommendation */}
       {context.readiness?.recommendation && (
-        <div className="border border-lime-500/30 bg-lime-500/5 rounded p-3">
+        <div className="border border-green-600/30 bg-green-600/5 rounded p-3">
           <div className="flex items-start gap-2">
-            <Zap className="h-4 w-4 text-lime-500 mt-0.5 flex-shrink-0" />
+            <Zap className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
             <div className="flex-1">
-              <p className="text-xs font-bold text-lime-300 mb-1">Taper Protocol</p>
-              <p className="text-xs text-lime-100">{context.readiness.recommendation}</p>
+              <p className="text-xs font-bold text-green-400 mb-1">Taper Protocol</p>
+              <p className="text-xs text-green-200">{context.readiness.recommendation}</p>
             </div>
           </div>
         </div>

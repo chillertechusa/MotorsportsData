@@ -67,7 +67,7 @@ const PERSONAS: {
 ]
 
 const ACCENT_CLASSES: Record<string, { border: string; text: string; bg: string; label: string }> = {
-  lime:   { border: 'border-lime-400/30 hover:border-lime-400/60',   text: 'text-lime-400',   bg: 'bg-lime-400',   label: 'bg-lime-400/10 text-lime-400 border-lime-400/20' },
+  lime:   { border: 'border-green-500/30 hover:border-green-500/60',   text: 'text-green-500',   bg: 'bg-green-500',   label: 'bg-green-500/10 text-green-500 border-green-500/20' },
   yamaha: { border: 'border-[var(--color-yamaha-border)] hover:border-[var(--color-yamaha)]',     text: 'text-[var(--color-yamaha-light)]', bg: 'bg-[var(--color-yamaha)]', label: 'bg-[var(--color-yamaha-faint)] text-[var(--color-yamaha-light)] border-[var(--color-yamaha-border)]' },
 }
 
@@ -158,7 +158,7 @@ export default function PersonaSelector() {
                 size="md"
                 className={`w-full justify-center rounded-none
                   ${p.accent === 'lime'
-                    ? 'bg-lime-400 text-zinc-950 hover:bg-lime-300'
+                    ? 'bg-green-500 text-zinc-950 hover:bg-green-400'
                     : p.accent === 'yamaha'
                     ? 'bg-[var(--color-yamaha)] text-zinc-950 hover:bg-[var(--color-yamaha-light)]'
                     : 'bg-[var(--color-yamaha)] text-zinc-950 hover:bg-[var(--color-yamaha-light)]'

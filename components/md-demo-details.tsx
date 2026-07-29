@@ -32,18 +32,18 @@ export default function MdDemoDetails() {
               className="text-zinc-100 uppercase leading-none tracking-tight mb-6"
               style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}
             >
-              The <span className="text-lime-400">8 Chapters</span>
+              The <span className="text-green-500">8 Chapters</span>
             </h2>
             <ul className="space-y-3">
               {[
-                { num: '01', color: 'text-lime-400', title: 'Live Telemetry', desc: 'Speed, RPM, lean angle, throttle/brake, suspension travel' },
+                { num: '01', color: 'text-green-500', title: 'Live Telemetry', desc: 'Speed, RPM, lean angle, throttle/brake, suspension travel' },
                 { num: '02', color: 'text-cyan-400', title: 'AI Setup Engine', desc: 'Suspension solver, tire gauges, before/after lap-time gain' },
-                { num: '03', color: 'text-lime-400', title: 'Readiness & Health', desc: 'HRV, training load, nutrition, mental fitness, injury risk' },
+                { num: '03', color: 'text-green-500', title: 'Readiness & Health', desc: 'HRV, training load, nutrition, mental fitness, injury risk' },
                 { num: '04', color: 'text-orange-400', title: 'Live Coaching', desc: 'Sub-500ms lap feed, pit-to-rider radio, coach dashboard' },
                 { num: '05', color: 'text-cyan-400', title: 'Competitive Edge', desc: 'Leaderboard climbing, sector deltas, gap-to-leader closing' },
                 { num: '06', color: 'text-orange-400', title: 'Crew & Logistics', desc: 'Part vault, engine hours, maintenance scheduling, race calendar' },
                 { num: '07', color: 'text-cyan-400', title: 'Business', desc: 'Sponsor media value, invoice tracking, team financials' },
-                { num: '08', color: 'text-lime-400', title: 'The Payoff', desc: 'Season totals, championship points, whole-team roster' },
+                { num: '08', color: 'text-green-500', title: 'The Payoff', desc: 'Season totals, championship points, whole-team roster' },
               ].map((item) => (
                 <li key={item.num} className="flex gap-3">
                   <span className={`font-mono text-xs font-bold shrink-0 mt-0.5 ${item.color}`}>{item.num}.</span>
@@ -85,12 +85,12 @@ export default function MdDemoDetails() {
         </div>
 
         {/* CTA */}
-        <div className="border border-lime-400/20 bg-zinc-900/60 p-8 sm:p-12 text-center">
+        <div className="border border-green-500/20 bg-zinc-900/60 p-8 sm:p-12 text-center">
           <h2
             className="text-zinc-100 uppercase leading-none text-balance mb-3"
             style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
           >
-            Ready to Build Your <span className="text-lime-400">Edge?</span>
+            Ready to Build Your <span className="text-green-500">Edge?</span>
           </h2>
           <p className="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-8 text-pretty">
             Start free. No credit card. Invite your team. Upload your first session. Watch the AI work.
@@ -98,7 +98,7 @@ export default function MdDemoDetails() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               href="/data/sign-in?redirect=/data"
-              className="inline-flex items-center gap-2 bg-lime-400 text-zinc-950 font-semibold px-8 py-4 rounded-lg hover:bg-lime-300 transition-colors text-base"
+              className="inline-flex items-center gap-2 bg-green-500 text-zinc-950 font-semibold px-8 py-4 rounded-lg hover:bg-green-400 transition-colors text-base"
             >
               Get Started Free
               <ArrowRight className="h-5 w-5" />

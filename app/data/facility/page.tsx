@@ -39,7 +39,7 @@ export default async function FacilityOverviewPage() {
 
   const KPI = [
     { label: 'Active Members',    value: String(active.length),              icon: Users,       href: '/data/facility/roster',      accent: 'text-[var(--color-yamaha)]' },
-    { label: 'Upcoming Sessions', value: String(upcomingSessions.length),     icon: CalendarDays,href: '/data/facility/schedule',    accent: 'text-lime-400' },
+    { label: 'Upcoming Sessions', value: String(upcomingSessions.length),     icon: CalendarDays,href: '/data/facility/schedule',    accent: 'text-green-500' },
     { label: 'Revenue Collected', value: `$${(totalRev / 100).toLocaleString()}`, icon: DollarSign, href: '/data/facility/memberships', accent: 'text-green-400' },
     { label: 'Invoices Pending',  value: `$${(pending / 100).toLocaleString()}`,  icon: Tent,       href: '/data/facility/memberships', accent: 'text-yellow-400' },
   ]

@@ -16,7 +16,7 @@ export function TrackMapOverlay() {
       id: 'rider-1',
       name: 'Rider A',
       position: 'Lead - 0.2s',
-      color: 'bg-lime-500',
+      color: 'bg-green-600',
       speed: 62,
       lapTime: 1245,
       hr: 188,
@@ -93,7 +93,7 @@ export function TrackMapOverlay() {
               onClick={() => setSelectedRider(r.id)}
               className={`px-4 py-2 rounded-lg text-sm font-bold transition ${
                 selectedRider === r.id
-                  ? 'bg-lime-500 text-zinc-950'
+                  ? 'bg-green-600 text-zinc-950'
                   : 'border border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-zinc-500'
               }`}
             >
@@ -106,11 +106,11 @@ export function TrackMapOverlay() {
 
       {/* Selected Rider Details */}
       {selectedData && (
-        <div className="border border-lime-500/40 bg-lime-500/5 rounded-lg p-6">
+        <div className="border border-green-600/40 bg-green-600/5 rounded-lg p-6">
           <div className="grid grid-cols-4 gap-4">
             <div>
               <p className="text-xs text-zinc-400 uppercase mb-1">Position</p>
-              <p className="text-lg font-black text-lime-400">{selectedData.position}</p>
+              <p className="text-lg font-black text-green-500">{selectedData.position}</p>
             </div>
             <div>
               <p className="text-xs text-zinc-400 uppercase mb-1">Speed</p>
@@ -153,7 +153,7 @@ export function TrackMapOverlay() {
                     <div className={`w-2 h-2 rounded-full ${r.color}`}></div>
                     {r.name}
                   </td>
-                  <td className="px-4 py-2 text-lime-400 font-bold">{(r.lapTime / 1000).toFixed(2)}s</td>
+                  <td className="px-4 py-2 text-green-500 font-bold">{(r.lapTime / 1000).toFixed(2)}s</td>
                   <td className="px-4 py-2 text-zinc-400">{r.position.split(' - ')[1]}</td>
                   <td className="px-4 py-2 text-blue-400">{r.speed} mph</td>
                   <td className="px-4 py-2 text-red-400">{r.hr}</td>

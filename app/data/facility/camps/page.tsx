@@ -111,7 +111,7 @@ export default async function CampsPage() {
                     </p>
                   )}
                   <span className={`text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 border mt-1 inline-block ${
-                    s.status === 'completed' ? 'text-lime-400 border-lime-400/20' : 'text-zinc-400 border-zinc-700'
+                    s.status === 'completed' ? 'text-green-500 border-green-500/20' : 'text-zinc-400 border-zinc-700'
                   }`}>{s.status}</span>
                 </div>
               </article>

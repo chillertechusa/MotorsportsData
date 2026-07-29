@@ -84,7 +84,7 @@ export function LiveCoachRecommendations({
   if (loading) {
     return (
       <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6">
-        <h3 className="text-lg font-bold text-lime-400 mb-4">Coach AI Recommendations</h3>
+        <h3 className="text-lg font-bold text-green-500 mb-4">Coach AI Recommendations</h3>
         <div className="text-sm text-muted-foreground animate-pulse">Loading recommendations...</div>
       </div>
     )
@@ -100,8 +100,8 @@ export function LiveCoachRecommendations({
   }
 
   return (
-    <div className="bg-zinc-900 border border-lime-500/30 rounded-lg p-6">
-      <h3 className="text-lg font-bold text-lime-400 mb-4">Coach AI Recommendations</h3>
+    <div className="bg-zinc-900 border border-green-600/30 rounded-lg p-6">
+      <h3 className="text-lg font-bold text-green-500 mb-4">Coach AI Recommendations</h3>
 
       {recommendations.length === 0 ? (
         <div className="text-sm text-muted-foreground text-center py-8">

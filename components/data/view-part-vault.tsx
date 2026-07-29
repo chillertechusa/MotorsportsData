@@ -25,12 +25,12 @@ function partStatus(current: number, max: number): PartStatus {
 }
 
 const badge: Record<PartStatus, string> = {
-  good: 'bg-lime-400/15 text-lime-300 border-lime-400/30',
+  good: 'bg-green-500/15 text-green-400 border-green-500/30',
   warn: 'bg-amber-400/15 text-amber-300 border-amber-400/30',
   replace: 'bg-red-500/15 text-red-300 border-red-500/30',
 }
 const badgeLabel: Record<PartStatus, string> = { good: 'Good', warn: 'Warn', replace: 'Replace' }
-const barColor: Record<PartStatus, string> = { good: 'bg-lime-400', warn: 'bg-amber-400', replace: 'bg-red-500' }
+const barColor: Record<PartStatus, string> = { good: 'bg-green-500', warn: 'bg-amber-400', replace: 'bg-red-500' }
 
 // Add / edit form modal — shared for both create and update.
 function PartFormModal({
@@ -85,7 +85,7 @@ function PartFormModal({
               onChange={(e) => setPartName(e.target.value)}
               autoFocus
               placeholder="e.g. Clutch Pack, Piston & Rings"
-              className="w-full py-3 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-lg font-semibold text-zinc-100 placeholder:text-zinc-600 focus:border-lime-400 focus:outline-none"
+              className="w-full py-3 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-lg font-semibold text-zinc-100 placeholder:text-zinc-600 focus:border-green-500 focus:outline-none"
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -98,7 +98,7 @@ function PartFormModal({
                 value={maxHours}
                 onChange={(e) => setMaxHours(e.target.value)}
                 placeholder="15"
-                className="w-full py-3 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-lg font-semibold text-zinc-100 focus:border-lime-400 focus:outline-none"
+                className="w-full py-3 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-lg font-semibold text-zinc-100 focus:border-green-500 focus:outline-none"
               />
             </div>
             <div>
@@ -110,7 +110,7 @@ function PartFormModal({
                 value={stockInTruck}
                 onChange={(e) => setStockInTruck(e.target.value)}
                 placeholder="0"
-                className="w-full py-3 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-lg font-semibold text-zinc-100 focus:border-lime-400 focus:outline-none"
+                className="w-full py-3 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-lg font-semibold text-zinc-100 focus:border-green-500 focus:outline-none"
               />
             </div>
           </div>
@@ -126,7 +126,7 @@ function PartFormModal({
               })
             }
             disabled={saving}
-            className="w-full h-14 rounded-xl flex items-center justify-center gap-2 bg-lime-400 text-zinc-950 font-black uppercase tracking-wide active:bg-lime-300 transition-colors disabled:opacity-60"
+            className="w-full h-14 rounded-xl flex items-center justify-center gap-2 bg-green-500 text-zinc-950 font-black uppercase tracking-wide active:bg-green-400 transition-colors disabled:opacity-60"
           >
             {saving ? <Loader2 className="h-5 w-5 animate-spin" /> : <Plus className="h-5 w-5" />}
             {mode === 'add' ? 'Add Part' : 'Save Changes'}
@@ -278,7 +278,7 @@ export default function ViewPartVault({ vehicles }: { vehicles: Vehicle[] }) {
             <select
               value={activeVehicleId}
               onChange={(e) => setActiveVehicleId(e.target.value)}
-              className="h-9 rounded-lg bg-zinc-900 border border-zinc-800 px-3 text-sm text-zinc-300 focus:border-lime-400 focus:outline-none"
+              className="h-9 rounded-lg bg-zinc-900 border border-zinc-800 px-3 text-sm text-zinc-300 focus:border-green-500 focus:outline-none"
             >
               {vehicles.map((v) => (
                 <option key={v.id} value={v.id}>{v.name}</option>
@@ -293,13 +293,13 @@ export default function ViewPartVault({ vehicles }: { vehicles: Vehicle[] }) {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search parts..."
-              className="w-full h-12 rounded-xl bg-zinc-900 border border-zinc-800 pl-11 pr-4 text-base text-zinc-100 placeholder:text-zinc-600 focus:border-lime-400 focus:outline-none"
+              className="w-full h-12 rounded-xl bg-zinc-900 border border-zinc-800 pl-11 pr-4 text-base text-zinc-100 placeholder:text-zinc-600 focus:border-green-500 focus:outline-none"
             />
           </div>
           <button
             onClick={openAdd}
             disabled={!activeVehicleId}
-            className="flex items-center gap-2 h-12 px-4 rounded-xl bg-lime-400 text-zinc-950 font-bold text-sm uppercase tracking-wide active:bg-lime-300 transition-colors disabled:opacity-50 shrink-0"
+            className="flex items-center gap-2 h-12 px-4 rounded-xl bg-green-500 text-zinc-950 font-bold text-sm uppercase tracking-wide active:bg-green-400 transition-colors disabled:opacity-50 shrink-0"
           >
             <Plus className="h-4 w-4" /> <span className="hidden sm:inline">Add Part</span>
           </button>
@@ -329,7 +329,7 @@ export default function ViewPartVault({ vehicles }: { vehicles: Vehicle[] }) {
               {query ? 'Try a different term.' : 'Add engine, suspension, and consumable parts to track their lifecycle.'}
             </p>
             {!query && activeVehicleId && (
-              <button onClick={openAdd} className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-lime-400 text-zinc-950 font-bold text-sm uppercase tracking-wide active:bg-lime-300 transition-colors">
+              <button onClick={openAdd} className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-green-500 text-zinc-950 font-bold text-sm uppercase tracking-wide active:bg-green-400 transition-colors">
                 <Plus className="h-4 w-4" /> Add First Part
               </button>
             )}
@@ -367,7 +367,7 @@ export default function ViewPartVault({ vehicles }: { vehicles: Vehicle[] }) {
                       <button
                         onClick={() => logMaintenance(p)}
                         disabled={maintaining === p.id}
-                        className="flex items-center gap-1.5 h-9 px-3 rounded-lg bg-lime-400 text-zinc-950 font-bold text-xs uppercase active:bg-lime-300 transition-colors disabled:opacity-60"
+                        className="flex items-center gap-1.5 h-9 px-3 rounded-lg bg-green-500 text-zinc-950 font-bold text-xs uppercase active:bg-green-400 transition-colors disabled:opacity-60"
                         title="Reset part life after replacement"
                       >
                         {maintaining === p.id ? <Loader2 className="h-4 w-4 animate-spin" /> : <Wrench className="h-4 w-4" />}

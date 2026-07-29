@@ -93,7 +93,7 @@ export function SessionCompareClient({ vehicles }: { vehicles: Vehicle[] }) {
           <select
             value={selectedVehicle}
             onChange={(e) => setSelectedVehicle(e.target.value)}
-            className="w-full bg-zinc-950 border border-zinc-800 rounded px-4 py-3 text-zinc-100 focus:outline-none focus:border-lime-400"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded px-4 py-3 text-zinc-100 focus:outline-none focus:border-green-500"
           >
             {vehicles.map((v) => (
               <option key={v.id} value={v.id}>
@@ -115,7 +115,7 @@ export function SessionCompareClient({ vehicles }: { vehicles: Vehicle[] }) {
                   onClick={() => setSession1(s)}
                   className={`w-full text-left p-3 rounded border transition-colors ${
                     session1?.id === s.id
-                      ? 'border-lime-400 bg-lime-400/10'
+                      ? 'border-green-500 bg-green-500/10'
                       : 'border-zinc-800 hover:border-zinc-700'
                   }`}
                 >
@@ -137,7 +137,7 @@ export function SessionCompareClient({ vehicles }: { vehicles: Vehicle[] }) {
                   onClick={() => setSession2(s)}
                   className={`w-full text-left p-3 rounded border transition-colors ${
                     session2?.id === s.id
-                      ? 'border-lime-400 bg-lime-400/10'
+                      ? 'border-green-500 bg-green-500/10'
                       : 'border-zinc-800 hover:border-zinc-700'
                   }`}
                 >
@@ -155,7 +155,7 @@ export function SessionCompareClient({ vehicles }: { vehicles: Vehicle[] }) {
           <button
             onClick={compareSessions}
             disabled={!session1 || !session2 || loading}
-            className="bg-lime-400 text-zinc-950 px-8 py-4 font-black uppercase tracking-widest rounded hover:bg-lime-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors inline-flex items-center gap-2"
+            className="bg-green-500 text-zinc-950 px-8 py-4 font-black uppercase tracking-widest rounded hover:bg-green-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors inline-flex items-center gap-2"
           >
             {loading ? 'Comparing...' : 'Compare Setup'} <ChevronRight className="h-4 w-4" />
           </button>

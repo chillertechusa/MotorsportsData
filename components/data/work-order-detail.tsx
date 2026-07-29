@@ -53,7 +53,7 @@ const SUSPENSION_KEYS = [
 const STATUS_CONFIG: Record<WorkOrderStatus, { label: string; color: string; icon: typeof AlertCircle; next: WorkOrderStatus | null; nextLabel: string }> = {
   open: { label: 'Open', color: 'text-amber-400 bg-amber-400/10 border-amber-400/20', icon: AlertCircle, next: 'in_progress', nextLabel: 'Start Job' },
   in_progress: { label: 'In Progress', color: 'text-blue-400 bg-blue-400/10 border-blue-400/20', icon: PlayCircle, next: 'closed', nextLabel: 'Close Job' },
-  closed: { label: 'Closed', color: 'text-lime-400 bg-lime-400/10 border-lime-400/20', icon: CheckCircle2, next: null, nextLabel: '' },
+  closed: { label: 'Closed', color: 'text-green-500 bg-green-500/10 border-green-500/20', icon: CheckCircle2, next: null, nextLabel: '' },
 }
 
 // ── Sub-components ────────────────────────────────────────────────────────────
@@ -275,7 +275,7 @@ export default function WorkOrderDetail({ workOrderId, onBack }: Props) {
     return (
       <div className="p-6 text-center text-zinc-500">
         <p>Work order not found.</p>
-        <button onClick={onBack} className="mt-4 text-lime-400 text-sm font-bold">Go back</button>
+        <button onClick={onBack} className="mt-4 text-green-500 text-sm font-bold">Go back</button>
       </div>
     )
   }
@@ -312,7 +312,7 @@ export default function WorkOrderDetail({ workOrderId, onBack }: Props) {
         {cfg.next && (
           <button
             onClick={handleStatusAdvance}
-            className="rounded-full bg-lime-400 px-3 py-1 text-xs font-bold text-zinc-950 hover:bg-lime-300 transition-colors"
+            className="rounded-full bg-green-500 px-3 py-1 text-xs font-bold text-zinc-950 hover:bg-green-400 transition-colors"
           >
             {cfg.nextLabel}
           </button>
@@ -331,7 +331,7 @@ export default function WorkOrderDetail({ workOrderId, onBack }: Props) {
             <p className="text-sm font-bold uppercase tracking-wide text-zinc-400">Labor Timer</p>
           </div>
           {timerRunning && (
-            <span className="text-2xl font-black tabular-nums text-lime-400">{formatTimer(timerElapsed)}</span>
+            <span className="text-2xl font-black tabular-nums text-green-500">{formatTimer(timerElapsed)}</span>
           )}
         </div>
         <div className="flex items-center gap-3">
@@ -359,7 +359,7 @@ export default function WorkOrderDetail({ workOrderId, onBack }: Props) {
               min="0"
               value={laborHours}
               onChange={(e) => setLaborHours(parseFloat(e.target.value) || 0)}
-              className="w-20 rounded-lg bg-zinc-800 border border-zinc-700 px-2 py-1.5 text-sm text-center font-bold text-zinc-100 focus:outline-none focus:border-lime-400"
+              className="w-20 rounded-lg bg-zinc-800 border border-zinc-700 px-2 py-1.5 text-sm text-center font-bold text-zinc-100 focus:outline-none focus:border-green-500"
             />
             <span className="text-sm text-zinc-500">hours total</span>
           </div>
@@ -374,7 +374,7 @@ export default function WorkOrderDetail({ workOrderId, onBack }: Props) {
           onChange={(e) => setDescription(e.target.value)}
           rows={4}
           placeholder="What was done, observations, next steps..."
-          className="w-full resize-none rounded-2xl bg-zinc-900 border border-zinc-800 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-lime-400"
+          className="w-full resize-none rounded-2xl bg-zinc-900 border border-zinc-800 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-green-500"
         />
       </div>
 
@@ -388,7 +388,7 @@ export default function WorkOrderDetail({ workOrderId, onBack }: Props) {
             <Wrench className="h-4 w-4 text-zinc-400" />
             <span className="text-sm font-bold text-zinc-300">Suspension Before / After</span>
             {(order.suspensionBefore || order.suspensionAfter) && (
-              <span className="rounded-full bg-lime-400/20 px-2 py-0.5 text-[10px] font-bold text-lime-400">Saved</span>
+              <span className="rounded-full bg-green-500/20 px-2 py-0.5 text-[10px] font-bold text-green-500">Saved</span>
             )}
           </div>
           {showSuspension ? <ChevronUp className="h-4 w-4 text-zinc-500" /> : <ChevronDown className="h-4 w-4 text-zinc-500" />}
@@ -455,14 +455,14 @@ export default function WorkOrderDetail({ workOrderId, onBack }: Props) {
                   value={newPartName}
                   onChange={(e) => setNewPartName(e.target.value)}
                   placeholder="Part name..."
-                  className="flex-1 rounded-xl bg-zinc-800 border border-zinc-700 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-lime-400"
+                  className="flex-1 rounded-xl bg-zinc-800 border border-zinc-700 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-green-500"
                 />
                 <input
                   type="number"
                   min="1"
                   value={newPartQty}
                   onChange={(e) => setNewPartQty(parseInt(e.target.value) || 1)}
-                  className="w-16 rounded-xl bg-zinc-800 border border-zinc-700 px-2 py-2 text-sm text-center text-zinc-100 focus:outline-none focus:border-lime-400"
+                  className="w-16 rounded-xl bg-zinc-800 border border-zinc-700 px-2 py-2 text-sm text-center text-zinc-100 focus:outline-none focus:border-green-500"
                   placeholder="Qty"
                 />
                 <div className="relative w-24">
@@ -473,7 +473,7 @@ export default function WorkOrderDetail({ workOrderId, onBack }: Props) {
                     min="0"
                     value={newPartCost}
                     onChange={(e) => setNewPartCost(e.target.value)}
-                    className="w-full rounded-xl bg-zinc-800 border border-zinc-700 pl-6 pr-2 py-2 text-sm text-zinc-100 focus:outline-none focus:border-lime-400"
+                    className="w-full rounded-xl bg-zinc-800 border border-zinc-700 pl-6 pr-2 py-2 text-sm text-zinc-100 focus:outline-none focus:border-green-500"
                     placeholder="0.00"
                   />
                 </div>
@@ -539,7 +539,7 @@ export default function WorkOrderDetail({ workOrderId, onBack }: Props) {
                 value={uploadCaption}
                 onChange={(e) => setUploadCaption(e.target.value)}
                 placeholder="Caption (optional)..."
-                className="flex-1 rounded-xl bg-zinc-800 border border-zinc-700 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-lime-400"
+                className="flex-1 rounded-xl bg-zinc-800 border border-zinc-700 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-green-500"
               />
               <button
                 onClick={() => fileRef.current?.click()}
@@ -560,7 +560,7 @@ export default function WorkOrderDetail({ workOrderId, onBack }: Props) {
         <button
           onClick={handleSave}
           disabled={saving}
-          className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-lime-400 py-3 text-sm font-bold text-zinc-950 hover:bg-lime-300 disabled:opacity-40 transition-colors"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-green-500 py-3 text-sm font-bold text-zinc-950 hover:bg-green-400 disabled:opacity-40 transition-colors"
         >
           {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
           {saving ? 'Saving...' : 'Save Changes'}

@@ -37,7 +37,7 @@ export function DevicePairing({ devices, onAddDevice, onRemoveDevice }: DevicePa
         {onAddDevice && (
           <button
             onClick={onAddDevice}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-lime-500 hover:bg-lime-600 text-slate-900 font-bold transition"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-600 hover:bg-green-600 text-slate-900 font-bold transition"
           >
             <Plus className="h-4 w-4" />
             Add Device
@@ -61,7 +61,7 @@ export function DevicePairing({ devices, onAddDevice, onRemoveDevice }: DevicePa
                 <div
                   className={`h-3 w-3 rounded-full ${
                     device.status === 'connected'
-                      ? 'bg-lime-400 animate-pulse'
+                      ? 'bg-green-500 animate-pulse'
                       : device.status === 'pairing'
                         ? 'bg-blue-400 animate-pulse'
                         : 'bg-slate-600'
@@ -87,7 +87,7 @@ export function DevicePairing({ devices, onAddDevice, onRemoveDevice }: DevicePa
                   >
                     <Copy
                       className={`h-4 w-4 ${
-                        copied === device.id ? 'text-lime-400' : 'text-slate-400'
+                        copied === device.id ? 'text-green-500' : 'text-slate-400'
                       }`}
                     />
                   </button>

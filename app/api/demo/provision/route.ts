@@ -206,7 +206,7 @@ async function seedFamilyTeam(teamId: string) {
 
   // Race calendar — mix of past results and upcoming events
   const events = await db.insert(mdScheduleEvents).values([
-    { teamId, vehicleId: bike.id, title: 'Loretta Lynn's — Regional Qualifier', eventType: 'race', eventDate: d(-45), series: 'AMA Amateur National', finishPosition: 3, entryFeeCents: 27500, notes: 'P3 in 250 B. Chase was solid but lost time in the whoops. Setup was off — too soft in front.' },
+    { teamId, vehicleId: bike.id, title: "Loretta Lynn's — Regional Qualifier", eventType: 'race', eventDate: d(-45), series: 'AMA Amateur National', finishPosition: 3, entryFeeCents: 27500, notes: 'P3 in 250 B. Chase was solid but lost time in the whoops. Setup was off — too soft in front.' },
     { teamId, vehicleId: bike.id, title: 'Budds Creek National Practice',         eventType: 'practice', eventDate: d(-21), series: null, finishPosition: null, entryFeeCents: 6500, notes: 'Good day. Worked on corner speed in the second half. Suspension felt better after last week\'s revalve.' },
     { teamId, vehicleId: bike.id, title: 'Unadilla — 250 B Amateur',              eventType: 'race', eventDate: d(-7),  series: 'NESC Series', finishPosition: 1, entryFeeCents: 22000, notes: 'P1! Holeshot moto 1, checked out. Moto 2 went down on lap 3 but came back to 4th. Overall win on points.' },
     { teamId, vehicleId: bike.id, title: 'Southwick MX — Saturday Practice',      eventType: 'practice', eventDate: d(5),  series: null, finishPosition: null, entryFeeCents: 5500, notes: 'Pre-race prep for RedBud. Sand conditions expected.' },

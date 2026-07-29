@@ -48,7 +48,7 @@ type VideoRow = {
 
 const CATEGORY_ACCENT: Record<string, string> = {
   'Body Position': 'text-cyan-400 bg-cyan-400/10 border-cyan-400/30',
-  Cornering: 'text-lime-400 bg-lime-400/10 border-lime-400/30',
+  Cornering: 'text-green-500 bg-green-500/10 border-green-500/30',
   Jumping: 'text-amber-400 bg-amber-400/10 border-amber-400/30',
   Braking: 'text-red-400 bg-red-400/10 border-red-400/30',
   Acceleration: 'text-orange-400 bg-orange-400/10 border-orange-400/30',
@@ -61,7 +61,7 @@ function categoryAccent(cat: string) {
 }
 
 function scoreColor(score: number) {
-  if (score >= 80) return 'text-lime-400'
+  if (score >= 80) return 'text-green-500'
   if (score >= 60) return 'text-amber-400'
   return 'text-red-400'
 }
@@ -79,7 +79,7 @@ function timeAgo(iso: string) {
 function UpgradePanel() {
   return (
     <div className="flex flex-col items-center justify-center h-[calc(100vh-8rem)] max-w-lg mx-auto text-center px-4">
-      <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-lime-400/15 text-lime-400 mb-6">
+      <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-green-500/15 text-green-500 mb-6">
         <Lock className="h-8 w-8" />
       </span>
       <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-zinc-50 mb-3 text-balance">
@@ -91,7 +91,7 @@ function UpgradePanel() {
       </p>
       <Link
         href="/data/pricing"
-        className="inline-flex items-center gap-2 h-14 px-8 rounded-2xl bg-lime-400 text-zinc-950 font-black uppercase tracking-wide text-base active:bg-lime-300 transition-colors"
+        className="inline-flex items-center gap-2 h-14 px-8 rounded-2xl bg-green-500 text-zinc-950 font-black uppercase tracking-wide text-base active:bg-green-400 transition-colors"
       >
         See Factory Rig <ArrowRight className="h-5 w-5" />
       </Link>
@@ -138,7 +138,7 @@ function AnalysisReport({ analysis, filename }: { analysis: Analysis; filename?:
           {filename && (
             <p className="text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1 truncate">{filename}</p>
           )}
-          <h3 className="text-sm font-black uppercase tracking-wide text-lime-400 mb-2">Coach&apos;s Read</h3>
+          <h3 className="text-sm font-black uppercase tracking-wide text-green-500 mb-2">Coach&apos;s Read</h3>
           <p className="text-sm text-zinc-300 leading-relaxed text-pretty">{analysis.summary}</p>
         </div>
       </div>
@@ -147,13 +147,13 @@ function AnalysisReport({ analysis, filename }: { analysis: Analysis; filename?:
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
           <div className="flex items-center gap-2 mb-3">
-            <TrendingUp className="h-4 w-4 text-lime-400" />
+            <TrendingUp className="h-4 w-4 text-green-500" />
             <h3 className="text-sm font-black uppercase tracking-wide text-zinc-200">Strengths</h3>
           </div>
           <ul className="space-y-2">
             {analysis.strengths.map((s, i) => (
               <li key={i} className="flex gap-2 text-sm text-zinc-300 leading-relaxed">
-                <span className="text-lime-400 shrink-0">+</span>
+                <span className="text-green-500 shrink-0">+</span>
                 <span>{s}</span>
               </li>
             ))}
@@ -200,7 +200,7 @@ function AnalysisReport({ analysis, filename }: { analysis: Analysis; filename?:
                   {cp.category}
                 </span>
                 <p className="text-sm text-zinc-300 leading-relaxed mb-1">{cp.observation}</p>
-                <p className="text-sm text-lime-400/90 leading-relaxed">
+                <p className="text-sm text-green-500/90 leading-relaxed">
                   <span className="font-bold">Fix: </span>
                   {cp.recommendation}
                 </p>
@@ -356,7 +356,7 @@ export default function ViewVideo({ vehicles, tier }: { vehicles: Vehicle[]; tie
             onClick={() => setTab(t)}
             className={`h-10 px-5 rounded-xl text-sm font-bold uppercase tracking-wide transition-colors ${
               tab === t
-                ? 'bg-lime-400 text-zinc-950'
+                ? 'bg-green-500 text-zinc-950'
                 : 'bg-zinc-900 text-zinc-400 border border-zinc-800 active:bg-zinc-800'
             }`}
           >
@@ -376,7 +376,7 @@ export default function ViewVideo({ vehicles, tier }: { vehicles: Vehicle[]; tie
               if (!busy) pickFile(e.dataTransfer.files?.[0] ?? null)
             }}
             className={`relative rounded-2xl border-2 border-dashed p-8 text-center transition-colors cursor-pointer ${
-              file ? 'border-lime-400/50 bg-lime-400/5' : 'border-zinc-700 bg-zinc-900/50 active:border-zinc-600'
+              file ? 'border-green-500/50 bg-green-500/5' : 'border-zinc-700 bg-zinc-900/50 active:border-zinc-600'
             } ${busy ? 'pointer-events-none opacity-60' : ''}`}
           >
             <input
@@ -388,7 +388,7 @@ export default function ViewVideo({ vehicles, tier }: { vehicles: Vehicle[]; tie
             />
             {file ? (
               <div className="flex items-center justify-center gap-3">
-                <Film className="h-6 w-6 text-lime-400 shrink-0" />
+                <Film className="h-6 w-6 text-green-500 shrink-0" />
                 <span className="text-sm font-medium text-zinc-200 truncate">{file.name}</span>
                 <button
                   onClick={(e) => {
@@ -421,7 +421,7 @@ export default function ViewVideo({ vehicles, tier }: { vehicles: Vehicle[]; tie
                 value={vehicleId}
                 onChange={(e) => setVehicleId(e.target.value)}
                 disabled={busy}
-                className="w-full h-11 px-3 rounded-xl bg-zinc-900 border border-zinc-800 text-sm text-zinc-200 focus:border-lime-400/50 focus:outline-none"
+                className="w-full h-11 px-3 rounded-xl bg-zinc-900 border border-zinc-800 text-sm text-zinc-200 focus:border-green-500/50 focus:outline-none"
               >
                 <option value="">No specific bike</option>
                 {vehicles.map((v) => (
@@ -441,7 +441,7 @@ export default function ViewVideo({ vehicles, tier }: { vehicles: Vehicle[]; tie
                 onChange={(e) => setNotes(e.target.value)}
                 disabled={busy}
                 placeholder="e.g. my cornering in the ruts"
-                className="w-full h-11 px-3 rounded-xl bg-zinc-900 border border-zinc-800 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-lime-400/50 focus:outline-none"
+                className="w-full h-11 px-3 rounded-xl bg-zinc-900 border border-zinc-800 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-green-500/50 focus:outline-none"
               />
             </div>
           </div>
@@ -455,7 +455,7 @@ export default function ViewVideo({ vehicles, tier }: { vehicles: Vehicle[]; tie
           <button
             onClick={runAnalysis}
             disabled={!file || busy}
-            className="w-full h-14 rounded-2xl bg-lime-400 text-zinc-950 font-black uppercase tracking-wide text-base flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed active:bg-lime-300 transition-colors"
+            className="w-full h-14 rounded-2xl bg-green-500 text-zinc-950 font-black uppercase tracking-wide text-base flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed active:bg-green-400 transition-colors"
           >
             {phase === 'uploading' ? (
               <>

@@ -68,7 +68,7 @@ export function LiveCoachDashboard({ liveSessionId, riderName, vehicleName }: Li
         <div className="flex items-start justify-between mb-4">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <Activity className={`h-5 w-5 ${isLive ? 'animate-pulse text-lime-400' : 'text-zinc-400'}`} />
+              <Activity className={`h-5 w-5 ${isLive ? 'animate-pulse text-green-500' : 'text-zinc-400'}`} />
               <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">
                 {isLive ? 'LIVE SESSION' : 'SESSION PAUSED'}
               </span>
@@ -78,7 +78,7 @@ export function LiveCoachDashboard({ liveSessionId, riderName, vehicleName }: Li
           </div>
           <button
             onClick={() => setIsLive(!isLive)}
-            className="px-4 py-2 rounded-lg bg-lime-500/10 border border-lime-500/30 text-lime-400 text-sm font-bold hover:border-lime-500/50 transition"
+            className="px-4 py-2 rounded-lg bg-green-600/10 border border-green-600/30 text-green-500 text-sm font-bold hover:border-green-600/50 transition"
           >
             {isLive ? 'Pause' : 'Resume'}
           </button>
@@ -126,7 +126,7 @@ export function LiveCoachDashboard({ liveSessionId, riderName, vehicleName }: Li
           <div className="grid grid-cols-2 gap-4">
             <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
               <p className="text-xs font-bold uppercase tracking-wider text-zinc-500 mb-2">Speed</p>
-              <p className="text-4xl font-black text-lime-400">{currentData.speed.toFixed(1)}</p>
+              <p className="text-4xl font-black text-green-500">{currentData.speed.toFixed(1)}</p>
               <p className="text-xs text-zinc-400 mt-2">mph</p>
             </div>
             <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
@@ -211,7 +211,7 @@ export function LiveCoachDashboard({ liveSessionId, riderName, vehicleName }: Li
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-zinc-400">Best Lap This Session</span>
-                <span className="font-bold text-lime-400">{bestLapTime.toFixed(2)}s</span>
+                <span className="font-bold text-green-500">{bestLapTime.toFixed(2)}s</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-zinc-400">Current Lap Time</span>
@@ -234,7 +234,7 @@ export function LiveCoachDashboard({ liveSessionId, riderName, vehicleName }: Li
         <input
           type="text"
           placeholder="Ask about this lap's performance..."
-          className="w-full px-4 py-2 rounded-lg bg-zinc-800 border border-zinc-700 text-zinc-50 placeholder-zinc-500 text-sm focus:outline-none focus:border-lime-500"
+          className="w-full px-4 py-2 rounded-lg bg-zinc-800 border border-zinc-700 text-zinc-50 placeholder-zinc-500 text-sm focus:outline-none focus:border-green-600"
         />
       </div>
     </div>

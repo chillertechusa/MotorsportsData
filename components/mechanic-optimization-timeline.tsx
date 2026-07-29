@@ -24,7 +24,7 @@ export function MechanicOptimizationTimeline({
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'evaluated':
-        return <CheckCircle2 className="w-5 h-5 text-lime-400" />
+        return <CheckCircle2 className="w-5 h-5 text-green-500" />
       case 'applied':
         return <Clock className="w-5 h-5 text-yellow-400" />
       case 'suggested':
@@ -36,7 +36,7 @@ export function MechanicOptimizationTimeline({
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'evaluated':
-        return 'bg-lime-950 border-l-2 border-lime-500'
+        return 'bg-zinc-950 border-l-2 border-green-600'
       case 'applied':
         return 'bg-yellow-950 border-l-2 border-yellow-500'
       case 'suggested':
@@ -97,9 +97,9 @@ export function MechanicOptimizationTimeline({
                   )}
                   {opt.actualLapTimeDelta && (
                     <div className="flex items-center gap-1">
-                      <TrendingDown className="w-3 h-3 text-lime-300" />
+                      <TrendingDown className="w-3 h-3 text-green-400" />
                       <span className="text-muted-foreground">
-                        Actual: <span className="font-semibold text-lime-300">
+                        Actual: <span className="font-semibold text-green-400">
                           {opt.actualLapTimeDelta < 0 ? '-' : '+'}{Math.abs(opt.actualLapTimeDelta).toFixed(2)}s
                         </span>
                       </span>

@@ -56,7 +56,7 @@ function DisciplineCard({
       onClick={onClick}
       className={`w-full text-left rounded-lg border p-4 transition-all focus:outline-none ${
         selected
-          ? 'border-lime-500 bg-lime-950/30 ring-1 ring-lime-500/30'
+          ? 'border-green-600 bg-zinc-950/30 ring-1 ring-green-500/30'
           : 'border-zinc-700 bg-zinc-900/60 hover:border-zinc-600 hover:bg-zinc-900/80'
       }`}
       aria-pressed={selected}
@@ -69,7 +69,7 @@ function DisciplineCard({
           <div className="flex items-center justify-between gap-2">
             <span className="font-bold text-zinc-100 text-sm">{discipline.label}</span>
             {selected && (
-              <span className="flex items-center gap-1 text-xs font-bold text-lime-400 shrink-0">
+              <span className="flex items-center gap-1 text-xs font-bold text-green-500 shrink-0">
                 <Check className="h-3.5 w-3.5" />
                 Active
               </span>
@@ -202,7 +202,7 @@ export function ViewDiscipline() {
         {currentDiscipline && (
           <div className="text-right shrink-0">
             <p className="text-xs text-zinc-500">Current</p>
-            <p className="text-sm font-bold text-lime-400">
+            <p className="text-sm font-bold text-green-500">
               {DISCIPLINES.find((d) => d.id === currentDiscipline)?.label ?? currentDiscipline}
             </p>
           </div>
@@ -233,7 +233,7 @@ export function ViewDiscipline() {
           disabled={!hasChange || saving}
           className={`px-6 py-3 font-black uppercase tracking-widest rounded text-sm transition-colors ${
             hasChange && !saving
-              ? 'bg-lime-400 text-zinc-950 hover:bg-lime-300'
+              ? 'bg-green-500 text-zinc-950 hover:bg-green-400'
               : 'bg-zinc-800 text-zinc-500 cursor-not-allowed'
           }`}
         >
@@ -241,7 +241,7 @@ export function ViewDiscipline() {
         </button>
 
         {saved && (
-          <span className="flex items-center gap-1.5 text-sm text-lime-400 font-bold">
+          <span className="flex items-center gap-1.5 text-sm text-green-500 font-bold">
             <Check className="h-4 w-4" />
             Saved — AI routes updated
           </span>

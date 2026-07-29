@@ -103,8 +103,8 @@ function RiderCard({ rider, onDisconnect }: { rider: RiderHR; onDisconnect: (id:
           <div className="flex items-center gap-2">
             <span className="text-sm font-bold text-zinc-100 truncate">{rider.riderName}</span>
             {rider.connected ? (
-              <span className="shrink-0 flex items-center gap-1 rounded-full bg-lime-500/15 border border-lime-500/30 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-lime-400">
-                <span className="h-1.5 w-1.5 rounded-full bg-lime-400 animate-pulse" />
+              <span className="shrink-0 flex items-center gap-1 rounded-full bg-green-600/15 border border-green-600/30 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-green-500">
+                <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
                 Live
               </span>
             ) : (
@@ -143,7 +143,7 @@ function RiderCard({ rider, onDisconnect }: { rider: RiderHR; onDisconnect: (id:
                 </span>
               )}
               {rider.secondsAgo !== null && (
-                <span className={`text-[10px] ${isFresh ? 'text-lime-500' : isStale ? 'text-amber-500' : 'text-zinc-500'}`}>
+                <span className={`text-[10px] ${isFresh ? 'text-green-600' : isStale ? 'text-amber-500' : 'text-zinc-500'}`}>
                   {rider.secondsAgo === 0 ? 'just now' : `${rider.secondsAgo}s ago`}
                 </span>
               )}
@@ -211,8 +211,8 @@ function ConnectModal({ onClose, onConnected }: { onClose: () => void; onConnect
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center gap-3 mb-4">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-lime-500/15 border border-lime-500/20">
-            <Heart className="h-5 w-5 text-lime-400" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-600/15 border border-green-600/20">
+            <Heart className="h-5 w-5 text-green-500" />
           </div>
           <div>
             <h3 className="text-base font-bold text-zinc-100">Connect Wearable</h3>
@@ -229,7 +229,7 @@ function ConnectModal({ onClose, onConnected }: { onClose: () => void; onConnect
             value={riderName}
             onChange={(e) => setRiderName(e.target.value)}
             placeholder="e.g. Chase Sexton"
-            className="w-full rounded-xl border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-lime-500/50 focus:outline-none"
+            className="w-full rounded-xl border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-green-600/50 focus:outline-none"
           />
         </div>
 
@@ -255,7 +255,7 @@ function ConnectModal({ onClose, onConnected }: { onClose: () => void; onConnect
           <button
             onClick={handleConnect}
             disabled={loading}
-            className="flex-1 rounded-xl bg-lime-500 px-4 py-2.5 text-sm font-bold text-zinc-950 hover:bg-lime-400 disabled:opacity-50 transition-colors"
+            className="flex-1 rounded-xl bg-green-600 px-4 py-2.5 text-sm font-bold text-zinc-950 hover:bg-green-500 disabled:opacity-50 transition-colors"
           >
             {loading ? 'Opening...' : 'Open Device Setup'}
           </button>
@@ -354,8 +354,8 @@ export function ViewLiveHR() {
               Live HR Monitor
             </h2>
             {connectedCount > 0 && (
-              <span className="flex items-center gap-1 rounded-full border border-lime-500/30 bg-lime-500/10 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wider text-lime-400">
-                <span className="h-1.5 w-1.5 rounded-full bg-lime-400 animate-pulse" />
+              <span className="flex items-center gap-1 rounded-full border border-green-600/30 bg-green-600/10 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wider text-green-500">
+                <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
                 {connectedCount} Live
               </span>
             )}
@@ -381,7 +381,7 @@ export function ViewLiveHR() {
           {terraConfigured && (
             <button
               onClick={() => setShowConnect(true)}
-              className="flex items-center gap-1.5 rounded-xl bg-lime-500 px-4 py-2 text-xs font-bold uppercase tracking-wider text-zinc-950 hover:bg-lime-400 transition-colors"
+              className="flex items-center gap-1.5 rounded-xl bg-green-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-zinc-950 hover:bg-green-500 transition-colors"
             >
               <Plus className="h-3.5 w-3.5" />
               Add Rider
@@ -440,7 +440,7 @@ export function ViewLiveHR() {
           {terraConfigured && (
             <button
               onClick={() => setShowConnect(true)}
-              className="flex items-center gap-2 rounded-xl bg-lime-500 px-6 py-2.5 text-sm font-bold text-zinc-950 hover:bg-lime-400 transition-colors"
+              className="flex items-center gap-2 rounded-xl bg-green-600 px-6 py-2.5 text-sm font-bold text-zinc-950 hover:bg-green-500 transition-colors"
             >
               <Plus className="h-4 w-4" />
               Connect First Rider
@@ -466,7 +466,7 @@ export function ViewLiveHR() {
               { step: '3', title: 'Live monitoring', body: 'Coach sees every rider\'s HR in real-time during the session. Cards update every 3 seconds.' },
             ].map(({ step, title, body }) => (
               <div key={step} className="flex gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-lime-500/15 text-xs font-black text-lime-400">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-600/15 text-xs font-black text-green-500">
                   {step}
                 </span>
                 <div>

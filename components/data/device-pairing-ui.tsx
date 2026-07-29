@@ -120,7 +120,7 @@ export function DevicePairingUI() {
       {/* Header */}
       <div>
         <h2 className="text-2xl font-black uppercase tracking-wide text-zinc-50 flex items-center gap-3">
-          <Link2 className="h-6 w-6 text-lime-500" />
+          <Link2 className="h-6 w-6 text-green-600" />
           Wearable Devices
         </h2>
         <p className="text-sm text-zinc-400 mt-2">
@@ -238,7 +238,7 @@ export function DevicePairingUI() {
         {!showPairingModal ? (
           <button
             onClick={() => setShowPairingModal(true)}
-            className="flex items-center gap-2 px-4 py-2 border border-zinc-700 rounded font-bold text-zinc-300 hover:border-lime-500 transition"
+            className="flex items-center gap-2 px-4 py-2 border border-zinc-700 rounded font-bold text-zinc-300 hover:border-green-600 transition"
           >
             <Plus className="h-4 w-4" />
             Link Device
@@ -253,7 +253,7 @@ export function DevicePairingUI() {
                 className={`p-4 border rounded-lg transition text-left ${
                   pairing
                     ? 'border-zinc-700 bg-zinc-800/50 cursor-wait'
-                    : 'border-zinc-700 hover:border-lime-500 hover:bg-zinc-800/50'
+                    : 'border-zinc-700 hover:border-green-600 hover:bg-zinc-800/50'
                 }`}
               >
                 <div className="flex items-center gap-3 mb-2">
@@ -274,7 +274,7 @@ export function DevicePairingUI() {
       </div>
 
       {/* Info Box */}
-      <div className="border border-lime-500/30 bg-lime-500/5 rounded-lg p-4 space-y-3">
+      <div className="border border-green-600/30 bg-green-600/5 rounded-lg p-4 space-y-3">
         <p className="text-sm text-zinc-300">
           <strong>Secure Connection:</strong> All device credentials are encrypted AES-256. We never store your
           passwords.

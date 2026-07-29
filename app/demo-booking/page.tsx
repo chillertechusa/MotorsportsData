@@ -26,7 +26,7 @@ export default function DemoBookingPage() {
               href="https://calendly.com/motorsportsdata/demo"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 bg-lime-500 text-zinc-950 font-bold rounded-lg hover:bg-lime-400 transition"
+              className="px-6 py-3 bg-green-600 text-zinc-950 font-bold rounded-lg hover:bg-green-500 transition"
             >
               Book 30-Min Demo
             </a>
@@ -66,7 +66,7 @@ export default function DemoBookingPage() {
             const Icon = item.icon
             return (
               <div key={item.title} className="border border-zinc-800 bg-zinc-900 p-6 rounded-lg">
-                <Icon className="h-6 w-6 text-lime-500 mb-3" />
+                <Icon className="h-6 w-6 text-green-600 mb-3" />
                 <h3 className="font-bold mb-2">{item.title}</h3>
                 <p className="text-sm text-zinc-400">{item.desc}</p>
               </div>
@@ -87,7 +87,7 @@ export default function DemoBookingPage() {
               'Compare your team — head-to-head telemetry, find the gaps',
             ].map((item, idx) => (
               <div key={idx} className="flex gap-4 items-start">
-                <Zap className="h-5 w-5 text-lime-500 mt-1 flex-shrink-0" />
+                <Zap className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
                 <p className="text-zinc-300">{item}</p>
               </div>
             ))}
@@ -129,7 +129,7 @@ export default function DemoBookingPage() {
       <div className="border-t border-zinc-800 bg-zinc-900/50">
         <div className="max-w-4xl mx-auto px-6 py-12 text-center">
           <p className="text-zinc-400 mb-4">Questions before booking?</p>
-          <a href="mailto:hello@motorsportsdata.io" className="text-lime-500 font-bold hover:underline">
+          <a href="mailto:hello@motorsportsdata.io" className="text-green-600 font-bold hover:underline">
             hello@motorsportsdata.io
           </a>
         </div>

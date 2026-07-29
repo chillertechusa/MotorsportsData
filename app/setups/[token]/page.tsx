@@ -107,7 +107,7 @@ export default async function PublicSetupSheetPage({ params }: { params: Promise
       <div className="mx-auto max-w-2xl px-4 py-8">
         {/* Header */}
         <div className="mb-6">
-          <Link href="/data/pricing" className="text-xs uppercase tracking-widest text-lime-400 font-bold mb-4 block">
+          <Link href="/data/pricing" className="text-xs uppercase tracking-widest text-green-500 font-bold mb-4 block">
             Motorsport Data
           </Link>
           <h1 className="text-2xl font-black text-zinc-50 text-balance">
@@ -140,7 +140,7 @@ export default async function PublicSetupSheetPage({ params }: { params: Promise
               )}
               {s.humidityPct != null && (
                 <div className="text-center">
-                  <Droplets className="h-5 w-5 text-sky-400 mx-auto mb-1" />
+                  <Droplets className="h-5 w-5 text-blue-500 mx-auto mb-1" />
                   <p className="text-xl font-black text-zinc-50">{s.humidityPct}%</p>
                   <p className="text-xs text-zinc-500">Humidity</p>
                 </div>
@@ -195,7 +195,7 @@ export default async function PublicSetupSheetPage({ params }: { params: Promise
           <p className="text-sm text-zinc-400 mb-3">Log your own setup sheets, track progression, and get AI recommendations.</p>
           <Link
             href="/data/pricing"
-            className="inline-block rounded-xl bg-lime-400 text-zinc-950 font-bold text-sm px-6 py-3"
+            className="inline-block rounded-xl bg-green-500 text-zinc-950 font-bold text-sm px-6 py-3"
           >
             Get started free
           </Link>

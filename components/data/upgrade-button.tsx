@@ -37,8 +37,8 @@ export function UpgradeButton({
       disabled={disabled}
       className={`
         inline-flex items-center gap-2 rounded-lg font-semibold transition-all
-        ${disabled ? 'bg-zinc-200 text-zinc-500 cursor-not-allowed' : 'bg-lime-400/20 text-lime-400 hover:bg-lime-400/30 active:scale-95'}
-        border border-lime-400/30
+        ${disabled ? 'bg-zinc-200 text-zinc-500 cursor-not-allowed' : 'bg-green-500/20 text-green-500 hover:bg-green-500/30 active:scale-95'}
+        border border-green-500/30
         ${sizeClasses[size]}
       `}
       title={`Upgrade to ${requiredTier} to access ${featureName}`}

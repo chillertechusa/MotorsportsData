@@ -160,7 +160,7 @@ export default function TierCheckoutClient({ tier, squareReady, appId, locationI
       <div className="mx-auto max-w-md px-4 py-24 text-center">
         <h1 className="text-foreground text-3xl font-black uppercase mb-4">Invalid Plan</h1>
         <p className="text-muted-foreground mb-8">The tier you selected could not be found.</p>
-        <a href="/data/pricing" className="text-lime-400 underline text-sm">View all plans</a>
+        <a href="/data/pricing" className="text-green-500 underline text-sm">View all plans</a>
       </div>
     )
   }
@@ -169,7 +169,7 @@ export default function TierCheckoutClient({ tier, squareReady, appId, locationI
     return (
       <div className="mx-auto max-w-md px-4 py-24 text-center flex flex-col items-center gap-6">
         <div className="flex items-center justify-center">
-          <CheckCircle2 className="h-16 w-16 text-lime-400 animate-in fade-in duration-500" />
+          <CheckCircle2 className="h-16 w-16 text-green-500 animate-in fade-in duration-500" />
         </div>
         <h1 className="text-foreground text-3xl font-black uppercase">
           Welcome to {tierLabel}
@@ -191,7 +191,7 @@ export default function TierCheckoutClient({ tier, squareReady, appId, locationI
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-8">
-        <p className="text-xs uppercase tracking-[0.25em] text-lime-400 font-mono font-black mb-1">
+        <p className="text-xs uppercase tracking-[0.25em] text-green-500 font-mono font-black mb-1">
           Subscription Checkout
         </p>
         <h1 className="text-foreground text-4xl font-black uppercase">
@@ -216,8 +216,8 @@ export default function TierCheckoutClient({ tier, squareReady, appId, locationI
                   onClick={() => setBilling(opt.value)}
                   className={`border px-4 py-3 text-sm font-semibold text-left transition-colors ${
                     billing === opt.value
-                      ? 'border-lime-400 bg-lime-400/10 text-lime-400'
-                      : 'border-border text-muted-foreground hover:border-lime-400/40'
+                      ? 'border-green-500 bg-green-500/10 text-green-500'
+                      : 'border-border text-muted-foreground hover:border-green-500/40'
                   }`}
                 >
                   <div>{opt.label}</div>
@@ -243,7 +243,7 @@ export default function TierCheckoutClient({ tier, squareReady, appId, locationI
                 placeholder="Email address"
                 value={form.email}
                 onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                className="w-full border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground/60 focus:border-lime-400 focus:outline-none text-sm"
+                className="w-full border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground/60 focus:border-green-500 focus:outline-none text-sm"
                 aria-label="Email address"
               />
               <input
@@ -251,7 +251,7 @@ export default function TierCheckoutClient({ tier, squareReady, appId, locationI
                 placeholder="Full name"
                 value={form.name}
                 onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                className="w-full border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground/60 focus:border-lime-400 focus:outline-none text-sm"
+                className="w-full border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground/60 focus:border-green-500 focus:outline-none text-sm"
                 aria-label="Full name"
               />
             </div>
@@ -276,7 +276,7 @@ export default function TierCheckoutClient({ tier, squareReady, appId, locationI
                 )}
               </>
             ) : (
-              <div className="border border-dashed border-lime-400/30 bg-card p-4">
+              <div className="border border-dashed border-green-500/30 bg-card p-4">
                 <p className="text-sm text-foreground font-semibold uppercase tracking-wide">
                   Card payments not configured
                 </p>
@@ -304,7 +304,7 @@ export default function TierCheckoutClient({ tier, squareReady, appId, locationI
           <button
             type="submit"
             disabled={submitting || (squareReady && !cardReady)}
-            className="w-full bg-lime-400 py-4 text-sm font-black uppercase tracking-widest text-zinc-950 transition-colors hover:bg-lime-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full bg-green-500 py-4 text-sm font-black uppercase tracking-widest text-zinc-950 transition-colors hover:bg-green-400 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {submitting ? (
               <>
@@ -334,7 +334,7 @@ export default function TierCheckoutClient({ tier, squareReady, appId, locationI
                 <p className="text-foreground font-bold text-sm">{tierLabel}</p>
                 <p className="text-muted-foreground text-xs mt-0.5 capitalize">{billing} subscription</p>
               </div>
-              <p className="text-lime-400 font-black text-lg font-mono shrink-0">
+              <p className="text-green-500 font-black text-lg font-mono shrink-0">
                 {billing === 'annual' ? formatPrice(annualCents) : formatPrice(monthlyCents)}
               </p>
             </div>
@@ -366,19 +366,19 @@ export default function TierCheckoutClient({ tier, squareReady, appId, locationI
             </p>
             <ul className="space-y-2">
               <li className="flex items-center gap-2 text-xs text-muted-foreground">
-                <CheckCircle2 className="h-3.5 w-3.5 text-lime-400 shrink-0" />
+                <CheckCircle2 className="h-3.5 w-3.5 text-green-500 shrink-0" />
                 Full platform access for {tierLabel}
               </li>
               <li className="flex items-center gap-2 text-xs text-muted-foreground">
-                <CheckCircle2 className="h-3.5 w-3.5 text-lime-400 shrink-0" />
+                <CheckCircle2 className="h-3.5 w-3.5 text-green-500 shrink-0" />
                 Free Rider account always active
               </li>
               <li className="flex items-center gap-2 text-xs text-muted-foreground">
-                <CheckCircle2 className="h-3.5 w-3.5 text-lime-400 shrink-0" />
+                <CheckCircle2 className="h-3.5 w-3.5 text-green-500 shrink-0" />
                 Data preserved if subscription lapses
               </li>
               <li className="flex items-center gap-2 text-xs text-muted-foreground">
-                <CheckCircle2 className="h-3.5 w-3.5 text-lime-400 shrink-0" />
+                <CheckCircle2 className="h-3.5 w-3.5 text-green-500 shrink-0" />
                 Upgrade or downgrade anytime
               </li>
             </ul>

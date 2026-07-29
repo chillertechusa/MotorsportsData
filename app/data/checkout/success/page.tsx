@@ -37,11 +37,11 @@ export default async function MdCheckoutSuccessPage({
       )}
       <main className="flex flex-1 items-center justify-center p-6">
         <div className="w-full max-w-lg text-center">
-          <div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-full bg-lime-400/10 border border-lime-400/20">
-            <CheckCircle className="h-10 w-10 text-lime-400" />
+          <div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-full bg-green-500/10 border border-green-500/20">
+            <CheckCircle className="h-10 w-10 text-green-500" />
           </div>
 
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-lime-400 mb-3">
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-green-500 mb-3">
             Subscription Active
           </p>
           <h1 className="text-3xl lg:text-4xl font-black uppercase tracking-tight text-zinc-50 mb-4 text-balance">
@@ -110,7 +110,7 @@ export default async function MdCheckoutSuccessPage({
 
           <Link
             href="/data"
-            className="inline-flex items-center gap-2 rounded-xl bg-lime-400 px-8 py-4 text-sm font-black uppercase tracking-wider text-zinc-950 hover:bg-lime-300 transition-colors"
+            className="inline-flex items-center gap-2 rounded-xl bg-green-500 px-8 py-4 text-sm font-black uppercase tracking-wider text-zinc-950 hover:bg-green-400 transition-colors"
           >
             Go to Platform
             <ArrowRight className="h-4 w-4" />

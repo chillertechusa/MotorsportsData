@@ -117,19 +117,19 @@ function PlanCard({ plan, coach = false }: { plan: Plan; coach?: boolean }) {
   return (
     <article
       className={`relative flex flex-col bg-zinc-950 p-7 sm:p-8 border-t-2 ${
-        plan.primary ? 'border-lime-400' : coach ? 'border-zinc-500' : 'border-zinc-700'
+        plan.primary ? 'border-green-500' : coach ? 'border-zinc-500' : 'border-zinc-700'
       }`}
     >
       {plan.popular && (
         <div className="absolute -top-3.5 left-8">
-          <span className="inline-flex items-center gap-1.5 bg-lime-400 text-zinc-950 font-mono text-[10px] font-black uppercase tracking-widest px-3 py-1">
+          <span className="inline-flex items-center gap-1.5 bg-green-500 text-zinc-950 font-mono text-[10px] font-black uppercase tracking-widest px-3 py-1">
             <Star className="h-3 w-3 fill-current" aria-hidden="true" />
             Most Popular
           </span>
         </div>
       )}
 
-      <p className={`font-mono text-[11px] uppercase tracking-widest mb-3 mt-4 ${plan.primary ? 'text-lime-400' : 'text-zinc-400'}`}>
+      <p className={`font-mono text-[11px] uppercase tracking-widest mb-3 mt-4 ${plan.primary ? 'text-green-500' : 'text-zinc-400'}`}>
         {plan.name}
       </p>
       <div className="flex items-end gap-2 mb-1">
@@ -147,9 +147,9 @@ function PlanCard({ plan, coach = false }: { plan: Plan; coach?: boolean }) {
       </p>
 
       {plan.founding && (
-        <div className="flex items-center gap-2 mb-6 border border-lime-400/20 bg-lime-400/5 px-3 py-2">
-          <Lock className="h-3.5 w-3.5 text-lime-400 shrink-0" aria-hidden="true" />
-          <span className="font-mono text-[10px] text-lime-400 uppercase tracking-wider">
+        <div className="flex items-center gap-2 mb-6 border border-green-500/20 bg-green-500/5 px-3 py-2">
+          <Lock className="h-3.5 w-3.5 text-green-500 shrink-0" aria-hidden="true" />
+          <span className="font-mono text-[10px] text-green-500 uppercase tracking-wider">
             {coach ? 'Founding coach · price lock + migration' : 'Founding price locked permanently'}
           </span>
         </div>
@@ -158,7 +158,7 @@ function PlanCard({ plan, coach = false }: { plan: Plan; coach?: boolean }) {
       <ul className="flex flex-col gap-2.5 flex-1 mb-8">
         {plan.features.map((feature) => (
           <li key={feature} className="flex items-start gap-2.5">
-            <CheckCircle2 className="h-4 w-4 text-lime-400 shrink-0 mt-0.5" aria-hidden="true" />
+            <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0 mt-0.5" aria-hidden="true" />
             <span className="text-zinc-400 text-sm leading-snug">{feature}</span>
           </li>
         ))}
@@ -168,8 +168,8 @@ function PlanCard({ plan, coach = false }: { plan: Plan; coach?: boolean }) {
         href={`/data/sign-in?mode=sign-up&redirect=/checkout/tier?tier=${plan.id}`}
         className={`inline-flex items-center justify-center gap-2 w-full px-5 py-3.5 text-xs font-black uppercase tracking-widest transition-colors ${
           plan.primary
-            ? 'bg-lime-400 text-zinc-950 hover:bg-lime-300'
-            : 'border border-zinc-600 text-zinc-100 hover:border-lime-400/50 hover:text-lime-400'
+            ? 'bg-green-500 text-zinc-950 hover:bg-green-400'
+            : 'border border-zinc-600 text-zinc-100 hover:border-green-500/50 hover:text-green-500'
         }`}
       >
         {plan.cta}
@@ -184,14 +184,14 @@ export default function FoundingPricing() {
     <section id="pricing" className="bg-zinc-950 border-t border-zinc-800 py-24 md:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-14">
-          <p className="font-mono text-xs text-lime-400 uppercase tracking-[0.3em] mb-4">
+          <p className="font-mono text-xs text-green-500 uppercase tracking-[0.3em] mb-4">
             // choose your operating lens
           </p>
           <h2
             className="text-zinc-100 uppercase leading-none tracking-tight text-balance mb-5"
             style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}
           >
-            Built for the Racer. <span className="text-lime-400">Priced for the Business.</span>
+            Built for the Racer. <span className="text-green-500">Priced for the Business.</span>
           </h2>
           <p className="text-zinc-400 text-lg leading-relaxed text-pretty">
             Compete, operate a team, or build an elite coaching business. Founding teams and
@@ -202,7 +202,7 @@ export default function FoundingPricing() {
         {/* Compete track */}
         <div className="mb-14">
           <div className="flex items-center gap-3 mb-5">
-            <Users className="h-5 w-5 text-lime-400" aria-hidden="true" />
+            <Users className="h-5 w-5 text-green-500" aria-hidden="true" />
             <div>
               <h3 className="font-mono text-sm font-black text-zinc-100 uppercase tracking-widest">Compete</h3>
               <p className="text-zinc-500 text-sm">For riders, race teams, and factory operations.</p>
@@ -217,13 +217,13 @@ export default function FoundingPricing() {
         <div>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-5">
             <div className="flex items-center gap-3">
-              <Building2 className="h-5 w-5 text-lime-400" aria-hidden="true" />
+              <Building2 className="h-5 w-5 text-green-500" aria-hidden="true" />
               <div>
                 <h3 className="font-mono text-sm font-black text-zinc-100 uppercase tracking-widest">Coach Business OS</h3>
                 <p className="text-zinc-500 text-sm">For professionals whose roster is their business.</p>
               </div>
             </div>
-            <p className="font-mono text-[10px] text-lime-400 uppercase tracking-widest">
+            <p className="font-mono text-[10px] text-green-500 uppercase tracking-widest">
               Separate founding-coach cohort
             </p>
           </div>

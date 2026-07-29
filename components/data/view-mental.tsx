@@ -29,7 +29,7 @@ interface Props {
 const ENTRY_TYPES = ['daily', 'pre-race', 'post-race', 'mid-week'] as const
 
 const METRICS: { key: keyof MentalEntry; label: string; invert?: boolean; color: string }[] = [
-  { key: 'mood',       label: 'Mood',        color: 'text-lime-400' },
+  { key: 'mood',       label: 'Mood',        color: 'text-green-500' },
   { key: 'focus',      label: 'Focus',       color: 'text-cyan-400' },
   { key: 'confidence', label: 'Confidence',  color: 'text-amber-400' },
   { key: 'motivation', label: 'Motivation',  color: 'text-violet-400' },
@@ -40,14 +40,14 @@ const METRICS: { key: keyof MentalEntry; label: string; invert?: boolean; color:
 
 function scoreColor(val: number, invert = false): string {
   const v = invert ? 11 - val : val
-  if (v >= 8) return 'text-lime-400'
+  if (v >= 8) return 'text-green-500'
   if (v >= 5) return 'text-amber-400'
   return 'text-red-400'
 }
 
 function scoreBg(val: number, invert = false): string {
   const v = invert ? 11 - val : val
-  if (v >= 8) return 'bg-lime-400/20'
+  if (v >= 8) return 'bg-green-500/20'
   if (v >= 5) return 'bg-amber-400/20'
   return 'bg-red-400/20'
 }
@@ -93,7 +93,7 @@ function ScoreSlider({ label, value, onChange, invert }: {
         max={10}
         value={value}
         onChange={e => onChange(parseInt(e.target.value))}
-        className="w-full accent-lime-400 h-1.5"
+        className="w-full accent-green-500 h-1.5"
       />
       <div className="flex justify-between text-[10px] text-zinc-600">
         <span>{invert ? 'Calm' : 'Low'}</span>
@@ -239,7 +239,7 @@ export default function ViewMental({ tier }: Props) {
   const last7 = entries.slice(0, 7)
 
   // ── Readiness ring color
-  const ringColor = readiness >= 7.5 ? 'stroke-lime-400' : readiness >= 5 ? 'stroke-amber-400' : 'stroke-red-400'
+  const ringColor = readiness >= 7.5 ? 'stroke-green-500' : readiness >= 5 ? 'stroke-amber-400' : 'stroke-red-400'
   const ringLabel = readiness >= 7.5 ? 'Race Ready' : readiness >= 5 ? 'Moderate' : 'Off Day'
 
   return (
@@ -299,7 +299,7 @@ export default function ViewMental({ tier }: Props) {
               </div>
               <div>
                 <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">Mental Readiness</p>
-                <p className={`text-xl font-black ${readiness >= 7.5 ? 'text-lime-400' : readiness >= 5 ? 'text-amber-400' : 'text-red-400'}`}>
+                <p className={`text-xl font-black ${readiness >= 7.5 ? 'text-green-500' : readiness >= 5 ? 'text-amber-400' : 'text-red-400'}`}>
                   {ringLabel}
                 </p>
                 <p className="text-xs text-zinc-500 mt-1">
@@ -539,7 +539,7 @@ export default function ViewMental({ tier }: Props) {
                 </div>
                 <a
                   href="/data/pricing"
-                  className="inline-block bg-lime-400 text-zinc-950 font-bold text-sm px-6 py-2.5 rounded-lg hover:bg-lime-300 transition-colors"
+                  className="inline-block bg-green-500 text-zinc-950 font-bold text-sm px-6 py-2.5 rounded-lg hover:bg-green-400 transition-colors"
                 >
                   Upgrade to Factory Rig
                 </a>

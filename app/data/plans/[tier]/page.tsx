@@ -156,7 +156,7 @@ export default async function TierLandingPage({ params }: Props) {
     <main className="min-h-screen bg-zinc-950">
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
-        <p className="text-xs uppercase tracking-[0.25em] text-lime-400 font-mono font-black mb-4">
+        <p className="text-xs uppercase tracking-[0.25em] text-green-500 font-mono font-black mb-4">
           {MD_PLAN_LABELS[tier]}
         </p>
         <h1 className="text-4xl sm:text-5xl font-black text-zinc-50 mb-4 text-balance">
@@ -171,7 +171,7 @@ export default async function TierLandingPage({ params }: Props) {
 
         {/* Price + CTA */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
-          <div className="text-3xl font-black text-lime-400 font-mono">
+          <div className="text-3xl font-black text-green-500 font-mono">
             {priceDisplay}
           </div>
           {isCheckoutReady ? (
@@ -180,12 +180,12 @@ export default async function TierLandingPage({ params }: Props) {
               label={copy.cta}
               price={MD_PLAN_CENTS[tier as MdPlanId] ?? 0}
               isSignedIn={isSignedIn}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-lime-400 text-zinc-950 text-sm font-black uppercase tracking-widest hover:bg-lime-300 transition-colors font-mono"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-green-500 text-zinc-950 text-sm font-black uppercase tracking-widest hover:bg-green-400 transition-colors font-mono"
             />
           ) : (
             <a
               href="tel:+18884698475"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-lime-400 text-lime-400 text-sm font-black uppercase tracking-widest hover:bg-lime-400/10 transition-colors font-mono"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-green-500 text-green-500 text-sm font-black uppercase tracking-widest hover:bg-green-500/10 transition-colors font-mono"
             >
               <Phone className="h-5 w-5" />
               (888) 469-8475
@@ -195,7 +195,7 @@ export default async function TierLandingPage({ params }: Props) {
 
         {/* Phone CTA for All Tiers */}
         <div className="text-sm text-zinc-400">
-          Questions? <a href="tel:+18884698475" className="text-lime-400 hover:text-lime-300 font-semibold">Call us</a>
+          Questions? <a href="tel:+18884698475" className="text-green-500 hover:text-green-400 font-semibold">Call us</a>
         </div>
       </section>
 
@@ -304,12 +304,12 @@ export default async function TierLandingPage({ params }: Props) {
               label={copy.cta}
               price={MD_PLAN_CENTS[tier as MdPlanId] ?? 0}
               isSignedIn={isSignedIn}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-lime-400 text-zinc-950 text-sm font-black uppercase tracking-widest hover:bg-lime-300 transition-colors font-mono"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-green-500 text-zinc-950 text-sm font-black uppercase tracking-widest hover:bg-green-400 transition-colors font-mono"
             />
           ) : (
             <a
               href="tel:+18884698475"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-lime-400 text-lime-400 text-sm font-black uppercase tracking-widest hover:bg-lime-400/10 transition-colors font-mono"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-green-500 text-green-500 text-sm font-black uppercase tracking-widest hover:bg-green-500/10 transition-colors font-mono"
             >
               <Phone className="h-5 w-5" />
               (888) 469-8475

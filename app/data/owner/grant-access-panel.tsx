@@ -8,13 +8,13 @@ import { MD_PLAN_IDS, MD_PLAN_LABELS, MD_PLAN_CENTS, type MdPlanId } from '@/lib
 const TIER_COLORS: Record<MdPlanId, string> = {
   rookie:      'text-zinc-300 bg-zinc-800 border-zinc-700',
   privateer:   'text-blue-300 bg-blue-950 border-blue-800',
-  wrench:      'text-sky-300 bg-sky-950 border-sky-800',
+  wrench:      'text-blue-400 bg-sky-950 border-blue-900',
   race_team:   'text-amber-300 bg-amber-950 border-amber-800',
-  factory_rig: 'text-lime-300 bg-lime-950 border-lime-800',
+  factory_rig: 'text-green-400 bg-zinc-950 border-green-900',
   agent:       'text-violet-300 bg-violet-950 border-violet-800',
   fan:         'text-zinc-400 bg-zinc-900 border-zinc-800',
   coach:       'text-emerald-300 bg-emerald-950 border-emerald-800',
-  coach_pro:   'text-lime-300 bg-lime-950 border-lime-800',
+  coach_pro:   'text-green-400 bg-zinc-950 border-green-900',
   academy:     'text-amber-300 bg-amber-950 border-amber-800',
 }
 
@@ -101,8 +101,8 @@ export function GrantAccessPanel() {
     <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
-        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-lime-400/10 border border-lime-400/20">
-          <ShieldCheck className="h-4.5 w-4.5 text-lime-400" />
+        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-green-500/10 border border-green-500/20">
+          <ShieldCheck className="h-4.5 w-4.5 text-green-500" />
         </div>
         <div>
           <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-100">Grant Plan Access</h2>
@@ -114,7 +114,7 @@ export function GrantAccessPanel() {
       {toast && (
         <div className={`flex items-center gap-2.5 rounded-xl px-4 py-3 mb-5 text-sm border ${
           toast.type === 'ok'
-            ? 'bg-lime-950 border-lime-800 text-lime-300'
+            ? 'bg-zinc-950 border-green-900 text-green-400'
             : 'bg-red-950 border-red-800 text-red-300'
         }`}>
           {toast.type === 'ok'
@@ -135,10 +135,10 @@ export function GrantAccessPanel() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="e.g. Yamaha Factory, john@example.com…"
-            className="w-full bg-zinc-950 border border-zinc-700 rounded-xl pl-9 pr-4 py-2.5 text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none focus:border-lime-500 transition-colors"
+            className="w-full bg-zinc-950 border border-zinc-700 rounded-xl pl-9 pr-4 py-2.5 text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none focus:border-green-600 transition-colors"
           />
           {searching && (
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 border-2 border-lime-400 border-t-transparent rounded-full animate-spin" />
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 border-2 border-green-500 border-t-transparent rounded-full animate-spin" />
           )}
         </div>
 
@@ -194,7 +194,7 @@ export function GrantAccessPanel() {
               onClick={() => setTier(id)}
               className={`rounded-xl border px-3 py-2.5 text-left transition-all ${
                 tier === id
-                  ? 'border-lime-500 bg-lime-950 text-lime-300'
+                  ? 'border-green-600 bg-zinc-950 text-green-400'
                   : 'border-zinc-700 bg-zinc-950 text-zinc-400 hover:border-zinc-500 hover:text-zinc-200'
               }`}
             >
@@ -217,7 +217,7 @@ export function GrantAccessPanel() {
               name="expiry"
               checked={!hasExpiry}
               onChange={() => setHasExpiry(false)}
-              className="accent-lime-400"
+              className="accent-green-500"
             />
             <span className="text-sm text-zinc-300">Permanent</span>
           </label>
@@ -227,7 +227,7 @@ export function GrantAccessPanel() {
               name="expiry"
               checked={hasExpiry}
               onChange={() => setHasExpiry(true)}
-              className="accent-lime-400"
+              className="accent-green-500"
             />
             <span className="text-sm text-zinc-300">Set expiry date</span>
           </label>
@@ -239,7 +239,7 @@ export function GrantAccessPanel() {
                 min={minDateStr}
                 value={expiryDate}
                 onChange={(e) => setExpiryDate(e.target.value)}
-                className="bg-zinc-950 border border-zinc-700 rounded-lg px-3 py-1.5 text-sm text-zinc-200 focus:outline-none focus:border-lime-500 transition-colors"
+                className="bg-zinc-950 border border-zinc-700 rounded-lg px-3 py-1.5 text-sm text-zinc-200 focus:outline-none focus:border-green-600 transition-colors"
               />
             </div>
           )}
@@ -256,7 +256,7 @@ export function GrantAccessPanel() {
         <button
           onClick={handleGrant}
           disabled={!selected || granting || (hasExpiry && !expiryDate)}
-          className="flex items-center gap-2 rounded-xl bg-lime-400 px-5 py-2.5 text-sm font-bold uppercase tracking-wider text-zinc-950 hover:bg-lime-300 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+          className="flex items-center gap-2 rounded-xl bg-green-500 px-5 py-2.5 text-sm font-bold uppercase tracking-wider text-zinc-950 hover:bg-green-400 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {granting
             ? <div className="h-4 w-4 border-2 border-zinc-950 border-t-transparent rounded-full animate-spin" />

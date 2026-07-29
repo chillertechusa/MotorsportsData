@@ -119,7 +119,7 @@ function WorkOrderCard({ wo, vehicle, status }: { wo: typeof mdWorkOrders.$infer
           <div className="flex items-center gap-2 flex-wrap">
             <h3 className="text-sm font-bold text-zinc-100">{wo.title}</h3>
             <span className={`inline-flex items-center gap-1 text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 border shrink-0 ${
-              isOpen ? 'text-red-400 border-red-400/20' : 'text-lime-400 border-lime-400/20'
+              isOpen ? 'text-red-400 border-red-400/20' : 'text-green-500 border-green-500/20'
             }`}>
               {isOpen ? <Clock className="h-2.5 w-2.5" aria-hidden="true" /> : <CheckCircle2 className="h-2.5 w-2.5" aria-hidden="true" />}
               {status}

@@ -64,9 +64,9 @@ export default function OwnerSetupPage() {
   if (success) {
     return (
       <div className="min-h-screen bg-zinc-950 flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-zinc-900 border border-lime-400 rounded-lg p-8 text-center space-y-4">
+        <div className="max-w-md w-full bg-zinc-900 border border-green-500 rounded-lg p-8 text-center space-y-4">
           <div className="flex justify-center">
-            <div className="bg-lime-400 text-zinc-950 rounded-full p-3">
+            <div className="bg-green-500 text-zinc-950 rounded-full p-3">
               <Check className="h-8 w-8" />
             </div>
           </div>
@@ -76,7 +76,7 @@ export default function OwnerSetupPage() {
           </p>
           <a
             href="/data/owner/login"
-            className="inline-block w-full px-6 py-3 bg-lime-400 text-zinc-950 font-black rounded hover:bg-lime-300 transition-colors"
+            className="inline-block w-full px-6 py-3 bg-green-500 text-zinc-950 font-black rounded hover:bg-green-400 transition-colors"
           >
             Go to Login
           </a>
@@ -91,7 +91,7 @@ export default function OwnerSetupPage() {
         {/* Header */}
         <div className="text-center space-y-2">
           <div className="flex justify-center mb-4">
-            <div className="bg-lime-400 text-zinc-950 rounded-full p-3">
+            <div className="bg-green-500 text-zinc-950 rounded-full p-3">
               <Lock className="h-8 w-8" />
             </div>
           </div>
@@ -114,7 +114,7 @@ export default function OwnerSetupPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter secure password (12+ chars)"
-              className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded text-white placeholder-zinc-500 focus:border-lime-400 focus:outline-none transition-colors"
+              className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded text-white placeholder-zinc-500 focus:border-green-500 focus:outline-none transition-colors"
               disabled={isLoading}
             />
             <p className="text-xs text-zinc-500">
@@ -133,7 +133,7 @@ export default function OwnerSetupPage() {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Confirm password"
-              className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded text-white placeholder-zinc-500 focus:border-lime-400 focus:outline-none transition-colors"
+              className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded text-white placeholder-zinc-500 focus:border-green-500 focus:outline-none transition-colors"
               disabled={isLoading}
             />
           </div>
@@ -150,7 +150,7 @@ export default function OwnerSetupPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full px-4 py-3 bg-lime-400 text-zinc-950 font-black rounded hover:bg-lime-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full px-4 py-3 bg-green-500 text-zinc-950 font-black rounded hover:bg-green-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {isLoading ? (
               <>
@@ -165,7 +165,7 @@ export default function OwnerSetupPage() {
 
         {/* Info */}
         <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4 text-xs text-zinc-400 space-y-2">
-          <p className="font-mono font-bold text-lime-400">Platform Owner Account</p>
+          <p className="font-mono font-bold text-green-500">Platform Owner Account</p>
           <p>This account provides full access to:</p>
           <ul className="list-disc list-inside space-y-1 text-zinc-500">
             <li>All team data and analytics</li>

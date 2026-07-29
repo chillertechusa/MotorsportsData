@@ -34,15 +34,15 @@ const MOCK_INVOICES = [
 ]
 
 const DISC_CHIP: Record<string, string> = {
-  'MX / SX': 'text-lime-400 bg-lime-400/10 border-lime-400/20',
-  'Enduro':  'text-sky-400 bg-sky-400/10 border-sky-400/20',
+  'MX / SX': 'text-green-500 bg-green-500/10 border-green-500/20',
+  'Enduro':  'text-blue-500 bg-blue-600/10 border-blue-600/20',
   'Karting': 'text-violet-400 bg-violet-400/10 border-violet-400/20',
 }
 const STATUS_CHIP: Record<string, string> = {
-  paid:      'text-lime-400 bg-lime-400/10',
+  paid:      'text-green-500 bg-green-500/10',
   sent:      'text-amber-400 bg-amber-400/10',
   draft:     'text-zinc-400 bg-zinc-700/50',
-  scheduled: 'text-sky-400 bg-sky-400/10',
+  scheduled: 'text-blue-500 bg-blue-600/10',
   completed: 'text-zinc-500 bg-zinc-800/60',
 }
 
@@ -55,11 +55,11 @@ function ProductMockup({ tab }: { tab: 'roster' | 'sessions' | 'billing' }) {
       <div className="flex items-center gap-2 border-b border-zinc-800 bg-zinc-950/90 px-4 py-2.5">
         <span className="h-2.5 w-2.5 rounded-full bg-red-500/60" aria-hidden="true" />
         <span className="h-2.5 w-2.5 rounded-full bg-amber-500/60" aria-hidden="true" />
-        <span className="h-2.5 w-2.5 rounded-full bg-lime-500/60" aria-hidden="true" />
+        <span className="h-2.5 w-2.5 rounded-full bg-green-600/60" aria-hidden="true" />
         <div className="ml-3 flex-1 max-w-sm rounded bg-zinc-800/50 px-3 py-0.5">
           <span className="font-mono text-[10px] text-zinc-500">motorsportsdata.io/data/coach/{tab}</span>
         </div>
-        <span className="ml-auto rounded border border-lime-400/20 bg-lime-400/8 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-lime-400">
+        <span className="ml-auto rounded border border-green-500/20 bg-green-500/8 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-green-500">
           Coach Pro
         </span>
       </div>
@@ -80,7 +80,7 @@ function ProductMockup({ tab }: { tab: 'roster' | 'sessions' | 'billing' }) {
               key={label}
               className={`flex items-center gap-1.5 rounded px-2 py-1.5 text-[11px] ${
                 active
-                  ? 'bg-lime-400/10 text-lime-400 border border-lime-400/20'
+                  ? 'bg-green-500/10 text-green-500 border border-green-500/20'
                   : 'text-zinc-600 border border-transparent'
               }`}
             >
@@ -135,9 +135,9 @@ function ProductMockup({ tab }: { tab: 'roster' | 'sessions' | 'billing' }) {
           {tab === 'billing' && (
             <>
               <div className="flex items-center gap-2 mb-0.5">
-                <div className="rounded border border-lime-400/20 bg-lime-400/8 px-2.5 py-1 text-center">
+                <div className="rounded border border-green-500/20 bg-green-500/8 px-2.5 py-1 text-center">
                   <p className="font-mono text-[9px] uppercase tracking-widest text-zinc-500">This month</p>
-                  <p className="font-mono text-sm font-bold text-lime-400">$4,050</p>
+                  <p className="font-mono text-sm font-bold text-green-500">$4,050</p>
                 </div>
                 <div className="rounded border border-zinc-700/50 bg-zinc-800/30 px-2.5 py-1 text-center">
                   <p className="font-mono text-[9px] uppercase tracking-widest text-zinc-500">Outstanding</p>
@@ -167,9 +167,9 @@ function ProductMockup({ tab }: { tab: 'roster' | 'sessions' | 'billing' }) {
 
       {/* AI strip */}
       <div className="flex items-center gap-2 border-t border-zinc-800 bg-zinc-950/70 px-4 py-2">
-        <Zap className="h-3 w-3 shrink-0 text-lime-400" aria-hidden="true" />
+        <Zap className="h-3 w-3 shrink-0 text-green-500" aria-hidden="true" />
         <p className="text-[10px] text-zinc-400">
-          <span className="font-semibold text-lime-400">Rig Doctor — </span>
+          <span className="font-semibold text-green-500">Rig Doctor — </span>
           {tab === 'roster'   && "Sienna knocked 0.4s off sector 2 last session. Tyler's gate-drop consistency is up 18% this month."}
           {tab === 'sessions' && 'Tuesday session has 3 confirmed. Recommend adding Mason for the enduro warmup — he has a race in 10 days.'}
           {tab === 'billing'  && '$800 due from Jade in 7 days. Mason\'s draft invoice is ready to send — pending your review.'}
@@ -211,7 +211,7 @@ export default function DemoLaunchClient() {
       {/* ── Hero ── */}
       <section className="mx-auto max-w-6xl px-6 pt-16 pb-10">
         <div className="mb-10 flex flex-col items-center gap-4 text-center">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-lime-400/25 bg-lime-400/8 px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-lime-400">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-green-500/25 bg-green-500/8 px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-green-500">
             <Zap className="h-3 w-3" aria-hidden="true" />
             Live product — real data — no credit card
           </span>
@@ -220,7 +220,7 @@ export default function DemoLaunchClient() {
             style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900 }}
           >
             This is what coaches build on.<br />
-            <span className="text-lime-400">Walk in. See it yourself.</span>
+            <span className="text-green-500">Walk in. See it yourself.</span>
           </h1>
           <p className="max-w-xl text-balance text-base leading-relaxed text-zinc-400 md:text-lg">
             One click provisions a real coaching account — 5 named athletes, 4 sessions,
@@ -239,7 +239,7 @@ export default function DemoLaunchClient() {
                 onClick={() => setActiveTab(tab)}
                 className={`rounded px-4 py-1.5 text-xs font-semibold capitalize transition-colors ${
                   activeTab === tab
-                    ? 'border border-lime-400/25 bg-lime-400/10 text-lime-400'
+                    ? 'border border-green-500/25 bg-green-500/10 text-green-500'
                     : 'border border-transparent text-zinc-500 hover:bg-zinc-800/50 hover:text-zinc-300'
                 }`}
               >
@@ -255,7 +255,7 @@ export default function DemoLaunchClient() {
           <button
             onClick={launch}
             disabled={status === 'loading'}
-            className="group flex items-center gap-2 rounded-lg bg-lime-400 px-9 py-3.5 text-base font-black tracking-wide text-zinc-950 shadow-lg shadow-lime-400/20 transition-all hover:bg-lime-300 disabled:cursor-not-allowed disabled:opacity-60"
+            className="group flex items-center gap-2 rounded-lg bg-green-500 px-9 py-3.5 text-base font-black tracking-wide text-zinc-950 shadow-lg shadow-green-500/20 transition-all hover:bg-green-400 disabled:cursor-not-allowed disabled:opacity-60"
             style={{ fontFamily: 'var(--font-barlow-condensed)' }}
           >
             {status === 'loading' ? (
@@ -300,7 +300,7 @@ export default function DemoLaunchClient() {
               { icon: TrendingUp,   label: '$4,050 MRR',        sub: 'Real month-to-date revenue KPIs' },
             ].map(({ icon: Icon, label, sub }) => (
               <div key={label} className="rounded-lg border border-zinc-800 bg-zinc-900/60 p-3 text-center">
-                <Icon className="mx-auto mb-2 h-4 w-4 text-lime-400" aria-hidden="true" />
+                <Icon className="mx-auto mb-2 h-4 w-4 text-green-500" aria-hidden="true" />
                 <p className="text-xs font-semibold text-zinc-200">{label}</p>
                 <p className="mt-0.5 text-[10px] leading-snug text-zinc-500">{sub}</p>
               </div>
@@ -314,7 +314,7 @@ export default function DemoLaunchClient() {
         <div className="mx-auto max-w-5xl px-6 py-8">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-0 sm:divide-x sm:divide-zinc-800">
             <div className="flex flex-1 items-start gap-3 sm:pr-8">
-              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-lime-400" aria-hidden="true" />
+              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-500" aria-hidden="true" />
               <div>
                 <p className="text-sm font-semibold text-zinc-200">What is real</p>
                 <p className="mt-0.5 text-xs leading-relaxed text-zinc-500">
@@ -335,7 +335,7 @@ export default function DemoLaunchClient() {
               <p className="text-xs text-zinc-500">Ready to keep it?</p>
               <Link
                 href="/checkout/tier?tier=coach_pro&utm_source=demo_bottom"
-                className="flex items-center gap-1.5 rounded-lg border border-lime-400/30 bg-lime-400/8 px-4 py-2 text-sm font-semibold text-lime-400 transition-colors hover:bg-lime-400/15"
+                className="flex items-center gap-1.5 rounded-lg border border-green-500/30 bg-green-500/8 px-4 py-2 text-sm font-semibold text-green-500 transition-colors hover:bg-green-500/15"
               >
                 Start Coach Pro &mdash; $499/mo
                 <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -359,7 +359,7 @@ export default function DemoLaunchClient() {
               { icon: Brain,    label: 'Rig Doctor AI',             sub: 'Setup coaching, debrief analysis, training plan generation, race-day intelligence' },
             ].map(({ icon: Icon, label, sub }) => (
               <div key={label} className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4">
-                <Icon className="mb-2 h-5 w-5 text-lime-400" aria-hidden="true" />
+                <Icon className="mb-2 h-5 w-5 text-green-500" aria-hidden="true" />
                 <p className="text-sm font-semibold leading-snug text-zinc-200">{label}</p>
                 <p className="mt-1 text-xs leading-relaxed text-zinc-500">{sub}</p>
               </div>
@@ -377,7 +377,7 @@ export default function DemoLaunchClient() {
           <div className="flex items-center gap-5">
             <Link href="/legal/privacy" className="text-xs text-zinc-600 transition-colors hover:text-zinc-400">Privacy</Link>
             <Link href="/legal/terms"   className="text-xs text-zinc-600 transition-colors hover:text-zinc-400">Terms</Link>
-            <Link href="/account/sign-up?plan=coach_pro" className="flex items-center gap-1 text-xs font-medium text-lime-400 hover:underline">
+            <Link href="/account/sign-up?plan=coach_pro" className="flex items-center gap-1 text-xs font-medium text-green-500 hover:underline">
               Get started <ChevronRight className="h-3 w-3" aria-hidden="true" />
             </Link>
           </div>

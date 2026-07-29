@@ -63,7 +63,7 @@ export default function CohortDashboard() {
           const Icon = stat.icon
           return (
             <div key={stat.label} className="border border-zinc-800 bg-zinc-900 p-6 rounded-lg">
-              <Icon className="h-5 w-5 text-lime-500 mb-3" />
+              <Icon className="h-5 w-5 text-green-600 mb-3" />
               <p className="text-sm text-zinc-400">{stat.label}</p>
               <p className="text-3xl font-black text-zinc-50 mt-2">{stat.value}</p>
             </div>
@@ -101,7 +101,7 @@ export default function CohortDashboard() {
                     <span
                       className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${
                         coach.status === 'active'
-                          ? 'bg-lime-500/20 text-lime-400'
+                          ? 'bg-green-600/20 text-green-500'
                           : 'bg-amber-500/20 text-amber-400'
                       }`}
                     >
@@ -111,7 +111,7 @@ export default function CohortDashboard() {
                   <td className="px-6 py-4 text-zinc-300">{coach.riders}</td>
                   <td className="px-6 py-4">
                     {coach.nps ? (
-                      <span className={coach.nps >= 9 ? 'text-lime-400 font-bold' : 'text-zinc-300'}>
+                      <span className={coach.nps >= 9 ? 'text-green-500 font-bold' : 'text-zinc-300'}>
                         {coach.nps}
                       </span>
                     ) : (
@@ -120,7 +120,7 @@ export default function CohortDashboard() {
                   </td>
                   <td className="px-6 py-4">
                     {coach.willPay === true ? (
-                      <span className="text-lime-400 font-bold">Yes</span>
+                      <span className="text-green-500 font-bold">Yes</span>
                     ) : coach.willPay === false ? (
                       <span className="text-orange-400">No</span>
                     ) : (
@@ -140,7 +140,7 @@ export default function CohortDashboard() {
         <h2 className="font-bold text-zinc-50 mb-4">Weekly Actions</h2>
         <div className="space-y-3">
           {[
-            { title: 'Schedule 1-on-1 calls', coaches: 'Coach A, Coach B (high NPS)', color: 'text-lime-400' },
+            { title: 'Schedule 1-on-1 calls', coaches: 'Coach A, Coach B (high NPS)', color: 'text-green-500' },
             { title: 'Debug onboarding blockers', coaches: 'Coach C (stuck at step 2)', color: 'text-amber-400' },
             { title: 'Collect pricing feedback', coaches: 'All active coaches', color: 'text-blue-400' },
           ].map((action, idx) => (

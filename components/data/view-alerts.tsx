@@ -104,7 +104,7 @@ const ALERT_META: Record<
     label: 'Readiness Peaked',
     description: 'Fires when a rider\'s readiness score reaches the threshold — race-day ready',
     icon: TrendingUp,
-    color: 'text-lime-400',
+    color: 'text-green-500',
     unit: 'score',
     defaultThreshold: 88,
     min: 70,
@@ -140,7 +140,7 @@ const ALERT_META: Record<
     label: 'Lap Record',
     description: 'Fires when a rider sets a new personal best lap time',
     icon: Timer,
-    color: 'text-lime-400',
+    color: 'text-green-500',
     unit: '',
     defaultThreshold: 0,
     min: 0,
@@ -202,7 +202,7 @@ function RuleCard({
             <button
               onClick={() => onToggle(rule.alertType, !rule.enabled)}
               className={`relative inline-flex h-5 w-9 flex-shrink-0 rounded-full transition-colors focus:outline-none ${
-                rule.enabled ? 'bg-lime-500' : 'bg-zinc-700'
+                rule.enabled ? 'bg-green-600' : 'bg-zinc-700'
               }`}
               aria-label={rule.enabled ? 'Disable alert' : 'Enable alert'}
             >
@@ -228,14 +228,14 @@ function RuleCard({
                     step={meta.step}
                     value={localThreshold}
                     onChange={(e) => setLocalThreshold(Number(e.target.value))}
-                    className="flex-1 accent-lime-400 h-1.5"
+                    className="flex-1 accent-green-500 h-1.5"
                   />
-                  <span className="text-xs font-mono text-lime-400 w-16 text-right">
+                  <span className="text-xs font-mono text-green-500 w-16 text-right">
                     {localThreshold} {meta.unit}
                   </span>
                   <button
                     onClick={handleSaveThreshold}
-                    className="flex items-center gap-1 px-2 py-1 bg-lime-400 text-zinc-950 text-xs font-black rounded"
+                    className="flex items-center gap-1 px-2 py-1 bg-green-500 text-zinc-950 text-xs font-black rounded"
                   >
                     <Check className="h-3 w-3" />
                     Save
@@ -248,7 +248,7 @@ function RuleCard({
                 >
                   <span className="font-mono text-zinc-300">
                     {rule.thresholdDirection === 'below' ? 'Below ' : 'Above '}
-                    <span className="text-lime-400 font-bold">
+                    <span className="text-green-500 font-bold">
                       {rule.thresholdValue ?? meta.defaultThreshold} {meta.unit}
                     </span>
                   </span>
@@ -309,7 +309,7 @@ function EventItem({ event }: { event: AlertEvent }) {
         <div className="flex items-center gap-2 mt-0.5">
           <span className="text-xs text-zinc-500">{timeAgo(event.firedAt)}</span>
           {event.pushSent > 0 && (
-            <span className="text-xs text-lime-600 flex items-center gap-1">
+            <span className="text-xs text-green-700 flex items-center gap-1">
               <Bell className="h-2.5 w-2.5" />
               {event.pushSent} push sent
             </span>
@@ -416,16 +416,16 @@ export function ViewAlerts() {
           </p>
         </div>
         <div className="text-right">
-          <p className="text-2xl font-black text-lime-400">{enabledCount}</p>
+          <p className="text-2xl font-black text-green-500">{enabledCount}</p>
           <p className="text-xs text-zinc-500">active rules</p>
         </div>
       </div>
 
       {/* Push notification toggle */}
-      <div className={`rounded-lg border p-5 ${subscription ? 'border-lime-800 bg-lime-950/30' : 'border-zinc-700 bg-zinc-900/60'}`}>
+      <div className={`rounded-lg border p-5 ${subscription ? 'border-green-900 bg-zinc-950/30' : 'border-zinc-700 bg-zinc-900/60'}`}>
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className={subscription ? 'text-lime-400' : 'text-zinc-500'}>
+            <div className={subscription ? 'text-green-500' : 'text-zinc-500'}>
               {subscription ? <Bell className="h-5 w-5" /> : <BellOff className="h-5 w-5" />}
             </div>
             <div>
@@ -447,7 +447,7 @@ export function ViewAlerts() {
               className={`shrink-0 px-4 py-2 font-black uppercase tracking-widest rounded text-xs transition-colors disabled:opacity-50 ${
                 subscription
                   ? 'bg-zinc-800 text-zinc-100 hover:bg-zinc-700'
-                  : 'bg-lime-400 text-zinc-950 hover:bg-lime-300'
+                  : 'bg-green-500 text-zinc-950 hover:bg-green-400'
               }`}
             >
               {pushLoading ? '...' : subscription ? 'Disable' : 'Enable'}
@@ -533,7 +533,7 @@ export function ViewAlerts() {
           )}
 
           {saving && (
-            <p className="text-xs text-lime-500 text-center animate-pulse">Saving...</p>
+            <p className="text-xs text-green-600 text-center animate-pulse">Saving...</p>
           )}
         </div>
       )}

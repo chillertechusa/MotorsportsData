@@ -48,7 +48,7 @@ export default async function TeamOverviewPage() {
 
   const KPI = [
     { label: 'YTD Spend',       value: `$${(ytdSpend / 100).toLocaleString()}`,    icon: DollarSign, href: '/data/team/budget',   accent: 'text-[var(--color-yamaha)]' },
-    { label: 'Next Race',       value: nextRaces[0]?.eventDate ?? 'None scheduled', icon: CalendarDays, href: '/data/team/calendar', accent: 'text-lime-400' },
+    { label: 'Next Race',       value: nextRaces[0]?.eventDate ?? 'None scheduled', icon: CalendarDays, href: '/data/team/calendar', accent: 'text-green-500' },
     { label: 'Sponsor Value',   value: `$${(sponsorTotal / 100).toLocaleString()}`, icon: Award,       href: '/data/team/sponsors',  accent: 'text-[var(--color-yamaha)]' },
     { label: 'Open Work Orders',value: String(openWorkOrders.length),               icon: Wrench,      href: '/data/team/mechanic',  accent: 'text-red-400' },
   ]
@@ -148,7 +148,7 @@ export default async function TeamOverviewPage() {
                 <span className="text-sm font-semibold text-zinc-200">{s.sponsorName}</span>
                 <span className="text-xs text-zinc-500">${(s.valueCents / 100).toLocaleString()}</span>
                 <span className={`text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 border ${
-                  s.sponsorType === 'cash' ? 'text-lime-400 border-lime-400/20' : 'text-[var(--color-yamaha)] border-[var(--color-yamaha-border)]'
+                  s.sponsorType === 'cash' ? 'text-green-500 border-green-500/20' : 'text-[var(--color-yamaha)] border-[var(--color-yamaha-border)]'
                 }`}>{s.sponsorType}</span>
               </div>
             ))}

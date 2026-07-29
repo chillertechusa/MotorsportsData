@@ -202,7 +202,7 @@ export function AnalyticsDashboard({ teamId }: { teamId: string }) {
                 onClick={() => setPeriod(p)}
                 className={`px-3 py-1 rounded font-bold text-sm transition ${
                   period === p
-                    ? 'bg-lime-500 text-zinc-950'
+                    ? 'bg-green-600 text-zinc-950'
                     : 'bg-zinc-800 text-zinc-300 hover:bg-zinc-700'
                 }`}
               >
@@ -215,7 +215,7 @@ export function AnalyticsDashboard({ teamId }: { teamId: string }) {
           <button
             onClick={handleExportPDF}
             disabled={exporting}
-            className="flex items-center gap-2 px-4 py-2 bg-lime-500 hover:bg-lime-400 text-zinc-950 rounded font-bold text-sm transition disabled:opacity-50"
+            className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-500 text-zinc-950 rounded font-bold text-sm transition disabled:opacity-50"
           >
             <Download className="h-4 w-4" />
             {exporting ? 'Exporting...' : 'Export PDF'}
@@ -227,7 +227,7 @@ export function AnalyticsDashboard({ teamId }: { teamId: string }) {
       <div className="grid md:grid-cols-4 gap-4">
         {[
           { label: 'Total Sessions', value: data.teamSummary.totalSessions, color: 'text-blue-500' },
-          { label: 'Avg Readiness', value: `${data.teamSummary.avgTeamReadiness}%`, color: 'text-lime-500' },
+          { label: 'Avg Readiness', value: `${data.teamSummary.avgTeamReadiness}%`, color: 'text-green-600' },
           { label: 'Avg Compliance', value: `${data.teamSummary.avgCompliance}%`, color: 'text-amber-500' },
           { label: 'Races', value: data.teamSummary.totalRaces, color: 'text-purple-500' },
         ].map((metric) => (
@@ -247,7 +247,7 @@ export function AnalyticsDashboard({ teamId }: { teamId: string }) {
             <div key={metric.metricName} className="flex items-center justify-between p-4 bg-zinc-950 rounded">
               <div>
                 <p className="font-bold text-zinc-50">{metric.metricName}</p>
-                <p className="text-2xl font-black text-lime-500">{metric.value}</p>
+                <p className="text-2xl font-black text-green-600">{metric.value}</p>
               </div>
 
               <div className="flex items-center gap-2">
@@ -306,7 +306,7 @@ export function AnalyticsDashboard({ teamId }: { teamId: string }) {
                   </td>
                   <td className="px-6 py-4 text-center text-zinc-300">{rider.sessionsLogged}</td>
                   <td className="px-6 py-4 text-center">
-                    <span className="px-2 py-1 bg-lime-500/20 text-lime-400 text-sm font-bold rounded">
+                    <span className="px-2 py-1 bg-green-600/20 text-green-500 text-sm font-bold rounded">
                       {rider.avgReadiness}%
                     </span>
                   </td>

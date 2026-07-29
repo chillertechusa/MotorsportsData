@@ -31,7 +31,7 @@ export default function SetupTestTeamPage() {
     <div className="min-h-screen bg-zinc-950 p-8">
       <div className="max-w-2xl mx-auto">
         <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-8">
-          <h1 className="text-3xl font-black mb-2 text-lime-400">QA Test Team Setup</h1>
+          <h1 className="text-3xl font-black mb-2 text-green-500">QA Test Team Setup</h1>
           <p className="text-zinc-400 mb-8">Create a full operational team account for testing</p>
 
           <div className="space-y-6">
@@ -50,7 +50,7 @@ export default function SetupTestTeamPage() {
             <button
               onClick={handleSetup}
               disabled={loading}
-              className="w-full px-6 py-3 bg-lime-400 text-zinc-950 font-black uppercase tracking-wider hover:bg-lime-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors rounded-lg"
+              className="w-full px-6 py-3 bg-green-500 text-zinc-950 font-black uppercase tracking-wider hover:bg-green-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors rounded-lg"
             >
               {loading ? 'Setting up...' : 'Create Test Team Account'}
             </button>

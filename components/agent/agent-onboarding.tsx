@@ -45,8 +45,8 @@ export function AgentOnboarding({
     <main className="min-h-screen bg-zinc-950 text-zinc-100 px-4 py-10 sm:px-8">
       <div className="mx-auto max-w-2xl">
         <div className="mb-8 flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-lime-400/10 ring-1 ring-lime-400/30">
-            <Briefcase className="h-5 w-5 text-lime-400" />
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-green-500/10 ring-1 ring-green-500/30">
+            <Briefcase className="h-5 w-5 text-green-500" />
           </div>
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-zinc-500">Agent Portal</p>
@@ -131,7 +131,7 @@ export function AgentOnboarding({
           <button
             type="submit"
             disabled={isPending}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-lime-400 px-6 py-3 font-black uppercase tracking-widest text-zinc-950 transition-colors hover:bg-lime-300 disabled:opacity-60"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-green-500 px-6 py-3 font-black uppercase tracking-widest text-zinc-950 transition-colors hover:bg-green-400 disabled:opacity-60"
           >
             {isPending ? 'Creating…' : 'Create agent account'}
             {!isPending && <ArrowRight className="h-4 w-4" />}
@@ -148,7 +148,7 @@ export function AgentOnboarding({
 }
 
 const inputCls =
-  'w-full rounded-lg border border-zinc-800 bg-zinc-900/60 px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 outline-none transition-colors focus:border-lime-400/60 focus:ring-1 focus:ring-lime-400/40'
+  'w-full rounded-lg border border-zinc-800 bg-zinc-900/60 px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 outline-none transition-colors focus:border-green-500/60 focus:ring-1 focus:ring-green-500/40'
 
 function Field({
   label,
@@ -163,7 +163,7 @@ function Field({
     <label className="block space-y-1.5">
       <span className="font-mono text-xs uppercase tracking-widest text-zinc-500">
         {label}
-        {required && <span className="text-lime-400"> *</span>}
+        {required && <span className="text-green-500"> *</span>}
       </span>
       {children}
     </label>

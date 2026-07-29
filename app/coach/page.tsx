@@ -15,7 +15,7 @@ export default function CoachPage() {
       <section className="px-8 py-20 max-w-6xl mx-auto">
         <div className="space-y-6 mb-12">
           <h1 className="text-5xl md:text-6xl font-black tracking-tight">
-            Your Methods. <span className="text-lime-400">Protected.</span>
+            Your Methods. <span className="text-green-500">Protected.</span>
           </h1>
           <p className="text-xl text-zinc-300 max-w-2xl leading-relaxed">
             Elite coaching platform that locks in your proprietary training methods, predicts peak performance with science-backed readiness scoring, and gives you real-time visibility into every rider's training load and recovery.
@@ -25,7 +25,7 @@ export default function CoachPage() {
         <div className="flex flex-col md:flex-row gap-4">
           <Link
             href="/data/demo"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-lime-500 text-black font-bold rounded hover:bg-lime-400 transition"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-black font-bold rounded hover:bg-green-500 transition"
           >
             See Demo Now <ArrowRight className="h-5 w-5" />
           </Link>
@@ -43,7 +43,7 @@ export default function CoachPage() {
         <p className="text-sm text-zinc-500 uppercase tracking-widest mb-8">Built for championship teams</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="space-y-2">
-            <p className="text-3xl font-black text-lime-400">100%</p>
+            <p className="text-3xl font-black text-green-500">100%</p>
             <p className="text-sm text-zinc-400">IP Protected</p>
           </div>
           <div className="space-y-2">
@@ -72,7 +72,7 @@ export default function CoachPage() {
           {/* IP Vault */}
           <div className="border border-zinc-800 bg-zinc-900 bg-opacity-50 p-8 rounded-lg space-y-4">
             <div className="flex items-center gap-3">
-              <Lock className="h-6 w-6 text-lime-400" />
+              <Lock className="h-6 w-6 text-green-500" />
               <h3 className="text-xl font-bold">IP Vault</h3>
             </div>
             <p className="text-zinc-300 text-sm leading-relaxed">
@@ -80,19 +80,19 @@ export default function CoachPage() {
             </p>
             <ul className="space-y-2 text-sm text-zinc-400">
               <li className="flex gap-2">
-                <CheckCircle className="h-4 w-4 text-lime-400 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                 AES-256 encryption at rest
               </li>
               <li className="flex gap-2">
-                <CheckCircle className="h-4 w-4 text-lime-400 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                 Proprietary watermark on every view
               </li>
               <li className="flex gap-2">
-                <CheckCircle className="h-4 w-4 text-lime-400 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                 Immutable access audit trail
               </li>
               <li className="flex gap-2">
-                <CheckCircle className="h-4 w-4 text-lime-400 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                 Instant rider offboarding
               </li>
             </ul>
@@ -197,15 +197,15 @@ export default function CoachPage() {
             </p>
             <div className="space-y-3">
               <div className="flex gap-3">
-                <Zap className="h-5 w-5 text-lime-400 mt-1 flex-shrink-0" />
+                <Zap className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
                 <p className="text-sm"><strong>Dedicated coach coordinator.</strong> Weekly strategy calls, rapid feature iteration, custom metrics on demand.</p>
               </div>
               <div className="flex gap-3">
-                <Zap className="h-5 w-5 text-lime-400 mt-1 flex-shrink-0" />
+                <Zap className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
                 <p className="text-sm"><strong>99.9% SLA during race season.</strong> Zero tolerance for downtime when it matters.</p>
               </div>
               <div className="flex gap-3">
-                <Zap className="h-5 w-5 text-lime-400 mt-1 flex-shrink-0" />
+                <Zap className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
                 <p className="text-sm"><strong>Agile feature development.</strong> We ship improvements every sprint, not every quarter.</p>
               </div>
             </div>
@@ -214,16 +214,16 @@ export default function CoachPage() {
             <h3 className="text-2xl font-bold">Typical Coach Outcome</h3>
             <div className="space-y-4 text-sm text-zinc-300">
               <p>
-                <strong className="text-lime-300">Week 1:</strong> Upload first rider's telemetry. See readiness score, peak probability, and taper protocol.
+                <strong className="text-green-400">Week 1:</strong> Upload first rider's telemetry. See readiness score, peak probability, and taper protocol.
               </p>
               <p>
-                <strong className="text-lime-300">Week 2:</strong> Multi-rider comparison shows which riders are responding to training load. Adjust protocols.
+                <strong className="text-green-400">Week 2:</strong> Multi-rider comparison shows which riders are responding to training load. Adjust protocols.
               </p>
               <p>
-                <strong className="text-lime-300">Week 3:</strong> First race weekend. Real-time multi-rider telemetry during competition. Post-race debrief with data.
+                <strong className="text-green-400">Week 3:</strong> First race weekend. Real-time multi-rider telemetry during competition. Post-race debrief with data.
               </p>
               <p>
-                <strong className="text-lime-300">Ongoing:</strong> Every rider peaked on race day. Your proprietary methods are documented, locked, and duplicatable across a team of unlimited riders.
+                <strong className="text-green-400">Ongoing:</strong> Every rider peaked on race day. Your proprietary methods are documented, locked, and duplicatable across a team of unlimited riders.
               </p>
             </div>
           </div>
@@ -242,13 +242,13 @@ export default function CoachPage() {
         <div className="flex flex-col md:flex-row justify-center gap-4">
           <Link
             href="/data/demo"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-lime-500 text-black font-bold rounded text-lg hover:bg-lime-400 transition"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-green-600 text-black font-bold rounded text-lg hover:bg-green-500 transition"
           >
             See Demo <ArrowRight className="h-5 w-5" />
           </Link>
           <a
             href="mailto:coaches@motorsportsdata.io"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-lime-500 text-lime-400 font-bold rounded text-lg hover:bg-lime-500 hover:text-black transition"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-green-600 text-green-500 font-bold rounded text-lg hover:bg-green-600 hover:text-black transition"
           >
             Schedule a Call
           </a>

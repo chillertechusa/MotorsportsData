@@ -63,7 +63,7 @@ export default async function MechanicPortfolioPage() {
           </p>
           <a
             href="/data/mechanic/setup"
-            className="inline-block px-6 py-2 bg-lime-500 text-black rounded-lg font-semibold hover:bg-lime-400 transition"
+            className="inline-block px-6 py-2 bg-green-600 text-black rounded-lg font-semibold hover:bg-green-500 transition"
           >
             Get Started
           </a>
@@ -105,7 +105,7 @@ export default async function MechanicPortfolioPage() {
         <div className="mt-8 text-center">
           <a
             href="/data/mechanic/settings"
-            className="text-sm text-lime-400 hover:text-lime-300 transition"
+            className="text-sm text-green-500 hover:text-green-400 transition"
           >
             Edit Profile →
           </a>

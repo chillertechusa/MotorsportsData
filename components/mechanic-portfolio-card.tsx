@@ -24,7 +24,7 @@ export function MechanicPortfolioCard({
   const verificationBadgeColor = {
     unverified: 'bg-zinc-700 text-zinc-200',
     verified: 'bg-blue-700 text-blue-100',
-    elite: 'bg-lime-700 text-lime-100',
+    elite: 'bg-lime-700 text-green-200',
   }
 
   const verificationBadgeText = {
@@ -52,10 +52,10 @@ export function MechanicPortfolioCard({
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
         <div className="bg-zinc-800 rounded p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Users className="w-4 h-4 text-lime-400" />
+            <Users className="w-4 h-4 text-green-500" />
             <span className="text-xs text-muted-foreground">Riders Served</span>
           </div>
-          <div className="text-2xl font-bold text-lime-400">{totalRidersServed}</div>
+          <div className="text-2xl font-bold text-green-500">{totalRidersServed}</div>
         </div>
 
         <div className="bg-zinc-800 rounded p-4">

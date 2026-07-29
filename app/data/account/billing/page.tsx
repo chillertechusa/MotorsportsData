@@ -42,7 +42,7 @@ export default async function BillingPage() {
             </p>
             <Link
               href="/data/pricing"
-              className="mt-6 inline-block rounded-lg bg-lime-400 px-5 py-2.5 text-sm font-semibold text-zinc-950 hover:bg-lime-300"
+              className="mt-6 inline-block rounded-lg bg-green-500 px-5 py-2.5 text-sm font-semibold text-zinc-950 hover:bg-green-400"
             >
               View plans
             </Link>

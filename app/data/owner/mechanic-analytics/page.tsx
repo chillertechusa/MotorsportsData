@@ -67,10 +67,10 @@ export default async function MechanicAnalyticsPage() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6">
             <div className="flex items-center gap-3 mb-2">
-              <Users className="w-5 h-5 text-lime-400" />
+              <Users className="w-5 h-5 text-green-500" />
               <span className="text-sm text-muted-foreground">Total Mechanics</span>
             </div>
-            <div className="text-3xl font-bold text-lime-400">{analytics.length}</div>
+            <div className="text-3xl font-bold text-green-500">{analytics.length}</div>
           </div>
 
           <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6">
@@ -126,7 +126,7 @@ export default async function MechanicAnalyticsPage() {
                     <td className="text-center px-6 py-4 font-mono text-yellow-400">
                       {mechanic.totalWorkOrders}
                     </td>
-                    <td className="text-center px-6 py-4 font-mono text-lime-400">
+                    <td className="text-center px-6 py-4 font-mono text-green-500">
                       {Math.abs(mechanic.totalLapTimeSavings || 0).toFixed(2)}s
                     </td>
                     <td className="text-center px-6 py-4 font-mono text-blue-400">
@@ -138,7 +138,7 @@ export default async function MechanicAnalyticsPage() {
                     <td className="text-center px-6 py-4">
                       <span className={`text-xs font-semibold px-2 py-1 rounded capitalize ${
                         mechanic.verificationStatus === 'elite'
-                          ? 'bg-lime-950 text-lime-200'
+                          ? 'bg-zinc-950 text-green-300'
                           : mechanic.verificationStatus === 'verified'
                           ? 'bg-blue-950 text-blue-200'
                           : 'bg-zinc-800 text-zinc-300'

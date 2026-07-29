@@ -94,13 +94,13 @@ function readinessScore(r: ReadinessSnap): number {
 }
 
 function scoreColor(n: number) {
-  if (n >= 70) return 'text-lime-400'
+  if (n >= 70) return 'text-green-500'
   if (n >= 45) return 'text-amber-400'
   return 'text-red-400'
 }
 
 function scoreBorderBg(n: number) {
-  if (n >= 70) return 'border-lime-400/25 bg-lime-400/8'
+  if (n >= 70) return 'border-green-500/25 bg-green-500/8'
   if (n >= 45) return 'border-amber-400/25 bg-amber-400/8'
   return 'border-red-400/25 bg-red-400/8'
 }
@@ -119,7 +119,7 @@ function trendIcon(points: TrendPoint[], field: 'hrv' | 'energy') {
   const vals = points.map(p => p[field]).filter((v): v is number => v != null)
   if (vals.length < 2) return <Minus className="h-3.5 w-3.5 text-zinc-500" />
   const delta = vals[vals.length - 1] - vals[0]
-  if (delta > 3) return <TrendingUp className="h-3.5 w-3.5 text-lime-400" />
+  if (delta > 3) return <TrendingUp className="h-3.5 w-3.5 text-green-500" />
   if (delta < -3) return <TrendingDown className="h-3.5 w-3.5 text-red-400" />
   return <Minus className="h-3.5 w-3.5 text-zinc-500" />
 }
@@ -189,10 +189,10 @@ function AiBriefing({ data }: { data: DashboardData }) {
   if (!hasData) return null
 
   return (
-    <div className="rounded-2xl border border-lime-400/20 bg-zinc-950 p-5">
+    <div className="rounded-2xl border border-green-500/20 bg-zinc-950 p-5">
       <div className="flex items-center gap-2 mb-3">
-        <Sparkles className="h-4 w-4 text-lime-400 shrink-0" />
-        <span className="text-xs font-bold uppercase tracking-widest text-lime-400">AI Daily Briefing</span>
+        <Sparkles className="h-4 w-4 text-green-500 shrink-0" />
+        <span className="text-xs font-bold uppercase tracking-widest text-green-500">AI Daily Briefing</span>
         {loading && <Loader2 className="h-3.5 w-3.5 animate-spin text-zinc-500 ml-auto" />}
         {fetched && !loading && (
           <button
@@ -213,7 +213,7 @@ function AiBriefing({ data }: { data: DashboardData }) {
           ))}
         </div>
       ) : (
-        <button onClick={fetchBrief} className="text-sm text-zinc-400 hover:text-lime-400 transition-colors underline underline-offset-2">
+        <button onClick={fetchBrief} className="text-sm text-zinc-400 hover:text-green-500 transition-colors underline underline-offset-2">
           Generate briefing
         </button>
       )}
@@ -226,7 +226,7 @@ function AiBriefing({ data }: { data: DashboardData }) {
 function EmptyState({ onAddVehicle }: { onAddVehicle: () => void }) {
   return (
     <div className="flex flex-col items-center justify-center text-center py-16 sm:py-24 px-4">
-      <span className="flex h-20 w-20 items-center justify-center rounded-3xl bg-lime-400/15 text-lime-400 mb-6">
+      <span className="flex h-20 w-20 items-center justify-center rounded-3xl bg-green-500/15 text-green-500 mb-6">
         <Flag className="h-10 w-10" />
       </span>
       <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-zinc-50 mb-3 text-balance">
@@ -237,7 +237,7 @@ function EmptyState({ onAddVehicle }: { onAddVehicle: () => void }) {
       </p>
       <button
         onClick={onAddVehicle}
-        className="inline-flex items-center gap-2 h-14 px-8 rounded-2xl bg-lime-400 text-zinc-950 font-black uppercase tracking-wide text-base active:bg-lime-300 transition-colors"
+        className="inline-flex items-center gap-2 h-14 px-8 rounded-2xl bg-green-500 text-zinc-950 font-black uppercase tracking-wide text-base active:bg-green-400 transition-colors"
       >
         <Plus className="h-5 w-5" /> Add Your First Vehicle
       </button>
@@ -414,7 +414,7 @@ export default function ViewDashboard({ vehicles: propVehicles, fleetLoading, on
           <h2 className="text-xs font-bold uppercase tracking-widest text-zinc-500">Fleet</h2>
           <button
             onClick={onAddVehicle}
-            className="flex items-center gap-1.5 text-xs font-semibold text-zinc-400 hover:text-lime-400 transition-colors"
+            className="flex items-center gap-1.5 text-xs font-semibold text-zinc-400 hover:text-green-500 transition-colors"
           >
             <Plus className="h-3.5 w-3.5" /> Add vehicle
           </button>
@@ -455,7 +455,7 @@ export default function ViewDashboard({ vehicles: propVehicles, fleetLoading, on
                 {/* Hours bar */}
                 <div className="h-1.5 rounded-full bg-zinc-800 overflow-hidden">
                   <div
-                    className={`h-full rounded-full transition-all ${pct >= 100 ? 'bg-red-500' : pct >= 75 ? 'bg-amber-400' : 'bg-lime-400'}`}
+                    className={`h-full rounded-full transition-all ${pct >= 100 ? 'bg-red-500' : pct >= 75 ? 'bg-amber-400' : 'bg-green-500'}`}
                     style={{ width: `${pct}%` }}
                   />
                 </div>
@@ -485,15 +485,15 @@ export default function ViewDashboard({ vehicles: propVehicles, fleetLoading, on
                   <div className="flex items-start justify-between mb-3">
                     <div>
                       <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">{v.name}</p>
-                      <p className="text-2xl font-black text-lime-400">{riderScore}%</p>
+                      <p className="text-2xl font-black text-green-500">{riderScore}%</p>
                       <p className="text-xs text-zinc-500 mt-1">Readiness</p>
                     </div>
-                    <div className={`rounded-full w-3 h-3 ${riderScore >= 80 ? 'bg-lime-400' : riderScore >= 60 ? 'bg-amber-400' : 'bg-red-400'}`}></div>
+                    <div className={`rounded-full w-3 h-3 ${riderScore >= 80 ? 'bg-green-500' : riderScore >= 60 ? 'bg-amber-400' : 'bg-red-400'}`}></div>
                   </div>
                   <div className="space-y-2 pt-3 border-t border-zinc-800">
                     <div className="flex items-center justify-between text-xs">
                       <span className="text-zinc-500">Compliance</span>
-                      <span className="font-bold text-lime-400">{complianceRate}%</span>
+                      <span className="font-bold text-green-500">{complianceRate}%</span>
                     </div>
                     {alerts.length > 0 && (
                       <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-orange-500/10 border border-orange-500/20">
@@ -523,7 +523,7 @@ export default function ViewDashboard({ vehicles: propVehicles, fleetLoading, on
                 {s.bestLapSeconds != null && (
                   <div className="text-right shrink-0">
                     <p className="text-xs text-zinc-500">Best lap</p>
-                    <p className="font-bold text-lime-400 tabular-nums font-mono text-sm">{fmtLap(s.bestLapSeconds)}</p>
+                    <p className="font-bold text-green-500 tabular-nums font-mono text-sm">{fmtLap(s.bestLapSeconds)}</p>
                   </div>
                 )}
                 <ChevronRight className="h-4 w-4 text-zinc-700 shrink-0" />
@@ -570,7 +570,7 @@ export default function ViewDashboard({ vehicles: propVehicles, fleetLoading, on
             {/* Readiness Trend */}
             <div>
               <p className="text-sm font-semibold text-zinc-300 mb-3 flex items-center gap-2">
-                <TrendingUp className="h-4 w-4 text-lime-400" />
+                <TrendingUp className="h-4 w-4 text-green-500" />
                 Readiness Progression
               </p>
               <svg viewBox="0 0 100 60" className="w-full h-40" preserveAspectRatio="none">
@@ -597,7 +597,7 @@ export default function ViewDashboard({ vehicles: propVehicles, fleetLoading, on
                 <span>14d ago</span>
                 <span>Today</span>
               </div>
-              <p className="text-xs text-lime-400 mt-3 font-semibold">+12% overall trend</p>
+              <p className="text-xs text-green-500 mt-3 font-semibold">+12% overall trend</p>
             </div>
 
             {/* Compliance Trend */}
@@ -638,7 +638,7 @@ export default function ViewDashboard({ vehicles: propVehicles, fleetLoading, on
           <div className="grid grid-cols-3 gap-3 mt-6 pt-6 border-t border-zinc-800">
             <div>
               <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">Peak Days</p>
-              <p className="text-2xl font-black text-lime-400">3</p>
+              <p className="text-2xl font-black text-green-500">3</p>
             </div>
             <div>
               <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">Avg Readiness</p>

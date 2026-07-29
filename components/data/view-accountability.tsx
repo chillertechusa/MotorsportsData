@@ -32,13 +32,13 @@ interface AuditEntry {
 const STATUS_COLORS: Record<string, string> = {
   pending: 'bg-zinc-800 text-zinc-400',
   acknowledged: 'bg-blue-950 text-blue-300',
-  completed: 'bg-lime-950 text-lime-300',
+  completed: 'bg-zinc-950 text-green-400',
   failed: 'bg-red-950 text-red-300',
   skipped: 'bg-zinc-800 text-zinc-500',
 }
 
 const COMPLIANCE_BADGE: Record<string, { label: string; cls: string }> = {
-  COMPLIANT: { label: 'COMPLIANT', cls: 'text-lime-400' },
+  COMPLIANT: { label: 'COMPLIANT', cls: 'text-green-500' },
   FAILED: { label: 'FAILED', cls: 'text-orange-400' },
   PENDING: { label: 'PENDING', cls: 'text-zinc-500' },
 }
@@ -166,7 +166,7 @@ export function ViewAccountability() {
         </div>
         <button
           onClick={() => setShowCreate(true)}
-          className="h-10 px-5 rounded-lg bg-lime-400 text-zinc-950 font-bold uppercase text-xs tracking-wider hover:bg-lime-300 transition-colors flex items-center gap-2"
+          className="h-10 px-5 rounded-lg bg-green-500 text-zinc-950 font-bold uppercase text-xs tracking-wider hover:bg-green-400 transition-colors flex items-center gap-2"
         >
           <Plus className="h-4 w-4" />
           Assign
@@ -196,7 +196,7 @@ export function ViewAccountability() {
             <p className="text-xs text-zinc-500 uppercase tracking-wide mt-1">Awaiting Acknowledgment</p>
           </div>
           <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-4 text-center">
-            <p className="text-2xl font-black text-lime-400">
+            <p className="text-2xl font-black text-green-500">
               {assignments.filter(a => a.complianceResult === 'COMPLIANT').length}
             </p>
             <p className="text-xs text-zinc-500 uppercase tracking-wide mt-1">Compliant</p>
@@ -235,7 +235,7 @@ export function ViewAccountability() {
                   <div className="flex items-start gap-4">
                     {/* Compliance indicator */}
                     <div className="shrink-0 mt-0.5">
-                      {a.complianceResult === 'COMPLIANT' && <Check className="h-5 w-5 text-lime-400" />}
+                      {a.complianceResult === 'COMPLIANT' && <Check className="h-5 w-5 text-green-500" />}
                       {a.complianceResult === 'FAILED' && <X className="h-5 w-5 text-orange-400" />}
                       {!a.complianceResult && <Clock className="h-5 w-5 text-zinc-600" />}
                     </div>
@@ -302,7 +302,7 @@ export function ViewAccountability() {
                       <button
                         onClick={() => handleAssess(a.id, 'COMPLIANT')}
                         disabled={assessing === a.id}
-                        className="h-8 px-4 rounded-lg bg-lime-950 border border-lime-800 text-lime-300 hover:bg-lime-900 text-xs font-bold uppercase tracking-wide transition-colors flex items-center gap-1.5 disabled:opacity-50"
+                        className="h-8 px-4 rounded-lg bg-zinc-950 border border-green-900 text-green-400 hover:bg-green-950 text-xs font-bold uppercase tracking-wide transition-colors flex items-center gap-1.5 disabled:opacity-50"
                       >
                         <Check className="h-3 w-3" /> Mark Compliant
                       </button>
@@ -354,7 +354,7 @@ export function ViewAccountability() {
           <div className="rounded-2xl border border-zinc-800 bg-zinc-950 max-w-lg w-full p-8">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-black uppercase tracking-wide text-zinc-50 flex items-center gap-2">
-                <Plus className="h-5 w-5 text-lime-400" />
+                <Plus className="h-5 w-5 text-green-500" />
                 New Assignment
               </h3>
               <button
@@ -373,7 +373,7 @@ export function ViewAccountability() {
                   value={newEmail}
                   onChange={e => setNewEmail(e.target.value)}
                   placeholder="rider@team.com"
-                  className="w-full h-10 px-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder-zinc-600 focus:border-lime-400 focus:outline-none"
+                  className="w-full h-10 px-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder-zinc-600 focus:border-green-500 focus:outline-none"
                 />
               </div>
 
@@ -384,7 +384,7 @@ export function ViewAccountability() {
                   onChange={e => setNewSpec(e.target.value)}
                   placeholder="e.g., 40 min cycling at 150 BPM, easy effort, no jumps"
                   rows={3}
-                  className="w-full px-3 py-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder-zinc-600 focus:border-lime-400 focus:outline-none resize-none"
+                  className="w-full px-3 py-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder-zinc-600 focus:border-green-500 focus:outline-none resize-none"
                 />
               </div>
 
@@ -394,7 +394,7 @@ export function ViewAccountability() {
                   type="datetime-local"
                   value={newDue}
                   onChange={e => setNewDue(e.target.value)}
-                  className="w-full h-10 px-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 focus:border-lime-400 focus:outline-none"
+                  className="w-full h-10 px-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 focus:border-green-500 focus:outline-none"
                 />
               </div>
 
@@ -412,7 +412,7 @@ export function ViewAccountability() {
                 <button
                   onClick={handleCreate}
                   disabled={saving || !newEmail.trim() || !newSpec.trim()}
-                  className="flex-1 h-10 rounded-lg bg-lime-400 text-zinc-950 font-bold transition-colors hover:bg-lime-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                  className="flex-1 h-10 rounded-lg bg-green-500 text-zinc-950 font-bold transition-colors hover:bg-green-400 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                 >
                   {saving ? 'Sending...' : 'Push Assignment'}
                 </button>

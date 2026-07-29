@@ -123,7 +123,7 @@ export default function PricingView() {
       <main className="mx-auto max-w-7xl px-5 lg:px-8 py-14 lg:py-20">
         {/* Hero */}
         <div className="text-center max-w-3xl mx-auto">
-          <p className="text-sm font-bold uppercase tracking-[0.3em] text-lime-400">
+          <p className="text-sm font-bold uppercase tracking-[0.3em] text-green-500">
             Every Rider Starts Here
           </p>
           <h1 className="mt-4 text-4xl lg:text-6xl font-black uppercase tracking-tight text-zinc-50 text-balance">
@@ -137,15 +137,15 @@ export default function PricingView() {
         </div>
 
         {/* Free Rider — the universal free front door */}
-        <section className="mt-12 rounded-3xl border-2 border-lime-400/50 bg-gradient-to-br from-lime-400/10 to-zinc-900 p-6 lg:p-10 shadow-[0_0_50px_-12px] shadow-lime-400/25">
+        <section className="mt-12 rounded-3xl border-2 border-green-500/50 bg-gradient-to-br from-green-500/10 to-zinc-900 p-6 lg:p-10 shadow-[0_0_50px_-12px] shadow-green-500/25">
           <div className="flex flex-col lg:flex-row lg:items-start gap-8">
             <div className="lg:w-2/5">
               <div className="flex items-center gap-4">
-                <div className="h-14 w-14 shrink-0 rounded-2xl bg-lime-400/15 border border-lime-400/40 flex items-center justify-center">
-                  <Bike className="h-7 w-7 text-lime-400" />
+                <div className="h-14 w-14 shrink-0 rounded-2xl bg-green-500/15 border border-green-500/40 flex items-center justify-center">
+                  <Bike className="h-7 w-7 text-green-500" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.25em] text-lime-400">
+                  <p className="text-xs font-bold uppercase tracking-[0.25em] text-green-500">
                     Any Rider · Any Bike
                   </p>
                   <h2 className="mt-1 text-3xl lg:text-4xl font-black uppercase tracking-wide text-zinc-50">
@@ -155,7 +155,7 @@ export default function PricingView() {
               </div>
 
               <div className="mt-5 flex items-end gap-3">
-                <span className="text-5xl font-black tracking-tight text-lime-400">FREE</span>
+                <span className="text-5xl font-black tracking-tight text-green-500">FREE</span>
                 <span className="mb-2 text-sm text-zinc-500 font-medium">forever · no credit card</span>
               </div>
 
@@ -167,7 +167,7 @@ export default function PricingView() {
 
               <button
                 onClick={() => router.push('/data/sign-in?mode=sign-up&redirect=/data')}
-                className="mt-6 w-full lg:w-auto lg:px-10 h-14 rounded-xl bg-lime-400 text-zinc-950 font-black uppercase tracking-wider text-base transition-colors hover:bg-lime-300"
+                className="mt-6 w-full lg:w-auto lg:px-10 h-14 rounded-xl bg-green-500 text-zinc-950 font-black uppercase tracking-wider text-base transition-colors hover:bg-green-400"
               >
                 Start Free
               </button>
@@ -178,14 +178,14 @@ export default function PricingView() {
               </p>
             </div>
 
-            <div className="lg:flex-1 lg:border-l lg:border-lime-400/15 lg:pl-8">
+            <div className="lg:flex-1 lg:border-l lg:border-green-500/15 lg:pl-8">
               <p className="text-xs font-bold uppercase tracking-[0.25em] text-zinc-500 mb-4">
                 What&apos;s included
               </p>
               <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
                 {freeRiderFeatures.map((f) => (
                   <li key={f.text} className="flex items-start gap-2.5">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded bg-lime-400/15 text-lime-400">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded bg-green-500/15 text-green-500">
                       <f.icon className="h-3.5 w-3.5" />
                     </span>
                     <span className="text-zinc-300 text-sm leading-relaxed">{f.text}</span>
@@ -202,7 +202,7 @@ export default function PricingView() {
           <div className="mt-10 flex flex-col items-center gap-3">
             <button
               onClick={() => setShowPaid(true)}
-              className="group inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900/60 px-6 py-3 text-sm font-bold uppercase tracking-wider text-zinc-300 transition-colors hover:border-lime-400/50 hover:text-lime-400"
+              className="group inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900/60 px-6 py-3 text-sm font-bold uppercase tracking-wider text-zinc-300 transition-colors hover:border-green-500/50 hover:text-green-500"
             >
               When you&apos;re ready for more
               <TrendingUp className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -216,7 +216,7 @@ export default function PricingView() {
         {showPaid && (
         <div className="mt-10">
           <div className="text-center max-w-2xl mx-auto mb-8">
-            <p className="text-sm font-bold uppercase tracking-[0.3em] text-lime-400">
+            <p className="text-sm font-bold uppercase tracking-[0.3em] text-green-500">
               Upgrade Paths
             </p>
             <h2 className="mt-3 text-3xl lg:text-4xl font-black uppercase tracking-tight text-zinc-50 text-balance">
@@ -265,7 +265,7 @@ export default function PricingView() {
                     billing === 'annually' ? 'scale-100 opacity-100' : 'scale-75 opacity-0 pointer-events-none'
                   }`}
                 >
-                  <span className="inline-block px-3 py-1.5 rounded-full bg-gradient-to-r from-lime-400/90 to-lime-500/90 text-zinc-950 text-[10px] font-black uppercase tracking-widest shadow-lg shadow-lime-400/40 border border-lime-300/40">
+                  <span className="inline-block px-3 py-1.5 rounded-full bg-gradient-to-r from-green-500/90 to-green-500/90 text-zinc-950 text-[10px] font-black uppercase tracking-widest shadow-lg shadow-green-500/40 border border-green-400/40">
                     💰 Save 20%
                   </span>
                 </div>
@@ -401,13 +401,13 @@ export default function PricingView() {
           </section>
 
           {/* CARD 3: Factory Rig */}
-          <section className="relative rounded-2xl border-2 border-lime-400 bg-zinc-900 p-8 shadow-[0_0_40px_-8px] shadow-lime-400/30">
+          <section className="relative rounded-2xl border-2 border-green-500 bg-zinc-900 p-8 shadow-[0_0_40px_-8px] shadow-green-500/30">
             <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-              <span className="rounded-full bg-lime-400 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-zinc-950 whitespace-nowrap">
+              <span className="rounded-full bg-green-500 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-zinc-950 whitespace-nowrap">
                 Pro Choice
               </span>
             </div>
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-lime-400">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-green-500">
               Factory + Elite
             </p>
             <h2 className="mt-2 text-2xl font-black uppercase tracking-wide text-zinc-50">
@@ -418,8 +418,8 @@ export default function PricingView() {
               video AI, and sponsor ROI reporting.
             </p>
             {/* Semi truck driver spotlight */}
-            <div className="mt-4 rounded-xl border border-lime-400/20 bg-lime-400/5 px-4 py-3">
-              <p className="text-xs font-black uppercase tracking-widest text-lime-400 mb-1">Built for the whole rig</p>
+            <div className="mt-4 rounded-xl border border-green-500/20 bg-green-500/5 px-4 py-3">
+              <p className="text-xs font-black uppercase tracking-widest text-green-500 mb-1">Built for the whole rig</p>
               <p className="text-xs text-zinc-400 leading-relaxed">
                 The semi driver hauls everything — bikes, parts, fuel, toolboxes — and runs the schedule while the team races. This platform tracks every vehicle, every part, every dollar, so the person holding it all together finally has a command center that matches the job.
               </p>
@@ -431,14 +431,14 @@ export default function PricingView() {
             <p className="mt-1 text-xs text-zinc-600">billed monthly</p>
             <button
               onClick={() => handleCta('factory_rig')}
-              className="mt-6 w-full h-12 rounded-xl bg-lime-400 text-zinc-950 font-bold uppercase tracking-wider text-sm transition-colors hover:bg-lime-300"
+              className="mt-6 w-full h-12 rounded-xl bg-green-500 text-zinc-950 font-bold uppercase tracking-wider text-sm transition-colors hover:bg-green-400"
             >
               Get Started
             </button>
             <ul className="mt-7 space-y-3.5">
               {getFactoryFeatures(wearableBadge).map((f) => (
                 <li key={f.text} className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded bg-lime-400/15 text-lime-400">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded bg-green-500/15 text-green-500">
                     <f.icon className="h-3.5 w-3.5" />
                   </span>
                   <div className="flex items-center gap-2">
@@ -460,7 +460,7 @@ export default function PricingView() {
 
         {/* Trust footer */}
         <div className="mt-10 flex items-center justify-center gap-3 text-center">
-          <ShieldCheck className="h-5 w-5 text-lime-400 shrink-0" />
+          <ShieldCheck className="h-5 w-5 text-green-500 shrink-0" />
           <p className="text-sm text-zinc-500">
             Enterprise-grade security provided by{' '}
             <span className="text-zinc-300 font-semibold">Chiller Tech Support LLC.</span>

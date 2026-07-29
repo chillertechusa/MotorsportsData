@@ -58,10 +58,10 @@ export default function AiInsightPanel({ section, data, autoFetch = false, onDis
   }
 
   return (
-    <div className="rounded-2xl border border-lime-400/20 bg-zinc-950 p-4">
+    <div className="rounded-2xl border border-green-500/20 bg-zinc-950 p-4">
       <div className="flex items-center gap-2 mb-2.5">
-        <Sparkles className="h-3.5 w-3.5 text-lime-400 shrink-0" />
-        <span className="text-xs font-bold uppercase tracking-widest text-lime-400">AI Insight</span>
+        <Sparkles className="h-3.5 w-3.5 text-green-500 shrink-0" />
+        <span className="text-xs font-bold uppercase tracking-widest text-green-500">AI Insight</span>
         {loading && <Loader2 className="h-3.5 w-3.5 animate-spin text-zinc-500 ml-auto" />}
         {fetched && !loading && (
           <div className="ml-auto flex items-center gap-1">
@@ -94,7 +94,7 @@ export default function AiInsightPanel({ section, data, autoFetch = false, onDis
       ) : (
         <button
           onClick={fetch_}
-          className="text-sm text-zinc-400 hover:text-lime-400 transition-colors underline underline-offset-2"
+          className="text-sm text-zinc-400 hover:text-green-500 transition-colors underline underline-offset-2"
         >
           Analyze this entry
         </button>

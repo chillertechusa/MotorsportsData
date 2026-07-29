@@ -5,7 +5,7 @@ import { ClipboardList, Plus, Zap } from 'lucide-react'
 
 const STATUS_STYLE: Record<string, string> = {
   draft:     'text-zinc-500 border-zinc-700',
-  active:    'text-lime-400 border-lime-400/30 bg-lime-400/5',
+  active:    'text-green-500 border-green-500/30 bg-green-500/5',
   completed: 'text-zinc-500 border-zinc-700 bg-zinc-800/40',
   archived:  'text-zinc-600 border-zinc-800',
 }
@@ -24,7 +24,7 @@ async function PlansContent() {
           <p className="text-zinc-500 text-sm mt-1">{rows.length} total plan{rows.length !== 1 ? 's' : ''}</p>
         </div>
         <Link href="/data/coach/plans/new"
-          className="inline-flex items-center gap-2 bg-lime-400 text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-lime-300 transition-colors">
+          className="inline-flex items-center gap-2 bg-green-500 text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-green-400 transition-colors">
           <Plus className="h-4 w-4" aria-hidden="true" />
           New Plan
         </Link>
@@ -36,7 +36,7 @@ async function PlansContent() {
           <p className="text-zinc-400 font-semibold mb-1">No training plans yet.</p>
           <p className="text-zinc-600 text-sm mb-4">Build weekly plans for your athletes — physical, technical, and mental blocks.</p>
           <Link href="/data/coach/plans/new"
-            className="inline-flex items-center gap-2 bg-lime-400 text-zinc-950 text-sm font-bold px-5 py-2.5 hover:bg-lime-300 transition-colors">
+            className="inline-flex items-center gap-2 bg-green-500 text-zinc-950 text-sm font-bold px-5 py-2.5 hover:bg-green-400 transition-colors">
             <Plus className="h-4 w-4" /> Create First Plan
           </Link>
         </div>
@@ -51,13 +51,13 @@ async function PlansContent() {
 
             return (
               <Link key={plan.id} href={`/data/coach/plans/${plan.id}`}
-                className="block bg-zinc-900 border border-zinc-800 hover:border-lime-400/30 transition-colors px-5 py-4">
+                className="block bg-zinc-900 border border-zinc-800 hover:border-green-500/30 transition-colors px-5 py-4">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
                       <p className="font-semibold text-zinc-100 truncate">{plan.title}</p>
                       {plan.aiGenerated && (
-                        <span className="inline-flex items-center gap-1 font-mono text-[8px] uppercase tracking-wider text-lime-400 border border-lime-400/20 px-1.5 py-0.5">
+                        <span className="inline-flex items-center gap-1 font-mono text-[8px] uppercase tracking-wider text-green-500 border border-green-500/20 px-1.5 py-0.5">
                           <Zap className="h-2.5 w-2.5" aria-hidden="true" />AI
                         </span>
                       )}

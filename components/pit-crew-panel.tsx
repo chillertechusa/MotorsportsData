@@ -97,7 +97,7 @@ export function PitCrewPanel({
                     <p className="font-bold text-foreground">{rider.riderName}</p>
                     <p className="text-xs text-muted-foreground">Lap {rider.lapNumber}</p>
                   </div>
-                  <span className="text-sm font-semibold px-2 py-1 bg-lime-950 text-lime-300 rounded">
+                  <span className="text-sm font-semibold px-2 py-1 bg-zinc-950 text-green-400 rounded">
                     P{rider.position}
                   </span>
                 </div>

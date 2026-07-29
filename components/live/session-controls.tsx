@@ -89,7 +89,7 @@ export function SessionControls({
           </div>
           <div className="rounded-lg bg-slate-800/50 p-4">
             <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Status</p>
-            <p className={`text-2xl font-black ${isActive ? 'text-lime-400' : 'text-slate-500'}`}>
+            <p className={`text-2xl font-black ${isActive ? 'text-green-500' : 'text-slate-500'}`}>
               {isActive ? 'LIVE' : 'PAUSED'}
             </p>
           </div>
@@ -100,7 +100,7 @@ export function SessionControls({
             <button
               onClick={handleStart}
               disabled={loading}
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-lime-500 hover:bg-lime-600 text-slate-900 font-bold transition disabled:opacity-50"
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-green-600 hover:bg-green-600 text-slate-900 font-bold transition disabled:opacity-50"
             >
               <Play className="h-4 w-4" />
               Start Session

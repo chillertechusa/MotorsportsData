@@ -44,7 +44,7 @@ const RTR_STAGES = [
   { stage: 0, label: 'Injured / Rest', desc: 'No physical activity. Rest and recovery only.', color: 'text-red-400', bg: 'bg-red-500/10 border-red-500/30' },
   { stage: 1, label: 'Light Aerobic', desc: 'Walking, swimming, or stationary cycling. No resistance training. Goal: increase heart rate.', color: 'text-orange-400', bg: 'bg-orange-500/10 border-orange-500/30' },
   { stage: 2, label: 'Sport-Specific Exercise', desc: 'Running drills, skating, bike ergometer. No head impact activities. Goal: add movement.', color: 'text-yellow-400', bg: 'bg-yellow-500/10 border-yellow-500/30' },
-  { stage: 3, label: 'Non-Contact Training', desc: 'Moto skills drills, technique work. Progression to complex movement. Goal: exercise, coordination, thinking.', color: 'text-lime-400', bg: 'bg-lime-500/10 border-lime-500/30' },
+  { stage: 3, label: 'Non-Contact Training', desc: 'Moto skills drills, technique work. Progression to complex movement. Goal: exercise, coordination, thinking.', color: 'text-green-500', bg: 'bg-green-600/10 border-green-600/30' },
   { stage: 4, label: 'Full Contact Practice', desc: 'Normal training activity. Assess functional skills. Medical clearance required.', color: 'text-green-400', bg: 'bg-green-500/10 border-green-500/30' },
   { stage: 5, label: 'Return to Competition', desc: 'Full clearance. Return to racing.', color: 'text-emerald-400', bg: 'bg-emerald-500/10 border-emerald-500/30' },
 ]
@@ -54,7 +54,7 @@ const CONCUSSION_STAGES = [
   { stage: 0, label: 'Symptom-Limited Activity', desc: 'Daily activities that do not provoke symptoms. Cognitive rest if needed. Limit screen time, bright lights, loud noise.', color: 'text-red-400', bg: 'bg-red-500/10 border-red-500/30' },
   { stage: 1, label: 'Light Aerobic Exercise', desc: 'Walking, swimming, or stationary cycling. Keep intensity low. Goal: increase heart rate without symptom recurrence.', color: 'text-orange-400', bg: 'bg-orange-500/10 border-orange-500/30' },
   { stage: 2, label: 'Sport-Specific Exercise', desc: 'Running drills. No head impact activities. Goal: add movement patterns.', color: 'text-yellow-400', bg: 'bg-yellow-500/10 border-yellow-500/30' },
-  { stage: 3, label: 'Non-Contact Training', desc: 'Complex drills. Resistance training begins. No contact. Goal: exercise, coordination, and cognitive load.', color: 'text-lime-400', bg: 'bg-lime-500/10 border-lime-500/30' },
+  { stage: 3, label: 'Non-Contact Training', desc: 'Complex drills. Resistance training begins. No contact. Goal: exercise, coordination, and cognitive load.', color: 'text-green-500', bg: 'bg-green-600/10 border-green-600/30' },
   { stage: 4, label: 'Full Contact Practice', desc: 'Normal training following medical clearance. Functional assessment. Physician sign-off required.', color: 'text-green-400', bg: 'bg-green-500/10 border-green-500/30' },
   { stage: 5, label: 'Return to Competition', desc: 'Full clearance to race. Must have physician medical clearance on file.', color: 'text-emerald-400', bg: 'bg-emerald-500/10 border-emerald-500/30' },
 ]
@@ -128,7 +128,7 @@ function AddInjuryModal({ onClose, onSaved }: { onClose: () => void; onSaved: ()
             <select
               value={form.bodyRegion}
               onChange={e => setForm(f => ({ ...f, bodyRegion: e.target.value }))}
-              className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-lime-500"
+              className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-green-600"
             >
               <option value="">Select region...</option>
               {BODY_REGIONS.map(r => <option key={r} value={r}>{r}</option>)}
@@ -141,7 +141,7 @@ function AddInjuryModal({ onClose, onSaved }: { onClose: () => void; onSaved: ()
             <select
               value={form.injuryType}
               onChange={e => setForm(f => ({ ...f, injuryType: e.target.value }))}
-              className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-lime-500"
+              className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-green-600"
             >
               <option value="">Select type...</option>
               {INJURY_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
@@ -156,7 +156,7 @@ function AddInjuryModal({ onClose, onSaved }: { onClose: () => void; onSaved: ()
                 type="date"
                 value={form.incidentDate}
                 onChange={e => setForm(f => ({ ...f, incidentDate: e.target.value }))}
-                className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-lime-500"
+                className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-green-600"
               />
             </div>
             <div>
@@ -166,7 +166,7 @@ function AddInjuryModal({ onClose, onSaved }: { onClose: () => void; onSaved: ()
               <input
                 type="range" min={1} max={5} value={form.severity}
                 onChange={e => setForm(f => ({ ...f, severity: Number(e.target.value) }))}
-                className="w-full accent-lime-400 mt-1"
+                className="w-full accent-green-500 mt-1"
               />
             </div>
           </div>
@@ -177,7 +177,7 @@ function AddInjuryModal({ onClose, onSaved }: { onClose: () => void; onSaved: ()
               type="checkbox"
               checked={form.isConcussion}
               onChange={e => setForm(f => ({ ...f, isConcussion: e.target.checked }))}
-              className="accent-lime-400"
+              className="accent-green-500"
             />
             <div>
               <p className="text-sm font-semibold text-white flex items-center gap-1.5">
@@ -195,7 +195,7 @@ function AddInjuryModal({ onClose, onSaved }: { onClose: () => void; onSaved: ()
               onChange={e => setForm(f => ({ ...f, notes: e.target.value }))}
               rows={3}
               placeholder="Mechanism of injury, initial assessment, treatment..."
-              className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-lime-500 resize-none"
+              className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-green-600 resize-none"
             />
           </div>
 
@@ -203,7 +203,7 @@ function AddInjuryModal({ onClose, onSaved }: { onClose: () => void; onSaved: ()
         </div>
         <div className="flex gap-3 p-5 border-t border-zinc-800">
           <Button variant="outline" onClick={onClose} className="flex-1 border-zinc-700 text-zinc-400 hover:text-white bg-transparent">Cancel</Button>
-          <Button onClick={handleSubmit} disabled={saving} className="flex-1 bg-lime-400 hover:bg-lime-300 text-black font-bold">
+          <Button onClick={handleSubmit} disabled={saving} className="flex-1 bg-green-500 hover:bg-green-400 text-black font-bold">
             {saving ? 'Saving...' : 'Log Injury'}
           </Button>
         </div>
@@ -273,7 +273,7 @@ function RtrPanel({ injury, onUpdated }: { injury: Injury; onUpdated: () => void
               }`}
             >
               <div className={`mt-0.5 shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                isDone ? 'bg-lime-400 border-lime-400' : isActive ? 'border-current bg-transparent' : 'border-zinc-700 bg-transparent'
+                isDone ? 'bg-green-500 border-green-500' : isActive ? 'border-current bg-transparent' : 'border-zinc-700 bg-transparent'
               } ${isActive ? s.color : ''}`}>
                 {isDone && <CheckCircle2 className="h-3 w-3 text-black" />}
                 {isActive && <div className="w-2 h-2 rounded-full bg-current" />}
@@ -296,7 +296,7 @@ function RtrPanel({ injury, onUpdated }: { injury: Injury; onUpdated: () => void
             <Button
               onClick={advance}
               disabled={advancing}
-              className="w-full bg-lime-400 hover:bg-lime-300 text-black font-bold"
+              className="w-full bg-green-500 hover:bg-green-400 text-black font-bold"
             >
               {advancing ? 'Advancing...' : `Advance to Stage ${injury.rtrStage + 1}: ${stages[injury.rtrStage + 1]?.label}`}
               <ChevronRight className="h-4 w-4 ml-1" />
@@ -317,7 +317,7 @@ function RtrPanel({ injury, onUpdated }: { injury: Injury; onUpdated: () => void
                 value={clearedBy}
                 onChange={e => setClearedBy(e.target.value)}
                 placeholder="Dr. Smith / Team Physician / Self"
-                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-lime-500"
+                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-green-600"
               />
               <div className="flex gap-2">
                 <Button variant="outline" onClick={() => setShowClearForm(false)} className="flex-1 border-zinc-700 text-zinc-400 bg-transparent text-xs">Cancel</Button>
@@ -367,7 +367,7 @@ function InjuryCard({ injury, onUpdated }: { injury: Injury; onUpdated: () => vo
         <div className={`shrink-0 w-2.5 h-2.5 rounded-full ${
           injury.status === 'cleared' ? 'bg-emerald-400' :
           injury.rtrStage === 0 ? 'bg-red-400' :
-          injury.rtrStage >= (stages.length - 1) ? 'bg-lime-400' : 'bg-yellow-400'
+          injury.rtrStage >= (stages.length - 1) ? 'bg-green-500' : 'bg-yellow-400'
         }`} />
 
         <div className="flex-1 min-w-0">
@@ -451,7 +451,7 @@ export default function ViewInjury() {
         </div>
         <Button
           onClick={() => setShowAdd(true)}
-          className="bg-lime-400 hover:bg-lime-300 text-black font-bold gap-1.5"
+          className="bg-green-500 hover:bg-green-400 text-black font-bold gap-1.5"
         >
           <Plus className="h-4 w-4" /> Log Injury
         </Button>

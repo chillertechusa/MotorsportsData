@@ -22,8 +22,8 @@ const categories = [
   {
     id: 'night-before',
     title: 'Night Before — The Bike',
-    color: 'text-lime-400',
-    borderColor: 'border-lime-400/30',
+    color: 'text-green-500',
+    borderColor: 'border-green-500/30',
     items: [
       { item: 'Engine oil checked and changed if within 10% of service interval', critical: true },
       { item: 'Air filter cleaned, re-oiled, and reinstalled', critical: true },
@@ -42,8 +42,8 @@ const categories = [
   {
     id: 'morning-of',
     title: 'Morning Of — Gear + Logistics',
-    color: 'text-sky-400',
-    borderColor: 'border-sky-400/30',
+    color: 'text-blue-500',
+    borderColor: 'border-blue-600/30',
     items: [
       { item: 'Helmet — no cracks, visor tight, liner clean', critical: true },
       { item: 'Goggles — lens clean, strap elastic good, tear-offs loaded', critical: false },
@@ -128,12 +128,12 @@ export default function MotocrossRaceDayChecklistPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <MdReveal>
               <div className="flex items-center gap-2 mb-6">
-                <div className="h-px w-8 bg-lime-400" />
-                <span className="font-mono text-xs text-lime-400 uppercase tracking-[0.3em]">Race Day Reference</span>
+                <div className="h-px w-8 bg-green-500" />
+                <span className="font-mono text-xs text-green-500 uppercase tracking-[0.3em]">Race Day Reference</span>
               </div>
               <h1 className="text-zinc-100 uppercase leading-none tracking-tight text-balance mb-6" style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
                 Motocross Race Day Checklist:<br />
-                <span className="text-lime-400">47 Items Before the Gate Drops</span>
+                <span className="text-green-500">47 Items Before the Gate Drops</span>
               </h1>
               <p className="text-zinc-400 text-lg leading-relaxed max-w-3xl mb-8">
                 Four checklists covering the night before, morning of, at the track, and between motos. Built for riders, parents, and team managers who refuse to let a missed item decide the race.
@@ -160,7 +160,7 @@ export default function MotocrossRaceDayChecklistPage() {
                 { value: '0', label: 'Excuses accepted' },
               ].map((s, i) => (
                 <MdReveal key={s.label} delay={i * 80} className="p-8 text-center">
-                  <p className="text-lime-400 uppercase leading-none mb-2" style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: '3.5rem' }}>{s.value}</p>
+                  <p className="text-green-500 uppercase leading-none mb-2" style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: '3.5rem' }}>{s.value}</p>
                   <p className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">{s.label}</p>
                 </MdReveal>
               ))}
@@ -202,7 +202,7 @@ export default function MotocrossRaceDayChecklistPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <MdReveal className="mb-10">
               <h2 className="text-zinc-100 uppercase leading-none" style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: 'clamp(1.8rem, 3vw, 2.5rem)' }}>
-                The Five Mistakes That Decide Races <span className="text-lime-400">Before the Gate Drops</span>
+                The Five Mistakes That Decide Races <span className="text-green-500">Before the Gate Drops</span>
               </h2>
             </MdReveal>
             <div className="space-y-4">
@@ -214,8 +214,8 @@ export default function MotocrossRaceDayChecklistPage() {
                 { n: '05', title: 'Not logging the session after', body: 'The best information you have about your setup is your memory right after the moto. It takes 3 minutes to log clicker notes, conditions, and what you felt. Most riders don\'t. Then they wonder why they can\'t replicate a good day.' },
               ].map((m) => (
                 <MdReveal key={m.n}>
-                  <div className="flex items-start gap-4 border border-zinc-800 p-5 hover:border-lime-400/20 transition-colors">
-                    <span className="font-mono text-xs text-lime-400 uppercase tracking-widest shrink-0 mt-0.5 w-8">{m.n}</span>
+                  <div className="flex items-start gap-4 border border-zinc-800 p-5 hover:border-green-500/20 transition-colors">
+                    <span className="font-mono text-xs text-green-500 uppercase tracking-widest shrink-0 mt-0.5 w-8">{m.n}</span>
                     <div>
                       <h3 className="text-zinc-100 font-semibold mb-1 text-sm">{m.title}</h3>
                       <p className="text-zinc-500 text-sm leading-relaxed">{m.body}</p>
@@ -231,9 +231,9 @@ export default function MotocrossRaceDayChecklistPage() {
         <section className="py-16 border-t border-zinc-800">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <MdReveal>
-              <div className="border border-lime-400/20 bg-zinc-950 p-8">
+              <div className="border border-green-500/20 bg-zinc-950 p-8">
                 <div className="flex items-start gap-4">
-                  <AlertTriangle className="h-5 w-5 text-lime-400 shrink-0 mt-1" />
+                  <AlertTriangle className="h-5 w-5 text-green-500 shrink-0 mt-1" />
                   <div>
                     <h3 className="text-zinc-100 uppercase mb-3" style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: '1.8rem' }}>
                       Log the session. Every time.
@@ -242,10 +242,10 @@ export default function MotocrossRaceDayChecklistPage() {
                       Item 47 on this list is &quot;log the moto while the memory is fresh.&quot; Every setup, every condition, every result — logged and searchable in MD Intel AI. When you&apos;re back at this track next month, you have the exact setup that worked last time, not a guess.
                     </p>
                     <div className="flex flex-wrap gap-3">
-                      <Link href="/data/privateer" className="inline-flex items-center gap-2 bg-lime-400 text-zinc-950 px-6 py-3 font-black text-xs uppercase tracking-widest hover:bg-lime-300 transition-colors">
+                      <Link href="/data/privateer" className="inline-flex items-center gap-2 bg-green-500 text-zinc-950 px-6 py-3 font-black text-xs uppercase tracking-widest hover:bg-green-400 transition-colors">
                         Start Logging — $49/mo <ChevronRight className="h-3.5 w-3.5" />
                       </Link>
-                      <Link href="/data/rookie" className="inline-flex items-center gap-2 border border-zinc-700 text-zinc-400 px-6 py-3 font-mono text-xs uppercase tracking-widest hover:border-lime-400 hover:text-lime-400 transition-colors">
+                      <Link href="/data/rookie" className="inline-flex items-center gap-2 border border-zinc-700 text-zinc-400 px-6 py-3 font-mono text-xs uppercase tracking-widest hover:border-green-500 hover:text-green-500 transition-colors">
                         Rookie — $9/mo
                       </Link>
                     </div>

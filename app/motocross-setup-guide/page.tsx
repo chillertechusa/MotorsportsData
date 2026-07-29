@@ -134,12 +134,12 @@ export default function MotocrossSetupGuidePage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <MdReveal>
               <div className="flex items-center gap-2 mb-6">
-                <div className="h-px w-8 bg-lime-400" />
-                <span className="font-mono text-xs text-lime-400 uppercase tracking-[0.3em]">Setup Guide</span>
+                <div className="h-px w-8 bg-green-500" />
+                <span className="font-mono text-xs text-green-500 uppercase tracking-[0.3em]">Setup Guide</span>
               </div>
               <h1 className="text-zinc-100 uppercase leading-none tracking-tight text-balance mb-6" style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
                 How to Set Up a Motocross Bike:<br />
-                <span className="text-lime-400">Suspension, Gearing &amp; Jetting</span>
+                <span className="text-green-500">Suspension, Gearing &amp; Jetting</span>
               </h1>
               <p className="text-zinc-400 text-lg leading-relaxed mb-8">
                 The complete setup reference — from measuring sag to dialing clickers to logging jetting at altitude. Written for racers at every level, from the parents wrenching on their kid&apos;s PW50 to the privateer chasing setup data across a full season.
@@ -159,8 +159,8 @@ export default function MotocrossSetupGuidePage() {
             <p className="font-mono text-xs text-zinc-500 uppercase tracking-widest mb-4">Contents</p>
             <div className="grid sm:grid-cols-2 gap-2">
               {sections.map((s) => (
-                <a key={s.id} href={`#${s.id}`} className="flex items-center gap-2 text-zinc-400 hover:text-lime-400 transition-colors text-sm group">
-                  <ChevronRight className="h-3 w-3 text-zinc-700 group-hover:text-lime-400 transition-colors" />
+                <a key={s.id} href={`#${s.id}`} className="flex items-center gap-2 text-zinc-400 hover:text-green-500 transition-colors text-sm group">
+                  <ChevronRight className="h-3 w-3 text-zinc-700 group-hover:text-green-500 transition-colors" />
                   {s.title}
                 </a>
               ))}
@@ -174,8 +174,8 @@ export default function MotocrossSetupGuidePage() {
             <MdReveal key={section.id} className="py-16 border-b border-zinc-800">
               <span id={section.id} />
               <div className="flex items-center gap-2 mb-4">
-                <div className="h-px w-8 bg-lime-400" />
-                <span className="font-mono text-xs text-lime-400 uppercase tracking-[0.3em]">0{si + 1}</span>
+                <div className="h-px w-8 bg-green-500" />
+                <span className="font-mono text-xs text-green-500 uppercase tracking-[0.3em]">0{si + 1}</span>
               </div>
               <h2 className="text-zinc-100 uppercase leading-none text-balance mb-8" style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: 'clamp(1.8rem, 3vw, 2.5rem)' }}>
                 {section.title}
@@ -191,7 +191,7 @@ export default function MotocrossSetupGuidePage() {
                     <thead>
                       <tr className="bg-zinc-900 border-b border-zinc-800">
                         {section.table.headers.map((h) => (
-                          <th key={h} className="px-4 py-3 text-left font-mono text-[10px] text-lime-400 uppercase tracking-widest">{h}</th>
+                          <th key={h} className="px-4 py-3 text-left font-mono text-[10px] text-green-500 uppercase tracking-widest">{h}</th>
                         ))}
                       </tr>
                     </thead>
@@ -208,14 +208,14 @@ export default function MotocrossSetupGuidePage() {
                 </div>
               )}
               {section.tips && (
-                <div className="border border-lime-400/20 bg-lime-400/5 p-5 space-y-2">
+                <div className="border border-green-500/20 bg-green-500/5 p-5 space-y-2">
                   <div className="flex items-center gap-2 mb-3">
-                    <Info className="h-4 w-4 text-lime-400" />
-                    <span className="font-mono text-xs text-lime-400 uppercase tracking-widest">Pro Tips</span>
+                    <Info className="h-4 w-4 text-green-500" />
+                    <span className="font-mono text-xs text-green-500 uppercase tracking-widest">Pro Tips</span>
                   </div>
                   {section.tips.map((tip, ti) => (
                     <div key={ti} className="flex items-start gap-2">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-lime-400 mt-0.5 shrink-0" />
+                      <CheckCircle2 className="h-3.5 w-3.5 text-green-500 mt-0.5 shrink-0" />
                       <p className="text-zinc-400 text-sm leading-relaxed">{tip}</p>
                     </div>
                   ))}
@@ -229,8 +229,8 @@ export default function MotocrossSetupGuidePage() {
         <section className="py-20 border-t border-zinc-800 bg-zinc-900">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <MdReveal>
-              <div className="flex items-start gap-4 border border-lime-400/20 bg-zinc-950 p-8">
-                <AlertTriangle className="h-5 w-5 text-lime-400 shrink-0 mt-1" />
+              <div className="flex items-start gap-4 border border-green-500/20 bg-zinc-950 p-8">
+                <AlertTriangle className="h-5 w-5 text-green-500 shrink-0 mt-1" />
                 <div>
                   <h3 className="text-zinc-100 uppercase mb-2" style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: '1.5rem' }}>
                     Setup knowledge is worthless if you don&apos;t log it.
@@ -238,7 +238,7 @@ export default function MotocrossSetupGuidePage() {
                   <p className="text-zinc-400 text-sm leading-relaxed mb-4">
                     Everything in this guide becomes an unfair advantage the moment you start recording it. Track, conditions, clicker settings, gearing, jetting — logged once and recalled instantly by MD Intel AI next time you&apos;re at the same track. Privateer plan starts at $49/mo.
                   </p>
-                  <Link href="/data/privateer" className="inline-flex items-center gap-2 bg-lime-400 text-zinc-950 px-6 py-3 font-black text-xs uppercase tracking-widest hover:bg-lime-300 transition-colors">
+                  <Link href="/data/privateer" className="inline-flex items-center gap-2 bg-green-500 text-zinc-950 px-6 py-3 font-black text-xs uppercase tracking-widest hover:bg-green-400 transition-colors">
                     Start Logging Setups <ChevronRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>

@@ -50,7 +50,7 @@ export default async function AnalyticsPage() {
           </p>
           <a
             href="/data/pricing"
-            className="inline-block px-6 py-2 bg-lime-500 text-zinc-950 font-bold rounded-lg hover:bg-lime-400 transition"
+            className="inline-block px-6 py-2 bg-green-600 text-zinc-950 font-bold rounded-lg hover:bg-green-500 transition"
           >
             View Pricing
           </a>

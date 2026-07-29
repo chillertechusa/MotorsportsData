@@ -76,7 +76,7 @@ function CoachContextBrief() {
             </div>
           ) : items.map(({ icon: Icon, label, value, filled }) => (
             <div key={label} className={`flex items-start gap-3 rounded-xl px-3.5 py-2.5 border ${filled ? 'border-zinc-700/50 bg-zinc-800/40' : 'border-zinc-800/50 bg-transparent opacity-50'}`}>
-              <Icon className={`h-4 w-4 mt-0.5 shrink-0 ${filled ? 'text-lime-400' : 'text-zinc-600'}`} />
+              <Icon className={`h-4 w-4 mt-0.5 shrink-0 ${filled ? 'text-green-500' : 'text-zinc-600'}`} />
               <div className="min-w-0">
                 <p className="text-xs font-bold uppercase tracking-wider text-zinc-500">{label}</p>
                 <p className="text-sm text-zinc-300 truncate">{value}</p>
@@ -175,7 +175,7 @@ function FormattedAnswer({ text }: { text: string }) {
 function UpgradePanel() {
   return (
     <div className="flex flex-col items-center justify-center h-[calc(100vh-8rem)] max-w-lg mx-auto text-center px-4">
-      <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-lime-400/15 text-lime-400 mb-6">
+      <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-green-500/15 text-green-500 mb-6">
         <Lock className="h-8 w-8" />
       </span>
       <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-zinc-50 mb-3 text-balance">
@@ -188,7 +188,7 @@ function UpgradePanel() {
       </p>
       <Link
         href="/data/pricing"
-        className="inline-flex items-center gap-2 h-14 px-8 rounded-2xl bg-lime-400 text-zinc-950 font-black uppercase tracking-wide text-base active:bg-lime-300 transition-colors"
+        className="inline-flex items-center gap-2 h-14 px-8 rounded-2xl bg-green-500 text-zinc-950 font-black uppercase tracking-wide text-base active:bg-green-400 transition-colors"
       >
         See Plans <ArrowRight className="h-5 w-5" />
       </Link>
@@ -251,7 +251,7 @@ export default function ViewCoach({ tier }: { tier?: string }) {
   return (
     <div className="flex flex-col h-[calc(100vh-8rem)] max-w-4xl mx-auto">
       <div className="flex items-center gap-3 mb-3">
-        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-lime-400/15 text-lime-400">
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-500/15 text-green-500">
           <Compass className="h-5 w-5" />
         </span>
         <div>
@@ -270,13 +270,13 @@ export default function ViewCoach({ tier }: { tier?: string }) {
             <div
               className={`max-w-[80%] rounded-2xl px-5 py-3.5 leading-relaxed ${
                 m.role === 'user'
-                  ? 'bg-lime-400 text-zinc-950 font-medium rounded-br-md whitespace-pre-line'
+                  ? 'bg-green-500 text-zinc-950 font-medium rounded-br-md whitespace-pre-line'
                   : 'bg-zinc-900 border border-zinc-800 text-zinc-100 rounded-bl-md'
               }`}
             >
               {m.role === 'ai' ? (
                 <>
-                  <p className="text-xs font-bold uppercase tracking-wider text-lime-400 mb-1.5">Race Coach</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-green-500 mb-1.5">Race Coach</p>
                   <div className="text-sm sm:text-base">
                     <FormattedAnswer text={m.text} />
                   </div>
@@ -299,7 +299,7 @@ export default function ViewCoach({ tier }: { tier?: string }) {
                   disabled={loading}
                   className="flex items-center gap-3 rounded-2xl bg-zinc-900 border border-zinc-800 p-4 text-left active:bg-zinc-800 transition-colors disabled:opacity-40"
                 >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-lime-400/15 text-lime-400">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-500/15 text-green-500">
                     <Icon className="h-5 w-5" />
                   </span>
                   <span className="font-bold text-zinc-100">{qp.label}</span>
@@ -312,11 +312,11 @@ export default function ViewCoach({ tier }: { tier?: string }) {
         {loading && (
           <div className="flex justify-start">
             <div className="max-w-[80%] rounded-2xl rounded-bl-md bg-zinc-900 border border-zinc-800 px-5 py-3.5">
-              <p className="text-xs font-bold uppercase tracking-wider text-lime-400 mb-1.5">Race Coach</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-green-500 mb-1.5">Race Coach</p>
               <span className="flex items-center gap-1.5 text-zinc-400">
-                <span className="h-2 w-2 animate-bounce rounded-full bg-lime-400 [animation-delay:-0.3s]" />
-                <span className="h-2 w-2 animate-bounce rounded-full bg-lime-400 [animation-delay:-0.15s]" />
-                <span className="h-2 w-2 animate-bounce rounded-full bg-lime-400" />
+                <span className="h-2 w-2 animate-bounce rounded-full bg-green-500 [animation-delay:-0.3s]" />
+                <span className="h-2 w-2 animate-bounce rounded-full bg-green-500 [animation-delay:-0.15s]" />
+                <span className="h-2 w-2 animate-bounce rounded-full bg-green-500" />
                 <span className="ml-2 text-sm">Reading your whole program…</span>
               </span>
             </div>
@@ -337,7 +337,7 @@ export default function ViewCoach({ tier }: { tier?: string }) {
         <button
           onClick={() => send(input)}
           disabled={loading}
-          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-lime-400 text-zinc-950 active:bg-lime-300 transition-colors disabled:opacity-40"
+          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-green-500 text-zinc-950 active:bg-green-400 transition-colors disabled:opacity-40"
           aria-label="Send message"
         >
           <Send className="h-5 w-5" />

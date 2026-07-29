@@ -35,9 +35,9 @@ export default function MdFooter() {
             </p>
             <a
               href="tel:+18884698475"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-zinc-300 hover:text-lime-400 transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-zinc-300 hover:text-green-500 transition-colors"
             >
-              <Phone className="h-4 w-4 text-lime-400 shrink-0" aria-hidden="true" />
+              <Phone className="h-4 w-4 text-green-500 shrink-0" aria-hidden="true" />
               (888) 469-8475
             </a>
           </div>
@@ -52,7 +52,7 @@ export default function MdFooter() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-zinc-400 hover:text-lime-400 text-sm transition-colors"
+                    className="text-zinc-400 hover:text-green-500 text-sm transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -71,7 +71,7 @@ export default function MdFooter() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-zinc-400 hover:text-lime-400 text-sm transition-colors"
+                    className="text-zinc-400 hover:text-green-500 text-sm transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -86,7 +86,7 @@ export default function MdFooter() {
               Infrastructure
             </h3>
             <div className="flex items-start gap-3 p-4 border border-zinc-800 bg-zinc-900">
-              <ShieldCheck className="h-5 w-5 text-lime-400 shrink-0 mt-0.5" aria-hidden="true" />
+              <ShieldCheck className="h-5 w-5 text-green-500 shrink-0 mt-0.5" aria-hidden="true" />
               <div>
                 <p className="text-zinc-100 text-sm font-semibold mb-1">
                   Enterprise-Grade Security

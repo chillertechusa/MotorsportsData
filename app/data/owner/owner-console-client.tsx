@@ -25,8 +25,8 @@ function dollarsRounded(cents: number) {
 }
 
 const TIER_ACCENT: Record<string, string> = {
-  rookie:      'text-lime-400 border-lime-400/30 bg-lime-400/5',
-  privateer:   'text-sky-400 border-sky-400/30 bg-sky-400/5',
+  rookie:      'text-green-500 border-green-500/30 bg-green-500/5',
+  privateer:   'text-blue-500 border-blue-600/30 bg-blue-600/5',
   race_team:   'text-orange-400 border-orange-400/30 bg-orange-400/5',
   factory_rig: 'text-yellow-400 border-yellow-400/30 bg-yellow-400/5',
 }
@@ -39,8 +39,8 @@ const TIER_CHART_COLOR: Record<string, string> = {
 }
 
 const STATUS_PILL: Record<string, string> = {
-  active:   'bg-lime-400/10 text-lime-400 border border-lime-400/20',
-  trialing: 'bg-sky-400/10 text-sky-400 border border-sky-400/20',
+  active:   'bg-green-500/10 text-green-500 border border-green-500/20',
+  trialing: 'bg-blue-600/10 text-blue-500 border border-blue-600/20',
   inactive: 'bg-zinc-800 text-zinc-500 border border-zinc-700',
   past_due: 'bg-red-400/10 text-red-400 border border-red-400/20',
 }
@@ -54,8 +54,8 @@ function StatCard({
   icon: React.ElementType; accent?: 'lime' | 'sky' | 'orange' | 'yellow' | 'zinc'
 }) {
   const accentMap = {
-    lime:   'text-lime-400 bg-lime-400/10',
-    sky:    'text-sky-400 bg-sky-400/10',
+    lime:   'text-green-500 bg-green-500/10',
+    sky:    'text-blue-500 bg-blue-600/10',
     orange: 'text-orange-400 bg-orange-400/10',
     yellow: 'text-yellow-400 bg-yellow-400/10',
     zinc:   'text-zinc-400 bg-zinc-800',
@@ -81,7 +81,7 @@ function ChartTooltip({ active, payload, label }: { active?: boolean; payload?: 
   return (
     <div className="rounded-xl border border-zinc-700 bg-zinc-900 px-3 py-2 text-xs shadow-xl">
       <p className="text-zinc-400 mb-1">{label}</p>
-      <p className="font-bold text-lime-400">${payload[0].value.toFixed(2)}</p>
+      <p className="font-bold text-green-500">${payload[0].value.toFixed(2)}</p>
     </div>
   )
 }
@@ -267,7 +267,7 @@ export default function OwnerConsoleClient({
           <div className="flex items-center gap-3 mb-4">
             <h2 className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500">Live Metrics</h2>
             <span
-              className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded border border-lime-500/40 bg-lime-500/10 text-lime-400"
+              className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded border border-green-600/40 bg-green-600/10 text-green-500"
               title="Real collected revenue from active Square subscriptions. Seeded/test teams are excluded, so this starts at $0 and grows on the first real checkout."
             >
               Collected · Live
@@ -285,7 +285,7 @@ export default function OwnerConsoleClient({
         <section className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
           <div className="flex items-center justify-between mb-5">
             <div className="flex items-center gap-2">
-              <TrendingUp className="h-4 w-4 text-lime-400" />
+              <TrendingUp className="h-4 w-4 text-green-500" />
               <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-400">30-Day Revenue</h3>
             </div>
             <span className="font-mono text-[10px] text-zinc-600 uppercase tracking-wider">Daily rate · active subs</span>
@@ -345,7 +345,7 @@ export default function OwnerConsoleClient({
             })}
             <div className="border-t border-zinc-700 mt-2 pt-2 flex justify-between mb-5">
               <span className="text-xs text-zinc-400 font-mono uppercase tracking-wider">Total Revenue</span>
-              <span className="text-base font-black text-lime-400">{dollars(financials.mrrCents)}</span>
+              <span className="text-base font-black text-green-500">{dollars(financials.mrrCents)}</span>
             </div>
 
             <p className="text-xs text-zinc-500 mb-2 uppercase tracking-wider font-mono">Expenses</p>
@@ -362,10 +362,10 @@ export default function OwnerConsoleClient({
               <span className="text-base font-black text-red-400">{dollars(totalExpenseCents)}</span>
             </div>
 
-            <div className={`mt-4 rounded-xl p-4 flex justify-between items-center ${netCents >= 0 ? 'bg-lime-400/10 border border-lime-400/20' : 'bg-red-400/10 border border-red-400/20'}`}>
+            <div className={`mt-4 rounded-xl p-4 flex justify-between items-center ${netCents >= 0 ? 'bg-green-500/10 border border-green-500/20' : 'bg-red-400/10 border border-red-400/20'}`}>
               <span className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-400">Net Profit</span>
               <div className="text-right">
-                <p className={`text-2xl font-black ${netCents >= 0 ? 'text-lime-400' : 'text-red-400'}`}>{dollars(netCents)}</p>
+                <p className={`text-2xl font-black ${netCents >= 0 ? 'text-green-500' : 'text-red-400'}`}>{dollars(netCents)}</p>
                 <p className="text-xs text-zinc-500">{marginPct}% margin</p>
               </div>
             </div>
@@ -407,8 +407,8 @@ export default function OwnerConsoleClient({
               <div className="grid grid-cols-3 gap-3">
                 {[
                   { label: 'AI Costs', cents: financials.aiCostCentsThisMonth, color: 'text-orange-400' },
-                  { label: 'Fixed',    cents: financials.monthlyExpenses.filter(e => !e.label.includes('Gemini') && !e.label.includes('Square')).reduce((s, e) => s + e.cents, 0), color: 'text-sky-400' },
-                  { label: 'Gross Profit', cents: netCents, color: netCents >= 0 ? 'text-lime-400' : 'text-red-400' },
+                  { label: 'Fixed',    cents: financials.monthlyExpenses.filter(e => !e.label.includes('Gemini') && !e.label.includes('Square')).reduce((s, e) => s + e.cents, 0), color: 'text-blue-500' },
+                  { label: 'Gross Profit', cents: netCents, color: netCents >= 0 ? 'text-green-500' : 'text-red-400' },
                 ].map((item) => {
                   const pct = financials.mrrCents > 0 ? Math.abs(Math.round((item.cents / financials.mrrCents) * 100)) : 0
                   return (
@@ -583,7 +583,7 @@ export default function OwnerConsoleClient({
                             {row.tierLabel}
                           </span>
                         </td>
-                        <td className="px-5 py-3.5 text-sm font-bold text-lime-400">
+                        <td className="px-5 py-3.5 text-sm font-bold text-green-500">
                           {dollars(row.amountCents)}
                         </td>
                         <td className="px-5 py-3.5 text-xs text-zinc-500">

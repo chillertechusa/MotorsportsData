@@ -35,7 +35,7 @@ export default function IPPage() {
           limited license to host, process, and display that content solely to operate the Platform
           and to share it with accounts you authorize. You also grant us a license to create
           anonymized, aggregated data as described in our{' '}
-          <a href="/legal/data-consent" className="text-lime-400 hover:underline">
+          <a href="/legal/data-consent" className="text-green-500 hover:underline">
             Data Sharing &amp; Consent
           </a>{' '}
           policy. We do not claim ownership of your raw uploaded content.
@@ -87,7 +87,7 @@ export default function IPPage() {
         </ol>
         <p className="mt-4">
           Send notices to:{' '}
-          <a href="mailto:legal@motorsportsdata.io" className="text-lime-400 hover:underline">
+          <a href="mailto:legal@motorsportsdata.io" className="text-green-500 hover:underline">
             legal@motorsportsdata.io
           </a>{' '}
           — subject line: <span className="font-mono text-sm text-zinc-300">DMCA Notice</span>.
@@ -121,7 +121,7 @@ export default function IPPage() {
       <LegalSection n={9} title="Contact">
         <p>
           For all IP and copyright matters:{' '}
-          <a href="mailto:legal@motorsportsdata.io" className="text-lime-400 hover:underline">
+          <a href="mailto:legal@motorsportsdata.io" className="text-green-500 hover:underline">
             legal@motorsportsdata.io
           </a>
         </p>

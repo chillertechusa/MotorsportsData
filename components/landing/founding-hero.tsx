@@ -19,17 +19,17 @@ export default function FoundingHero() {
         }}
       />
       {/* Corner accents */}
-      <div aria-hidden="true" className="pointer-events-none absolute top-16 right-0 w-px h-64 bg-gradient-to-b from-lime-400/40 to-transparent" />
-      <div aria-hidden="true" className="pointer-events-none absolute top-16 right-0 w-64 h-px bg-gradient-to-l from-lime-400/40 to-transparent" />
+      <div aria-hidden="true" className="pointer-events-none absolute top-16 right-0 w-px h-64 bg-gradient-to-b from-green-500/40 to-transparent" />
+      <div aria-hidden="true" className="pointer-events-none absolute top-16 right-0 w-64 h-px bg-gradient-to-l from-green-500/40 to-transparent" />
       <div aria-hidden="true" className="pointer-events-none absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-zinc-950 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
         <div className="max-w-4xl">
 
           {/* Launch badge */}
-          <div className="inline-flex items-center gap-3 mb-8 border border-lime-400/30 bg-lime-400/5 px-4 py-2">
-            <span className="h-2 w-2 rounded-full bg-lime-400 animate-pulse" aria-hidden="true" />
-            <span className="font-mono text-xs text-lime-400 uppercase tracking-[0.25em]">
+          <div className="inline-flex items-center gap-3 mb-8 border border-green-500/30 bg-green-500/5 px-4 py-2">
+            <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" aria-hidden="true" />
+            <span className="font-mono text-xs text-green-500 uppercase tracking-[0.25em]">
               Founding enrollment open &mdash; closes Aug 31, 2026
             </span>
           </div>
@@ -44,7 +44,7 @@ export default function FoundingHero() {
             }}
           >
             One Platform.<br />
-            <span className="text-lime-400">Every Racing Program.</span>
+            <span className="text-green-500">Every Racing Program.</span>
           </h1>
 
           {/* Sub-headline */}
@@ -64,7 +64,7 @@ export default function FoundingHero() {
                 {discipline}
               </span>
             ))}
-            <span className="border border-lime-400/30 bg-lime-400/5 px-2.5 py-1 font-mono text-[10px] text-lime-400 uppercase tracking-widest">
+            <span className="border border-green-500/30 bg-green-500/5 px-2.5 py-1 font-mono text-[10px] text-green-500 uppercase tracking-widest">
               + every program
             </span>
           </div>
@@ -79,7 +79,7 @@ export default function FoundingHero() {
             />
             <Link
               href="/auth/sign-up"
-              className="inline-flex items-center justify-center gap-2 border border-zinc-700 text-zinc-300 font-semibold text-sm px-8 py-4 hover:border-lime-400/50 hover:text-zinc-100 transition-colors"
+              className="inline-flex items-center justify-center gap-2 border border-zinc-700 text-zinc-300 font-semibold text-sm px-8 py-4 hover:border-green-500/50 hover:text-zinc-100 transition-colors"
             >
               Get full access
             </Link>
@@ -92,7 +92,7 @@ export default function FoundingHero() {
               { icon: Calendar, label: 'Onboarded by your team before launch' },
             ].map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center gap-2">
-                <Icon className="h-4 w-4 text-lime-400 shrink-0" aria-hidden="true" />
+                <Icon className="h-4 w-4 text-green-500 shrink-0" aria-hidden="true" />
                 <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">{label}</span>
               </div>
             ))}

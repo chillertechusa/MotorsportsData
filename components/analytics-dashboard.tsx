@@ -135,7 +135,7 @@ export function AnalyticsDashboard() {
         </div>
         <button
           onClick={downloadCSV}
-          className="flex items-center gap-2 px-4 py-2 bg-[#ccff00] text-black rounded font-semibold hover:bg-lime-300 transition"
+          className="flex items-center gap-2 px-4 py-2 bg-[#ccff00] text-black rounded font-semibold hover:bg-green-400 transition"
         >
           <Download className="w-4 h-4" />
           Export CSV

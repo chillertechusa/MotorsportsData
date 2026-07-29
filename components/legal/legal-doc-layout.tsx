@@ -23,7 +23,7 @@ export function LegalDocLayout({
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-        <p className="mb-2 font-mono text-xs uppercase tracking-[0.3em] text-lime-400">
+        <p className="mb-2 font-mono text-xs uppercase tracking-[0.3em] text-green-500">
           Motorsport Data
         </p>
         <h1 className="text-balance text-4xl font-black tracking-tight">{title}</h1>
@@ -54,26 +54,26 @@ export function LegalDocLayout({
 
         <nav className="mt-14 flex flex-wrap gap-4 border-t border-zinc-800 pt-6 text-sm">
           <span className="text-zinc-500">Related:</span>
-          <Link href="/legal/terms" className="text-lime-400 hover:underline">
+          <Link href="/legal/terms" className="text-green-500 hover:underline">
             Terms of Service
           </Link>
-          <Link href="/legal/privacy" className="text-lime-400 hover:underline">
+          <Link href="/legal/privacy" className="text-green-500 hover:underline">
             Privacy Policy
           </Link>
-          <Link href="/legal/data-consent" className="text-lime-400 hover:underline">
+          <Link href="/legal/data-consent" className="text-green-500 hover:underline">
             Data Sharing &amp; Consent
           </Link>
-          <Link href="/legal/cookies" className="text-lime-400 hover:underline">
+          <Link href="/legal/cookies" className="text-green-500 hover:underline">
             Cookie Policy
           </Link>
-          <Link href="/legal/ip" className="text-lime-400 hover:underline">
+          <Link href="/legal/ip" className="text-green-500 hover:underline">
             IP &amp; DMCA
           </Link>
         </nav>
 
         <p className="mt-6 text-xs text-zinc-600">
           Questions? Contact{' '}
-          <a href="mailto:legal@motorsportsdata.io" className="text-zinc-400 hover:text-lime-400">
+          <a href="mailto:legal@motorsportsdata.io" className="text-zinc-400 hover:text-green-500">
             legal@motorsportsdata.io
           </a>
         </p>

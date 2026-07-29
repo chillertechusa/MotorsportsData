@@ -21,11 +21,11 @@ const TIERS = [
     label: 'Free Rider',
     price: 'FREE',
     note: 'Any Rider · Any Bike',
-    accent: 'text-lime-400',
-    accentBg: 'bg-lime-400/10',
-    accentBorder: 'border-lime-400',
-    accentBar: 'bg-lime-400',
-    accentDot: 'bg-lime-400',
+    accent: 'text-green-500',
+    accentBg: 'bg-green-500/10',
+    accentBorder: 'border-green-500',
+    accentBar: 'bg-green-500',
+    accentDot: 'bg-green-500',
     description: 'Track the bike, log every ride, save the story from day one.',
     href: '/rookie',
   },
@@ -87,11 +87,11 @@ const TIERS = [
     label: 'Agent',
     price: '$999/mo',
     note: 'Contract Negotiation',
-    accent: 'text-lime-400',
-    accentBg: 'bg-lime-400/10',
-    accentBorder: 'border-lime-400',
-    accentBar: 'bg-lime-400',
-    accentDot: 'bg-lime-400',
+    accent: 'text-green-500',
+    accentBg: 'bg-green-500/10',
+    accentBorder: 'border-green-500',
+    accentBar: 'bg-green-500',
+    accentDot: 'bg-green-500',
     description: 'Percentile ranking, salary benchmarking, prospect scouting, export reports.',
     href: '/agent',
   },
@@ -100,11 +100,11 @@ const TIERS = [
     label: 'Coach',
     price: '$249/mo',
     note: 'Training Coaches',
-    accent: 'text-lime-400',
-    accentBg: 'bg-lime-400/10',
-    accentBorder: 'border-lime-400',
-    accentBar: 'bg-lime-400',
-    accentDot: 'bg-lime-400',
+    accent: 'text-green-500',
+    accentBg: 'bg-green-500/10',
+    accentBorder: 'border-green-500',
+    accentBar: 'bg-green-500',
+    accentDot: 'bg-green-500',
     description: 'Cross-team coaching access, video analysis, AI recommendations for your riders.',
     href: '/coach',
   },
@@ -197,7 +197,7 @@ export default function MdDemo() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-12 text-center max-w-3xl mx-auto">
-          <p className="font-mono text-xs text-lime-400 uppercase tracking-[0.3em] mb-4">
+          <p className="font-mono text-xs text-green-500 uppercase tracking-[0.3em] mb-4">
             &#47;&#47; pick-your-stage
           </p>
           <h2
@@ -205,7 +205,7 @@ export default function MdDemo() {
             style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: 'clamp(2.5rem, 5vw, 4.5rem)' }}
           >
             Every Stage of the Journey.{' '}
-            <span className="text-lime-400">One Platform.</span>
+            <span className="text-green-500">One Platform.</span>
           </h2>
           <p className="text-zinc-400 text-lg leading-relaxed">
             Start free forever. Track your bike, your rides, your story. Grow into AI coaching, multi-bike management, and full team operations as you're ready.
@@ -330,7 +330,7 @@ export default function MdDemo() {
               {/* Sidebar */}
               <aside className="hidden sm:flex w-14 md:w-44 shrink-0 flex-col gap-0.5 border-r border-zinc-800 bg-zinc-900/50 p-2 md:p-3">
                 <div className="flex items-center gap-2 px-1 pb-3 mb-1 border-b border-zinc-800">
-                  <div className="h-7 w-7 bg-lime-400 flex items-center justify-center shrink-0">
+                  <div className="h-7 w-7 bg-green-500 flex items-center justify-center shrink-0">
                     <span className="text-zinc-950 font-black text-xs">MD</span>
                   </div>
                   <span className="hidden md:block font-mono text-[10px] uppercase tracking-widest text-zinc-500 truncate">
@@ -505,7 +505,7 @@ function SceneCoach({ act, actProgress: p }: { act: number; actProgress: number 
       <div className="h-full flex flex-col gap-5">
         <div className={`transition-all duration-500 ${show1 ? 'opacity-100' : 'opacity-0'}`}>
           <div className="flex items-center gap-2 mb-4">
-            <Users className="h-5 w-5 text-lime-400" />
+            <Users className="h-5 w-5 text-green-500" />
             <p className="font-mono text-xs text-zinc-500 uppercase tracking-widest">My Riders · Cross-Team Roster</p>
           </div>
           {riders.map((r) => (
@@ -515,7 +515,7 @@ function SceneCoach({ act, actProgress: p }: { act: number; actProgress: number 
                   <p className="text-zinc-100 text-sm font-bold">{r.name} {r.number} • {r.age}yo</p>
                   <p className="font-mono text-xs text-zinc-500 mt-2">PB: {r.pb} · Session: {r.trend}</p>
                 </div>
-                <div className={`text-right px-3 py-1.5 rounded text-xs font-bold uppercase tracking-widest ${r.status === 'improving' ? 'bg-lime-400/10 text-lime-400' : r.status === 'trending' ? 'bg-amber-400/10 text-amber-400' : 'bg-zinc-700/30 text-zinc-500'}`}>
+                <div className={`text-right px-3 py-1.5 rounded text-xs font-bold uppercase tracking-widest ${r.status === 'improving' ? 'bg-green-500/10 text-green-500' : r.status === 'trending' ? 'bg-amber-400/10 text-amber-400' : 'bg-zinc-700/30 text-zinc-500'}`}>
                   {r.status}
                 </div>
               </div>
@@ -523,8 +523,8 @@ function SceneCoach({ act, actProgress: p }: { act: number; actProgress: number 
           ))}
         </div>
         {show2 && (
-          <div className="border border-lime-400/20 bg-lime-400/5 rounded-lg p-4" style={{ animation: 'mdRise 0.4s ease-out both' }}>
-            <p className="font-mono text-xs text-lime-400 uppercase tracking-widest mb-2">Live Coaching</p>
+          <div className="border border-green-500/20 bg-green-500/5 rounded-lg p-4" style={{ animation: 'mdRise 0.4s ease-out both' }}>
+            <p className="font-mono text-xs text-green-500 uppercase tracking-widest mb-2">Live Coaching</p>
             <p className="text-zinc-300 text-sm">3 riders tracked · 12 sessions this week · All improving toward Regional Championship</p>
           </div>
         )}
@@ -548,7 +548,7 @@ function SceneCoach({ act, actProgress: p }: { act: number; actProgress: number 
               { label: 'Throttle Ctrl', value: '94%', change: 'improvement', detail: 'smooth transitions' },
             ].map((m) => (
               <div key={m.label} className="border border-zinc-800 bg-zinc-900/40 rounded-lg p-3">
-                <p className={`text-sm font-bold ${m.change === 'improvement' ? 'text-lime-400' : m.change === 'increase' ? 'text-amber-400' : 'text-zinc-400'}`}>{m.value}</p>
+                <p className={`text-sm font-bold ${m.change === 'improvement' ? 'text-green-500' : m.change === 'increase' ? 'text-amber-400' : 'text-zinc-400'}`}>{m.value}</p>
                 <p className="font-mono text-xs text-zinc-600 mt-1">{m.label}</p>
                 <p className="font-mono text-xs text-zinc-700 mt-1">{m.detail}</p>
               </div>
@@ -556,8 +556,8 @@ function SceneCoach({ act, actProgress: p }: { act: number; actProgress: number 
           </div>
         </div>
         {show2 && (
-          <div className="border border-lime-400/20 bg-lime-400/5 rounded-lg p-4" style={{ animation: 'mdRise 0.4s ease-out both' }}>
-            <p className="text-zinc-300 text-sm"><span className="font-bold text-lime-400">AI Coaching:</span> Tyler&apos;s line through Turn 3 is textbook. Share with Cody as reference.</p>
+          <div className="border border-green-500/20 bg-green-500/5 rounded-lg p-4" style={{ animation: 'mdRise 0.4s ease-out both' }}>
+            <p className="text-zinc-300 text-sm"><span className="font-bold text-green-500">AI Coaching:</span> Tyler&apos;s line through Turn 3 is textbook. Share with Cody as reference.</p>
           </div>
         )}
       </div>
@@ -576,11 +576,11 @@ function SceneCoach({ act, actProgress: p }: { act: number; actProgress: number 
             <div className="flex items-end gap-3 mb-3">
               <div className="flex-1 h-20 bg-zinc-900/60 rounded flex items-end gap-1 p-2">
                 {[35, 48, 62, 71, 68, 55, 42, 38].map((h, i) => (
-                  <div key={i} className="flex-1 bg-lime-400/40 rounded-t" style={{ height: `${h}%` }} />
+                  <div key={i} className="flex-1 bg-green-500/40 rounded-t" style={{ height: `${h}%` }} />
                 ))}
               </div>
               <div className="text-right">
-                <p className="text-lime-400 text-sm font-bold">G-Force</p>
+                <p className="text-green-500 text-sm font-bold">G-Force</p>
                 <p className="font-mono text-xs text-zinc-600">Braking Zone</p>
               </div>
             </div>
@@ -588,7 +588,7 @@ function SceneCoach({ act, actProgress: p }: { act: number; actProgress: number 
           </div>
         </div>
         {show2 && (
-          <div className="border border-lime-400/20 bg-lime-400/5 rounded-lg p-4" style={{ animation: 'mdRise 0.4s ease-out both' }}>
+          <div className="border border-green-500/20 bg-green-500/5 rounded-lg p-4" style={{ animation: 'mdRise 0.4s ease-out both' }}>
             <p className="text-zinc-300 text-sm"><strong>Coach Note:</strong> Save this for pre-race review with your team.</p>
           </div>
         )}
@@ -600,7 +600,7 @@ function SceneCoach({ act, actProgress: p }: { act: number; actProgress: number 
     <div className="h-full flex flex-col gap-5">
       <div className={`transition-all duration-500 ${safeP > 0.15 ? 'opacity-100' : 'opacity-0'}`}>
         <div className="flex items-center gap-2 mb-4">
-          <Sparkles className="h-5 w-5 text-lime-400" />
+          <Sparkles className="h-5 w-5 text-green-500" />
           <p className="font-mono text-xs text-zinc-500 uppercase tracking-widest">AI Insights · Championship Prep</p>
         </div>
         <div className="space-y-3">
@@ -609,7 +609,7 @@ function SceneCoach({ act, actProgress: p }: { act: number; actProgress: number 
             { title: 'Danny Recovery Plan', desc: 'Fatigue noted in moto 2. Increase conditioning, focus on elbow position.' },
             { title: 'Team Strategy', desc: 'Your 3-rider roster complements each other. All trending toward Regional podiums.' },
           ].map((i) => (
-            <div key={i.title} className="border border-lime-400/20 bg-lime-400/5 rounded-lg p-3">
+            <div key={i.title} className="border border-green-500/20 bg-green-500/5 rounded-lg p-3">
               <p className="text-zinc-300 text-sm font-bold">{i.title}</p>
               <p className="text-zinc-400 text-sm mt-2">{i.desc}</p>
             </div>
@@ -681,8 +681,8 @@ function SceneWrench({ act, actProgress: p }: { act: number; actProgress: number
                     <p className="font-mono text-xs text-zinc-500 mt-1">{it.supplier}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-lime-400 text-sm font-bold">×{it.qty}</p>
-                    <p className={`font-mono text-xs ${it.status === 'in stock' ? 'text-lime-400' : it.status === 'order pending' ? 'text-amber-400' : 'text-zinc-500'}`}>{it.status}</p>
+                    <p className="text-green-500 text-sm font-bold">×{it.qty}</p>
+                    <p className={`font-mono text-xs ${it.status === 'in stock' ? 'text-green-500' : it.status === 'order pending' ? 'text-amber-400' : 'text-zinc-500'}`}>{it.status}</p>
                   </div>
                 </div>
               </div>
@@ -708,7 +708,7 @@ function SceneWrench({ act, actProgress: p }: { act: number; actProgress: number
             <div key={w.id} className="border border-zinc-800 bg-zinc-900/40 rounded-lg p-3">
               <div className="flex items-center justify-between mb-2">
                 <p className="font-mono text-xs text-zinc-500 font-bold">{w.id} • {w.bike}</p>
-                <span className={`text-xs font-bold px-3 py-1 rounded ${w.status === 'ready' ? 'bg-lime-400/20 text-lime-400' : w.status === 'in progress' ? 'bg-amber-400/20 text-amber-400' : 'bg-zinc-700/30 text-zinc-500'}`}>{w.status}</span>
+                <span className={`text-xs font-bold px-3 py-1 rounded ${w.status === 'ready' ? 'bg-green-500/20 text-green-500' : w.status === 'in progress' ? 'bg-amber-400/20 text-amber-400' : 'bg-zinc-700/30 text-zinc-500'}`}>{w.status}</span>
               </div>
               <p className="text-zinc-300 text-sm">{w.job}</p>
               <p className="font-mono text-xs text-zinc-600 mt-2">Due: {w.due}</p>
@@ -868,24 +868,24 @@ function RookieAct0({ p }: { p: number }) {
   return (
     <div className="h-full flex flex-col gap-4">
       <div className="flex items-center gap-4 border border-zinc-800 bg-zinc-900/50 rounded-lg px-4 py-3" style={{ animation: 'mdRise 0.5s ease-out both' }}>
-        <div className="h-12 w-12 bg-sky-400/10 border border-sky-400/30 rounded flex items-center justify-center shrink-0">
-          <Bike className="h-6 w-6 text-sky-400" />
+        <div className="h-12 w-12 bg-blue-600/10 border border-blue-600/30 rounded flex items-center justify-center shrink-0">
+          <Bike className="h-6 w-6 text-blue-500" />
         </div>
         <div className="flex-1 min-w-0">
           <p className="text-zinc-100 text-sm font-bold">Yamaha PW50 · #4 · Jake</p>
           <p className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">2024 · Red · Salt Lake City, UT</p>
         </div>
         <div className="text-right shrink-0">
-          <p className="text-sky-400 text-2xl leading-none" style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900 }}>94%</p>
+          <p className="text-blue-500 text-2xl leading-none" style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900 }}>94%</p>
           <p className="font-mono text-[9px] text-zinc-600 uppercase">Bike Health</p>
         </div>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3" style={{ animation: 'mdRise 0.5s ease-out 0.15s both' }}>
         {[
-          { label: 'Total Rides', value: '47', icon: Flag, color: 'text-sky-400' },
-          { label: 'Hours Logged', value: '14.5', icon: Timer, color: 'text-sky-400' },
+          { label: 'Total Rides', value: '47', icon: Flag, color: 'text-blue-500' },
+          { label: 'Hours Logged', value: '14.5', icon: Timer, color: 'text-blue-500' },
           { label: 'Milestones', value: '12', icon: Star, color: 'text-amber-400' },
-          { label: 'This Month', value: '3', icon: Activity, color: 'text-lime-400' },
+          { label: 'This Month', value: '3', icon: Activity, color: 'text-green-500' },
         ].map((s) => {
           const Icon = s.icon
           return (
@@ -931,7 +931,7 @@ function RookieAct1({ p }: { p: number }) {
     <div className="h-full flex flex-col gap-3">
       <div className="flex items-center justify-between" style={{ animation: 'mdFadeIn 0.4s ease-out both' }}>
         <p className="font-mono text-[9px] text-zinc-600 uppercase tracking-widest">Recent Ride Sessions</p>
-        <span className="font-mono text-[9px] text-sky-400 border border-sky-400/30 bg-sky-400/5 px-2 py-0.5 uppercase">47 total rides logged</span>
+        <span className="font-mono text-[9px] text-blue-500 border border-blue-600/30 bg-blue-600/5 px-2 py-0.5 uppercase">47 total rides logged</span>
       </div>
       {rides.map((r, i) => (
         <div
@@ -980,13 +980,13 @@ function RookieAct2({ p }: { p: number }) {
               key={m.event}
               className={`flex items-start gap-3 transition-all duration-500 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
             >
-              <div className={`h-10 w-10 rounded-full border flex items-center justify-center shrink-0 relative z-10 ${visible ? 'bg-sky-400/10 border-sky-400/30' : 'bg-zinc-900 border-zinc-800'}`}>
-                <Icon className={`h-4 w-4 ${visible ? 'text-sky-400' : 'text-zinc-700'}`} />
+              <div className={`h-10 w-10 rounded-full border flex items-center justify-center shrink-0 relative z-10 ${visible ? 'bg-blue-600/10 border-blue-600/30' : 'bg-zinc-900 border-zinc-800'}`}>
+                <Icon className={`h-4 w-4 ${visible ? 'text-blue-500' : 'text-zinc-700'}`} />
               </div>
               <div className="flex-1 border border-zinc-800 bg-zinc-900/40 rounded-lg px-3 py-2">
                 <div className="flex items-center justify-between mb-0.5">
                   <p className="text-zinc-200 text-xs font-bold">{m.event}</p>
-                  <span className="font-mono text-[9px] text-sky-400 shrink-0 ml-2">{m.age}</span>
+                  <span className="font-mono text-[9px] text-blue-500 shrink-0 ml-2">{m.age}</span>
                 </div>
                 <p className="text-zinc-500 text-xs italic">&quot;{m.note}&quot;</p>
               </div>
@@ -1004,17 +1004,17 @@ function RookieAct3({ p }: { p: number }) {
   const show3 = p > 0.6
   return (
     <div className="h-full flex flex-col gap-4">
-      <div className={`border border-sky-400/20 bg-sky-400/5 rounded-lg px-4 py-3 transition-all duration-500 ${show1 ? 'opacity-100' : 'opacity-0'}`}>
-        <p className="font-mono text-[9px] text-sky-400 uppercase tracking-widest mb-1">Rider Profile — Public Link</p>
+      <div className={`border border-blue-600/20 bg-blue-600/5 rounded-lg px-4 py-3 transition-all duration-500 ${show1 ? 'opacity-100' : 'opacity-0'}`}>
+        <p className="font-mono text-[9px] text-blue-500 uppercase tracking-widest mb-1">Rider Profile — Public Link</p>
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 bg-sky-400/10 border border-sky-400/30 rounded-full flex items-center justify-center shrink-0">
-            <span className="text-sky-400 font-black text-sm">J</span>
+          <div className="h-10 w-10 bg-blue-600/10 border border-blue-600/30 rounded-full flex items-center justify-center shrink-0">
+            <span className="text-blue-500 font-black text-sm">J</span>
           </div>
           <div>
             <p className="text-zinc-100 text-sm font-bold">Jake Padilla · #4</p>
             <p className="font-mono text-[10px] text-zinc-500">motorsportsdata.io/rider/jake-p · 47 rides · 12 milestones</p>
           </div>
-          <button className="ml-auto flex items-center gap-1.5 border border-sky-400/30 bg-sky-400/10 text-sky-400 font-mono text-[10px] uppercase px-3 py-1.5 rounded">
+          <button className="ml-auto flex items-center gap-1.5 border border-blue-600/30 bg-blue-600/10 text-blue-500 font-mono text-[10px] uppercase px-3 py-1.5 rounded">
             <Share2 className="h-3 w-3" /> Share
           </button>
         </div>
@@ -1064,23 +1064,23 @@ function PrivateerAct0({ p }: { p: number }) {
   const shown = Math.floor(p * 5)
   return (
     <div className="h-full flex flex-col gap-3">
-      <div className="flex items-center gap-2 border border-lime-400/20 bg-lime-400/5 rounded-lg px-4 py-3" style={{ animation: 'mdRise 0.4s ease-out both' }}>
-        <Cloud className="h-5 w-5 text-lime-400 shrink-0" />
+      <div className="flex items-center gap-2 border border-green-500/20 bg-green-500/5 rounded-lg px-4 py-3" style={{ animation: 'mdRise 0.4s ease-out both' }}>
+        <Cloud className="h-5 w-5 text-green-500 shrink-0" />
         <div>
           <p className="text-zinc-200 text-sm font-bold">Pala Raceway · San Diego, CA</p>
           <p className="font-mono text-[10px] text-zinc-500">Race day — Moto 1 in 2h 14min</p>
         </div>
         <div className="ml-auto text-right">
-          <p className="text-lime-400 text-xl font-black" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>94°F</p>
+          <p className="text-green-500 text-xl font-black" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>94°F</p>
           <p className="font-mono text-[9px] text-zinc-600">Feels 101°F</p>
         </div>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
-          { label: 'Humidity', value: '18%', note: 'Low — dry, hard pack forming', icon: Cloud, color: 'text-sky-400' },
+          { label: 'Humidity', value: '18%', note: 'Low — dry, hard pack forming', icon: Cloud, color: 'text-blue-500' },
           { label: 'Wind', value: '7 mph', note: 'SW · minimal factor', icon: Activity, color: 'text-zinc-400' },
           { label: 'Track Condition', value: 'Hardpack', note: 'Blue groove — slick off-line', icon: MapPin, color: 'text-amber-400' },
-          { label: 'Pressure', value: '29.9 inHg', note: 'Stable — jet stays stock', icon: TrendingUp, color: 'text-lime-400' },
+          { label: 'Pressure', value: '29.9 inHg', note: 'Stable — jet stays stock', icon: TrendingUp, color: 'text-green-500' },
         ].map((s, i) => {
           const Icon = s.icon
           return (
@@ -1124,7 +1124,7 @@ function PrivateerAct1({ p }: { p: number }) {
     <div className="h-full flex flex-col gap-2">
       <div className="flex items-center justify-between" style={{ animation: 'mdFadeIn 0.3s ease-out both' }}>
         <p className="font-mono text-[9px] text-zinc-600 uppercase tracking-widest">Setup Sheet · Pala · Jul 8, 2026</p>
-        <span className="font-mono text-[9px] text-lime-400 border border-lime-400/30 bg-lime-400/5 px-2 py-0.5">2025 YZ450F · #7</span>
+        <span className="font-mono text-[9px] text-green-500 border border-green-500/30 bg-green-500/5 px-2 py-0.5">2025 YZ450F · #7</span>
       </div>
       <div className="grid grid-cols-2 gap-2 flex-1">
         {fields.map((f, i) => (
@@ -1174,7 +1174,7 @@ function PrivateerAct2({ p }: { p: number }) {
           </div>
           <div className="h-1.5 bg-zinc-800 rounded-full overflow-hidden mb-1.5">
             <div
-              className={`h-full rounded-full ${part.status === 'critical' ? 'bg-red-500' : part.status === 'warn' ? 'bg-amber-400' : 'bg-lime-400'}`}
+              className={`h-full rounded-full ${part.status === 'critical' ? 'bg-red-500' : part.status === 'warn' ? 'bg-amber-400' : 'bg-green-500'}`}
               style={{ width: `${part.pct}%`, animation: `mdBarGrow 0.7s ease-out ${0.2 + i * 0.1}s both` }}
             />
           </div>
@@ -1198,8 +1198,8 @@ function PrivateerAct3({ p }: { p: number }) {
   return (
     <div className="h-full flex flex-col gap-3">
       <div className="flex items-center gap-2">
-        <div className="h-6 w-6 bg-lime-400/10 border border-lime-400/30 rounded flex items-center justify-center">
-          <Sparkles className="h-3.5 w-3.5 text-lime-400" />
+        <div className="h-6 w-6 bg-green-500/10 border border-green-500/30 rounded flex items-center justify-center">
+          <Sparkles className="h-3.5 w-3.5 text-green-500" />
         </div>
         <p className="font-mono text-[9px] text-zinc-600 uppercase tracking-widest">MD Intel AI · Your personal setup historian</p>
       </div>
@@ -1211,14 +1211,14 @@ function PrivateerAct3({ p }: { p: number }) {
       </div>
       {/* A1 */}
       <div className="flex gap-2 items-start">
-        <div className="h-7 w-7 bg-lime-400/10 border border-lime-400/30 rounded flex items-center justify-center shrink-0">
-          <Sparkles className="h-3.5 w-3.5 text-lime-400" />
+        <div className="h-7 w-7 bg-green-500/10 border border-green-500/30 rounded flex items-center justify-center shrink-0">
+          <Sparkles className="h-3.5 w-3.5 text-green-500" />
         </div>
         <div className="flex-1 min-w-0 border border-zinc-800 bg-zinc-900/60 rounded-2xl rounded-tl-sm px-3 py-2.5">
-          <p className="font-mono text-[8px] text-lime-400 uppercase tracking-widest mb-1.5">MD Intel · Gemini 2.5 Pro</p>
+          <p className="font-mono text-[8px] text-green-500 uppercase tracking-widest mb-1.5">MD Intel · Gemini 2.5 Pro</p>
           <p className="text-zinc-300 text-xs leading-relaxed">
             {INTEL_A1.slice(0, chars1)}
-            {chars1 < INTEL_A1.length && <span className="inline-block w-1 h-3 -mb-0.5 bg-lime-400 ml-0.5" style={{ animation: 'mdBlink 0.9s step-end infinite' }} />}
+            {chars1 < INTEL_A1.length && <span className="inline-block w-1 h-3 -mb-0.5 bg-green-500 ml-0.5" style={{ animation: 'mdBlink 0.9s step-end infinite' }} />}
           </p>
         </div>
       </div>
@@ -1233,14 +1233,14 @@ function PrivateerAct3({ p }: { p: number }) {
       {/* A2 */}
       {showQ2 && chars2 > 0 && (
         <div className="flex gap-2 items-start" style={{ animation: 'mdFadeIn 0.3s ease-out both' }}>
-          <div className="h-7 w-7 bg-lime-400/10 border border-lime-400/30 rounded flex items-center justify-center shrink-0">
-            <Sparkles className="h-3.5 w-3.5 text-lime-400" />
+          <div className="h-7 w-7 bg-green-500/10 border border-green-500/30 rounded flex items-center justify-center shrink-0">
+            <Sparkles className="h-3.5 w-3.5 text-green-500" />
           </div>
           <div className="flex-1 min-w-0 border border-zinc-800 bg-zinc-900/60 rounded-2xl rounded-tl-sm px-3 py-2.5">
-            <p className="font-mono text-[8px] text-lime-400 uppercase tracking-widest mb-1.5">MD Intel</p>
+            <p className="font-mono text-[8px] text-green-500 uppercase tracking-widest mb-1.5">MD Intel</p>
             <p className="text-zinc-300 text-xs leading-relaxed">
               {INTEL_A2.slice(0, chars2)}
-              {chars2 < INTEL_A2.length && <span className="inline-block w-1 h-3 -mb-0.5 bg-lime-400 ml-0.5" style={{ animation: 'mdBlink 0.9s step-end infinite' }} />}
+              {chars2 < INTEL_A2.length && <span className="inline-block w-1 h-3 -mb-0.5 bg-green-500 ml-0.5" style={{ animation: 'mdBlink 0.9s step-end infinite' }} />}
             </p>
           </div>
         </div>
@@ -1252,8 +1252,8 @@ function PrivateerAct3({ p }: { p: number }) {
 function PrivateerAct4({ p }: { p: number }) {
   return (
     <div className="h-full flex flex-col gap-3">
-      <div className="flex items-center gap-2 border border-lime-400/20 bg-lime-400/5 rounded-lg px-4 py-3">
-        <HeartPulse className="h-5 w-5 text-lime-400 shrink-0" />
+      <div className="flex items-center gap-2 border border-green-500/20 bg-green-500/5 rounded-lg px-4 py-3">
+        <HeartPulse className="h-5 w-5 text-green-500 shrink-0" />
         <div>
           <p className="text-zinc-200 text-sm font-bold">Fitness Metrics</p>
           <p className="font-mono text-[10px] text-zinc-500">7-day rolling average</p>
@@ -1268,7 +1268,7 @@ function PrivateerAct4({ p }: { p: number }) {
           <div key={m.label} className="border border-zinc-800 bg-zinc-900/40 rounded p-3 text-center">
             <p className="text-zinc-500 text-xs">{m.label}</p>
             <p className="text-zinc-100 font-bold mt-1">{m.value}</p>
-            <p className="text-lime-400 text-xs mt-1">{m.trend}</p>
+            <p className="text-green-500 text-xs mt-1">{m.trend}</p>
           </div>
         ))}
       </div>
@@ -1311,7 +1311,7 @@ function RaceTeamAct0({ p }: { p: number }) {
           className={`border border-zinc-800 bg-zinc-900/40 rounded-lg px-4 py-3 transition-all duration-500 ${shown > i ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
         >
           <div className="flex items-center gap-3">
-            <div className={`h-10 w-10 rounded font-black text-sm flex items-center justify-center shrink-0 ${r.tone === 'amber' ? 'bg-amber-400/10 text-amber-400 border border-amber-400/30' : 'bg-lime-400/10 text-lime-400 border border-lime-400/30'}`}>
+            <div className={`h-10 w-10 rounded font-black text-sm flex items-center justify-center shrink-0 ${r.tone === 'amber' ? 'bg-amber-400/10 text-amber-400 border border-amber-400/30' : 'bg-green-500/10 text-green-500 border border-green-500/30'}`}>
               {r.number}
             </div>
             <div className="flex-1 min-w-0">
@@ -1322,13 +1322,13 @@ function RaceTeamAct0({ p }: { p: number }) {
               </div>
               <div className="h-1.5 bg-zinc-800 rounded-full overflow-hidden w-full">
                 <div
-                  className={`h-full rounded-full ${r.ready >= 85 ? 'bg-lime-400' : r.ready >= 70 ? 'bg-amber-400' : 'bg-red-400'}`}
+                  className={`h-full rounded-full ${r.ready >= 85 ? 'bg-green-500' : r.ready >= 70 ? 'bg-amber-400' : 'bg-red-400'}`}
                   style={{ width: `${r.ready}%`, animation: `mdBarGrow 1s ease-out ${0.3 + i * 0.12}s both` }}
                 />
               </div>
             </div>
             <div className="text-right shrink-0 ml-2">
-              <p className={`text-xl leading-none font-black ${r.tone === 'amber' ? 'text-amber-400' : 'text-lime-400'}`} style={{ fontFamily: 'var(--font-barlow-condensed)' }}>{r.ready}</p>
+              <p className={`text-xl leading-none font-black ${r.tone === 'amber' ? 'text-amber-400' : 'text-green-500'}`} style={{ fontFamily: 'var(--font-barlow-condensed)' }}>{r.ready}</p>
               <p className="font-mono text-[8px] text-zinc-600 uppercase">{r.status}</p>
             </div>
           </div>
@@ -1380,7 +1380,7 @@ function RaceTeamAct1({ p }: { p: number }) {
       {chars >= COACH_A.length && (
         <div className="grid grid-cols-3 gap-2" style={{ animation: 'mdRise 0.5s ease-out both' }}>
           {[
-            { label: 'Race Ready', value: '2', color: 'text-lime-400', border: 'border-lime-400/20', bg: 'bg-lime-400/5' },
+            { label: 'Race Ready', value: '2', color: 'text-green-500', border: 'border-green-500/20', bg: 'bg-green-500/5' },
             { label: 'Sit Out', value: '1', color: 'text-red-400', border: 'border-red-400/20', bg: 'bg-red-400/5' },
             { label: 'Reserve', value: '1', color: 'text-amber-400', border: 'border-amber-400/20', bg: 'bg-amber-400/5' },
           ].map((s) => (
@@ -1424,10 +1424,10 @@ function RaceTeamAct2({ p }: { p: number }) {
         <div className="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
           <div className="flex items-center justify-between mb-3">
             <p className="text-zinc-200 text-sm font-bold">Total Budget</p>
-            <p className="text-lime-400 font-black text-lg" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>$84,200</p>
+            <p className="text-green-500 font-black text-lg" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>$84,200</p>
           </div>
           {[
-            { label: 'Sponsor Revenue', value: '$62,000', pct: 74, color: 'bg-lime-400' },
+            { label: 'Sponsor Revenue', value: '$62,000', pct: 74, color: 'bg-green-500' },
             { label: 'Expenses to Date', value: '$41,800', pct: 50, color: 'bg-amber-400' },
             { label: 'Remaining', value: '$42,400', pct: 50, color: 'bg-sky-400' },
           ].map((b) => (
@@ -1445,7 +1445,7 @@ function RaceTeamAct2({ p }: { p: number }) {
       </div>
       {show3 && (
         <div className="border border-zinc-800 bg-zinc-900/40 rounded-lg px-3 py-2 flex items-center gap-2" style={{ animation: 'mdRise 0.4s ease-out both' }}>
-          <DollarSign className="h-4 w-4 text-lime-400 shrink-0" />
+          <DollarSign className="h-4 w-4 text-green-500 shrink-0" />
           <p className="text-zinc-400 text-xs">New sponsor proposal: <span className="text-zinc-200 font-bold">Fly Racing — $8,000 gear deal</span> · response due Jul 14</p>
         </div>
       )}
@@ -1467,15 +1467,15 @@ function RaceTeamAct3({ p }: { p: number }) {
           <p className="font-mono text-[9px] text-zinc-600 uppercase tracking-widest">Video Analysis · Anaheim 1 Practice</p>
         </div>
         {clips.map((c) => (
-          <div key={c.rider} className={`border rounded-lg overflow-hidden mb-3 ${c.flag ? 'border-red-500/30' : 'border-lime-400/20'}`}>
-            <div className={`flex items-center gap-3 px-3 py-2 ${c.flag ? 'bg-red-500/5' : 'bg-lime-400/5'}`}>
-              <Camera className={`h-4 w-4 shrink-0 ${c.flag ? 'text-red-400' : 'text-lime-400'}`} />
+          <div key={c.rider} className={`border rounded-lg overflow-hidden mb-3 ${c.flag ? 'border-red-500/30' : 'border-green-500/20'}`}>
+            <div className={`flex items-center gap-3 px-3 py-2 ${c.flag ? 'bg-red-500/5' : 'bg-green-500/5'}`}>
+              <Camera className={`h-4 w-4 shrink-0 ${c.flag ? 'text-red-400' : 'text-green-500'}`} />
               <div className="flex-1">
                 <p className="text-zinc-200 text-xs font-bold">{c.rider}</p>
                 <p className="font-mono text-[9px] text-zinc-500">{c.segment}</p>
               </div>
               <div className="text-right">
-                <p className={`text-lg font-black leading-none ${c.flag ? 'text-red-400' : 'text-lime-400'}`} style={{ fontFamily: 'var(--font-barlow-condensed)' }}>{c.score}</p>
+                <p className={`text-lg font-black leading-none ${c.flag ? 'text-red-400' : 'text-green-500'}`} style={{ fontFamily: 'var(--font-barlow-condensed)' }}>{c.score}</p>
                 <p className="font-mono text-[9px] text-zinc-600">/ 100</p>
               </div>
             </div>
@@ -1488,7 +1488,7 @@ function RaceTeamAct3({ p }: { p: number }) {
       <div className={`grid grid-cols-3 gap-3 transition-all duration-500 ${show2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`}>
         {[
           { label: 'Clips Analyzed', value: '34', color: 'text-amber-400' },
-          { label: 'Avg Score', value: '83', color: 'text-lime-400' },
+          { label: 'Avg Score', value: '83', color: 'text-green-500' },
           { label: 'Flags Raised', value: '6', color: 'text-red-400' },
         ].map((s) => (
           <div key={s.label} className="border border-zinc-800 bg-zinc-900/40 rounded-lg p-3 text-center">
@@ -1708,7 +1708,7 @@ function FactoryAct2({ p }: { p: number }) {
     <div className="h-full flex flex-col gap-2">
       <div className="flex items-center justify-between" style={{ animation: 'mdFadeIn 0.3s ease-out both' }}>
         <p className="font-mono text-[9px] text-zinc-600 uppercase tracking-widest">DOT Pre-Trip Inspection · Jul 12, 2026</p>
-        <span className={`font-mono text-[9px] border px-2 py-0.5 uppercase tracking-widest ${completed >= checks.length ? 'text-lime-400 border-lime-400/30 bg-lime-400/5' : 'text-amber-400 border-amber-400/30 bg-amber-400/5'}`}>
+        <span className={`font-mono text-[9px] border px-2 py-0.5 uppercase tracking-widest ${completed >= checks.length ? 'text-green-500 border-green-500/30 bg-green-500/5' : 'text-amber-400 border-amber-400/30 bg-amber-400/5'}`}>
           {completed} / {checks.length} complete
         </span>
       </div>
@@ -1724,7 +1724,7 @@ function FactoryAct2({ p }: { p: number }) {
           >
             {shown > i ? (
               c.done
-                ? <CheckCircle2 className="h-4 w-4 text-lime-400 shrink-0" />
+                ? <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0" />
                 : <AlertTriangle className="h-4 w-4 text-amber-400 shrink-0" />
             ) : (
               <Circle className="h-4 w-4 text-zinc-800 shrink-0" />
@@ -1753,16 +1753,16 @@ function FactoryAct3({ p }: { p: number }) {
         <div className="flex items-center justify-between mb-2">
           <p className="font-mono text-[9px] text-zinc-600 uppercase tracking-widest">Haul Schedule · Anaheim 1</p>
           <div className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-lime-400" style={{ animation: 'mdPulse 1.5s ease-in-out infinite' }} />
-            <span className="font-mono text-[9px] text-lime-400 uppercase">En Route</span>
+            <span className="h-2 w-2 rounded-full bg-green-500" style={{ animation: 'mdPulse 1.5s ease-in-out infinite' }} />
+            <span className="font-mono text-[9px] text-green-500 uppercase">En Route</span>
           </div>
         </div>
         <div className="relative flex flex-col gap-2">
           <div className="absolute left-[19px] top-5 bottom-5 w-px bg-zinc-800" />
           {stops.map((s) => (
             <div key={s.location} className="flex items-start gap-3">
-              <div className={`h-10 w-10 rounded border flex items-center justify-center shrink-0 ${s.status === 'complete' ? 'bg-lime-400/10 border-lime-400/30' : 'bg-zinc-900 border-zinc-700'}`}>
-                {s.type === 'Fuel Stop' ? <Fuel className={`h-4 w-4 ${s.status === 'complete' ? 'text-lime-400' : 'text-zinc-500'}`} /> : <MapPin className={`h-4 w-4 ${s.status === 'complete' ? 'text-lime-400' : 'text-zinc-500'}`} />}
+              <div className={`h-10 w-10 rounded border flex items-center justify-center shrink-0 ${s.status === 'complete' ? 'bg-green-500/10 border-green-500/30' : 'bg-zinc-900 border-zinc-700'}`}>
+                {s.type === 'Fuel Stop' ? <Fuel className={`h-4 w-4 ${s.status === 'complete' ? 'text-green-500' : 'text-zinc-500'}`} /> : <MapPin className={`h-4 w-4 ${s.status === 'complete' ? 'text-green-500' : 'text-zinc-500'}`} />}
               </div>
               <div className="flex-1 border border-zinc-800 bg-zinc-900/40 rounded-lg px-3 py-2">
                 <div className="flex items-center justify-between">
@@ -1779,7 +1779,7 @@ function FactoryAct3({ p }: { p: number }) {
         {[
           { label: 'ETA Anaheim', value: '11:30', note: 'AM · on schedule', color: 'text-orange-400' },
           { label: 'Miles Remaining', value: '187', note: 'of 340 total', color: 'text-zinc-300' },
-          { label: 'Bikes on Board', value: '14', note: 'all secured', color: 'text-lime-400' },
+          { label: 'Bikes on Board', value: '14', note: 'all secured', color: 'text-green-500' },
         ].map((s) => (
           <div key={s.label} className="border border-zinc-800 bg-zinc-900/40 rounded-lg p-3 text-center">
             <p className={`text-2xl font-black leading-none ${s.color}`} style={{ fontFamily: 'var(--font-barlow-condensed)' }}>{s.value}</p>

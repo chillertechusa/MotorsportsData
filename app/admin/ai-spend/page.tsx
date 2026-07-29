@@ -50,7 +50,7 @@ function fmtTokens(n: number) {
 }
 
 const MODEL_TIER: Record<string, { label: string; color: string }> = {
-  'google/gemini-2.5-flash': { label: 'Flash', color: 'text-lime-400 bg-lime-400/10 border-lime-400/30' },
+  'google/gemini-2.5-flash': { label: 'Flash', color: 'text-green-500 bg-green-500/10 border-green-500/30' },
   'google/gemini-2.5-pro':   { label: 'Pro',   color: 'text-blue-400 bg-blue-400/10 border-blue-400/30' },
   'anthropic/claude-opus-4-1': { label: 'Opus', color: 'text-orange-400 bg-orange-400/10 border-orange-400/30' },
   'anthropic/claude-opus-4-8': { label: 'Opus', color: 'text-orange-400 bg-orange-400/10 border-orange-400/30' },
@@ -76,7 +76,7 @@ function SparkBars({ data }: { data: SparkPoint[] }) {
       {data.map((d) => (
         <div key={d.date} className="flex-1 flex flex-col items-center gap-0.5 group relative">
           <div
-            className="w-full bg-lime-400/70 hover:bg-lime-400 transition-colors"
+            className="w-full bg-green-500/70 hover:bg-green-500 transition-colors"
             style={{ height: `${Math.max(2, (d.costUSD / max) * 40)}px` }}
           />
           <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[9px] font-mono text-zinc-400 opacity-0 group-hover:opacity-100 whitespace-nowrap bg-zinc-900 border border-zinc-700 px-1 py-0.5 z-10">
@@ -173,10 +173,10 @@ export default function AISpendPage() {
               ].map(({ label, value, icon: Icon, accent }) => (
                 <div key={label} className="border border-zinc-800 bg-zinc-900/50 px-4 py-3 space-y-1">
                   <div className="flex items-center gap-2">
-                    <Icon className={`h-3.5 w-3.5 ${accent === 'lime' ? 'text-lime-400' : 'text-zinc-600'}`} />
+                    <Icon className={`h-3.5 w-3.5 ${accent === 'lime' ? 'text-green-500' : 'text-zinc-600'}`} />
                     <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">{label}</span>
                   </div>
-                  <p className={`font-mono text-lg font-bold ${accent === 'lime' ? 'text-lime-400' : 'text-zinc-100'}`}>
+                  <p className={`font-mono text-lg font-bold ${accent === 'lime' ? 'text-green-500' : 'text-zinc-100'}`}>
                     {value}
                   </p>
                 </div>
@@ -258,7 +258,7 @@ export default function AISpendPage() {
                     </div>
                     {/* Cost share bar */}
                     <div className="h-0.5 bg-zinc-800 w-full">
-                      <div className="h-0.5 bg-lime-400/60" style={{ width: `${pct}%` }} />
+                      <div className="h-0.5 bg-green-500/60" style={{ width: `${pct}%` }} />
                     </div>
                     <div className="flex gap-4 text-[10px] font-mono text-zinc-600">
                       <span>{fmtTokens(r.inputTokens)} in</span>

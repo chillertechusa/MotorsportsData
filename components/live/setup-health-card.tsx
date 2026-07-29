@@ -29,12 +29,12 @@ function HealthIndicator({
     string,
     { color: string; bg: string; text: string }
   > = {
-    good: { color: 'lime', bg: 'bg-lime-500/10', text: 'Good' },
+    good: { color: 'lime', bg: 'bg-green-600/10', text: 'Good' },
     degraded: { color: 'orange', bg: 'bg-orange-500/10', text: 'Degraded' },
     critical: { color: 'red', bg: 'bg-red-500/10', text: 'Critical' },
     low: { color: 'orange', bg: 'bg-orange-500/10', text: 'Low' },
     warning: { color: 'orange', bg: 'bg-orange-500/10', text: 'Warning' },
-    balanced: { color: 'lime', bg: 'bg-lime-500/10', text: 'Balanced' },
+    balanced: { color: 'lime', bg: 'bg-green-600/10', text: 'Balanced' },
     adjusting: { color: 'blue', bg: 'bg-blue-500/10', text: 'Adjusting' },
     imbalanced: { color: 'red', bg: 'bg-red-500/10', text: 'Imbalanced' },
   }

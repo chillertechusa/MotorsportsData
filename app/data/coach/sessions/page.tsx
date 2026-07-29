@@ -4,7 +4,7 @@ import { getCoachSessions } from '@/app/actions/coach-business'
 import { CalendarDays, Plus, MapPin, Users, CheckCircle2, Clock } from 'lucide-react'
 
 const STATUS_STYLE: Record<string, string> = {
-  scheduled:  'text-lime-400 border-lime-400/30 bg-lime-400/5',
+  scheduled:  'text-green-500 border-green-500/30 bg-green-500/5',
   completed:  'text-zinc-400 border-zinc-700 bg-zinc-800/50',
   cancelled:  'text-red-400 border-red-400/30 bg-red-400/5',
 }
@@ -70,7 +70,7 @@ async function SessionsContent() {
           <p className="text-zinc-500 text-sm mt-1">{upcoming.length} upcoming &middot; {past.length} completed</p>
         </div>
         <Link href="/data/coach/sessions/new"
-          className="inline-flex items-center gap-2 bg-lime-400 text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-lime-300 transition-colors">
+          className="inline-flex items-center gap-2 bg-green-500 text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-green-400 transition-colors">
           <Plus className="h-4 w-4" aria-hidden="true" />
           Schedule Session
         </Link>

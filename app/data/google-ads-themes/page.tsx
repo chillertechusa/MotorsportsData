@@ -29,11 +29,11 @@ export default function GoogleAdsThemesPage() {
 
         {/* Info boxes */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-          <div className="rounded-lg bg-sky-900/20 border border-sky-700/50 p-4">
-            <p className="font-mono text-xs uppercase tracking-widest text-sky-400 mb-1">
+          <div className="rounded-lg bg-sky-900/20 border border-blue-800/50 p-4">
+            <p className="font-mono text-xs uppercase tracking-widest text-blue-500 mb-1">
               Rider Themes
             </p>
-            <p className="text-2xl font-black text-sky-300">15</p>
+            <p className="text-2xl font-black text-blue-400">15</p>
           </div>
           <div className="rounded-lg bg-amber-900/20 border border-amber-700/50 p-4">
             <p className="font-mono text-xs uppercase tracking-widest text-amber-400 mb-1">

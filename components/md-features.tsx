@@ -70,7 +70,7 @@ export default function MdFeatures() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <MdReveal className="mb-16">
-          <p className="font-mono text-xs text-lime-400 uppercase tracking-[0.3em] mb-4">
+          <p className="font-mono text-xs text-green-500 uppercase tracking-[0.3em] mb-4">
             &#47;&#47; platform-capabilities
           </p>
           <h2
@@ -82,7 +82,7 @@ export default function MdFeatures() {
             }}
           >
             The Whole Program.{' '}
-            <span className="text-lime-400">One Platform.</span>
+            <span className="text-green-500">One Platform.</span>
           </h2>
           <p className="text-zinc-400 text-lg mt-4 max-w-2xl leading-relaxed">
             Built with racers and mechanics, not product managers. Five pillars and four AI
@@ -124,12 +124,12 @@ export default function MdFeatures() {
                         style={f.highlight ? { borderLeftColor: '#a3e635' } : undefined}
                       >
                         {f.highlight && (
-                          <span className="absolute top-4 right-4 font-mono text-[10px] text-lime-400 uppercase tracking-widest border border-lime-400/40 px-2 py-0.5">
+                          <span className="absolute top-4 right-4 font-mono text-[10px] text-green-500 uppercase tracking-widest border border-green-500/40 px-2 py-0.5">
                             New
                           </span>
                         )}
-                        <div className="w-10 h-10 flex items-center justify-center border border-zinc-800 group-hover:border-lime-400/40 transition-colors">
-                          <Icon className="h-5 w-5 text-lime-400" aria-hidden="true" />
+                        <div className="w-10 h-10 flex items-center justify-center border border-zinc-800 group-hover:border-green-500/40 transition-colors">
+                          <Icon className="h-5 w-5 text-green-500" aria-hidden="true" />
                         </div>
                         <h4
                           className="text-zinc-100 text-xl uppercase leading-tight"

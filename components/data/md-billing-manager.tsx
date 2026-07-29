@@ -56,7 +56,7 @@ export default function MdBillingManager({ subscription }: { subscription: Subsc
       : sub.cancelAtPeriodEnd
         ? 'text-amber-400'
         : sub.isActive
-          ? 'text-lime-400'
+          ? 'text-green-500'
           : 'text-zinc-400'
 
   const statusLabel =
@@ -110,7 +110,7 @@ export default function MdBillingManager({ subscription }: { subscription: Subsc
           role="status"
           className={`mt-4 rounded-lg border px-4 py-3 text-sm ${
             msg.kind === 'ok'
-              ? 'border-lime-500/30 bg-lime-500/10 text-lime-300'
+              ? 'border-green-600/30 bg-green-600/10 text-green-400'
               : 'border-red-500/30 bg-red-500/10 text-red-300'
           }`}
         >
@@ -224,7 +224,7 @@ export default function MdBillingManager({ subscription }: { subscription: Subsc
           </p>
           <Link
             href="/data/pricing"
-            className={buttonVariants({ className: 'mt-4 bg-lime-400 text-zinc-950 hover:bg-lime-300' })}
+            className={buttonVariants({ className: 'mt-4 bg-green-500 text-zinc-950 hover:bg-green-400' })}
           >
             View plans
           </Link>

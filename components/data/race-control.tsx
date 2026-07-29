@@ -190,7 +190,7 @@ export function RaceControl({ teamId, onSessionCreated }: RaceControlProps) {
             <div className="flex gap-3">
               <button
                 type="submit"
-                className="flex-1 px-4 py-2 bg-lime-500 text-zinc-950 rounded font-bold hover:bg-lime-400"
+                className="flex-1 px-4 py-2 bg-green-600 text-zinc-950 rounded font-bold hover:bg-green-500"
               >
                 Create Session
               </button>
@@ -210,7 +210,7 @@ export function RaceControl({ teamId, onSessionCreated }: RaceControlProps) {
       {!showNewSessionForm && (
         <button
           onClick={() => setShowNewSessionForm(true)}
-          className="px-4 py-3 bg-lime-500 text-zinc-950 rounded font-bold hover:bg-lime-400 w-full"
+          className="px-4 py-3 bg-green-600 text-zinc-950 rounded font-bold hover:bg-green-500 w-full"
         >
           + Create New Session
         </button>
@@ -272,7 +272,7 @@ export function RaceControl({ teamId, onSessionCreated }: RaceControlProps) {
                 {session.status === 'pending' && (
                   <button
                     onClick={() => startSession(session)}
-                    className="px-3 py-2 bg-lime-500 text-zinc-950 rounded font-bold text-sm hover:bg-lime-400 flex items-center gap-2"
+                    className="px-3 py-2 bg-green-600 text-zinc-950 rounded font-bold text-sm hover:bg-green-500 flex items-center gap-2"
                   >
                     <Play className="h-4 w-4" />
                     Start

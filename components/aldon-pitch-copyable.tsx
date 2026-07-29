@@ -60,7 +60,7 @@ export default function AldonPitchCopyable() {
         {/* Copy Button */}
         <button
           onClick={handleCopy}
-          className="absolute top-4 right-4 flex items-center gap-2 px-4 py-2 bg-lime-400 text-zinc-950 font-bold rounded-lg hover:bg-lime-300 transition-colors"
+          className="absolute top-4 right-4 flex items-center gap-2 px-4 py-2 bg-green-500 text-zinc-950 font-bold rounded-lg hover:bg-green-400 transition-colors"
         >
           {copied ? (
             <>

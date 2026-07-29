@@ -106,7 +106,7 @@ export function TestAgentsDashboardClient() {
               <Button
                 onClick={() => runHealthChecks(true)}
                 disabled={loading}
-                className="bg-lime-400 hover:bg-lime-300 text-zinc-950 font-bold inline-flex items-center gap-2"
+                className="bg-green-500 hover:bg-green-400 text-zinc-950 font-bold inline-flex items-center gap-2"
               >
                 {loading ? <RefreshCw className="h-4 w-4 animate-spin" /> : <RefreshCw className="h-4 w-4" />}
                 Try again
@@ -126,7 +126,7 @@ export function TestAgentsDashboardClient() {
   const statusColor = (status: string) => {
     switch (status) {
       case 'pass':
-        return 'bg-lime-500/10 border-lime-500/30 text-lime-400'
+        return 'bg-green-600/10 border-green-600/30 text-green-500'
       case 'fail':
         return 'bg-red-500/10 border-red-500/30 text-red-400'
       case 'error':
@@ -139,7 +139,7 @@ export function TestAgentsDashboardClient() {
   const statusIcon = (status: string) => {
     switch (status) {
       case 'pass':
-        return <CheckCircle2 className="h-4 w-4 text-lime-400" />
+        return <CheckCircle2 className="h-4 w-4 text-green-500" />
       case 'fail':
         return <AlertCircle className="h-4 w-4 text-red-400" />
       case 'error':
@@ -154,7 +154,7 @@ export function TestAgentsDashboardClient() {
       <div className="max-w-6xl mx-auto space-y-8">
         {/* Header */}
         <div className="border-b border-zinc-800 pb-8">
-          <h1 className="text-3xl font-bold font-mono uppercase tracking-wider text-lime-400 mb-2">
+          <h1 className="text-3xl font-bold font-mono uppercase tracking-wider text-green-500 mb-2">
             Test Agents Dashboard
           </h1>
           <p className="text-sm text-zinc-400">
@@ -167,7 +167,7 @@ export function TestAgentsDashboardClient() {
           <Button
             onClick={() => runHealthChecks(true)}
             disabled={loading}
-            className="bg-lime-400 hover:bg-lime-300 text-zinc-950 font-bold flex items-center gap-2"
+            className="bg-green-500 hover:bg-green-400 text-zinc-950 font-bold flex items-center gap-2"
           >
             {loading ? <RefreshCw className="h-4 w-4 animate-spin" /> : <Play className="h-4 w-4" />}
             {loading ? 'Running...' : 'Run Now'}
@@ -202,14 +202,14 @@ export function TestAgentsDashboardClient() {
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
           <Card className="bg-zinc-900 border-zinc-800 p-4">
             <div className="text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1">Total</div>
-            <div className="text-2xl font-bold text-lime-400">{results.total_time_ms}ms</div>
+            <div className="text-2xl font-bold text-green-500">{results.total_time_ms}ms</div>
             <div className="text-xs text-zinc-500 mt-1">execution time</div>
           </Card>
 
-          <Card className="bg-lime-500/10 border-lime-500/30 p-4">
-            <div className="text-xs font-mono uppercase tracking-wider text-lime-400 mb-1">Passed</div>
-            <div className="text-2xl font-bold text-lime-400">{results.passed}</div>
-            <div className="text-xs text-lime-500/70 mt-1">checks</div>
+          <Card className="bg-green-600/10 border-green-600/30 p-4">
+            <div className="text-xs font-mono uppercase tracking-wider text-green-500 mb-1">Passed</div>
+            <div className="text-2xl font-bold text-green-500">{results.passed}</div>
+            <div className="text-xs text-green-600/70 mt-1">checks</div>
           </Card>
 
           <Card className="bg-red-500/10 border-red-500/30 p-4">
@@ -288,7 +288,7 @@ export function TestAgentsDashboardClient() {
                 <div key={idx} className="flex items-center justify-between text-sm bg-zinc-900 border border-zinc-800 p-3 rounded">
                   <div className="flex items-center gap-3">
                     <div className="text-zinc-500">{new Date(run.timestamp).toLocaleTimeString()}</div>
-                    <Badge variant="outline" className={`capitalize ${run.passed === 5 ? 'border-lime-500/50 text-lime-400' : 'border-red-500/50 text-red-400'}`}>
+                    <Badge variant="outline" className={`capitalize ${run.passed === 5 ? 'border-green-600/50 text-green-500' : 'border-red-500/50 text-red-400'}`}>
                       {run.passed}/{run.all_checks.length} passed
                     </Badge>
                   </div>

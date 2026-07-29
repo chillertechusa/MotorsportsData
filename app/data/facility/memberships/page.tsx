@@ -15,7 +15,7 @@ async function getTeamId(userId: string) {
 }
 
 const STATUS_CONFIG = {
-  paid:   { icon: CheckCircle2, class: 'text-lime-400 border-lime-400/20 bg-lime-400/5',     label: 'Paid' },
+  paid:   { icon: CheckCircle2, class: 'text-green-500 border-green-500/20 bg-green-500/5',     label: 'Paid' },
   sent:   { icon: Clock,        class: 'text-yellow-400 border-yellow-400/20 bg-yellow-400/5', label: 'Pending' },
   draft:  { icon: FileText,     class: 'text-zinc-400 border-zinc-700 bg-zinc-800',           label: 'Draft' },
   void:   { icon: FileText,     class: 'text-red-400 border-red-400/20 bg-red-400/5',        label: 'Void' },
@@ -62,7 +62,7 @@ export default async function MembershipsPage() {
       {/* Revenue summary */}
       <div className="grid grid-cols-3 gap-3">
         {[
-          { label: 'Collected',     value: totalCollected, accent: 'text-lime-400' },
+          { label: 'Collected',     value: totalCollected, accent: 'text-green-500' },
           { label: 'Outstanding',   value: totalPending,   accent: 'text-yellow-400' },
           { label: 'Total Invoiced',value: totalCollected + totalPending, accent: 'text-zinc-100' },
         ].map(({ label, value, accent }) => (

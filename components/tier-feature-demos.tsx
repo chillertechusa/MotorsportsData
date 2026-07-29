@@ -10,7 +10,7 @@ export function RookieDemo() {
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4 space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Bike className="h-4 w-4 text-lime-400" />
+            <Bike className="h-4 w-4 text-green-500" />
             <span className="text-xs font-semibold text-zinc-300">Session Log</span>
           </div>
           <span className="text-[10px] font-mono text-zinc-600">YZ450F</span>
@@ -39,7 +39,7 @@ export function PrivateerDemo() {
       <p className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-600 mb-4">Live Feature Preview</p>
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4 space-y-3">
         <div className="flex items-center gap-2 mb-3">
-          <Wrench className="h-4 w-4 text-lime-400" />
+          <Wrench className="h-4 w-4 text-green-500" />
           <span className="text-xs font-semibold text-zinc-300">Setup Sheet</span>
         </div>
         <div className="grid grid-cols-2 gap-2 text-[11px]">
@@ -67,7 +67,7 @@ export function RaceTeamDemo() {
       <p className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-600 mb-4">Live Feature Preview</p>
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4 space-y-3">
         <div className="flex items-center gap-2 mb-3">
-          <Users className="h-4 w-4 text-lime-400" />
+          <Users className="h-4 w-4 text-green-500" />
           <span className="text-xs font-semibold text-zinc-300">Team Roster</span>
         </div>
         <div className="space-y-2">
@@ -81,7 +81,7 @@ export function RaceTeamDemo() {
                 <p className="text-zinc-300 font-semibold">{rider.name}</p>
                 <p className="text-zinc-600 text-[10px]">{rider.status}</p>
               </div>
-              <span className="text-lime-400 font-mono font-semibold text-xs">{rider.time}</span>
+              <span className="text-green-500 font-mono font-semibold text-xs">{rider.time}</span>
             </div>
           ))}
         </div>
@@ -97,7 +97,7 @@ export function FactoryDemo() {
       <p className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-600 mb-4">Live Feature Preview</p>
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4 space-y-3">
         <div className="flex items-center gap-2 mb-3">
-          <Activity className="h-4 w-4 text-lime-400" />
+          <Activity className="h-4 w-4 text-green-500" />
           <span className="text-xs font-semibold text-zinc-300">Fleet Health</span>
         </div>
         <div className="grid grid-cols-3 gap-2">
@@ -109,7 +109,7 @@ export function FactoryDemo() {
             const Icon = item.icon
             return (
               <div key={item.label} className="border border-zinc-800 bg-zinc-950/50 p-2 rounded text-center">
-                <Icon className="h-3 w-3 text-lime-400 mx-auto mb-1" />
+                <Icon className="h-3 w-3 text-green-500 mx-auto mb-1" />
                 <p className="text-zinc-300 font-bold text-xs">{item.value}</p>
                 <p className="text-zinc-600 text-[10px]">{item.label}</p>
               </div>
@@ -130,19 +130,19 @@ export function AgentContractNegotiationDemo() {
         <div className="flex items-center justify-between">
           <div>
             <p className="text-xs font-semibold text-zinc-300">Rider Percentile Ranking</p>
-            <p className="text-2xl font-black text-lime-400 mt-1">97th %ile</p>
+            <p className="text-2xl font-black text-green-500 mt-1">97th %ile</p>
             <p className="text-xs text-zinc-500 mt-1">Top 3% nationally</p>
           </div>
-          <BarChart3 className="h-8 w-8 text-lime-400 opacity-30" />
+          <BarChart3 className="h-8 w-8 text-green-500 opacity-30" />
         </div>
         <div className="grid grid-cols-2 gap-2 text-[11px]">
           <div className="border border-zinc-800 bg-zinc-950/50 p-2 rounded">
             <span className="text-zinc-600 text-[10px]">5-Yr Trend</span>
-            <p className="text-lime-400 font-bold">+18%</p>
+            <p className="text-green-500 font-bold">+18%</p>
           </div>
           <div className="border border-zinc-800 bg-zinc-950/50 p-2 rounded">
             <span className="text-zinc-600 text-[10px]">Consistency</span>
-            <p className="text-lime-400 font-bold">94/100</p>
+            <p className="text-green-500 font-bold">94/100</p>
           </div>
           <div className="border border-zinc-800 bg-zinc-950/50 p-2 rounded">
             <span className="text-zinc-600 text-[10px]">Last Deal</span>
@@ -150,10 +150,10 @@ export function AgentContractNegotiationDemo() {
           </div>
           <div className="border border-zinc-800 bg-zinc-950/50 p-2 rounded">
             <span className="text-zinc-600 text-[10px]">Recommended</span>
-            <p className="text-lime-400 font-bold">$450k+</p>
+            <p className="text-green-500 font-bold">$450k+</p>
           </div>
         </div>
-        <button className="w-full bg-lime-400 text-zinc-950 text-xs font-black uppercase px-3 py-2 rounded hover:bg-lime-300 transition-colors">
+        <button className="w-full bg-green-500 text-zinc-950 text-xs font-black uppercase px-3 py-2 rounded hover:bg-green-400 transition-colors">
           Download Report
         </button>
       </div>
@@ -168,7 +168,7 @@ export function AgentProspectScoutDemo() {
       <p className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-600 mb-4">Prospect Scout Search</p>
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4 space-y-3">
         <div className="flex items-center gap-2 mb-2">
-          <Trophy className="h-4 w-4 text-lime-400" />
+          <Trophy className="h-4 w-4 text-green-500" />
           <span className="text-xs font-semibold text-zinc-300">Top Prospects (Motocross, 18-22)</span>
         </div>
         <div className="space-y-2">
@@ -180,11 +180,11 @@ export function AgentProspectScoutDemo() {
             <div key={prospect.name} className="border border-zinc-800 bg-zinc-950/50 p-2 rounded text-[11px]">
               <div className="flex items-center justify-between mb-1">
                 <p className="text-zinc-300 font-semibold">{prospect.name}</p>
-                <span className="text-[10px] bg-lime-400/20 text-lime-400 px-2 py-0.5 rounded">{prospect.status}</span>
+                <span className="text-[10px] bg-green-500/20 text-green-500 px-2 py-0.5 rounded">{prospect.status}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-zinc-600">Dev Potential: <span className="text-lime-400 font-bold">{prospect.potential}</span></span>
-                <span className="text-lime-400 font-bold">{prospect.trend}</span>
+                <span className="text-zinc-600">Dev Potential: <span className="text-green-500 font-bold">{prospect.potential}</span></span>
+                <span className="text-green-500 font-bold">{prospect.trend}</span>
               </div>
             </div>
           ))}
@@ -206,7 +206,7 @@ export function FanComparisonDemo() {
             { name: 'Eli T.', laps: 148, wins: 11, podiums: 22, rating: '9.6' },
           ].map((rider) => (
             <div key={rider.name} className="border border-zinc-800 bg-zinc-950/50 p-3 rounded">
-              <p className="text-sm font-bold text-lime-400 mb-2">{rider.name}</p>
+              <p className="text-sm font-bold text-green-500 mb-2">{rider.name}</p>
               <div className="space-y-1 text-[11px]">
                 <div className="flex justify-between">
                   <span className="text-zinc-500">Laps</span>
@@ -214,15 +214,15 @@ export function FanComparisonDemo() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-500">Wins</span>
-                  <span className="text-lime-400 font-bold">{rider.wins}</span>
+                  <span className="text-green-500 font-bold">{rider.wins}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-500">Podiums</span>
-                  <span className="text-lime-400 font-bold">{rider.podiums}</span>
+                  <span className="text-green-500 font-bold">{rider.podiums}</span>
                 </div>
                 <div className="flex justify-between pt-1 border-t border-zinc-800">
                   <span className="text-zinc-500">Rating</span>
-                  <span className="text-lime-400 font-bold">{rider.rating}</span>
+                  <span className="text-green-500 font-bold">{rider.rating}</span>
                 </div>
               </div>
             </div>
@@ -249,10 +249,10 @@ export function FanLiveDemo() {
             <div
               key={idx}
               className={`flex items-start gap-3 p-2 rounded border ${
-                item.highlight ? 'border-lime-400/30 bg-lime-400/5' : 'border-zinc-800 bg-zinc-950/50'
+                item.highlight ? 'border-green-500/30 bg-green-500/5' : 'border-zinc-800 bg-zinc-950/50'
               }`}
             >
-              <Icon className={`h-4 w-4 mt-0.5 flex-shrink-0 ${item.highlight ? 'text-lime-400' : 'text-zinc-600'}`} />
+              <Icon className={`h-4 w-4 mt-0.5 flex-shrink-0 ${item.highlight ? 'text-green-500' : 'text-zinc-600'}`} />
               <div className="flex-1 min-w-0">
                 <p className="text-xs text-zinc-300">{item.text}</p>
                 <p className="text-[10px] text-zinc-600 mt-1">{item.time}</p>
@@ -284,7 +284,7 @@ export function CoachDemo() {
               <p className="text-zinc-500 text-xs font-mono mt-1">PB: {r.pb} · {r.session}</p>
             </div>
             <span className={`text-xs font-bold px-3 py-1 rounded ${
-              r.status === 'improving' ? 'bg-lime-400/10 text-lime-400' :
+              r.status === 'improving' ? 'bg-green-500/10 text-green-500' :
               r.status === 'trending' ? 'bg-amber-400/10 text-amber-400' :
               'bg-red-400/10 text-red-400'
             }`}>{r.status}</span>
@@ -293,8 +293,8 @@ export function CoachDemo() {
       </div>
 
       {/* AI Coaching insight */}
-      <div className="border border-lime-400/20 bg-lime-400/5 rounded-lg p-4">
-        <p className="text-xs font-mono uppercase tracking-widest text-lime-400 mb-2">AI Coaching Insight</p>
+      <div className="border border-green-500/20 bg-green-500/5 rounded-lg p-4">
+        <p className="text-xs font-mono uppercase tracking-widest text-green-500 mb-2">AI Coaching Insight</p>
         <p className="text-sm text-zinc-300">Cody&apos;s line through Turn 3 is reference quality — share with Tyler and Danny for pre-race review. Tyler: watch heel dragging in rutted lefts.</p>
       </div>
 
@@ -306,7 +306,7 @@ export function CoachDemo() {
           { label: 'Championship Readiness', value: '87%' },
         ].map((s) => (
           <div key={s.label} className="border border-zinc-800 bg-zinc-900/40 rounded-lg p-3 text-center">
-            <p className="text-lime-400 text-lg font-black font-mono">{s.value}</p>
+            <p className="text-green-500 text-lg font-black font-mono">{s.value}</p>
             <p className="text-zinc-600 text-xs mt-1">{s.label}</p>
           </div>
         ))}
@@ -329,11 +329,11 @@ export function FanLeaderboardDemo() {
           ].map((rider) => (
             <div key={rider.rank} className="flex items-center justify-between text-[11px] p-2 hover:bg-zinc-800/30 rounded transition-colors">
               <div className="flex items-center gap-2 flex-1">
-                <span className="text-lime-400 font-bold w-4">{rider.rank}</span>
+                <span className="text-green-500 font-bold w-4">{rider.rank}</span>
                 <span className="text-zinc-300 font-semibold flex-1">{rider.name}</span>
               </div>
               <span className="text-zinc-500 text-[10px]">{rider.region}</span>
-              <span className="text-lime-400 font-mono font-semibold ml-2">{rider.time}</span>
+              <span className="text-green-500 font-mono font-semibold ml-2">{rider.time}</span>
             </div>
           ))}
         </div>

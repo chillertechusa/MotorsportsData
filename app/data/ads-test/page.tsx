@@ -133,7 +133,7 @@ export default function AdsTestPage() {
       <div className="max-w-2xl mx-auto space-y-8">
         {/* Header */}
         <div className="border-b border-zinc-800 pb-6">
-          <h1 className="text-3xl font-bold text-lime-400 mb-2 font-mono">Google Ads Tag Assistant</h1>
+          <h1 className="text-3xl font-bold text-green-500 mb-2 font-mono">Google Ads Tag Assistant</h1>
           <p className="text-zinc-400 text-sm">
             Test GTM container and fire conversion events to verify Google Ads tracking. Open Google Tag Assistant in another tab to see real-time events.
           </p>
@@ -147,13 +147,13 @@ export default function AdsTestPage() {
               key={check.label}
               className={`flex items-start gap-3 p-4 rounded border ${
                 check.status === 'success'
-                  ? 'bg-lime-950 border-lime-700'
+                  ? 'bg-zinc-950 border-green-800'
                   : check.status === 'error'
                     ? 'bg-red-950 border-red-700'
                     : 'bg-zinc-900 border-zinc-700'
               }`}
             >
-              {check.status === 'success' && <Check className="h-5 w-5 text-lime-400 flex-shrink-0 mt-0.5" />}
+              {check.status === 'success' && <Check className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />}
               {check.status === 'error' && <AlertCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />}
               {check.status === 'pending' && <Zap className="h-5 w-5 text-amber-400 flex-shrink-0 mt-0.5" />}
               <div className="flex-1">
@@ -180,7 +180,7 @@ export default function AdsTestPage() {
           <button
             onClick={fireRealConversion}
             disabled={loading}
-            className="w-full px-4 py-3 bg-lime-400 text-zinc-950 text-sm font-bold uppercase tracking-widest rounded hover:bg-lime-300 transition-colors disabled:opacity-50"
+            className="w-full px-4 py-3 bg-green-500 text-zinc-950 text-sm font-bold uppercase tracking-widest rounded hover:bg-green-400 transition-colors disabled:opacity-50"
           >
             {loading ? 'Processing...' : 'Step 2: Fire Real Conversion ($1 Charge)'}
           </button>
@@ -201,7 +201,7 @@ export default function AdsTestPage() {
               {events.map((event, idx) => (
                 <div key={idx} className="p-3 bg-zinc-900 rounded border border-zinc-700 text-xs font-mono">
                   <div className="flex justify-between items-start">
-                    <span className="text-lime-400">{event.timestamp}</span>
+                    <span className="text-green-500">{event.timestamp}</span>
                     <span className="text-amber-400">{event.type}</span>
                   </div>
                   <div className="mt-1 text-zinc-400">

@@ -11,7 +11,7 @@ import type { CeoSnapshot } from '@/lib/ceo-doctor'
 type Message = { role: 'user' | 'assistant'; text: string }
 
 const SIGNAL_STYLE: Record<string, string> = {
-  good: 'text-lime-400 border-lime-400/40 bg-lime-400/10',
+  good: 'text-green-500 border-green-500/40 bg-green-500/10',
   watch: 'text-amber-400 border-amber-400/40 bg-amber-400/10',
   risk: 'text-red-400 border-red-400/40 bg-red-400/10',
   'no data': 'text-zinc-500 border-zinc-700 bg-zinc-800/50',
@@ -116,7 +116,7 @@ export function CeoDoctorClient({
               Owner Console
             </Link>
             <span className="text-zinc-700">/</span>
-            <span className="flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.2em] text-lime-400">
+            <span className="flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.2em] text-green-500">
               <Stethoscope className="h-3.5 w-3.5" />
               CEO Doctor
             </span>
@@ -175,7 +175,7 @@ export function CeoDoctorClient({
                 <div
                   className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${
                     m.role === 'user'
-                      ? 'bg-lime-400/15 text-lime-50 border border-lime-400/30'
+                      ? 'bg-green-500/15 text-green-100 border border-green-500/30'
                       : 'bg-zinc-800 text-zinc-200 border border-zinc-700'
                   }`}
                 >
@@ -196,7 +196,7 @@ export function CeoDoctorClient({
                 <button
                   key={s}
                   onClick={() => send(s)}
-                  className="text-left text-xs text-zinc-400 hover:text-lime-300 border border-zinc-700 hover:border-lime-400/50 rounded-lg px-3 py-2 transition-colors"
+                  className="text-left text-xs text-zinc-400 hover:text-green-400 border border-zinc-700 hover:border-green-500/50 rounded-lg px-3 py-2 transition-colors"
                 >
                   {s}
                 </button>
@@ -214,12 +214,12 @@ export function CeoDoctorClient({
                 if (e.key === 'Enter' && !e.nativeEvent.isComposing && e.keyCode !== 229) send(input)
               }}
               placeholder="Ask the CEO Doctor…"
-              className="flex-1 bg-zinc-800 border border-zinc-700 rounded-lg px-3.5 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-lime-400 transition-colors"
+              className="flex-1 bg-zinc-800 border border-zinc-700 rounded-lg px-3.5 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-green-500 transition-colors"
             />
             <button
               onClick={() => send(input)}
               disabled={loading || !input.trim()}
-              className="h-10 w-10 rounded-lg bg-lime-400 hover:bg-lime-300 disabled:opacity-50 disabled:cursor-not-allowed text-zinc-950 flex items-center justify-center transition-colors"
+              className="h-10 w-10 rounded-lg bg-green-500 hover:bg-green-400 disabled:opacity-50 disabled:cursor-not-allowed text-zinc-950 flex items-center justify-center transition-colors"
               aria-label="Send"
             >
               {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
@@ -246,9 +246,9 @@ function SnapshotCard({
   badge?: string
 }) {
   const accentMap = {
-    lime: 'text-lime-400 bg-lime-400/10',
+    lime: 'text-green-500 bg-green-500/10',
     amber: 'text-amber-400 bg-amber-400/10',
-    sky: 'text-sky-400 bg-sky-400/10',
+    sky: 'text-blue-500 bg-blue-600/10',
   }
   return (
     <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-4">

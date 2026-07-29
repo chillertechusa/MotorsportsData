@@ -105,7 +105,7 @@ export default function GoogleAdsThemesCopy() {
   ]
 
   const colorMap = {
-    sky: 'bg-sky-900/30 border-sky-700 text-sky-300',
+    sky: 'bg-sky-900/30 border-sky-700 text-blue-400',
     amber: 'bg-amber-900/30 border-amber-700 text-amber-300',
     emerald: 'bg-emerald-900/30 border-emerald-700 text-emerald-300',
     violet: 'bg-violet-900/30 border-violet-700 text-violet-300',
@@ -119,7 +119,7 @@ export default function GoogleAdsThemesCopy() {
           onClick={copyAll}
           className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold uppercase tracking-wider text-sm transition-all ${
             copiedAll
-              ? 'bg-lime-400 text-zinc-950'
+              ? 'bg-green-500 text-zinc-950'
               : 'bg-zinc-800 text-zinc-100 hover:bg-zinc-700'
           }`}
         >
@@ -162,7 +162,7 @@ export default function GoogleAdsThemesCopy() {
                     title="Copy theme"
                   >
                     {copied === globalIdx ? (
-                      <CheckCircle className="h-4 w-4 text-lime-400" />
+                      <CheckCircle className="h-4 w-4 text-green-500" />
                     ) : (
                       <CopyIcon className="h-4 w-4 opacity-60 hover:opacity-100" />
                     )}

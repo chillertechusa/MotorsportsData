@@ -133,14 +133,14 @@ export function ViewIPVault(_props: { tier?: string } = {}) {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-black uppercase tracking-wide text-zinc-50 flex items-center gap-2">
-            <Lock className="h-6 w-6 text-lime-400" />
+            <Lock className="h-6 w-6 text-green-500" />
             The IP Vault
           </h2>
           <p className="text-zinc-400 text-sm mt-1">Proprietary training templates, encrypted and access-logged.</p>
         </div>
         <button
           onClick={() => setShowCreate(true)}
-          className="h-10 px-5 rounded-lg bg-lime-400 text-zinc-950 font-bold uppercase text-xs tracking-wider hover:bg-lime-300 transition-colors flex items-center gap-2"
+          className="h-10 px-5 rounded-lg bg-green-500 text-zinc-950 font-bold uppercase text-xs tracking-wider hover:bg-green-400 transition-colors flex items-center gap-2"
         >
           <Plus className="h-4 w-4" />
           New Template
@@ -176,7 +176,7 @@ export function ViewIPVault(_props: { tier?: string } = {}) {
         {templates.map((template) => (
           <div
             key={template.id}
-            className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 hover:border-lime-400/40 transition-colors relative"
+            className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 hover:border-green-500/40 transition-colors relative"
           >
             {template.displayWatermark && (
               <div className="absolute top-2 right-2 text-xs font-bold uppercase tracking-wider text-zinc-700 pointer-events-none select-none">
@@ -238,7 +238,7 @@ export function ViewIPVault(_props: { tier?: string } = {}) {
           <div className="rounded-2xl border border-zinc-800 bg-zinc-950 max-w-2xl w-full max-h-[85vh] overflow-y-auto p-8">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-black uppercase tracking-wide text-zinc-50 flex items-center gap-2">
-                <Lock className="h-5 w-5 text-lime-400" />
+                <Lock className="h-5 w-5 text-green-500" />
                 {selectedDetail.name}
               </h3>
               <button
@@ -303,7 +303,7 @@ export function ViewIPVault(_props: { tier?: string } = {}) {
           <div className="rounded-2xl border border-zinc-800 bg-zinc-950 max-w-xl w-full p-8 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-black uppercase tracking-wide text-zinc-50 flex items-center gap-2">
-                <Upload className="h-5 w-5 text-lime-400" />
+                <Upload className="h-5 w-5 text-green-500" />
                 New Template
               </h3>
               <button
@@ -322,7 +322,7 @@ export function ViewIPVault(_props: { tier?: string } = {}) {
                   value={formName}
                   onChange={e => setFormName(e.target.value)}
                   placeholder="e.g., Spring Supercross Periodization"
-                  className="w-full h-10 px-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder-zinc-600 focus:border-lime-400 focus:outline-none"
+                  className="w-full h-10 px-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder-zinc-600 focus:border-green-500 focus:outline-none"
                 />
               </div>
 
@@ -331,7 +331,7 @@ export function ViewIPVault(_props: { tier?: string } = {}) {
                 <select
                   value={formType}
                   onChange={e => setFormType(e.target.value as CoachTemplate['type'])}
-                  className="w-full h-10 px-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 focus:border-lime-400 focus:outline-none"
+                  className="w-full h-10 px-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 focus:border-green-500 focus:outline-none"
                 >
                   <option value="periodization">Periodization</option>
                   <option value="hrz_zones">Heart Rate Zones</option>
@@ -349,7 +349,7 @@ export function ViewIPVault(_props: { tier?: string } = {}) {
                       key={level}
                       className={`flex-1 flex items-center gap-2 p-3 rounded-lg border cursor-pointer transition-colors ${
                         formAccess === level
-                          ? 'border-lime-400 bg-lime-950/30 text-lime-200'
+                          ? 'border-green-500 bg-zinc-950/30 text-green-300'
                           : 'border-zinc-800 bg-zinc-900/50 text-zinc-400 hover:border-zinc-700'
                       }`}
                     >
@@ -375,7 +375,7 @@ export function ViewIPVault(_props: { tier?: string } = {}) {
                   id="watermark"
                   checked={formWatermark}
                   onChange={e => setFormWatermark(e.target.checked)}
-                  className="accent-lime-400"
+                  className="accent-green-500"
                 />
                 <label htmlFor="watermark" className="text-sm text-zinc-300 cursor-pointer">
                   Show &quot;PROPRIETARY&quot; watermark when viewed
@@ -388,7 +388,7 @@ export function ViewIPVault(_props: { tier?: string } = {}) {
                   value={formContent}
                   onChange={e => setFormContent(e.target.value)}
                   placeholder={'{\n  "weeks": 12,\n  "phases": ["build", "peak", "taper"]\n}'}
-                  className="w-full h-36 px-3 py-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder-zinc-600 font-mono text-xs focus:border-lime-400 focus:outline-none resize-none"
+                  className="w-full h-36 px-3 py-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder-zinc-600 font-mono text-xs focus:border-green-500 focus:outline-none resize-none"
                 />
               </div>
 
@@ -402,7 +402,7 @@ export function ViewIPVault(_props: { tier?: string } = {}) {
                 <button
                   onClick={handleCreate}
                   disabled={saving || !formName.trim() || !formContent.trim()}
-                  className="flex-1 h-10 rounded-lg bg-lime-400 text-zinc-950 font-bold transition-colors hover:bg-lime-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                  className="flex-1 h-10 rounded-lg bg-green-500 text-zinc-950 font-bold transition-colors hover:bg-green-400 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                 >
                   {saving ? 'Encrypting...' : 'Encrypt & Save'}
                 </button>

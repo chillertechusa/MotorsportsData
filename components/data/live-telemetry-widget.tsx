@@ -49,16 +49,16 @@ export function LiveTelemetryWidget({ sessionId, riderId, riderName }: LiveTelem
   }, [sessionId, riderId])
 
   return (
-    <div className="border border-lime-500/40 bg-lime-500/5 rounded-lg p-6">
+    <div className="border border-green-600/40 bg-green-600/5 rounded-lg p-6">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
-          <Activity className="h-5 w-5 text-lime-500 animate-pulse" />
+          <Activity className="h-5 w-5 text-green-600 animate-pulse" />
           <div>
-            <p className="text-sm font-bold text-lime-400">LIVE: {riderName}</p>
+            <p className="text-sm font-bold text-green-500">LIVE: {riderName}</p>
             <p className="text-xs text-zinc-400">{subscriberCount} viewer(s)</p>
           </div>
         </div>
-        <div className={`px-3 py-1 rounded-full text-xs font-bold ${isLive ? 'bg-lime-500 text-zinc-950' : 'bg-zinc-800 text-zinc-400'}`}>
+        <div className={`px-3 py-1 rounded-full text-xs font-bold ${isLive ? 'bg-green-600 text-zinc-950' : 'bg-zinc-800 text-zinc-400'}`}>
           {isLive ? 'STREAMING' : 'OFFLINE'}
         </div>
       </div>

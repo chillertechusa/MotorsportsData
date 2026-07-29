@@ -41,7 +41,7 @@ function FieldText({ label, value, onChange, placeholder }: { label: string; val
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-lime-400 transition-colors"
+        className="w-full rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-green-500 transition-colors"
       />
     </div>
   )
@@ -56,7 +56,7 @@ function FieldNumber({ label, unit, value, onChange }: { label: string; unit: st
           type="number"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="w-full rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 pr-12 text-sm text-zinc-100 focus:outline-none focus:border-lime-400 transition-colors"
+          className="w-full rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 pr-12 text-sm text-zinc-100 focus:outline-none focus:border-green-500 transition-colors"
         />
         <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-zinc-500">{unit}</span>
       </div>
@@ -71,7 +71,7 @@ function FieldSelect({ label, value, onChange, options }: { label: string; value
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 text-sm text-zinc-100 focus:outline-none focus:border-lime-400 transition-colors appearance-none"
+        className="w-full rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 text-sm text-zinc-100 focus:outline-none focus:border-green-500 transition-colors appearance-none"
       >
         <option value="">— select —</option>
         {options.map((o) => <option key={o} value={o}>{o}</option>)}
@@ -218,14 +218,14 @@ export function SetupSheetForm({ vehicles }: { vehicles: Vehicle[] }) {
   if (savedSessionId && !recommendation && !aiLoading) {
     return (
       <div className="flex flex-col gap-4 max-w-2xl mx-auto">
-        <div className="rounded-2xl bg-zinc-900 border border-lime-400/30 p-6 text-center">
-          <Check className="h-10 w-10 text-lime-400 mx-auto mb-3" />
+        <div className="rounded-2xl bg-zinc-900 border border-green-500/30 p-6 text-center">
+          <Check className="h-10 w-10 text-green-500 mx-auto mb-3" />
           <h2 className="text-xl font-black text-zinc-50 mb-1">Setup sheet saved</h2>
           <p className="text-sm text-zinc-400 mb-6">Session logged for {trackName}</p>
           <div className="flex flex-col gap-3">
             <button
               onClick={getAiRecommendation}
-              className="flex items-center justify-center gap-2 rounded-xl bg-lime-400 text-zinc-950 font-bold px-6 py-3 active:bg-lime-300 transition-colors"
+              className="flex items-center justify-center gap-2 rounded-xl bg-green-500 text-zinc-950 font-bold px-6 py-3 active:bg-green-400 transition-colors"
             >
               <Sparkles className="h-4 w-4" />
               Get AI Recommendations
@@ -235,7 +235,7 @@ export function SetupSheetForm({ vehicles }: { vehicles: Vehicle[] }) {
                 onClick={copyShareLink}
                 className="flex items-center justify-center gap-2 rounded-xl bg-zinc-800 border border-zinc-700 text-zinc-200 font-semibold px-6 py-3 active:bg-zinc-700 transition-colors"
               >
-                {copied ? <Check className="h-4 w-4 text-lime-400" /> : <Copy className="h-4 w-4" />}
+                {copied ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
                 {copied ? 'Copied!' : 'Copy public link'}
               </button>
             )}
@@ -250,10 +250,10 @@ export function SetupSheetForm({ vehicles }: { vehicles: Vehicle[] }) {
       <div className="flex flex-col gap-4 max-w-2xl mx-auto">
         <div className="rounded-2xl bg-zinc-900 border border-zinc-800 p-5">
           <div className="flex items-center gap-2 mb-4">
-            <Sparkles className="h-5 w-5 text-lime-400" />
+            <Sparkles className="h-5 w-5 text-green-500" />
             <h2 className="text-lg font-black text-zinc-50">AI Setup Recommendations</h2>
             {recommendation.confidenceScore && (
-              <span className="ml-auto text-xs font-bold text-lime-400 bg-lime-400/10 rounded-full px-2 py-0.5">
+              <span className="ml-auto text-xs font-bold text-green-500 bg-green-500/10 rounded-full px-2 py-0.5">
                 {recommendation.confidenceScore}% confidence
               </span>
             )}
@@ -264,8 +264,8 @@ export function SetupSheetForm({ vehicles }: { vehicles: Vehicle[] }) {
           )}
 
           {recommendation.priorityAction && (
-            <div className="rounded-xl bg-lime-400/10 border border-lime-400/30 p-4 mb-4">
-              <p className="text-xs uppercase tracking-wider text-lime-400 font-bold mb-1">Priority action</p>
+            <div className="rounded-xl bg-green-500/10 border border-green-500/30 p-4 mb-4">
+              <p className="text-xs uppercase tracking-wider text-green-500 font-bold mb-1">Priority action</p>
               <p className="text-sm text-zinc-100 font-semibold">{recommendation.priorityAction}</p>
             </div>
           )}
@@ -287,7 +287,7 @@ export function SetupSheetForm({ vehicles }: { vehicles: Vehicle[] }) {
               <ul className="flex flex-col gap-1">
                 {items.map((item, i) => (
                   <li key={i} className="flex gap-2 text-sm text-zinc-300">
-                    <span className="text-lime-400 shrink-0">—</span>{item}
+                    <span className="text-green-500 shrink-0">—</span>{item}
                   </li>
                 ))}
               </ul>
@@ -299,7 +299,7 @@ export function SetupSheetForm({ vehicles }: { vehicles: Vehicle[] }) {
               onClick={copyShareLink}
               className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-800 border border-zinc-700 text-zinc-200 font-semibold px-6 py-3 active:bg-zinc-700 transition-colors"
             >
-              {copied ? <Check className="h-4 w-4 text-lime-400" /> : <Share2 className="h-4 w-4" />}
+              {copied ? <Check className="h-4 w-4 text-green-500" /> : <Share2 className="h-4 w-4" />}
               {copied ? 'Link copied!' : 'Share setup sheet'}
             </button>
           )}
@@ -322,7 +322,7 @@ export function SetupSheetForm({ vehicles }: { vehicles: Vehicle[] }) {
           <select
             value={vehicleId}
             onChange={(e) => setVehicleId(e.target.value)}
-            className="w-full rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 text-sm text-zinc-100 focus:outline-none focus:border-lime-400 transition-colors appearance-none"
+            className="w-full rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 text-sm text-zinc-100 focus:outline-none focus:border-green-500 transition-colors appearance-none"
           >
             {vehicles.map((v) => <option key={v.id} value={v.id}>{v.name}</option>)}
           </select>
@@ -333,7 +333,7 @@ export function SetupSheetForm({ vehicles }: { vehicles: Vehicle[] }) {
             type="date"
             value={sessionDate}
             onChange={(e) => setSessionDate(e.target.value)}
-            className="w-full rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 text-sm text-zinc-100 focus:outline-none focus:border-lime-400 transition-colors"
+            className="w-full rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 text-sm text-zinc-100 focus:outline-none focus:border-green-500 transition-colors"
           />
         </div>
       </div>
@@ -352,7 +352,7 @@ export function SetupSheetForm({ vehicles }: { vehicles: Vehicle[] }) {
               disabled={weatherLoading}
               className="flex items-center gap-2 self-start rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-2 text-sm font-semibold text-zinc-200 active:bg-zinc-700 transition-colors disabled:opacity-50"
             >
-              {weatherLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Cloud className="h-4 w-4 text-sky-400" />}
+              {weatherLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Cloud className="h-4 w-4 text-blue-500" />}
               Auto-fill from track location
             </button>
             {weatherError && (
@@ -431,7 +431,7 @@ export function SetupSheetForm({ vehicles }: { vehicles: Vehicle[] }) {
           onChange={(e) => setRiderFeedback(e.target.value)}
           rows={4}
           placeholder="How did the bike feel? What did you like / dislike?"
-          className="w-full rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-lime-400 transition-colors resize-none"
+          className="w-full rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-green-500 transition-colors resize-none"
         />
       </div>
 
@@ -444,7 +444,7 @@ export function SetupSheetForm({ vehicles }: { vehicles: Vehicle[] }) {
         <button
           type="button"
           onClick={() => setIsPublic((v) => !v)}
-          className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors focus:outline-none ${isPublic ? 'bg-lime-400' : 'bg-zinc-700'}`}
+          className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors focus:outline-none ${isPublic ? 'bg-green-500' : 'bg-zinc-700'}`}
           aria-pressed={isPublic}
         >
           <span className={`inline-block h-4 w-4 rounded-full bg-white shadow transition-transform ${isPublic ? 'translate-x-6' : 'translate-x-1'}`} />
@@ -457,7 +457,7 @@ export function SetupSheetForm({ vehicles }: { vehicles: Vehicle[] }) {
         type="button"
         onClick={handleSave}
         disabled={saving || !trackName.trim() || !vehicleId}
-        className="flex items-center justify-center gap-2 rounded-xl bg-lime-400 text-zinc-950 font-bold text-sm py-4 active:bg-lime-300 transition-colors disabled:opacity-40"
+        className="flex items-center justify-center gap-2 rounded-xl bg-green-500 text-zinc-950 font-bold text-sm py-4 active:bg-green-400 transition-colors disabled:opacity-40"
       >
         {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
         {saving ? 'Saving...' : 'Save setup sheet'}

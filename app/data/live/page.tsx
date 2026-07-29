@@ -28,7 +28,7 @@ export default async function LivePage() {
           </p>
           <a
             href="/data/dashboard"
-            className="inline-block px-6 py-2 bg-lime-500 text-black rounded-lg font-semibold hover:bg-lime-400 transition"
+            className="inline-block px-6 py-2 bg-green-600 text-black rounded-lg font-semibold hover:bg-green-500 transition"
           >
             Back to Dashboard
           </a>
@@ -54,7 +54,7 @@ export default async function LivePage() {
           </p>
           <a
             href="/data/dashboard"
-            className="inline-block px-6 py-2 bg-lime-500 text-black rounded-lg font-semibold hover:bg-lime-400 transition"
+            className="inline-block px-6 py-2 bg-green-600 text-black rounded-lg font-semibold hover:bg-green-500 transition"
           >
             Back to Dashboard
           </a>

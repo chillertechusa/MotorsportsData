@@ -59,7 +59,7 @@ export function LiveDashboardClient({ session }: { session: LiveSession }) {
             {/* Current Lap */}
             <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4">
               <div className="text-xs text-muted-foreground mb-2">LAP</div>
-              <div className="text-3xl font-bold text-lime-400">{telemetry.currentLap}</div>
+              <div className="text-3xl font-bold text-green-500">{telemetry.currentLap}</div>
             </div>
 
             {/* Best Lap */}
@@ -148,8 +148,8 @@ export function LiveDashboardClient({ session }: { session: LiveSession }) {
           </div>
 
           {/* Coach AI Recommendations */}
-          <div className="bg-zinc-900 border border-lime-500/30 rounded-lg p-6">
-            <h2 className="text-lg font-bold text-lime-400 mb-4">Coach AI</h2>
+          <div className="bg-zinc-900 border border-green-600/30 rounded-lg p-6">
+            <h2 className="text-lg font-bold text-green-500 mb-4">Coach AI</h2>
             <div className="text-sm text-muted-foreground space-y-3">
               <p>• Monitor engine temperature - approaching warning threshold</p>
               <p>• Brake pressure optimal</p>

@@ -18,7 +18,7 @@ interface Props {
 const STATUS_CONFIG: Record<WorkOrderStatus, { label: string; color: string; icon: typeof AlertCircle }> = {
   open: { label: 'Open', color: 'text-amber-400 bg-amber-400/10 border-amber-400/20', icon: AlertCircle },
   in_progress: { label: 'In Progress', color: 'text-blue-400 bg-blue-400/10 border-blue-400/20', icon: PlayCircle },
-  closed: { label: 'Closed', color: 'text-lime-400 bg-lime-400/10 border-lime-400/20', icon: CheckCircle2 },
+  closed: { label: 'Closed', color: 'text-green-500 bg-green-500/10 border-green-500/20', icon: CheckCircle2 },
 }
 
 export function WorkOrdersList({ vehicles }: Props) {
@@ -87,7 +87,7 @@ export function WorkOrdersList({ vehicles }: Props) {
         </div>
         <button
           onClick={() => setShowCreate(true)}
-          className="flex items-center gap-2 rounded-xl bg-lime-400 px-4 py-2.5 text-sm font-bold text-zinc-950 transition-colors hover:bg-lime-300 shrink-0"
+          className="flex items-center gap-2 rounded-xl bg-green-500 px-4 py-2.5 text-sm font-bold text-zinc-950 transition-colors hover:bg-green-400 shrink-0"
         >
           <Plus className="h-4 w-4" />
           New Job
@@ -108,7 +108,7 @@ export function WorkOrdersList({ vehicles }: Props) {
                 <select
                   value={createVehicleId}
                   onChange={(e) => setCreateVehicleId(e.target.value)}
-                  className="w-full rounded-xl bg-zinc-800 border border-zinc-700 px-3 py-2.5 text-sm text-zinc-100 focus:outline-none focus:border-lime-400"
+                  className="w-full rounded-xl bg-zinc-800 border border-zinc-700 px-3 py-2.5 text-sm text-zinc-100 focus:outline-none focus:border-green-500"
                 >
                   {vehicles.map((v) => (
                     <option key={v.id} value={v.id}>{v.name} — {v.type}</option>
@@ -122,7 +122,7 @@ export function WorkOrdersList({ vehicles }: Props) {
                   value={createTitle}
                   onChange={(e) => setCreateTitle(e.target.value)}
                   placeholder="e.g. Full suspension rebuild"
-                  className="w-full rounded-xl bg-zinc-800 border border-zinc-700 px-3 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-lime-400"
+                  className="w-full rounded-xl bg-zinc-800 border border-zinc-700 px-3 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-green-500"
                 />
               </div>
               <div>
@@ -132,7 +132,7 @@ export function WorkOrdersList({ vehicles }: Props) {
                   onChange={(e) => setCreateDesc(e.target.value)}
                   placeholder="Describe the issue or work to be done..."
                   rows={3}
-                  className="w-full resize-none rounded-xl bg-zinc-800 border border-zinc-700 px-3 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-lime-400"
+                  className="w-full resize-none rounded-xl bg-zinc-800 border border-zinc-700 px-3 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-green-500"
                 />
               </div>
             </div>
@@ -141,7 +141,7 @@ export function WorkOrdersList({ vehicles }: Props) {
               <button
                 onClick={handleCreate}
                 disabled={!createTitle.trim() || creating}
-                className="flex-1 rounded-xl bg-lime-400 py-2.5 text-sm font-bold text-zinc-950 hover:bg-lime-300 disabled:opacity-40"
+                className="flex-1 rounded-xl bg-green-500 py-2.5 text-sm font-bold text-zinc-950 hover:bg-green-400 disabled:opacity-40"
               >
                 {creating ? 'Creating...' : 'Open Job'}
               </button>
@@ -155,7 +155,7 @@ export function WorkOrdersList({ vehicles }: Props) {
         <select
           value={filterVehicle}
           onChange={(e) => setFilterVehicle(e.target.value)}
-          className="rounded-lg bg-zinc-800 border border-zinc-700 px-3 py-2 text-xs font-bold text-zinc-300 focus:outline-none focus:border-lime-400"
+          className="rounded-lg bg-zinc-800 border border-zinc-700 px-3 py-2 text-xs font-bold text-zinc-300 focus:outline-none focus:border-green-500"
         >
           <option value="all">All Bikes</option>
           {vehicles.map((v) => <option key={v.id} value={v.id}>{v.name}</option>)}
@@ -166,7 +166,7 @@ export function WorkOrdersList({ vehicles }: Props) {
             onClick={() => setFilterStatus(s)}
             className={`rounded-lg px-3 py-2 text-xs font-bold capitalize transition-colors border ${
               filterStatus === s
-                ? 'bg-lime-400 text-zinc-950 border-lime-400'
+                ? 'bg-green-500 text-zinc-950 border-green-500'
                 : 'bg-zinc-800 text-zinc-400 border-zinc-700 hover:bg-zinc-700'
             }`}
           >

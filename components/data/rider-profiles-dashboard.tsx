@@ -112,12 +112,12 @@ export default function RiderProfilesDashboard({ teamId }: { teamId: string }) {
     })
   }
 
-  const inputClass = 'w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2.5 text-zinc-50 placeholder:text-zinc-500 focus:border-lime-400 focus:outline-none transition-colors text-sm'
+  const inputClass = 'w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2.5 text-zinc-50 placeholder:text-zinc-500 focus:border-green-500 focus:outline-none transition-colors text-sm'
 
   const promotionBadge = (status: string, eligible: boolean) => {
     if (status === 'promoted') return <span className="text-[11px] font-medium text-zinc-500 bg-zinc-800 px-2 py-0.5 rounded-full">Promoted</span>
     if (eligible || status === 'eligible') return <span className="text-[11px] font-semibold text-amber-400 bg-amber-400/10 border border-amber-400/30 px-2 py-0.5 rounded-full">Ready to Promote</span>
-    return <span className="text-[11px] font-medium text-lime-400 bg-lime-400/10 px-2 py-0.5 rounded-full">Active Minor</span>
+    return <span className="text-[11px] font-medium text-green-500 bg-green-500/10 px-2 py-0.5 rounded-full">Active Minor</span>
   }
 
   return (
@@ -133,7 +133,7 @@ export default function RiderProfilesDashboard({ teamId }: { teamId: string }) {
         {!showAddForm && (
           <button
             onClick={() => { setShowAddForm(true); setError(null) }}
-            className="flex items-center gap-2 rounded-lg bg-lime-400 text-zinc-950 font-semibold text-sm px-4 py-2 hover:bg-lime-300 transition-colors"
+            className="flex items-center gap-2 rounded-lg bg-green-500 text-zinc-950 font-semibold text-sm px-4 py-2 hover:bg-green-400 transition-colors"
           >
             <Plus className="h-4 w-4" />
             Add Rider
@@ -143,7 +143,7 @@ export default function RiderProfilesDashboard({ teamId }: { teamId: string }) {
 
       {/* Compliance callout */}
       <div className="flex items-start gap-3 rounded-xl border border-zinc-700 bg-zinc-900/60 p-4">
-        <ShieldCheck className="h-5 w-5 text-lime-400 mt-0.5 shrink-0" />
+        <ShieldCheck className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
         <div>
           <p className="text-sm font-semibold text-zinc-200">You are the account holder for all sub-riders</p>
           <p className="text-xs text-zinc-500 mt-0.5 leading-relaxed">
@@ -156,7 +156,7 @@ export default function RiderProfilesDashboard({ teamId }: { teamId: string }) {
 
       {/* Success / error banners */}
       {success && (
-        <div className="flex items-center gap-3 rounded-xl border border-lime-400/30 bg-lime-400/10 px-4 py-3 text-sm text-lime-400">
+        <div className="flex items-center gap-3 rounded-xl border border-green-500/30 bg-green-500/10 px-4 py-3 text-sm text-green-500">
           <ShieldCheck className="h-4 w-4 shrink-0" />
           {success}
         </div>
@@ -210,7 +210,7 @@ export default function RiderProfilesDashboard({ teamId }: { teamId: string }) {
             <button
               type="submit"
               disabled={isPending}
-              className="flex items-center gap-2 rounded-lg bg-lime-400 text-zinc-950 font-semibold text-sm px-5 py-2.5 hover:bg-lime-300 transition-colors disabled:opacity-50"
+              className="flex items-center gap-2 rounded-lg bg-green-500 text-zinc-950 font-semibold text-sm px-5 py-2.5 hover:bg-green-400 transition-colors disabled:opacity-50"
             >
               {isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
               Add Rider

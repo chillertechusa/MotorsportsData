@@ -97,7 +97,7 @@ export function FleetAnalytics({ vehicles }: { vehicles: Vehicle[] }) {
           <div className="grid md:grid-cols-4 gap-6 mb-12">
             <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6">
               <p className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-2">Total Vehicles</p>
-              <p className="text-3xl font-black text-lime-400">{metrics.totalVehicles}</p>
+              <p className="text-3xl font-black text-green-500">{metrics.totalVehicles}</p>
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6">
@@ -134,7 +134,7 @@ export function FleetAnalytics({ vehicles }: { vehicles: Vehicle[] }) {
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-2xl font-black text-lime-400">${vehicle.maintenanceCost.toLocaleString()}</p>
+                    <p className="text-2xl font-black text-green-500">${vehicle.maintenanceCost.toLocaleString()}</p>
                     <p className="text-sm text-zinc-500">maintenance cost</p>
                   </div>
                 </div>

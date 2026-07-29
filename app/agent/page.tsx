@@ -15,7 +15,7 @@ export default function AgentPage() {
       <section className="px-8 py-20 max-w-6xl mx-auto">
         <div className="space-y-6 mb-12">
           <h1 className="text-5xl md:text-6xl font-black tracking-tight">
-            Negotiate Smarter. <span className="text-lime-400">Close Bigger Deals.</span>
+            Negotiate Smarter. <span className="text-green-500">Close Bigger Deals.</span>
           </h1>
           <p className="text-xl text-zinc-300 max-w-2xl leading-relaxed">
             Percentile ranking, salary benchmarking, prospect scouting, and contract intelligence. The data-driven platform for motorsport agents and managers.
@@ -25,7 +25,7 @@ export default function AgentPage() {
         <div className="flex flex-col md:flex-row gap-4">
           <Link
             href="/agent/demo"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-lime-500 text-black font-bold rounded hover:bg-lime-400 transition"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-black font-bold rounded hover:bg-green-500 transition"
           >
             See Demo Now <ArrowRight className="h-5 w-5" />
           </Link>
@@ -43,7 +43,7 @@ export default function AgentPage() {
         <p className="text-sm text-zinc-500 uppercase tracking-widest mb-8">What you get</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="space-y-2">
-            <p className="text-3xl font-black text-lime-400">Percentile</p>
+            <p className="text-3xl font-black text-green-500">Percentile</p>
             <p className="text-sm text-zinc-400">Rider ranking vs. the field</p>
           </div>
           <div className="space-y-2">
@@ -72,7 +72,7 @@ export default function AgentPage() {
           {/* Percentile Ranking */}
           <div className="border border-zinc-800 bg-zinc-900 bg-opacity-50 p-8 rounded-lg space-y-4">
             <div className="flex items-center gap-3">
-              <TrendingUp className="h-6 w-6 text-lime-400" />
+              <TrendingUp className="h-6 w-6 text-green-500" />
               <h3 className="text-xl font-bold">Percentile Ranking</h3>
             </div>
             <p className="text-zinc-300 text-sm leading-relaxed">
@@ -80,19 +80,19 @@ export default function AgentPage() {
             </p>
             <ul className="space-y-2 text-sm text-zinc-400">
               <li className="flex gap-2">
-                <CheckCircle className="h-4 w-4 text-lime-400 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                 Real-time percentile rankings across all metrics
               </li>
               <li className="flex gap-2">
-                <CheckCircle className="h-4 w-4 text-lime-400 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                 Segment by age, class, track, and discipline
               </li>
               <li className="flex gap-2">
-                <CheckCircle className="h-4 w-4 text-lime-400 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                 Export rankings for presentations
               </li>
               <li className="flex gap-2">
-                <CheckCircle className="h-4 w-4 text-lime-400 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                 Historical trend tracking
               </li>
             </ul>
@@ -198,7 +198,7 @@ export default function AgentPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/checkout/tier?tier=agent"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-lime-500 text-black font-bold rounded hover:bg-lime-400 transition"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-green-600 text-black font-bold rounded hover:bg-green-500 transition"
             >
               Get Started Now <ArrowRight className="h-5 w-5" />
             </a>
