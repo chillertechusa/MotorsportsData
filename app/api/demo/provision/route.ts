@@ -242,8 +242,10 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    // Set demo identity cookies so the coach layout can show the demo banner
-    const cookieOpts = 'Path=/; SameSite=None; Secure; Max-Age=7200'
+    // Set demo identity cookies so the coach layout can show the demo banner.
+    // Use SameSite=Lax so they work on localhost (no HTTPS required).
+    const isSecure = process.env.NODE_ENV === 'production'
+    const cookieOpts = `Path=/; SameSite=Lax; Max-Age=7200${isSecure ? '; Secure' : ''}`
     response.headers.append('Set-Cookie', `x-demo-team=${teamId}; ${cookieOpts}`)
     response.headers.append('Set-Cookie', `x-demo-created=${new Date().toISOString()}; ${cookieOpts}`)
 

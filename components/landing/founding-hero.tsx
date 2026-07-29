@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { ArrowRight, Lock, Calendar } from 'lucide-react'
+import { Lock, Calendar } from 'lucide-react'
+import DemoButton from '@/components/demo-button'
 
 export default function FoundingHero() {
   return (
@@ -70,18 +71,17 @@ export default function FoundingHero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <DemoButton
+              variant="primary"
+              size="lg"
+              label="Try it live — no sign up"
+              className="rounded-none"
+            />
             <Link
-              href="#pricing"
-              className="inline-flex items-center justify-center gap-2 bg-lime-400 text-zinc-950 font-black text-sm uppercase tracking-widest px-8 py-4 hover:bg-lime-300 transition-colors"
-            >
-              Choose Your Plan
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-            <Link
-              href="#demo"
+              href="/auth/sign-up"
               className="inline-flex items-center justify-center gap-2 border border-zinc-700 text-zinc-300 font-semibold text-sm px-8 py-4 hover:border-lime-400/50 hover:text-zinc-100 transition-colors"
             >
-              See It Through Your Lens
+              Get full access
             </Link>
           </div>
 
