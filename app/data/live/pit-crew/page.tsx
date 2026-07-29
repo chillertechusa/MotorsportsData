@@ -14,7 +14,7 @@ export const metadata = {
 
 export default async function PitCrewPage() {
   const auth = await getSessionTeamId()
-  if (!auth.ok) redirect('/data/sign-in')
+  if (!auth.ok) redirect('/auth/sign-in')
 
   const hasAccess = await hasLiveCoachingAccess()
   if (!hasAccess) {

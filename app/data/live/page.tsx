@@ -14,7 +14,7 @@ export const metadata = {
 
 export default async function LivePage() {
   const auth = await getSessionTeamId()
-  if (!auth.ok) redirect('/data/sign-in')
+  if (!auth.ok) redirect('/auth/sign-in')
 
   // Check tier access
   const hasAccess = await hasLiveCoachingAccess()

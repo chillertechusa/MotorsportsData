@@ -30,7 +30,7 @@ export default async function RiderProfilePage({
 
   const session = await auth.api.getSession({ headers: await headers() })
   if (!session?.user?.id) {
-    redirect(`/data/sign-in?redirect=/data/agent/rider/${teamId}`)
+    redirect(`/auth/sign-in?redirect=/data/agent/rider/${teamId}`)
   }
 
   const result = await getRiderProfileForAgent(teamId)

@@ -14,7 +14,7 @@ export const dynamic = 'force-dynamic'
 export default async function DataPage() {
   const session = await auth.api.getSession({ headers: await headers() })
   if (!session?.user?.id) {
-    redirect('/data/sign-in?redirect=/data')
+    redirect('/auth/sign-in?redirect=/data')
   }
 
   const [membership] = await db

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default async function RiderProfilesPage() {
   const session = await auth.api.getSession({ headers: await headers() })
-  if (!session?.user) redirect('/data/sign-in?redirect=/data/account/rider-profiles')
+  if (!session?.user) redirect('/auth/sign-in?redirect=/data/account/rider-profiles')
 
   // Get the team this user belongs to
   const [member] = await db
@@ -80,7 +80,7 @@ export default async function RiderProfilesPage() {
                 You need an active subscription to manage rider profiles.
               </p>
               <Link
-                href="/data/pricing"
+                href="/#pricing"
                 className="mt-4 inline-flex items-center gap-2 rounded-lg bg-green-500 text-zinc-950 font-semibold text-sm px-5 py-2.5 hover:bg-green-400 transition-colors"
               >
                 View Plans

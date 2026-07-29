@@ -31,7 +31,7 @@ function PaymentsNotConfigured({ plan }: { plan: MdPlanId }) {
           to Vercel environment variables to enable card checkout.
         </p>
         <Link
-          href="/data/pricing"
+          href="/#pricing"
           className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-200 transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
@@ -60,7 +60,7 @@ function PaymentsMisconfigured({ plan, reason }: { plan: MdPlanId; reason: strin
         </h2>
         <p className="text-zinc-400 text-sm leading-relaxed mb-6">{detail}</p>
         <Link
-          href="/data/pricing"
+          href="/#pricing"
           className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-200 transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
@@ -83,7 +83,7 @@ export default async function MdCheckoutPage({
   const frequency = (frequencyParam === 'monthly' ? 'monthly' : 'annual') as 'annual' | 'monthly'
 
   // Rookie is free — no checkout needed, send straight to sign-up
-  if (plan === 'rookie') redirect('/data/sign-in?mode=sign-up&redirect=/data')
+  if (plan === 'rookie') redirect('/auth/sign-up?redirect=/data')
 
   const squareReady = isSquareConfigured()
   if (!squareReady) return <PaymentsNotConfigured plan={plan} />
@@ -96,7 +96,7 @@ export default async function MdCheckoutPage({
 
   const session = await auth.api.getSession({ headers: await headers() })
   if (!session?.user) {
-    redirect(`/data/sign-in?redirect=${encodeURIComponent(`/data/checkout?plan=${plan}&frequency=${frequency}`)}`)
+    redirect(`/auth/sign-up?redirect=${encodeURIComponent(`/data/checkout?plan=${plan}&frequency=${frequency}`)}`)
   }
 
   // Record checkout intent for abandoned-checkout recovery (non-blocking)
@@ -119,7 +119,7 @@ export default async function MdCheckoutPage({
         <span className="text-xs text-zinc-500 uppercase tracking-[0.2em] font-mono">Checkout</span>
         <div className="ml-auto">
           <Link
-            href="/data/pricing"
+            href="/#pricing"
             className="flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
           >
             <ArrowLeft className="h-3.5 w-3.5" />

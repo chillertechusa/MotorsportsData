@@ -10,7 +10,7 @@ export const metadata = {
 
 export default async function RecoveryPage() {
   const auth = await getSessionTeamId()
-  if (!auth.ok) redirect('/data/sign-in')
+  if (!auth.ok) redirect('/auth/sign-in')
 
   return (
     <div className="min-h-screen bg-background text-foreground p-8">

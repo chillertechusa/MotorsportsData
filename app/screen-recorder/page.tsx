@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default async function ScreenRecorderPage() {
   const owner = await getMdOwner()
-  if (!owner) redirect('/data/sign-in')
+  if (!owner) redirect('/auth/sign-in')
 
   return (
     <main className="min-h-screen bg-zinc-950 px-4 py-12 sm:py-16">

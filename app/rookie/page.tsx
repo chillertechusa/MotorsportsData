@@ -249,7 +249,7 @@ export default function RookiePage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/data/sign-in?mode=sign-up&redirect=/data"
+              href="/auth/sign-up&redirect=/data"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-green-600 text-black font-bold rounded hover:bg-green-500 transition"
             >
               Create Free Account <ArrowRight className="h-5 w-5" />

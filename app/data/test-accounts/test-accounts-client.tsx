@@ -146,7 +146,7 @@ export default function TestAccountsPage() {
             Square is in <span className="text-red-400 font-bold">PRODUCTION</span> mode — any checkout
             test will charge a real card. To safely test the checkout flow, log in as any account above
             (they are pre-seeded with an active tier so the rig loads), then go to{' '}
-            <a href="/data/pricing" className="text-green-500 underline">/data/pricing</a> and
+            <a href="/#pricing" className="text-green-500 underline">/data/pricing</a> and
             attempt to subscribe to a different plan to exercise the full charge path.
             Use a Square sandbox account by adding{' '}
             <code className="text-blue-500">NEXT_PUBLIC_SQUARE_APPLICATION_ID=sandbox-...</code>{' '}

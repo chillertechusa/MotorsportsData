@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default async function BillingPage() {
   const session = await auth.api.getSession({ headers: await headers() })
-  if (!session?.user) redirect('/data/sign-in')
+  if (!session?.user) redirect('/auth/sign-in')
 
   const subscription = await getMySubscription()
 
@@ -41,7 +41,7 @@ export default async function BillingPage() {
               for billing yet.
             </p>
             <Link
-              href="/data/pricing"
+              href="/#pricing"
               className="mt-6 inline-block rounded-lg bg-green-500 px-5 py-2.5 text-sm font-semibold text-zinc-950 hover:bg-green-400"
             >
               View plans

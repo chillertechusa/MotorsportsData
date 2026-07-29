@@ -136,7 +136,7 @@ export default async function TierLandingPage({ params }: Props) {
   const tier = tierParam.replace('-', '_') // Convert URL slug to enum (race-team → race_team)
 
   if (!isMdPlanId(tier)) {
-    redirect('/data/pricing')
+    redirect('/#pricing')
   }
 
   // Redirect to dedicated tier landing pages

@@ -9,7 +9,7 @@ export const metadata = { title: 'Founding Rigs | Owner Console' }
 export default async function FoundingRigsPage() {
   const auth = await getSessionTeamId()
   if (!auth.ok || (auth.role !== 'owner' && auth.role !== 'manager')) {
-    redirect('/data/sign-in?redirect=/data/owner/founding-rigs')
+    redirect('/auth/sign-in?redirect=/data/owner/founding-rigs')
   }
 
   const { rigs } = await getFoundingRigs()

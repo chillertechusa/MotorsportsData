@@ -46,7 +46,7 @@ export default async function MechanicAnalyticsPage() {
   const analytics = await getMechanicAnalytics()
 
   if (!analytics) {
-    redirect('/data/sign-in')
+    redirect('/auth/sign-in')
   }
 
   const totalLapSavings = analytics.reduce((sum, m) => sum + (m.totalLapTimeSavings || 0), 0)

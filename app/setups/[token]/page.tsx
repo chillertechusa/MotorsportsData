@@ -107,7 +107,7 @@ export default async function PublicSetupSheetPage({ params }: { params: Promise
       <div className="mx-auto max-w-2xl px-4 py-8">
         {/* Header */}
         <div className="mb-6">
-          <Link href="/data/pricing" className="text-xs uppercase tracking-widest text-green-500 font-bold mb-4 block">
+          <Link href="/#pricing" className="text-xs uppercase tracking-widest text-green-500 font-bold mb-4 block">
             Motorsport Data
           </Link>
           <h1 className="text-2xl font-black text-zinc-50 text-balance">
@@ -194,7 +194,7 @@ export default async function PublicSetupSheetPage({ params }: { params: Promise
         <div className="mt-8 rounded-2xl bg-zinc-900 border border-zinc-800 p-6 text-center">
           <p className="text-sm text-zinc-400 mb-3">Log your own setup sheets, track progression, and get AI recommendations.</p>
           <Link
-            href="/data/pricing"
+            href="/#pricing"
             className="inline-block rounded-xl bg-green-500 text-zinc-950 font-bold text-sm px-6 py-3"
           >
             Get started free

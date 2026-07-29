@@ -10,5 +10,5 @@ export default async function AccountSignUpRedirect({
 }) {
   const { redirect: redirectTo } = await searchParams
   const suffix = redirectTo ? `&redirect=${encodeURIComponent(redirectTo)}` : ''
-  redirect(`/data/sign-in?mode=sign-up${suffix}`)
+  redirect(`/auth/sign-up${suffix}`)
 }
