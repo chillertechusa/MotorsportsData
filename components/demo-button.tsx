@@ -5,11 +5,14 @@ import { useRouter } from 'next/navigation'
 import { ArrowRight, Loader2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
+export type DemoRole = 'coach' | 'family_team' | 'facility'
+
 interface DemoButtonProps {
   variant?: 'primary' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   className?: string
   label?: string
+  role?: DemoRole
 }
 
 export default function DemoButton({
@@ -17,6 +20,7 @@ export default function DemoButton({
   size = 'md',
   className,
   label = 'Try it live',
+  role = 'coach',
 }: DemoButtonProps) {
   const router = useRouter()
   const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle')
@@ -28,6 +32,8 @@ export default function DemoButton({
       const res = await fetch('/api/demo/provision', {
         method: 'POST',
         credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ role }),
       })
       const data = await res.json()
       if (!res.ok || !data.success) {

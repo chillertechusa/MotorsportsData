@@ -5,6 +5,7 @@ import FoundingHero from '@/components/landing/founding-hero'
 import Capabilities from '@/components/landing/capabilities'
 import MultiSportDemo from '@/components/landing/multi-sport-demo'
 import FoundingPricing from '@/components/landing/founding-pricing'
+import PersonaSelector from '@/components/landing/persona-selector'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://motorsportsdata.io'
 
@@ -97,6 +98,7 @@ export default function HomePage() {
       <main>
         <FoundingHero />
         <MultiSportDemo />
+        <PersonaSelector />
         <Capabilities />
         <FoundingPricing />
       </main>
