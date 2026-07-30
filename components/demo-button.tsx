@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { ArrowRight, Loader2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-export type DemoRole = 'coach' | 'family_team' | 'facility' | 'rider'
+export type DemoRole = 'coach' | 'family_team' | 'facility' | 'rider' | 'moto_dad'
 
 interface DemoButtonProps {
   variant?: 'primary' | 'ghost'

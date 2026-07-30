@@ -33,7 +33,7 @@ import {
 import { auth } from '@/lib/auth'
 import { randomUUID } from 'crypto'
 
-type DemoRole = 'coach' | 'family_team' | 'facility' | 'rider'
+type DemoRole = 'coach' | 'family_team' | 'facility' | 'rider' | 'moto_dad'
 
 const d = (daysFromNow: number): string => {
   const dt = new Date()
@@ -351,16 +351,17 @@ const ROLE_CONFIG: Record<DemoRole, {
   name: string
   redirectTo: string
 }> = {
-  coach:       { tier: 'coach_pro', name: 'Demo Coaching Business',    redirectTo: '/data/coach/roster' },
-  family_team: { tier: 'privateer', name: 'Demo Family Race Team',      redirectTo: '/data/team' },
-  facility:    { tier: 'academy',   name: 'Demo Training Facility',     redirectTo: '/data/facility' },
-  rider:       { tier: 'free',      name: 'Demo Rider — Jake Martinez', redirectTo: '/data/rider' },
+  coach:       { tier: 'coach_pro', name: 'Demo Coaching Business',         redirectTo: '/data/coach/roster' },
+  family_team: { tier: 'privateer', name: 'Demo Family Race Team',         redirectTo: '/data/team' },
+  facility:    { tier: 'academy',   name: 'Demo Training Facility',        redirectTo: '/data/facility' },
+  rider:       { tier: 'free',      name: 'Demo Rider — Jake Martinez',    redirectTo: '/data/rider' },
+  moto_dad:    { tier: 'free',      name: 'Demo Family — Moto Dad + Kids', redirectTo: '/data/rider' },
 }
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => ({}))
-    const role: DemoRole = (['coach', 'family_team', 'facility', 'rider'].includes(body.role))
+    const role: DemoRole = (['coach', 'family_team', 'facility', 'rider', 'moto_dad'].includes(body.role))
       ? body.role
       : 'coach'
 
@@ -400,6 +401,19 @@ export async function POST(req: NextRequest) {
       )
       if (!martínezSeedRes.ok) {
         console.error('[demo-provision] Martinez seed failed:', await martínezSeedRes.text())
+      }
+    }
+    if (role === 'moto_dad') {
+      // For Moto Dad demos, seed the guardian model: one parent account with multiple minor rider profiles
+      const motoDadSeedRes = await fetch(
+        `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/md-owner/seed-moto-dad`,
+        { method: 'POST' }
+      )
+      if (!motoDadSeedRes.ok) {
+        console.error('[demo-provision] Moto Dad seed failed:', await motoDadSeedRes.text())
+      } else {
+        const seedData = await motoDadSeedRes.json()
+        console.log('[demo-provision] Moto Dad demo seeded:', seedData.familyName)
       }
     }
 
