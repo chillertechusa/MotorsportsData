@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { ArrowRight, Loader2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { trackDemoStarted } from '@/lib/analytics'
 
 export type DemoRole = 'coach' | 'family_team' | 'facility' | 'rider' | 'moto_dad'
 
@@ -28,6 +29,8 @@ export default function DemoButton({
   async function handleClick() {
     if (status === 'loading') return
     setStatus('loading')
+    // Track demo start
+    await trackDemoStarted(role)
     try {
       const res = await fetch('/api/demo/provision', {
         method: 'POST',
