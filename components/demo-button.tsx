@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { ArrowRight, Loader2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-export type DemoRole = 'coach' | 'family_team' | 'facility'
+export type DemoRole = 'coach' | 'family_team' | 'facility' | 'rider'
 
 interface DemoButtonProps {
   variant?: 'primary' | 'ghost'
@@ -19,8 +19,8 @@ export default function DemoButton({
   variant = 'primary',
   size = 'md',
   className,
-  label = 'Try it live',
-  role = 'coach',
+  label = 'Try it free — live demo',
+  role = 'rider',
 }: DemoButtonProps) {
   const router = useRouter()
   const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle')
@@ -42,7 +42,7 @@ export default function DemoButton({
         setTimeout(() => setStatus('idle'), 3000)
         return
       }
-      router.push(data.redirectTo ?? '/data/coach/roster')
+      router.push(data.redirectTo ?? '/data/rider')
     } catch {
       setStatus('error')
       setTimeout(() => setStatus('idle'), 3000)

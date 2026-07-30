@@ -13,10 +13,10 @@ export const user = pgTable('user', {
   banned: boolean('banned').default(false),
   banReason: text('ban_reason'),
   bannedAt: timestamp('banned_at'),
-  // Platform-level role (gatekeeper hierarchy):
+  // Platform-level role (gatekeeper hierarchy) — ties to roleEnum
   // 'user' (rider/guardian) | 'pro_rider' | 'coach' | 'shop' | 'team' | 'brand' | 'admin' | 'owner'
   // Tiers 5-6 (team/brand) are only assignable from the King Console — never self-service.
-  role: varchar('role', { length: 20 }).default('user'),
+  role: roleEnum('role').default('user'),
 })
 
 export const session = pgTable('session', {
@@ -56,6 +56,17 @@ export const verification = pgTable('verification', {
 })
 
 // ── App enums ─────────────────────────────────────────────────────────────────
+export const roleEnum = pgEnum('user_role', [
+  'user',        // rider / guardian account (default)
+  'pro_rider',   // rider with pro license — auto-locked file
+  'coach',       // reads athletes' bikes via invites
+  'shop',        // receives work orders from Clutch DMS webhook
+  'team',        // tier 5 — MD-approved, paid, search access
+  'brand',       // tier 6 — MD-approved, paid, sponsorship targeting
+  'admin',       // MD staff
+  'owner',       // MD founder / system owner
+])
+
 export const orderStatusEnum = pgEnum('order_status', [
   'pending', 'in_production', 'quality_check', 'ready', 'shipped', 'completed', 'cancelled',
 ])

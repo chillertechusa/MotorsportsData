@@ -33,7 +33,7 @@ import {
 import { auth } from '@/lib/auth'
 import { randomUUID } from 'crypto'
 
-type DemoRole = 'coach' | 'family_team' | 'facility'
+type DemoRole = 'coach' | 'family_team' | 'facility' | 'rider'
 
 const d = (daysFromNow: number): string => {
   const dt = new Date()
@@ -354,12 +354,13 @@ const ROLE_CONFIG: Record<DemoRole, {
   coach:       { tier: 'coach_pro', name: 'Demo Coaching Business',    redirectTo: '/data/coach/roster' },
   family_team: { tier: 'privateer', name: 'Demo Family Race Team',      redirectTo: '/data/team' },
   facility:    { tier: 'academy',   name: 'Demo Training Facility',     redirectTo: '/data/facility' },
+  rider:       { tier: 'free',      name: 'Demo Rider — Jake Martinez', redirectTo: '/data/rider' },
 }
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => ({}))
-    const role: DemoRole = (['coach', 'family_team', 'facility'].includes(body.role))
+    const role: DemoRole = (['coach', 'family_team', 'facility', 'rider'].includes(body.role))
       ? body.role
       : 'coach'
 
@@ -391,6 +392,16 @@ export async function POST(req: NextRequest) {
     if (role === 'coach')       await seedCoach(teamId)
     if (role === 'family_team') await seedFamilyTeam(teamId)
     if (role === 'facility')    await seedFacility(teamId)
+    if (role === 'rider')       {
+      // For rider demos, call the Martinez seed endpoint to populate the real rider data
+      const martínezSeedRes = await fetch(
+        `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/md-owner/seed-martinez`,
+        { method: 'POST' }
+      )
+      if (!martínezSeedRes.ok) {
+        console.error('[demo-provision] Martinez seed failed:', await martínezSeedRes.text())
+      }
+    }
 
     // 4. Sign in — get real session cookies
     const signInRes = await auth.api.signInEmail({
