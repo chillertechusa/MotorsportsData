@@ -531,6 +531,32 @@ export const mdInvoices = pgTable('md_invoices', {
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 })
 
+/**
+ * One Square seller connection per racing household. Tokens are encrypted with
+ * AES-256-GCM before storage; plaintext credentials never enter the database.
+ * Sponsor invoice proceeds settle directly into this family's Square account.
+ */
+export const mdSquareConnections = pgTable('md_square_connections', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  teamId: uuid('team_id').references(() => mdTeams.id, { onDelete: 'cascade' }).notNull().unique(),
+  merchantId: varchar('merchant_id', { length: 100 }).notNull(),
+  locationId: varchar('location_id', { length: 100 }).notNull(),
+  merchantName: varchar('merchant_name', { length: 255 }),
+  accessTokenEncrypted: text('access_token_encrypted').notNull(),
+  accessTokenIv: varchar('access_token_iv', { length: 32 }).notNull(),
+  accessTokenTag: varchar('access_token_tag', { length: 32 }).notNull(),
+  refreshTokenEncrypted: text('refresh_token_encrypted').notNull(),
+  refreshTokenIv: varchar('refresh_token_iv', { length: 32 }).notNull(),
+  refreshTokenTag: varchar('refresh_token_tag', { length: 32 }).notNull(),
+  expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
+  /** active | refresh_failed | revoked */
+  status: varchar('status', { length: 30 }).notNull().default('active'),
+  scopes: jsonb('scopes').$type<string[]>().default([]),
+  connectedAt: timestamp('connected_at', { withTimezone: true }).defaultNow(),
+  refreshedAt: timestamp('refreshed_at', { withTimezone: true }).defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
+})
+
 export const mdRiderReadiness = pgTable('md_rider_readiness', {
   id: uuid('id').defaultRandom().primaryKey(),
   teamId: uuid('team_id').references(() => mdTeams.id, { onDelete: 'cascade' }).notNull(),
