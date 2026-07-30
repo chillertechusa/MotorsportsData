@@ -1,6 +1,7 @@
 import { db } from '@/lib/db'
 import { mdInvoices, mdSponsors } from '@/lib/db/schema'
-import { getSquareClient, squareLocationId, isSquareConfigured } from '@/lib/square'
+import { getSquareClientForToken } from '@/lib/square'
+import { getSquareCredentialsForTeam } from '@/lib/md-square-connect'
 import { eq, and, sql } from 'drizzle-orm'
 import { randomUUID } from 'crypto'
 
@@ -49,9 +50,6 @@ function unwrap<T>(res: any, key: string): T | undefined {
 export async function createAndSendSponsorInvoice(
   input: CreateInvoiceInput,
 ): Promise<CreateInvoiceResult> {
-  if (!isSquareConfigured()) {
-    return { ok: false, error: 'payments_not_configured' }
-  }
   if (!Number.isInteger(input.amountCents) || input.amountCents < 100) {
     return { ok: false, error: 'invalid_amount' }
   }
@@ -69,7 +67,13 @@ export async function createAndSendSponsorInvoice(
   if (!sponsor) return { ok: false, error: 'sponsor_not_found' }
   if (!sponsor.contactEmail) return { ok: false, error: 'sponsor_missing_email' }
 
-  const client = getSquareClient()
+  let seller: Awaited<ReturnType<typeof getSquareCredentialsForTeam>>
+  try {
+    seller = await getSquareCredentialsForTeam(input.teamId)
+  } catch {
+    return { ok: false, error: 'square_account_not_connected' }
+  }
+  const client = getSquareClientForToken(seller.accessToken)
 
   try {
     // 1. Ensure Square customer exists for this sponsor.
@@ -95,7 +99,7 @@ export async function createAndSendSponsorInvoice(
     const orderRes = await client.orders.create({
       idempotencyKey: randomUUID(),
       order: {
-        locationId: squareLocationId(),
+        locationId: seller.locationId,
         customerId,
         lineItems: [
           {
@@ -121,7 +125,7 @@ export async function createAndSendSponsorInvoice(
       idempotencyKey: randomUUID(),
       invoice: {
         orderId,
-        locationId: squareLocationId(),
+        locationId: seller.locationId,
         primaryRecipient: { customerId },
         invoiceNumber,
         title: input.title.slice(0, 255),

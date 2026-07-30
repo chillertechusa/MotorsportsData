@@ -73,6 +73,15 @@ export function getSquareClient(): SquareClient {
   return cached
 }
 
+/**
+ * Seller-scoped client for connected racing households. This access token
+ * belongs to the family's Square merchant account, so sponsor invoice funds
+ * settle directly to them rather than MD's platform account.
+ */
+export function getSquareClientForToken(accessToken: string): SquareClient {
+  return new SquareClient({ token: accessToken, environment: squareEnvironment() })
+}
+
 export function squareLocationId(): string {
   return process.env.SQUARE_LOCATION_ID ?? ''
 }
