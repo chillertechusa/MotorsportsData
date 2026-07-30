@@ -119,7 +119,7 @@ export async function POST() {
       readinessData.map((r) => ({
         teamId,
         entryDate: r.date,
-        sleepHours: r.sleep,
+        sleepHours: String(r.sleep),
         hrv: r.hrv,
         energy: r.energy,
         notes: r.energy >= 92 ? 'Peak readiness for race weekend' : 'Building fitness',
