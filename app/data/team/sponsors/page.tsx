@@ -5,6 +5,7 @@ import { db } from '@/lib/db'
 import { mdTeamMembers, mdSponsors } from '@/lib/db/schema'
 import { eq } from 'drizzle-orm'
 import { Award, Plus, CheckCircle2, Clock, AlertCircle } from 'lucide-react'
+import { SponsorPaymentsConsole } from '@/components/data/sponsor-payments-console'
 
 export const metadata = { title: 'Sponsors — Motorsport Data' }
 
@@ -66,6 +67,8 @@ export default async function SponsorsPage() {
           </div>
         ))}
       </div>
+
+      <SponsorPaymentsConsole />
 
       {/* Sponsor cards */}
       {sponsors.length === 0 ? (

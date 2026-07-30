@@ -1,6 +1,6 @@
 import 'server-only'
 
-import { createCipheriv, createDecipheriv, createHmac, randomBytes, timingSafeEqual } from 'node:crypto'
+import { createCipheriv, createDecipheriv, createHash, createHmac, randomBytes, timingSafeEqual } from 'node:crypto'
 import { and, eq } from 'drizzle-orm'
 import { db } from '@/lib/db'
 import { mdSquareConnections } from '@/lib/db/schema'
@@ -56,10 +56,14 @@ function required(name: string): string {
 
 function encryptionKey(): Buffer {
   const raw = required('SQUARE_TOKEN_ENCRYPTION_KEY')
-  if (!/^[a-fA-F0-9]{64}$/.test(raw)) {
-    throw new Error('SQUARE_TOKEN_ENCRYPTION_KEY must be exactly 64 hexadecimal characters')
+  if (raw.length < 20) {
+    throw new Error('SQUARE_TOKEN_ENCRYPTION_KEY must be at least 20 characters')
   }
-  return Buffer.from(raw, 'hex')
+  // A 64-character hex value maps directly to 32 bytes. Other strong secrets
+  // are domain-separated and deterministically expanded into an AES-256 key.
+  return /^[a-fA-F0-9]{64}$/.test(raw)
+    ? Buffer.from(raw, 'hex')
+    : createHash('sha256').update(`motorsports-data:square:${raw}`, 'utf8').digest()
 }
 
 function stateSecret(): string {

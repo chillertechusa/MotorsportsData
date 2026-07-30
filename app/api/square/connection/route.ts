@@ -6,14 +6,14 @@ export const dynamic = 'force-dynamic'
 
 export async function GET() {
   const session = await getSessionTeamId()
-  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  if (!session.ok) return NextResponse.json({ error: session.error }, { status: session.status })
   const connection = await getSquareConnectionStatus(session.teamId)
   return NextResponse.json({ connected: connection?.status === 'active', connection })
 }
 
 export async function DELETE() {
   const session = await getSessionTeamId()
-  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  if (!session.ok) return NextResponse.json({ error: session.error }, { status: session.status })
   await disconnectSquare(session.teamId)
   return NextResponse.json({ connected: false })
 }

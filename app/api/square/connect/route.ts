@@ -1,14 +1,14 @@
 import { NextResponse } from 'next/server'
 import { getSessionTeamId } from '@/lib/md-auth'
-import { getSquareAuthorizeUrl } from '@/lib/md-square-connect'
+import { appBaseUrl, getSquareAuthorizeUrl } from '@/lib/md-square-connect'
 
 export const dynamic = 'force-dynamic'
 
 export async function GET() {
   try {
     const session = await getSessionTeamId()
-    if (!session) {
-      return NextResponse.redirect(new URL('/data/sign-in?next=/data/team/sponsors', 'http://localhost'))
+    if (!session.ok) {
+      return NextResponse.redirect(new URL('/auth/sign-in?next=/data/team/sponsors', appBaseUrl()))
     }
     const url = getSquareAuthorizeUrl(session.teamId, session.userId)
     return NextResponse.redirect(url)

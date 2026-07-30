@@ -17,8 +17,8 @@ export async function GET(request: NextRequest) {
     if (!code || !stateValue) throw new Error('Square callback is missing code or state')
 
     const session = await getSessionTeamId()
-    if (!session) {
-      return NextResponse.redirect(new URL('/data/sign-in?next=/data/team/sponsors', appBaseUrl()))
+    if (!session.ok) {
+      return NextResponse.redirect(new URL('/auth/sign-in?next=/data/team/sponsors', appBaseUrl()))
     }
     const state = verifyOAuthState(stateValue)
     if (state.teamId !== session.teamId || state.userId !== session.userId) {
