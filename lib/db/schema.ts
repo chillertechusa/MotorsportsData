@@ -13,10 +13,10 @@ export const user = pgTable('user', {
   banned: boolean('banned').default(false),
   banReason: text('ban_reason'),
   bannedAt: timestamp('banned_at'),
-  // Platform-level role (gatekeeper hierarchy) — ties to roleEnum
+  // Platform-level role (gatekeeper hierarchy)
   // 'user' (rider/guardian) | 'pro_rider' | 'coach' | 'shop' | 'team' | 'brand' | 'admin' | 'owner'
   // Tiers 5-6 (team/brand) are only assignable from the King Console — never self-service.
-  role: roleEnum('role').default('user'),
+  role: varchar('role', { length: 20 }).default('user'),
 })
 
 export const session = pgTable('session', {

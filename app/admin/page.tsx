@@ -2,7 +2,7 @@ import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { auth } from '@/lib/auth'
 import { db } from '@/lib/db'
-import { md_users, md_access_log } from '@/lib/db/schema'
+import { user, mdAccessLog } from '@/lib/db/schema'
 import { eq, desc } from 'drizzle-orm'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -21,11 +21,11 @@ export default async function KingConsolePage() {
     redirect('/auth/sign-in?redirect=/admin')
   }
 
-  const user = await db.query.md_users.findFirst({
-    where: eq(md_users.id, session.user.id),
+  const currentUser = await db.query.user.findFirst({
+    where: eq(user.id, session.user.id),
   })
 
-  if (!user || (user.role !== 'admin' && user.role !== 'owner')) {
+  if (!currentUser || (currentUser.role !== 'admin' && (currentUser.role as string) !== 'owner')) {
     return (
       <div className="min-h-screen bg-zinc-950 p-8">
         <div className="max-w-3xl mx-auto">
@@ -40,21 +40,21 @@ export default async function KingConsolePage() {
   }
 
   // Fetch rider statistics
-  const allUsers = await db.query.md_users.findMany()
+  const allUsers = await db.query.user.findMany()
   const roleBreakdown = {
-    user: allUsers.filter((u) => u.role === 'user').length,
-    pro_rider: allUsers.filter((u) => u.role === 'pro_rider').length,
-    coach: allUsers.filter((u) => u.role === 'coach').length,
-    shop: allUsers.filter((u) => u.role === 'shop').length,
-    team: allUsers.filter((u) => u.role === 'team').length,
-    brand: allUsers.filter((u) => u.role === 'brand').length,
+    user: allUsers.filter((u) => (u.role as string) === 'user').length,
+    pro_rider: allUsers.filter((u) => (u.role as string) === 'pro_rider').length,
+    coach: allUsers.filter((u) => (u.role as string) === 'coach').length,
+    shop: allUsers.filter((u) => (u.role as string) === 'shop').length,
+    team: allUsers.filter((u) => (u.role as string) === 'team').length,
+    brand: allUsers.filter((u) => (u.role as string) === 'brand').length,
   }
 
-  const pendingApprovals = allUsers.filter((u) => u.role === 'team' || u.role === 'brand')
+  const pendingApprovals = allUsers.filter((u) => (u.role as string) === 'team' || (u.role as string) === 'brand')
 
   // Fetch recent access log
-  const recentAccess = await db.query.md_access_log.findMany({
-    orderBy: (t) => [desc(t.created_at)],
+  const recentAccess = await db.query.mdAccessLog.findMany({
+    orderBy: (t) => [desc(t.createdAt)],
     limit: 10,
   })
 
@@ -209,11 +209,11 @@ export default async function KingConsolePage() {
                     <tbody>
                       {recentAccess.map((log, idx) => (
                         <tr key={idx} className="border-b border-zinc-800">
-                          <td className="py-2 px-2 text-zinc-300">{log.user_email}</td>
+                          <td className="py-2 px-2 text-zinc-300">{log.userEmail}</td>
                           <td className="py-2 px-2 text-zinc-400">{log.action}</td>
                           <td className="py-2 px-2 text-zinc-500">
-                            {log.created_at
-                              ? new Date(log.created_at).toLocaleString('en-US', {
+                            {log.createdAt
+                              ? new Date(log.createdAt).toLocaleString('en-US', {
                                   year: 'numeric',
                                   month: 'short',
                                   day: 'numeric',
