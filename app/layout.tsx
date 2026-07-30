@@ -37,11 +37,11 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://motorsportsdata.io
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Motorsport Data — From First Throttle to Factory Ride',
-    template: '%s | Motorsport Data',
+    default: 'Bike Doctor — AI Motocross Diagnostics & Rider Tracking',
+    template: '%s | Bike Doctor',
   },
   description:
-    'The operating system for a racing career. Track the bike, log every setup, coach the rider, and let AI tell you if you\u2019re race-ready \u2014 from the mini-bike in the driveway to the factory rig. Plans from $9/mo.',
+    'Free AI-powered bike diagnostics, maintenance tracking, and ride logging for motocross riders. Tell the Bike Doctor what your KTM or Yamaha is doing — get instant diagnosis and fix instructions. Connect to your local shop with one click.',
   keywords: [
     'motorsport data', 'motocross app', 'dirt bike maintenance tracker', 'racing platform',
     'race coach AI', 'motocross setup log', 'part lifecycle tracking', 'youth motocross',
@@ -63,9 +63,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'OG_MotorsportsData',
+    title: 'Bike Doctor — Your Free Motocross Diagnostic AI',
     description:
-      'Comprehensive power sports and racing analytics platform engineered for speed and regional scalability.',
+      'Describe your bike issue. Get instant AI diagnosis, severity rating, and fix instructions. Free forever for riders. $49/mo for coaches, $99/mo for shops.',
     type: 'website',
     url: BASE_URL,
     siteName: 'Motorsport Data',
@@ -81,9 +81,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OG_MotorsportsData',
+    title: 'Bike Doctor — AI for Your Motocross Bike',
     description:
-      'Comprehensive power sports and racing analytics platform engineered for speed and regional scalability.',
+      'Free app that listens to riders describe their bike issue and gives instant diagnosis with severity ratings and fix instructions.',
     images: [`${BASE_URL}/assets/og-preview.png`],
   },
   // NOTE: intentionally NO `alternates.canonical` here. A canonical set in the

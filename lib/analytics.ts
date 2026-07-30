@@ -4,7 +4,7 @@ import { db } from '@/lib/db'
 import { mdAnalyticsEvents, mdAnalyticsDailyMetrics, mdTeams } from '@/lib/db/schema'
 import { eq } from 'drizzle-orm'
 
-export type AnalyticsEventType = 'signup' | 'checkout' | 'tier_upgrade' | 'team_invite' | 'member_added'
+export type AnalyticsEventType = 'signup' | 'checkout' | 'tier_upgrade' | 'team_invite' | 'member_added' | 'demo_started' | 'coach_invited' | 'diagnosis_generated' | 'work_order_sent' | 'rode_logged'
 
 export interface TrackEventParams {
   eventType: AnalyticsEventType
@@ -37,6 +37,16 @@ export async function trackEvent(params: TrackEventParams): Promise<void> {
 }
 
 /**
+ * Track demo started
+ */
+export async function trackDemoStarted(demoRole: string) {
+  await trackEvent({
+    eventType: 'demo_started',
+    metadata: { demoRole },
+  })
+}
+
+/**
  * Track signup event
  */
 export async function trackSignup(userId: string, tier: string = 'rookie') {
@@ -44,6 +54,39 @@ export async function trackSignup(userId: string, tier: string = 'rookie') {
     eventType: 'signup',
     userId,
     tier,
+  })
+}
+
+/**
+ * Track coach invite sent
+ */
+export async function trackCoachInvited(userId: string, riderName: string) {
+  await trackEvent({
+    eventType: 'coach_invited',
+    userId,
+    metadata: { riderName },
+  })
+}
+
+/**
+ * Track bike diagnosis generated
+ */
+export async function trackDiagnosisGenerated(userId: string, symptom: string) {
+  await trackEvent({
+    eventType: 'diagnosis_generated',
+    userId,
+    metadata: { symptomLength: symptom.length },
+  })
+}
+
+/**
+ * Track work order sent to shop
+ */
+export async function trackWorkOrderSent(userId: string, shopName: string) {
+  await trackEvent({
+    eventType: 'work_order_sent',
+    userId,
+    metadata: { shopName },
   })
 }
 

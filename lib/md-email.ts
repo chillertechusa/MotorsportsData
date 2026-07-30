@@ -297,7 +297,71 @@ export async function sendMdPlanGrantedEmail(args: PlanGrantedArgs): Promise<boo
 </html>`
 
   const ok = await send({ to, subject, html, text })
-  if (ok) console.log('[md-email] plan-granted email sent to', to, '-', tierLabel)
+  if (ok) console.log('[md-email] plan granted sent to', to, '-', tierLabel)
+  return ok
+}
+
+// ── Coach invite ─────────────────────────────────────────────────────────────
+
+export type CoachInviteArgs = {
+  to: string
+  coachEmail: string
+  riderName: string
+  inviteLink: string
+}
+
+export async function sendCoachInviteEmail(args: CoachInviteArgs): Promise<boolean> {
+  const { to, coachEmail, riderName, inviteLink } = args
+  const safeRider = escapeHtml(riderName)
+  const safeCoach = escapeHtml(coachEmail)
+  const subject = `${safeRider} invited you to coach on ${BRAND}`
+
+  const text = [
+    `${BRAND} — Coach Invite`,
+    ``,
+    `Hi,`,
+    `${riderName} invited you to coach on ${BRAND}. Accept the invite to get read-only access to their bike data, ride log, and readiness.`,
+    ``,
+    `Accept invite: ${inviteLink}`,
+    ``,
+    `You'll be able to:`,
+    `• View bike maintenance & setup notes`,
+    `• Track their ride log & progress`,
+    `• Monitor readiness & injury status`,
+    `• No export or data scraping allowed`,
+    ``,
+    `Get started: ${BRAND_URL}`,
+  ].join('\n')
+
+  const html = `<!doctype html>
+<html>
+<body style="margin:0;padding:0;background:#09090b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#09090b;padding:32px 16px;">
+    <tr><td align="center">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#18181b;border:1px solid #27272a;border-radius:16px;overflow:hidden;">
+        <tr><td style="padding:28px 32px 20px;border-bottom:1px solid #27272a;">
+          <p style="margin:0;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#a3e635;font-weight:700;">${BRAND}</p>
+          <h1 style="margin:8px 0 0;font-size:22px;color:#fafafa;font-weight:800;">You've been invited to coach</h1>
+        </td></tr>
+        <tr><td style="padding:24px 32px;">
+          <p style="margin:0 0 20px;font-size:15px;line-height:1.6;color:#d4d4d8;">
+            ${safeRider} invited you to coach on ${BRAND}. Accept to get read-only access to their bike data, ride log, and readiness status.
+          </p>
+          <div style="text-align:center;margin:28px 0 8px;">
+            <a href="${escapeHtml(inviteLink)}" style="display:inline-block;background:#a3e635;color:#09090b;font-weight:700;font-size:14px;text-decoration:none;padding:12px 28px;border-radius:10px;">Accept Invite</a>
+          </div>
+          <p style="margin:16px 0 0;font-size:13px;line-height:1.5;color:#71717a;text-align:center;">
+            This link expires in 7 days. Coaches cannot export data or access information outside the platform.
+          </p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`
+
+  const ok = await send({ to, subject, html, text })
+  if (ok) console.log('[md-email] coach invite sent to', to, 'from', safeRider)
   return ok
 }
 
