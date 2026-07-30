@@ -3,6 +3,7 @@ import { db } from '@/lib/db'
 import { mdTeams } from '@/lib/db/schema'
 import { eq } from 'drizzle-orm'
 import { verifySquareWebhookSignature, squareWebhookUrl } from '@/lib/square'
+import { markInvoicePaidBySquareId, markInvoiceCanceledBySquareId } from '@/lib/md-invoicing'
 
 /**
  * Square webhook handler.
@@ -157,7 +158,18 @@ async function handleSubscriptionEvent(data: any) {
 }
 
 async function handleInvoicePaymentMade(data: any) {
-  const subscriptionId = data?.subscription_id
+  // Sponsor invoices (Rail 2) carry no subscription_id — check them FIRST by
+  // Square invoice id so a sponsor payment never falls into subscription code.
+  const squareInvoiceId: string | undefined = data?.invoice?.id ?? data?.id
+  const subscriptionId = data?.subscription_id ?? data?.invoice?.subscription_id
+  if (squareInvoiceId && !subscriptionId) {
+    const matched = await markInvoicePaidBySquareId(squareInvoiceId)
+    if (matched) {
+      console.log(`[v0] Sponsor invoice ${squareInvoiceId} marked PAID`)
+      return NextResponse.json({ received: true, status: 'sponsor_invoice_paid' })
+    }
+  }
+
   const team = await findTeam({ subscriptionId })
   if (!team) {
     console.warn(`[v0] invoice.payment_made: no team for sub ${subscriptionId}`)
@@ -205,7 +217,17 @@ async function handleInvoiceFailed(data: any) {
 }
 
 async function handleInvoiceCanceled(data: any) {
-  const subscriptionId = data?.subscription_id
+  // Sponsor invoices first — same reasoning as handleInvoicePaymentMade.
+  const squareInvoiceId: string | undefined = data?.invoice?.id ?? data?.id
+  const subscriptionId = data?.subscription_id ?? data?.invoice?.subscription_id
+  if (squareInvoiceId && !subscriptionId) {
+    const matched = await markInvoiceCanceledBySquareId(squareInvoiceId)
+    if (matched) {
+      console.log(`[v0] Sponsor invoice ${squareInvoiceId} marked CANCELED`)
+      return NextResponse.json({ received: true, status: 'sponsor_invoice_canceled' })
+    }
+  }
+
   const team = await findTeam({ subscriptionId })
   if (!team) {
     return NextResponse.json({ received: true, status: 'no_team_found' })
