@@ -1,27 +1,29 @@
 import type { Metadata } from 'next'
 import MdNav from '@/components/md-nav'
 import MdFooter from '@/components/md-footer'
-import FoundingHero from '@/components/landing/founding-hero'
-import Capabilities from '@/components/landing/capabilities'
-import MultiSportDemo from '@/components/landing/multi-sport-demo'
-import FoundingPricing from '@/components/landing/founding-pricing'
-import PersonaSelector from '@/components/landing/persona-selector'
+import DoctorHero from '@/components/landing/doctor-hero'
+import DoctorProblem from '@/components/landing/doctor-problem'
+import DoctorHow from '@/components/landing/doctor-how'
+import DoctorProgram from '@/components/landing/doctor-program'
+import DoctorPricing from '@/components/landing/doctor-pricing'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://motorsportsdata.io'
 
 export const metadata: Metadata = {
-  title: 'Motorsport Data — One Platform for Every Racing Program',
+  title: 'MD — Your Bike Has a Doctor | Free Rider Platform',
   description:
-    'The operating system for riders, race teams, and professional coaches across motocross, NASCAR, drag racing, rally, karting, and more. Performance data, race-day operations, and business in one platform.',
+    'Describe what you feel on the track. The AI Doctor diagnoses your bike, rates the severity, and sends the full history to your shop. Free for every rider — bike file, body file, ride log, and family program money tools.',
   keywords: [
-    'motorsport management software', 'race team management software', 'motorsport coaching platform',
-    'motocross telemetry', 'NASCAR team software', 'drag racing data', 'rally analytics',
-    'karting data', 'race team operations', 'coaching business software', 'racing AI coach',
+    'motocross bike diagnosis', 'dirt bike problems diagnosis', 'motocross maintenance app',
+    'dirt bike maintenance log', 'motocross rider app', 'bike setup notebook',
+    'motocross season budget', 'racing family expenses', 'dirt bike engine hours tracker',
+    'motocross injury log', 'AI bike mechanic',
   ],
   alternates: { canonical: BASE_URL },
   openGraph: {
-    title: 'Motorsport Data — One Platform. Every Racing Program.',
-    description: 'For riders, race teams, and professional coaches across every discipline.',
+    title: 'MD — Your Bike Has a Doctor',
+    description:
+      'AI diagnosis for your dirt bike, free forever. Symptom to shop in three steps.',
     type: 'website',
     url: BASE_URL,
     images: [
@@ -29,7 +31,7 @@ export const metadata: Metadata = {
         url: `${BASE_URL}/assets/og-preview.png`,
         width: 1200,
         height: 630,
-        alt: 'Motorsport Data — Race Team Operating System',
+        alt: 'MD — Your Bike Has a Doctor',
       },
     ],
   },
@@ -39,51 +41,32 @@ export default function HomePage() {
   const softwareSchema = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: 'Motorsport Data',
+    name: 'MD — Motorsports Data',
     description:
-      'The operating system for a racing career. Lap times, telemetry, bike data, rider health, team finances, invoicing, payroll, and AI coaching — one platform for race teams.',
+      'The free rider platform. AI bike diagnosis, maintenance log, setup notebook, injury and readiness tracking, ride log, and family program money tools. Symptom to shop in three steps.',
     url: BASE_URL,
     applicationCategory: 'SportsApplication',
     offers: [
       {
         '@type': 'Offer',
-        name: 'Privateer',
+        name: 'Rider',
         priceCurrency: 'USD',
-        price: '89',
-        description: 'Solo racer plan — lap tracking, bike log, AI Rig Doctor, rider health.',
+        price: '0',
+        description:
+          'Free forever — AI Doctor, bike file, body file, ride log, program money tools, send to shop.',
       },
       {
         '@type': 'Offer',
-        name: 'Race Team',
+        name: 'Coach Connect',
         priceCurrency: 'USD',
-        price: '399',
-        description: 'Up to 8 riders — team ops, coaching AI, invoicing, payroll, P&L.',
-      },
-      {
-        '@type': 'Offer',
-        name: 'Coach Pro',
-        priceCurrency: 'USD',
-        price: '499',
-        description: 'Professional coaching business OS — athletes, plans, scheduling, invoicing, and AI.',
-      },
-      {
-        '@type': 'Offer',
-        name: 'Academy',
-        priceCurrency: 'USD',
-        price: '2499',
-        description: 'Elite multi-coach academy and performance-facility operations.',
-      },
-      {
-        '@type': 'Offer',
-        name: 'Factory Rig',
-        priceCurrency: 'USD',
-        price: '3999',
-        description: 'Unlimited riders, custom AI, white-label, API access.',
+        price: '49',
+        description:
+          'See your athletes\u2019 bikes in real time. Riders invite you; they own their data.',
       },
     ],
     author: {
       '@type': 'Organization',
-      name: 'Motorsport Data',
+      name: 'Motorsports Data',
       url: BASE_URL,
     },
   }
@@ -96,11 +79,11 @@ export default function HomePage() {
       />
       <MdNav />
       <main>
-        <FoundingHero />
-        <MultiSportDemo />
-        <PersonaSelector />
-        <Capabilities />
-        <FoundingPricing />
+        <DoctorHero />
+        <DoctorProblem />
+        <DoctorHow />
+        <DoctorProgram />
+        <DoctorPricing />
       </main>
       <MdFooter />
     </>
