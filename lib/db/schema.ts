@@ -13,7 +13,9 @@ export const user = pgTable('user', {
   banned: boolean('banned').default(false),
   banReason: text('ban_reason'),
   bannedAt: timestamp('banned_at'),
-  // Platform-level role: 'user' | 'coach' | 'admin' | 'owner'
+  // Platform-level role (gatekeeper hierarchy):
+  // 'user' (rider/guardian) | 'pro_rider' | 'coach' | 'shop' | 'team' | 'brand' | 'admin' | 'owner'
+  // Tiers 5-6 (team/brand) are only assignable from the King Console — never self-service.
   role: varchar('role', { length: 20 }).default('user'),
 })
 
@@ -1582,8 +1584,40 @@ export const mdRiderProfiles = pgTable('md_rider_profiles', {
   promotedAt: timestamp('promoted_at', { withTimezone: true }),
   /** Email to send to when the rider is eligible for promotion. */
   riderEmail: varchar('rider_email', { length: 255 }),
+  /**
+   * Gatekeeper: whether this rider is visible to paid tier-5/6 buyers
+   * (teams/scouts/brands). Default OFF, always. For minor profiles only the
+   * guardian account can toggle this.
+   */
+  discoverable: boolean('discoverable').notNull().default(false),
+  /**
+   * Set when the rider turns pro (AMA pro license). A non-null value walls the
+   * file off from ALL paid-tier search/analytics until the pro explicitly
+   * re-opts in. Teams pay pros — they don't get their data for free.
+   */
+  proLockedAt: timestamp('pro_locked_at', { withTimezone: true }),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
+})
+
+/**
+ * Gatekeeper audit log — every view of a rider file by a paid-tier account
+ * (coach, team, scout, brand) is recorded from day one. No export, no API,
+ * no scraping: this table is the enforcement receipt.
+ */
+export const mdAccessLog = pgTable('md_access_log', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  /** user.id of the viewer (coach/team/brand account). */
+  viewerUserId: text('viewer_user_id').notNull(),
+  /** Viewer's platform role at time of access (coach | team | brand | admin). */
+  viewerRole: varchar('viewer_role', { length: 20 }).notNull(),
+  /** The rider profile that was viewed (null for team-level views). */
+  riderProfileId: uuid('rider_profile_id').references(() => mdRiderProfiles.id, { onDelete: 'cascade' }),
+  /** Team whose data was accessed (for adult riders without a rider profile row). */
+  teamId: uuid('team_id').references(() => mdTeams.id, { onDelete: 'cascade' }),
+  /** What was viewed: 'profile' | 'bike' | 'sessions' | 'body' | 'search_result'. */
+  resource: varchar('resource', { length: 40 }).notNull(),
+  createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 })
 
 // ── Founding Rigs (Aug 31 2026 enrollment) ────────────────────────────────────
