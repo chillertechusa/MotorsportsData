@@ -10,9 +10,11 @@ import { randomUUID } from 'node:crypto'
  * Demo is instantly populated with races, expenses, sponsors, readiness progression.
  */
 export async function POST() {
-  if (process.env.ALLOW_SEED !== 'true') {
+  // Allow seeding in dev/demo environments only
+  const isSeedingDisabled = process.env.NODE_ENV === 'production' && process.env.ALLOW_SEED !== 'true'
+  if (isSeedingDisabled) {
     return NextResponse.json(
-      { success: false, error: 'Seeding disabled. Set ALLOW_SEED=true.' },
+      { success: false, error: 'Seeding disabled in production.' },
       { status: 403 }
     )
   }
