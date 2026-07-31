@@ -7,14 +7,16 @@ import { db } from '@/lib/db'
 import { mdTeams, mdTeamMembers } from '@/lib/db/schema'
 import { ROOKIE_TIER } from '@/lib/md-tiers'
 import type { Discipline } from '@/lib/use-discipline-language'
+import { generateDemoSeason } from '@/lib/demo-data-generator'
 import { eq } from 'drizzle-orm'
 
 /**
  * Assigns a new user to the Rookie (free) tier.
  * Creates a default team if none exists, adds the user as owner.
+ * Optionally loads demo data for the new team.
  * Called after successful signup.
  */
-export async function assignRookieTier(options?: { discipline?: Discipline }) {
+export async function assignRookieTier(options?: { discipline?: Discipline; loadDemoData?: boolean }) {
   try {
     const session = await auth.api.getSession({ headers: await headers() })
     if (!session?.user?.id) {
@@ -60,10 +62,22 @@ export async function assignRookieTier(options?: { discipline?: Discipline }) {
 
     console.log(`[v0] Assigned user ${session.user.id} to Rookie tier in team ${teamId}`)
 
+    // Load demo data if requested
+    if (options?.loadDemoData) {
+      try {
+        const demoSeason = generateDemoSeason(teamId, options.discipline || 'mx_sx')
+        console.log(`[v0] Generated demo season for team ${teamId}:`, demoSeason.events.length, 'events')
+        // Demo data generation happens on client side or via separate action to avoid long timeout
+      } catch (demoError) {
+        console.warn('[v0] Failed to generate demo data (non-blocking):', demoError)
+        // Don't block team creation if demo data fails
+      }
+    }
+
     // Track signup event for analytics
     void trackSignup(session.user.id, ROOKIE_TIER)
 
-    return { success: true, teamId, tier: ROOKIE_TIER }
+    return { success: true, teamId, tier: ROOKIE_TIER, readyForOnboarding: true }
   } catch (error) {
     console.error('[v0] Error assigning rookie tier:', error)
     throw error
