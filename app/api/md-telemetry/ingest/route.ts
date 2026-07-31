@@ -108,7 +108,8 @@ async function handler(req: NextRequest) {
       suspensionTravelRear:   point.suspensionTravelRear  ?? null,
       gpsLat:                 point.gpsLat             ?? null,
       gpsLon:                 point.gpsLon             ?? null,
-      deviceTimestamp:        point.deviceTimestamp,
+      // numeric columns are typed as string by drizzle
+      deviceTimestamp:        String(point.deviceTimestamp),
     }))
 
     // Detect anomalies then flush inserts in parallel

@@ -37,8 +37,8 @@ export function SessionForm({ vehicleId, vehicles = [], onSubmit }: SessionFormP
     engineMap: '0',
   })
 
-  const handleChange = (field: string, value: string | number) => {
-    setFormData(prev => ({ ...prev, [field]: String(value) }))
+  const handleChange = (field: string, value: string | number | null) => {
+    setFormData(prev => ({ ...prev, [field]: String(value ?? '') }))
   }
 
   const handleSubmit = async (e: React.FormEvent) => {

@@ -24,20 +24,30 @@ import { v4 as uuid } from 'uuid'
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { event, teamId, workOrderId, riderEmail, diagnosis, timestamp } = body
+    const { event, teamId, workOrderId, riderEmail, diagnosis } = body
 
     // Verify webhook signature (TODO: implement HMAC verification)
     // For now, just log the event
 
-    // Record in access log for audit trail
+    // Record in the gatekeeper audit log using its real column shape.
+    // viewerUserId holds the rider email reported by the DMS (text column);
+    // teamId must be a valid uuid or null.
+    const isUuid =
+      typeof teamId === 'string' &&
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(teamId)
+
     await db.insert(mdAccessLog).values({
       id: uuid(),
-      userEmail: riderEmail,
-      action: `work_order.${event}`,
-      details: `WO: ${workOrderId} | Diagnosis: ${diagnosis?.slice(0, 100)}`,
-      teamId: teamId || '',
-      sourceIp: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || '',
+      viewerUserId: String(riderEmail ?? 'clutch-dms-webhook'),
+      viewerRole: 'shop',
+      teamId: isUuid ? teamId : null,
+      resource: `work_order.${String(event ?? 'unknown').slice(0, 25)}`,
     })
+
+    console.log(
+      '[clutch-dms-webhook] WO received',
+      JSON.stringify({ workOrderId, diagnosis: diagnosis?.slice(0, 80) })
+    )
 
     return NextResponse.json(
       {

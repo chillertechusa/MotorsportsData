@@ -28,7 +28,7 @@ function DemoBannerWrapper() {
     }
   }, [])
   if (!demoTeamId) return null
-  return <DemoAccountBanner demoTeamId={demoTeamId} demoCreatedAt={demoCreatedAt} />
+  return <DemoAccountBanner teamId={demoTeamId} createdAt={demoCreatedAt} />
 }
 
 const NAV = [

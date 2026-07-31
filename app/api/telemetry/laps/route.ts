@@ -10,8 +10,8 @@ import { getSessionTeamId } from '@/lib/md-auth'
 export async function GET(request: NextRequest) {
   const authHeader = request.headers.get('authorization')
   const apiKeyRow = authHeader ? await validateApiKey(authHeader) : null
-  const sessionTeamId = apiKeyRow ? null : await getSessionTeamId(request)
-  if (!apiKeyRow && !sessionTeamId) {
+  const sessionAuth = apiKeyRow ? null : await getSessionTeamId()
+  if (!apiKeyRow && !sessionAuth?.ok) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 

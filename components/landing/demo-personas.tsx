@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import DemoButton from '@/components/demo-button'
-import { Users, BarChart3, GraduationCap, MotionIcon } from 'lucide-react'
+import { Users, BarChart3, GraduationCap, Bike } from 'lucide-react'
 import type { DemoRole } from '@/components/demo-button'
 
 interface Persona {
@@ -19,7 +19,7 @@ const personas: Persona[] = [
     id: 'rider',
     title: 'Rider',
     description: 'Free rider app with AI bike diagnosis',
-    icon: <MotionIcon className="h-6 w-6" />,
+    icon: <Bike className="h-6 w-6" />,
     features: ['AI bike doctor', 'Ride logs', 'Setup notebook', 'Injury tracking'],
   },
   {

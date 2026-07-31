@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     const userAgent = req.headers.get('user-agent') || 'unknown'
     const acceptLanguage = req.headers.get('accept-language')
 
-    const fingerprint = generateFingerprint(userAgent, ip, acceptLanguage)
+    const fingerprint = generateFingerprint(userAgent, ip, acceptLanguage ?? undefined)
 
     // Check rate limits
     const check = await checkSignUpRateLimit(ip, fingerprint)

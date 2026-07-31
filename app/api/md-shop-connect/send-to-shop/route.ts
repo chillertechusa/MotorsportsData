@@ -32,7 +32,7 @@ export async function POST(req: Request) {
 
     // Fetch vehicle to get name and hours
     const vehicle = await db.query.mdVehicles.findFirst({
-      where: (t) => t.id === vehicleId as any,
+      where: (t, { eq }) => eq(t.id, vehicleId),
     })
 
     if (!vehicle) {
