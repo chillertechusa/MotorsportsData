@@ -2,6 +2,7 @@ import { generateText } from 'ai'
 import { NextResponse } from 'next/server'
 import { getSessionTeamId, assertVehicleOwnership } from '@/lib/md-auth'
 import { checkRateLimit } from '@/lib/rate-limit'
+import { blockAutomatedRequest } from '@/lib/botid'
 
 // Gemini 2.5 Pro is zero-config via Vercel AI Gateway — no GEMINI_API_KEY needed.
 const VISION_MODEL = 'google/gemini-2.5-pro'
@@ -19,6 +20,9 @@ export async function POST(req: Request) {
   if (!authResult.ok) {
     return NextResponse.json({ success: false, error: authResult.error }, { status: authResult.status })
   }
+
+  const botResponse = await blockAutomatedRequest()
+  if (botResponse) return botResponse
 
   // RATE LIMIT: 5 scans per 60 s per team. Vision inference is the most expensive
   // call on the platform — a tight window prevents abuse even from valid accounts.

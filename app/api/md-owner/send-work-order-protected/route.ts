@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { checkWorkOrderRateLimit } from '@/lib/bot-protection'
 import { auth } from '@/lib/auth'
+import { blockAutomatedRequest } from '@/lib/botid'
 
 /**
  * Protected work order endpoint with rate limiting
@@ -9,6 +10,9 @@ import { auth } from '@/lib/auth'
  * Rate limit: 5 work orders per user per day (86400 seconds)
  */
 export async function POST(req: NextRequest) {
+  const botResponse = await blockAutomatedRequest()
+  if (botResponse) return botResponse
+
   try {
     // Get authenticated user
     const session = await auth.api.getSession({ headers: req.headers })

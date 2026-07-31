@@ -22,6 +22,9 @@ import { getDisciplineProtocol, getDiscipline } from '@/lib/md-discipline'
 import { getSpecByKey, buildSpecGroundingText } from '@/lib/md-specs/index'
 
 export interface CoachContext {
+  /** Authenticated tenant identity; never sourced from the request body. */
+  teamName: string
+  riderName: string | null
   /** Team-level primary discipline (from md_teams.discipline) */
   discipline: string
   /** Human-readable discipline label */
@@ -117,11 +120,12 @@ export async function buildCoachContext(teamId: string): Promise<CoachContext> {
 
   // Team discipline
   const [teamRow] = await db
-    .select({ discipline: mdTeams.discipline })
+    .select({ name: mdTeams.name, riderName: mdTeams.riderName, discipline: mdTeams.discipline })
     .from(mdTeams)
     .where(eq(mdTeams.id, teamId))
     .limit(1)
-  const teamDisciplineId = teamRow?.discipline ?? null
+  if (!teamRow) throw new Error('Authenticated team identity could not be resolved')
+  const teamDisciplineId = teamRow.discipline ?? null
   const disciplineObj = getDiscipline(teamDisciplineId)
   const disciplineProtocol = getDisciplineProtocol(teamDisciplineId)
 
@@ -310,6 +314,8 @@ export async function buildCoachContext(teamId: string): Promise<CoachContext> {
       : null
 
   return {
+    teamName: teamRow.name,
+    riderName: teamRow.riderName ?? null,
     discipline: disciplineObj.id,
     disciplineLabel: disciplineObj.label,
     disciplineProtocol,

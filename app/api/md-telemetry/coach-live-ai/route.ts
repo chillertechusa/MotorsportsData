@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { streamText } from 'ai'
 import { getSessionTeamId } from '@/lib/md-auth'
 import { logAICall } from '@/lib/ai-cost-logger'
+import { scopeMdAiPrompt } from '@/lib/md-ai-identity'
+import { blockAutomatedRequest } from '@/lib/botid'
 
 interface CoachLiveAIRequest {
   liveSessionId: string
@@ -29,6 +31,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
+    const botResponse = await blockAutomatedRequest()
+    if (botResponse) return botResponse
+
     const body: CoachLiveAIRequest = await req.json()
 
     if (!body.liveSessionId || !body.question) {
@@ -49,7 +54,7 @@ export async function POST(req: NextRequest) {
 - Longitudinal G: ${body.recentTelemetry.gLongitudinal.toFixed(2)} Gs
 ${body.bestLapTime ? `\nBest Lap Time This Session: ${body.bestLapTime.toFixed(2)} seconds` : ''}`
 
-    const systemPrompt = `You are a real-time motocross race coach analyzing live telemetry during a race or practice session.
+    const systemPrompt = await scopeMdAiPrompt(auth.teamId, `You are a real-time motocross race coach analyzing live telemetry during a race or practice session.
 
 ${telemetryContext || 'No current telemetry data available.'}
 
@@ -70,7 +75,7 @@ Always:
 - Keep responses concise for between-lap usage
 - Prioritize the most impactful coaching point first
 
-Do NOT provide generic advice. Everything must be grounded in the rider's actual data.`
+Do NOT provide generic advice. Everything must be grounded in the rider's actual data.`)
 
     const TELEM_COACH_MODEL = 'google/gemini-2.5-flash'
     const t0 = Date.now()

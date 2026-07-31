@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server'
 import { getSessionTeamId, assertFactoryTier } from '@/lib/md-auth'
 import { logAICall } from '@/lib/ai-cost-logger'
 import { checkRateLimit } from '@/lib/rate-limit'
+import { blockAutomatedRequest } from '@/lib/botid'
 
 // High-accuracy reasoning model for diesel diagnostics.
 // Google models are zero-config through the Vercel AI Gateway (no GEMINI_API_KEY needed).
@@ -44,6 +45,9 @@ export async function POST(req: Request) {
   if (!authResult.ok) {
     return NextResponse.json({ success: false, error: authResult.error }, { status: authResult.status })
   }
+
+  const botResponse = await blockAutomatedRequest()
+  if (botResponse) return botResponse
 
   // HARD PAYWALL: Rig Doctor is a Factory Rig feature. Verify the team's tier on the
   // BACKEND before doing any work — a UI-hidden button can still be POSTed to directly.

@@ -7,6 +7,7 @@ import { mdSessions, mdSetupLogs, mdVehicles } from '@/lib/db/schema'
 import { getSessionTeamId, assertVehicleOwnership, assertRaceTeamOrAbove } from '@/lib/md-auth'
 import { getSpecByKey, buildSpecGroundingText } from '@/lib/md-specs/index'
 import { checkRateLimit } from '@/lib/rate-limit'
+import { blockAutomatedRequest } from '@/lib/botid'
 
 // Google models are zero-config through the Vercel AI Gateway (no API key needed).
 const SETUP_AI_MODEL = 'google/gemini-2.5-pro'
@@ -17,6 +18,9 @@ export async function POST(req: Request) {
   if (!authResult.ok) {
     return NextResponse.json({ error: authResult.error }, { status: authResult.status })
   }
+
+  const botResponse = await blockAutomatedRequest()
+  if (botResponse) return botResponse
 
   // Paywall — AI setup advisor is a Race Team+ feature.
   const allowed = await assertRaceTeamOrAbove(authResult.teamId)

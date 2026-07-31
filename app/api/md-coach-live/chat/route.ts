@@ -5,6 +5,8 @@ import { eq, desc } from 'drizzle-orm'
 import { getSessionTeamId } from '@/lib/md-auth'
 import { generateText } from 'ai'
 import { logAICall } from '@/lib/ai-cost-logger'
+import { formatMdAiIdentityContract, getMdAiIdentity } from '@/lib/md-ai-identity'
+import { blockAutomatedRequest } from '@/lib/botid'
 
 interface CoachChatRequest {
   liveSessionId: string
@@ -19,8 +21,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
+  const botResponse = await blockAutomatedRequest()
+  if (botResponse) return botResponse
+
   try {
-    const { liveSessionId, question, riderName }: CoachChatRequest = await req.json()
+    const { liveSessionId, question }: CoachChatRequest = await req.json()
+    const identity = await getMdAiIdentity(auth.teamId)
 
     // Fetch live session
     const session = await db
@@ -51,7 +57,7 @@ export async function POST(req: NextRequest) {
 
     const telemetryContext = `
 Current Lap: ${session.currentLap}
-Rider: ${riderName}
+Rider: ${identity.riderName ?? 'Authenticated team rider'}
 Best Lap: ${session.bestLapSeconds?.toFixed(2) || 'N/A'}s
 Current Speed: ${latestPoint?.speed || 0} mph
 Average Speed: ${avgSpeed.toFixed(1)} mph
@@ -62,7 +68,9 @@ Tire Pressure F: ${latestPoint?.tirePressFront || 0} psi
 Tire Pressure R: ${latestPoint?.tirePressRear || 0} psi
 Recent Lap Count: ${recentTelemetry.length} points logged`
 
-    const systemPrompt = `You are a professional motorsports coach AI. You have access to real-time telemetry data and you provide specific, actionable coaching advice based on the current session data.
+    const systemPrompt = `${formatMdAiIdentityContract(identity)}
+
+You are a professional motorsports coach AI. You have access to real-time telemetry data and you provide specific, actionable coaching advice based on the current session data.
 
 Telemetry Context:
 ${telemetryContext}

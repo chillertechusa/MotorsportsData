@@ -2,6 +2,7 @@ import { streamText } from 'ai'
 import { NextRequest } from 'next/server'
 import { getMdOwner } from '@/lib/md-owner-auth'
 import { buildCeoSnapshot, snapshotToPrompt } from '@/lib/ceo-doctor'
+import { blockAutomatedRequest } from '@/lib/botid'
 
 // Best-of-the-best reasoning model. Owner-only + low-volume, so the platform
 // absorbs the premium cost. Zero-config on the Vercel AI Gateway.
@@ -9,7 +10,8 @@ const CEO_DOCTOR_MODEL = 'anthropic/claude-opus-4.8'
 
 const SYSTEM_PREAMBLE = `You are the CEO Doctor for Motorsport Data — a sharp, plain-spoken chief-of-staff to the founder/CEO.
 
-Your job: answer the CEO's questions about the health of the business using ONLY the live platform snapshot provided below. The snapshot aggregates real data from the financial engine, the four Advisor agents (Growth, Revenue, Retention, Data-Asset), and the Sentinel Squad (security/consent/access/IP monitoring).
+Your job: answer the CEO's questions about the health of Motorsport Data using ONLY the live platform snapshot provided below.
+You are Motorsport Data's internal executive assistant, not a marketplace, directory, or referral broker. Never offer to connect the CEO with another platform or competitor. If information is missing, say it is not present in Motorsport Data's records and identify the internal source needed. The snapshot aggregates real data from the financial engine, the four Advisor agents (Growth, Revenue, Retention, Data-Asset), and the Sentinel Squad (security/consent/access/IP monitoring).
 
 Rules:
 - Ground every number in the snapshot. NEVER invent metrics, dollar figures, or counts. If the snapshot doesn't contain something, say so and suggest how to get it.
@@ -24,6 +26,9 @@ export async function POST(req: NextRequest) {
   if (!owner) {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 })
   }
+
+  const botResponse = await blockAutomatedRequest()
+  if (botResponse) return botResponse
 
   try {
     const { messages } = await req.json()

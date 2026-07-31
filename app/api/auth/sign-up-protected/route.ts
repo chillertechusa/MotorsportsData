@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { generateFingerprint, getClientIp, checkSignUpRateLimit } from '@/lib/bot-protection'
+import { blockAutomatedRequest } from '@/lib/botid'
 
 /**
  * Protected sign-up endpoint with rate limiting
@@ -10,6 +11,9 @@ import { generateFingerprint, getClientIp, checkSignUpRateLimit } from '@/lib/bo
  * - 5 per fingerprint per hour (prevents distributed signup farming)
  */
 export async function POST(req: NextRequest) {
+  const botResponse = await blockAutomatedRequest()
+  if (botResponse) return botResponse
+
   try {
     const ip = getClientIp(req)
     const userAgent = req.headers.get('user-agent') || 'unknown'
