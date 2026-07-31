@@ -9,11 +9,11 @@ const TOOLS = [
   },
   {
     title: 'QuickBooks export',
-    desc: 'One tap, clean categorized CSV. If the program runs through an LLC, your accountant will hug you.',
+    desc: 'One tap, clean categorized CSV. Your accountant will thank you.',
   },
   {
     title: 'Race weekend travel',
-    desc: 'Every race gets a travel card — track address, drive time, hotel checklist with a budget cap.',
+    desc: 'Every race gets a travel card — track, drive time, hotel checklist with a budget cap.',
   },
   {
     title: 'Sponsor money tracker',
@@ -21,45 +21,49 @@ const TOOLS = [
   },
   {
     title: 'Program Copilot',
-    desc: '"What did we spend at Loretta\u2019s vs budget?" Ask in plain English. Answers from your own data.',
+    desc: '"What did we spend at Loretta\'s vs budget?" Ask in plain English.',
   },
 ]
 
 export default function DoctorProgram() {
   return (
-    <section className="border-t border-ink-line bg-ink py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex items-center gap-4">
-          <span className="md-label shrink-0 text-lime">03 // For mom and dad</span>
-          <span aria-hidden="true" className="h-px flex-1 bg-ink-line" />
+    <section className="bg-[#0A0A0A] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
+
+        <div className="mb-16 flex items-end justify-between gap-8 border-b border-zinc-800 pb-8">
+          <div>
+            <h2 className="font-sans text-[clamp(2rem,6vw,4.5rem)] font-black uppercase leading-[0.9] tracking-tight text-white">
+              Run the program<br />
+              <span className="text-zinc-600">like a business.</span>
+            </h2>
+            <p className="mt-6 max-w-xl text-sm leading-relaxed text-zinc-500 sm:text-base">
+              A season costs $12,000&ndash;$39,000. Most families run it on a debit card and a
+              prayer &mdash; missed deductions, uncollected sponsor money, last-minute hotel
+              prices. MD gives the family a P&amp;L for the racing program.
+            </p>
+          </div>
+          <span className="hidden shrink-0 font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-600 sm:block">
+            03 / For Mom &amp; Dad
+          </span>
         </div>
 
-        <h2 className="mt-5 max-w-3xl text-balance text-3xl font-black tracking-tight text-white uppercase md:text-5xl">
-          Run the program like a business. Stop leaving money on the table.
-        </h2>
-        <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-zinc-400">
-          A season of racing costs $12,000&ndash;$39,000. Most families run it on a debit card
-          and a prayer &mdash; missed deductions, uncollected sponsor money, hotel prices booked
-          at the last minute. MD gives the family the P&amp;L of the racing program.
-        </p>
-
-        <div className="mt-12 grid gap-px border border-ink-line bg-ink-line sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-px bg-zinc-800 sm:grid-cols-2 lg:grid-cols-3">
           {TOOLS.map((item) => (
-            <div key={item.title} className="bg-ink p-6">
-              <div className="text-sm font-bold tracking-tight text-white uppercase">
+            <div key={item.title} className="bg-[#0A0A0A] p-8">
+              <div className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#A0C050]">
                 {item.title}
               </div>
-              <div className="mt-2 text-sm leading-relaxed text-zinc-500">{item.desc}</div>
+              <div className="mt-3 text-sm leading-relaxed text-zinc-500">{item.desc}</div>
             </div>
           ))}
         </div>
 
-        <div className="md-bracket mt-10 flex items-center gap-4 border border-lime-border bg-lime-faint px-6 py-5">
-          <span aria-hidden="true" className="md-tick shrink-0" />
-          <p className="md-label text-lime">
+        <div className="mt-10 border border-zinc-800 bg-[#111111] px-8 py-6">
+          <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#A0C050]">
             The kid gets the bike tools. The family gets the money tools. All free.
           </p>
         </div>
+
       </div>
     </section>
   )

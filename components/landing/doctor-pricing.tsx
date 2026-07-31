@@ -5,123 +5,129 @@ import DemoButton from '@/components/demo-button'
 
 export default function DoctorPricing() {
   return (
-    <section id="pricing" className="border-t border-ink-line bg-ink py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex items-center gap-4">
-          <span className="md-label shrink-0 text-lime">04 // Pricing</span>
-          <span aria-hidden="true" className="h-px flex-1 bg-ink-line" />
-        </div>
-        <h2 className="mt-5 max-w-2xl text-balance text-3xl font-black uppercase tracking-tight text-white md:text-5xl">
-          MD pays for itself or it&apos;s free.
-        </h2>
-        <p className="mt-4 max-w-2xl text-pretty leading-relaxed text-zinc-400">
-          The app is free forever. Pro exists for one reason: it collects the money we
-          find you. If we find you less than $99 a season, don&apos;t buy it.
-        </p>
+    <section id="pricing" className="bg-[#0A0A0A] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
 
-        <div className="mt-12 grid gap-px border border-ink-line bg-ink-line md:grid-cols-2 lg:grid-cols-4">
+        <div className="mb-16 flex items-end justify-between gap-8 border-b border-zinc-800 pb-8">
+          <div>
+            <h2 className="font-sans text-[clamp(2rem,6vw,4.5rem)] font-black uppercase leading-[0.9] tracking-tight text-white">
+              MD pays for itself<br />
+              <span className="text-[#A0C050]">or it&apos;s free.</span>
+            </h2>
+            <p className="mt-6 max-w-xl text-sm leading-relaxed text-zinc-500 sm:text-base">
+              The app is free forever. Pro exists for one reason: it collects the money we find
+              you. If we find you less than $99 a season, don&apos;t buy it.
+            </p>
+          </div>
+          <span className="hidden shrink-0 font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-600 sm:block">
+            04 / Pricing
+          </span>
+        </div>
+
+        <div className="grid gap-px bg-zinc-800 md:grid-cols-2 lg:grid-cols-4">
+
           {/* Rider — free */}
-          <div className="flex flex-col gap-6 bg-ink p-8">
+          <div className="flex flex-col gap-6 bg-[#0A0A0A] p-8">
             <div>
-              <div className="md-label text-lime">Rider</div>
-              <div className="mt-2 flex items-baseline gap-2">
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-[#A0C050]">Rider</p>
+              <div className="mt-3 flex items-baseline gap-2">
                 <span className="font-mono text-5xl font-black text-white">$0</span>
                 <span className="text-sm text-zinc-500">forever</span>
               </div>
             </div>
-            <ul className="flex flex-1 flex-col gap-2 text-sm leading-relaxed text-zinc-400">
+            <ul className="flex flex-1 flex-col gap-2.5 text-sm leading-relaxed text-zinc-500">
               <li>AI Doctor diagnosis, unlimited</li>
-              <li>Bike file — hours, service alerts, setups</li>
-              <li>Body file — injuries, readiness, wearable sync</li>
-              <li>Ride log with lap times and progress</li>
-              <li>Season budget + expense tracking</li>
+              <li>Bike file — hours, service, setups</li>
+              <li>Body file — injuries, readiness</li>
+              <li>Ride log with lap times</li>
+              <li>Season budget + expenses</li>
               <li>Send to Shop, pre-filled</li>
-              <li>Contingency money found — total shown</li>
-              <li>Guardian accounts for riders under 18</li>
+              <li>Guardian accounts for minors</li>
             </ul>
             <DemoButton label="Try the live demo" size="md" role="coach" />
           </div>
 
           {/* Rider Pro */}
-          <div className="relative flex flex-col gap-6 bg-ink-raised p-8 outline outline-1 -outline-offset-1 outline-lime">
-            <div className="absolute right-4 top-4 bg-lime px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-ink">
+          <div className="relative flex flex-col gap-6 bg-[#111111] p-8 outline outline-1 -outline-offset-1 outline-[#A0C050]">
+            <div className="absolute right-0 top-0 bg-[#A0C050] px-3 py-1 font-mono text-[9px] font-black uppercase tracking-[0.25em] text-black">
               Collects the money
             </div>
             <div>
-              <div className="md-label text-lime">Rider Pro</div>
-              <div className="mt-2 flex items-baseline gap-2">
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-[#A0C050]">Rider Pro</p>
+              <div className="mt-3 flex items-baseline gap-2">
                 <span className="font-mono text-5xl font-black text-white">$99</span>
                 <span className="text-sm text-zinc-500">/yr</span>
               </div>
-              <div className="mt-1 font-mono text-xs text-zinc-600">or $12/mo</div>
+              <p className="mt-1 font-mono text-xs text-zinc-600">or $12/mo</p>
             </div>
-            <ul className="flex flex-1 flex-col gap-2 text-sm leading-relaxed text-zinc-400">
+            <ul className="flex flex-1 flex-col gap-2.5 text-sm leading-relaxed text-zinc-400">
               <li>Everything in Rider, plus:</li>
-              <li className="text-zinc-200">Contingency claims unlocked — deadlines + pre-filled filings</li>
-              <li className="text-zinc-200">Sponsor invoicing — collect what you&apos;re owed</li>
-              <li className="text-zinc-200">QuickBooks export, one tap</li>
-              <li className="text-zinc-200">Season money report — what MD found you</li>
+              <li className="text-zinc-200">Contingency claims unlocked</li>
+              <li className="text-zinc-200">Sponsor invoicing</li>
+              <li className="text-zinc-200">QuickBooks export</li>
+              <li className="text-zinc-200">Season money report</li>
             </ul>
             <Link
               href="/auth/sign-up"
-              className="inline-flex items-center justify-center bg-lime px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em] text-ink transition-colors hover:bg-lime-bright"
+              className="inline-flex items-center justify-center bg-[#A0C050] px-6 py-3.5 font-mono text-sm font-black uppercase tracking-[0.2em] text-black transition-opacity hover:opacity-90"
             >
               Get Pro
             </Link>
           </div>
 
           {/* Coach Connect */}
-          <div className="flex flex-col gap-6 bg-ink p-8">
+          <div className="flex flex-col gap-6 bg-[#0A0A0A] p-8">
             <div>
-              <div className="md-label text-zinc-400">Coach Connect</div>
-              <div className="mt-2 flex items-baseline gap-2">
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400">Coach Connect</p>
+              <div className="mt-3 flex items-baseline gap-2">
                 <span className="font-mono text-5xl font-black text-white">$49</span>
                 <span className="text-sm text-zinc-500">/mo</span>
               </div>
             </div>
-            <ul className="flex flex-1 flex-col gap-2 text-sm leading-relaxed text-zinc-400">
+            <ul className="flex flex-1 flex-col gap-2.5 text-sm leading-relaxed text-zinc-500">
               <li>See your athletes&apos; bikes in real time</li>
-              <li>Setup notes, session logs, maintenance history</li>
+              <li>Setup notes, session logs, history</li>
               <li>Private coach notes per athlete</li>
               <li>Riders invite you — they own their data</li>
-              <li>Up to 10 connected athletes ($99 unlimited)</li>
+              <li>Up to 10 athletes ($99 unlimited)</li>
             </ul>
             <Link
               href="/auth/sign-up"
-              className="inline-flex items-center justify-center border border-zinc-700 px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em] text-zinc-300 transition-colors hover:border-lime hover:text-lime"
+              className="inline-flex items-center justify-center border border-zinc-700 px-6 py-3.5 font-mono text-sm font-black uppercase tracking-[0.2em] text-zinc-300 transition-colors hover:border-[#A0C050] hover:text-[#A0C050]"
             >
               Get started
             </Link>
           </div>
 
-          {/* Shop / Team / Brand — gate */}
-          <div className="flex flex-col gap-6 bg-ink p-8">
+          {/* Shops / Teams / Brands */}
+          <div className="flex flex-col gap-6 bg-[#0A0A0A] p-8">
             <div>
-              <div className="md-label text-zinc-400">Shops, Teams &amp; Brands</div>
-              <div className="mt-2 flex items-baseline gap-2">
-                <span className="font-mono text-3xl font-black text-white">MD-approved</span>
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-600">Shops, Teams &amp; Brands</p>
+              <div className="mt-3">
+                <span className="font-mono text-2xl font-black text-white">MD-approved</span>
               </div>
             </div>
-            <ul className="flex flex-1 flex-col gap-2 text-sm leading-relaxed text-zinc-400">
-              <li>Shops: pre-filled work orders via Clutch DMS</li>
-              <li>Teams &amp; scouts: trajectory data on opted-in riders</li>
-              <li>Brands: sponsorship targeting + deal rails — fee paid by the brand, never the rider</li>
-              <li>No export. No API. No scraping. Audit-logged.</li>
+            <ul className="flex flex-1 flex-col gap-2.5 text-sm leading-relaxed text-zinc-500">
+              <li>Pre-filled work orders via Clutch DMS</li>
+              <li>Teams: trajectory data on opted-in riders</li>
+              <li>Brands: sponsorship targeting + deal rails</li>
+              <li>No export. No API. Audit-logged.</li>
               <li>Every account manually approved</li>
             </ul>
-            <span className="inline-flex items-center justify-center border border-ink-line px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em] text-zinc-600">
+            <span className="inline-flex items-center justify-center border border-zinc-800 px-6 py-3.5 font-mono text-sm font-bold uppercase tracking-[0.2em] text-zinc-700">
               Waitlist opening soon
             </span>
           </div>
+
         </div>
 
-        <p className="mt-8 max-w-2xl text-sm leading-relaxed text-zinc-500">
-          The rule: the rider owns their file. Discovery is opt-in, off by default, and
-          guardian-controlled for minors. When a rider turns pro, their file locks automatically
-          &mdash; teams pay riders, so teams don&apos;t get their data for free either. When a brand
-          deal flows through MD, the platform fee comes from the brand&apos;s side. The rider sees
-          the full number, always.
+        <p className="mt-10 max-w-3xl text-xs leading-relaxed text-zinc-600">
+          The rider owns their file. Discovery is opt-in, off by default, and guardian-controlled
+          for minors. When a rider turns pro, their file locks automatically. When a brand deal
+          flows through MD, the fee comes from the brand&apos;s side. The rider sees the full
+          number, always.
         </p>
+
       </div>
     </section>
   )

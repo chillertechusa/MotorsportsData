@@ -7,12 +7,12 @@ const STEPS = [
   {
     num: '02',
     title: 'Get a diagnosis with a severity call',
-    body: 'Likely causes ranked. Parts that might be involved. And the call that matters: Ride it — Fix before next race — Do not ride.',
+    body: 'Likely causes ranked. Parts that might be involved. The call that matters: Ride it — Fix before next race — Do not ride.',
   },
   {
     num: '03',
     title: 'Send it to your shop, pre-filled',
-    body: 'One tap sends the symptom, diagnosis, engine hours, and full maintenance history to your shop. They call you with a quote, not questions.',
+    body: 'One tap sends the symptom, diagnosis, engine hours, and full maintenance history. They call you with a quote, not questions.',
   },
 ]
 
@@ -25,53 +25,53 @@ const FILES = [
 
 export default function DoctorHow() {
   return (
-    <section className="border-t border-ink-line bg-ink py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex items-center gap-4">
-          <span className="md-label shrink-0 text-lime">02 // How it works</span>
-          <span aria-hidden="true" className="h-px flex-1 bg-ink-line" />
+    <section className="bg-[#0A0A0A] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
+
+        <div className="mb-16 flex items-end justify-between gap-8 border-b border-zinc-800 pb-8">
+          <h2 className="font-sans text-[clamp(2rem,6vw,4.5rem)] font-black uppercase leading-[0.9] tracking-tight text-white">
+            Symptom to shop<br />
+            <span className="text-[#A0C050]">in three steps.</span>
+          </h2>
+          <span className="hidden shrink-0 font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-600 sm:block">
+            02 / How It Works
+          </span>
         </div>
 
-        <h2 className="mt-5 max-w-2xl text-balance text-3xl font-black tracking-tight text-white uppercase md:text-5xl">
-          Symptom to shop in three steps.
-        </h2>
-
-        <div className="mt-12 grid gap-px border border-ink-line bg-ink-line md:grid-cols-3">
+        <div className="grid gap-px bg-zinc-800 md:grid-cols-3">
           {STEPS.map((step) => (
-            <div key={step.num} className="flex flex-col gap-4 bg-ink p-8">
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-4xl leading-none font-black text-lime-dim">
-                  {step.num}
-                </span>
-                <span aria-hidden="true" className="md-tick" />
+            <div key={step.num} className="flex flex-col gap-6 bg-[#0A0A0A] p-10">
+              <span className="font-mono text-5xl font-black leading-none text-zinc-800">
+                {step.num}
+              </span>
+              <div>
+                <h3 className="text-base font-black uppercase tracking-tight text-white">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-500">{step.body}</p>
               </div>
-              <h3 className="text-lg font-bold tracking-tight text-white uppercase">
-                {step.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-zinc-400">{step.body}</p>
+              <div className="mt-auto h-px w-12 bg-[#A0C050]" />
             </div>
           ))}
         </div>
 
-        {/* Beyond the doctor — full rider file */}
-        <div className="mt-16">
-          <div className="flex items-center gap-3">
-            <span aria-hidden="true" className="md-tick" />
-            <h3 className="md-label text-zinc-500">
-              And the Doctor is just the start — your whole program lives here
-            </h3>
-          </div>
-          <div className="mt-6 grid grid-cols-2 gap-px border border-ink-line bg-ink-line md:grid-cols-4">
+        {/* Full rider file */}
+        <div className="mt-24">
+          <p className="mb-8 font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-600">
+            And the Doctor is just the start
+          </p>
+          <div className="grid grid-cols-2 gap-px bg-zinc-800 md:grid-cols-4">
             {FILES.map((item) => (
-              <div key={item.title} className="bg-ink p-6">
-                <div className="text-sm font-bold tracking-tight text-lime uppercase">
+              <div key={item.title} className="bg-[#0A0A0A] p-8">
+                <div className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#A0C050]">
                   {item.title}
                 </div>
-                <div className="mt-2 text-xs leading-relaxed text-zinc-500">{item.desc}</div>
+                <div className="mt-3 text-xs leading-relaxed text-zinc-500">{item.desc}</div>
               </div>
             ))}
           </div>
         </div>
+
       </div>
     </section>
   )
