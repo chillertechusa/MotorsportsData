@@ -6,6 +6,7 @@ import { trackSignup } from '@/lib/analytics'
 import { db } from '@/lib/db'
 import { mdTeams, mdTeamMembers } from '@/lib/db/schema'
 import { ROOKIE_TIER } from '@/lib/md-tiers'
+import type { Discipline } from '@/lib/use-discipline-language'
 import { eq } from 'drizzle-orm'
 
 /**
@@ -13,7 +14,7 @@ import { eq } from 'drizzle-orm'
  * Creates a default team if none exists, adds the user as owner.
  * Called after successful signup.
  */
-export async function assignRookieTier() {
+export async function assignRookieTier(options?: { discipline?: Discipline }) {
   try {
     const session = await auth.api.getSession({ headers: await headers() })
     if (!session?.user?.id) {
@@ -32,7 +33,7 @@ export async function assignRookieTier() {
       return { success: true, message: 'User already assigned to a team' }
     }
 
-    // Create a default team with Rookie tier
+    // Create a default team with Rookie tier and discipline
     const teamName = `${session.user.name || 'My'} Team`
     const newTeam = await db
       .insert(mdTeams)
@@ -40,6 +41,7 @@ export async function assignRookieTier() {
         name: teamName,
         subscriptionTier: ROOKIE_TIER,
         subscriptionStatus: 'active',
+        discipline: options?.discipline || 'mx_sx', // Default to MX if not provided
       })
       .returning({ id: mdTeams.id })
 

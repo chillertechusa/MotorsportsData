@@ -10,6 +10,8 @@ import { reportFailedLogin } from '@/app/actions/security-events'
 import { computeAge, requiresGuardian, SIGNUP_REQUIRED_DOCS } from '@/lib/legal'
 import { Lock, Loader2 } from 'lucide-react'
 import { useAnalytics } from '@/lib/use-analytics'
+import DisciplinePicker from '@/components/data/discipline-picker'
+import type { Discipline } from '@/lib/use-discipline-language'
 
 export default function MdSignInClient({
   redirectTo,
@@ -30,6 +32,7 @@ export default function MdSignInClient({
   const [guardianName, setGuardianName] = useState('')
   const [guardianEmail, setGuardianEmail] = useState('')
   const [guardianRelationship, setGuardianRelationship] = useState('')
+  const [discipline, setDiscipline] = useState<Discipline | ''>('')
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
@@ -50,6 +53,7 @@ export default function MdSignInClient({
     setGuardianName('')
     setGuardianEmail('')
     setGuardianRelationship('')
+    setDiscipline('')
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -61,6 +65,11 @@ export default function MdSignInClient({
       if (isSignUp) {
         if (name.trim().length < 2) {
           setError('Enter your full name.')
+          setLoading(false)
+          return
+        }
+        if (!discipline) {
+          setError('Please select your racing discipline.')
           setLoading(false)
           return
         }
@@ -141,9 +150,9 @@ export default function MdSignInClient({
           console.error('[v0] Failed to record signup compliance:', complianceError)
         }
 
-        // Assign new user to Rookie (free) tier and create default team
+        // Assign new user to Rookie (free) tier and create default team with discipline
         try {
-          await assignRookieTier()
+          await assignRookieTier({ discipline: discipline as Discipline })
         } catch (tierError) {
           console.error('Failed to assign rookie tier (non-blocking):', tierError)
           // Don't block signup if tier assignment fails — user can still access the platform
@@ -245,6 +254,14 @@ export default function MdSignInClient({
 
         {isSignUp && (
           <div className="space-y-4">
+            {/* Discipline picker — determines language and default modules */}
+            <DisciplinePicker
+              value={discipline}
+              onChange={setDiscipline}
+              label="What discipline do you race?"
+              required
+            />
+
             {/* Date of birth — drives the COPPA / guardian gate */}
             <div>
               <label htmlFor="dob" className="block text-xs font-medium text-zinc-400 mb-1.5">
