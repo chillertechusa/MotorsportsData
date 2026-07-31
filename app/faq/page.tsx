@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input'
 
 export default function FAQPage() {
   const [search, setSearch] = useState('')
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [openIndex, setOpenIndex] = useState<string | null>(null)
 
   const faqs = [
     {

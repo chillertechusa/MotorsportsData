@@ -35,7 +35,7 @@ export default function AdminOnboardingPage() {
                 className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
                   step === s.id
                     ? 'bg-lime-400 text-black'
-                    : idx < steps.indexOf(...steps.filter((x) => x.id === step) || [])
+                    : idx < steps.findIndex((x) => x.id === step)
                       ? 'bg-lime-500/30 text-lime-300'
                       : 'bg-zinc-700 text-zinc-400'
                 }`}
