@@ -1,5 +1,6 @@
 'use client'
 
+import { useRef } from 'react'
 import Link from 'next/link'
 import DemoButton from '@/components/demo-button'
 import MdTelemetryHud from '@/components/landing/md-telemetry-hud'
@@ -11,9 +12,12 @@ const STATS = [
 ]
 
 export default function MdHero() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
   return (
     <section className="relative min-h-svh overflow-hidden bg-black">
       <video
+        ref={videoRef}
         autoPlay
         muted
         loop
@@ -62,8 +66,8 @@ export default function MdHero() {
             </div>
           </div>
 
-          <div className="hidden w-[280px] shrink-0 lg:block">
-            <MdTelemetryHud />
+          <div className="hidden w-[300px] shrink-0 lg:block">
+            <MdTelemetryHud videoRef={videoRef} />
           </div>
         </div>
 

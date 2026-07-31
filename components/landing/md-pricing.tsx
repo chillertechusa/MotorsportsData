@@ -67,7 +67,7 @@ export default function MdPricing() {
             </p>
           </div>
           <span className="hidden shrink-0 font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-600 sm:block">
-            06 / Pricing
+            07 / Pricing
           </span>
         </div>
 

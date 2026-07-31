@@ -7,6 +7,7 @@ import MdCareer from '@/components/landing/md-career'
 import MdWmx from '@/components/landing/md-wmx'
 import MdDoctor from '@/components/landing/md-doctor'
 import MdTeam from '@/components/landing/md-team'
+import MdPlatform from '@/components/landing/md-platform'
 import MdPricing from '@/components/landing/md-pricing'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://motorsportsdata.io'
@@ -103,6 +104,7 @@ export default function HomePage() {
         <MdWmx />
         <MdDoctor />
         <MdTeam />
+        <MdPlatform />
         <MdPricing />
       </main>
       <MdFooter />
