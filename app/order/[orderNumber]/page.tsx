@@ -1,4 +1,3 @@
-import MdNav from '@/components/md-nav'
 import Footer from '@/components/footer'
 import { getOrderByNumber } from '@/app/actions/store'
 import { formatCents } from '@/lib/money'
@@ -24,7 +23,6 @@ export default async function OrderConfirmationPage({
 
   return (
     <>
-      <MdNav />
       <main className="pt-16 min-h-screen bg-background">
         <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
           <div className="text-center">

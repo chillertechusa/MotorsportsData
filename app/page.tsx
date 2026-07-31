@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import MdNav from '@/components/md-nav'
 import MdFooter from '@/components/md-footer'
 import MdHero from '@/components/landing/md-hero'
 import MdMoney from '@/components/landing/md-money'
@@ -96,7 +95,6 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
       />
-      <MdNav />
       <main>
         <MdHero />
         <MdMoney />

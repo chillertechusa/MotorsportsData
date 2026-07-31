@@ -1,4 +1,3 @@
-import MdNav from '@/components/md-nav'
 import CheckoutClient from '@/components/store/checkout-client'
 import { isSquareConfigured } from '@/lib/square'
 import type { Metadata } from 'next'
@@ -53,7 +52,6 @@ export default async function CheckoutPage() {
 
   return (
     <>
-      <MdNav />
       <main className="pt-16 min-h-screen bg-background">
         <CheckoutClient
           squareReady={squareReady}

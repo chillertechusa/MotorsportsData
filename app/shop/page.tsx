@@ -1,5 +1,4 @@
 import Footer from '@/components/footer'
-import MdNav from '@/components/md-nav'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
@@ -33,7 +32,6 @@ export default async function ShopPage() {
 
   return (
     <>
-      <MdNav />
       <main className="pt-16">
         <section className="relative py-20 bg-card overflow-hidden" aria-label="Shop header">
           <div className="absolute inset-0 opacity-5">

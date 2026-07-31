@@ -1,151 +1,147 @@
 import type { Metadata } from 'next'
-import { ArrowRight, Check } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import Link from 'next/link'
+import MdFooter from '@/components/md-footer'
+import MdPricing from '@/components/landing/md-pricing'
+
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://motorsportsdata.io'
 
 export const metadata: Metadata = {
-  title: 'Pricing',
-  description: 'Simple, transparent pricing for riders, coaches, and shops.',
+  title: 'Pricing — Plans from $9/mo',
+  description:
+    'Transparent pricing for every level of racing. Rookie $9/mo, Privateer $49/mo, Race Team $299/mo, Factory Rig $2,499/mo — contingency automation, sponsor P&L, season budget, and AI coaching included.',
+  keywords: [
+    'motocross software pricing', 'race team software cost', 'motocross platform plans',
+    'contingency tracking pricing', 'racing program software price',
+  ],
+  alternates: { canonical: `${BASE_URL}/pricing` },
+  openGraph: {
+    title: 'Motorsports Data Pricing — Plans from $9/mo',
+    description:
+      'Rookie to Factory Rig. Contingency automation, sponsor money tracking, season P&L, and AI coaching on one platform.',
+    url: `${BASE_URL}/pricing`,
+    type: 'website',
+    images: [`${BASE_URL}/assets/og-preview.png`],
+  },
 }
 
+/* Kept in sync with the tier landing pages. Answers are also rendered on the
+   page below, which is required for FAQPage rich-result eligibility. */
+const FAQS = [
+  {
+    q: 'Can I cancel anytime?',
+    a: 'Yes. Cancel at any time from your account settings. No penalties and no questions asked.',
+  },
+  {
+    q: 'Is my data exported or sold?',
+    a: 'Never. Your rider data is yours. We do not export, sell, or share your information with third parties.',
+  },
+  {
+    q: 'Can I upgrade or downgrade between tiers?',
+    a: 'Yes. You can change plans at any time and charges are prorated, so moving from Privateer to Race Team mid-season is straightforward.',
+  },
+  {
+    q: 'Does the platform pay for itself?',
+    a: 'Most privateers leave roughly $2,800 in contingency unclaimed every season. Privateer costs $588 a year, so recovering a single season of contingency more than covers it.',
+  },
+  {
+    q: 'Which plan should a family with one young rider pick?',
+    a: 'Rookie at $9/mo is built for ages 4 to 12. It covers season budget, schedule, injury and return-to-ride tracking, and the AI Doctor.',
+  },
+]
+
 export default function PricingPage() {
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQS.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  }
+
   return (
-    <main className="min-h-screen bg-gradient-to-b from-zinc-950 to-black text-zinc-100">
-      <div className="max-w-6xl mx-auto px-4 py-24">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-black mb-4 text-white">Simple Pricing</h1>
-          <p className="text-xl text-zinc-400 mb-2">
-            Free for riders. Pay only if you need more.
-          </p>
-        </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <main className="bg-[#0A0A0A]">
+        {/* Page header — the tier grid itself is the shared MdPricing component,
+            so prices here can never drift from the homepage again. */}
+        <section className="border-b border-zinc-800 px-6 pb-16 pt-20 sm:px-10 lg:px-16">
+          <div className="mx-auto max-w-7xl">
+            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-lime">
+              Pricing
+            </span>
+            <h1 className="mt-5 max-w-4xl font-sans text-[clamp(2.5rem,7vw,5.5rem)] font-black uppercase leading-[0.9] tracking-tight text-white text-balance">
+              One platform.<br />
+              Every <em className="not-italic text-lime">level</em>.
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-zinc-400">
+              From a first PW50 season to a full factory rig. Every plan includes the AI
+              Doctor, the bike file, and the money tools &mdash; the tiers add riders, roles,
+              and season logistics.
+            </p>
+          </div>
+        </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {/* Rider — Free */}
-          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-8 hover:border-lime-500/50 transition">
-            <div className="mb-6">
-              <h2 className="text-2xl font-black text-white mb-2">Bike Doctor</h2>
-              <p className="text-sm text-zinc-400">For riders</p>
-            </div>
-            <div className="mb-8">
-              <div className="text-4xl font-black text-lime-400">Free</div>
-              <p className="text-sm text-zinc-500 mt-1">Forever</p>
-            </div>
-            <ul className="space-y-3 mb-8">
+        <MdPricing />
+
+        {/* Tier deep links — real crawlable internal links to each tier page */}
+        <section className="border-t border-zinc-800 px-6 py-20 sm:px-10 lg:px-16">
+          <div className="mx-auto max-w-7xl">
+            <h2 className="font-sans text-[clamp(1.75rem,4vw,3rem)] font-black uppercase leading-[0.95] tracking-tight text-white">
+              Compare the tiers
+            </h2>
+            <div className="mt-10 grid gap-px bg-zinc-800 sm:grid-cols-2 lg:grid-cols-4">
               {[
-                'AI bike diagnostics',
-                'Maintenance tracking',
-                'Ride log + analytics',
-                'Setup notebook',
-                'Body readiness tracker',
-                'Invite coaches (read-only)',
-                'Send work orders to shops',
-              ].map((feature) => (
-                <li key={feature} className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-lime-400" />
-                  <span className="text-sm">{feature}</span>
-                </li>
+                { name: 'Rookie', price: '$9/mo', who: 'Ages 4–12', href: '/rookie' },
+                { name: 'Privateer', price: '$49/mo', who: 'Semi-pro and club', href: '/privateer' },
+                { name: 'Race Team', price: '$299/mo', who: 'Up to 8 riders', href: '/race_team' },
+                { name: 'Factory Rig', price: '$2,499/mo', who: 'Full factory squad', href: '/factory_rig' },
+              ].map((t) => (
+                <Link
+                  key={t.name}
+                  href={t.href}
+                  className="group flex flex-col gap-2 bg-[#0A0A0A] p-8 transition-colors hover:bg-[#111111]"
+                >
+                  <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-lime">
+                    {t.name}
+                  </span>
+                  <span className="font-sans text-3xl font-black tracking-tight text-white">
+                    {t.price}
+                  </span>
+                  <span className="text-sm text-zinc-500">{t.who}</span>
+                  <span className="mt-3 font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-zinc-500 transition-colors group-hover:text-lime">
+                    View plan &rarr;
+                  </span>
+                </Link>
               ))}
-            </ul>
-            <Button className="w-full bg-lime-500 hover:bg-lime-600 text-black font-bold">
-              Start Free <ArrowRight className="h-4 w-4 ml-2" />
-            </Button>
+            </div>
           </div>
+        </section>
 
-          {/* Coach — $49-99/mo */}
-          <div className="bg-zinc-900 border border-lime-500/30 rounded-xl p-8 ring-2 ring-lime-500/20 transform scale-105">
-            <div className="mb-6">
-              <div className="inline-block bg-lime-500/20 text-lime-400 text-xs font-black px-3 py-1 rounded mb-3">
-                POPULAR
-              </div>
-              <h2 className="text-2xl font-black text-white mb-2">Coach Connect</h2>
-              <p className="text-sm text-zinc-400">For coaches</p>
-            </div>
-            <div className="mb-8">
-              <div className="text-4xl font-black text-lime-400">$49<span className="text-xl">/mo</span></div>
-              <p className="text-sm text-zinc-500 mt-1">Billed monthly</p>
-            </div>
-            <ul className="space-y-3 mb-8">
-              {[
-                'Everything in Bike Doctor',
-                'Read-only access to riders',
-                'View 5 athlete bikes/data',
-                'Ride log analytics',
-                'Setup recommendations',
-                'No data export (platform only)',
-                'Audit log of all views',
-              ].map((feature) => (
-                <li key={feature} className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-lime-400" />
-                  <span className="text-sm">{feature}</span>
-                </li>
+        {/* FAQ — visible copy backing the FAQPage structured data above */}
+        <section className="border-t border-zinc-800 px-6 py-20 sm:px-10 lg:px-16">
+          <div className="mx-auto max-w-3xl">
+            <h2 className="font-sans text-[clamp(1.75rem,4vw,3rem)] font-black uppercase leading-[0.95] tracking-tight text-white">
+              Common questions
+            </h2>
+            <dl className="mt-10 divide-y divide-zinc-800 border-y border-zinc-800">
+              {FAQS.map(({ q, a }) => (
+                <div key={q} className="py-6">
+                  <dt className="text-base font-black uppercase tracking-tight text-white">
+                    {q}
+                  </dt>
+                  <dd className="mt-2 text-sm leading-relaxed text-zinc-400">{a}</dd>
+                </div>
               ))}
-            </ul>
-            <Button className="w-full bg-lime-500 hover:bg-lime-600 text-black font-bold">
-              Start 14-Day Trial <ArrowRight className="h-4 w-4 ml-2" />
-            </Button>
+            </dl>
           </div>
-
-          {/* Shop — $99/mo */}
-          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-8 hover:border-zinc-700 transition">
-            <div className="mb-6">
-              <h2 className="text-2xl font-black text-white mb-2">Shop Connect</h2>
-              <p className="text-sm text-zinc-400">For shops + mechanics</p>
-            </div>
-            <div className="mb-8">
-              <div className="text-4xl font-black text-lime-400">$99<span className="text-xl">/mo</span></div>
-              <p className="text-sm text-zinc-500 mt-1">Billed monthly</p>
-            </div>
-            <ul className="space-y-3 mb-8">
-              {[
-                'Receive rider work orders',
-                'Pre-filled customer info',
-                'Parts inventory integration',
-                'API access (beta)',
-                'Team member accounts',
-                'Service history sync',
-                'Priority support',
-              ].map((feature) => (
-                <li key={feature} className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-lime-400" />
-                  <span className="text-sm">{feature}</span>
-                </li>
-              ))}
-            </ul>
-            <Button className="w-full bg-zinc-700 hover:bg-zinc-600 text-white font-bold" disabled>
-              Contact Sales
-            </Button>
-          </div>
-        </div>
-
-        {/* FAQ */}
-        <div className="max-w-2xl mx-auto mt-24 pt-16 border-t border-zinc-800">
-          <h2 className="text-3xl font-black text-white mb-8">Common questions</h2>
-          <div className="space-y-6">
-            {[
-              {
-                q: 'Can I cancel anytime?',
-                a: 'Yes. Cancel at any time from your account settings. No penalties, no questions asked.',
-              },
-              {
-                q: 'Is my data exported or sold?',
-                a: 'Never. Your data is yours. We never export, sell, or share your information. Period.',
-              },
-              {
-                q: 'How long is the coach trial?',
-                a: '14 days, full access. Card required but we won\'t charge until the trial ends.',
-              },
-              {
-                q: 'Can I upgrade or downgrade?',
-                a: 'Yes. Change plans anytime. Prorated charges apply.',
-              },
-            ].map(({ q, a }) => (
-              <div key={q}>
-                <h3 className="font-bold text-white mb-2">{q}</h3>
-                <p className="text-zinc-400">{a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </main>
+        </section>
+      </main>
+      <MdFooter />
+    </>
   )
 }

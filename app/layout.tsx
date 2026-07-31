@@ -37,20 +37,21 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://motorsportsdata.io
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Bike Doctor — AI Motocross Diagnostics & Rider Tracking',
-    template: '%s | Bike Doctor',
+    default: 'Motorsports Data — Run Your Entire Racing Program',
+    template: '%s | Motorsports Data',
   },
   description:
-    'Free AI-powered bike diagnostics, maintenance tracking, and ride logging for motocross riders. Tell the Bike Doctor what your KTM or Yamaha is doing — get instant diagnosis and fix instructions. Connect to your local shop with one click.',
+    'Contingency automation, sponsor money tracking, season P&L, rider readiness, setup history, and AI coaching on one platform. From the PW50 to the factory rig — with first-class WMX support. Plans from $9/mo.',
   keywords: [
-    'motorsport data', 'motocross app', 'dirt bike maintenance tracker', 'racing platform',
-    'race coach AI', 'motocross setup log', 'part lifecycle tracking', 'youth motocross',
-    'supercross data', 'video analysis motocross', 'rider progression', 'factory mechanic software',
-    'MD Intel', 'MXGP', 'AMA Pro MX', 'motocross injury tracker',
+    'motocross contingency tracking', 'racing sponsor management', 'motocross season budget',
+    'race team management software', 'motocross program platform', 'WMX data platform',
+    'women\u2019s motocross software', 'racing P&L', 'motocross team roster software',
+    'dirt bike maintenance tracker', 'motocross setup log', 'part lifecycle tracking',
+    'youth motocross', 'rider progression', 'motocross injury tracker', 'AI bike diagnosis',
   ],
-  authors: [{ name: 'Motorsport Data', url: BASE_URL }],
-  creator: 'Motorsport Data',
-  publisher: 'Motorsport Data',
+  authors: [{ name: 'Motorsports Data', url: BASE_URL }],
+  creator: 'Motorsports Data',
+  publisher: 'Motorsports Data',
   robots: {
     index: true,
     follow: true,
@@ -63,27 +64,27 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Bike Doctor — Your Free Motocross Diagnostic AI',
+    title: 'Motorsports Data — Run Your Entire Racing Program',
     description:
-      'Describe your bike issue. Get instant AI diagnosis, severity rating, and fix instructions. Free forever for riders. $49/mo for coaches, $99/mo for shops.',
+      'Contingency money, sponsor P&L, season budget, team roles, rider readiness, and AI coaching. One platform, age 4 to Factory Rig. Plans from $9/mo.',
     type: 'website',
     url: BASE_URL,
-    siteName: 'Motorsport Data',
+    siteName: 'Motorsports Data',
     locale: 'en_US',
     images: [
       {
         url: `${BASE_URL}/assets/og-preview.png`,
         width: 1200,
         height: 630,
-        alt: 'Motorsport Data — Comprehensive power sports and racing analytics platform',
+        alt: 'Motorsports Data — the racing program platform',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bike Doctor — AI for Your Motocross Bike',
+    title: 'Motorsports Data — Run Your Entire Racing Program',
     description:
-      'Free app that listens to riders describe their bike issue and gives instant diagnosis with severity ratings and fix instructions.',
+      'Contingency automation, sponsor money, season P&L, rider readiness, and AI coaching on one platform. From the PW50 to the factory rig.',
     images: [`${BASE_URL}/assets/og-preview.png`],
   },
   // NOTE: intentionally NO `alternates.canonical` here. A canonical set in the
@@ -193,17 +194,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               {
                 '@context': 'https://schema.org',
                 '@type': 'Organization',
-                name: 'Motorsport Data',
+                name: 'Motorsports Data',
                 url: BASE_URL,
                 logo: `${BASE_URL}/images/md-logo.png`,
                 description:
-                  'The operating system for a racing career. AI-powered platform tracking bike, setup, body, and mind from youth to factory level.',
+                  'The racing program platform. Contingency automation, sponsor money tracking, season P&L, rider readiness, setup history, team roles, and AI coaching — from the PW50 to the factory rig.',
                 sameAs: [],
               },
               {
                 '@context': 'https://schema.org',
                 '@type': 'WebSite',
-                name: 'Motorsport Data',
+                name: 'Motorsports Data',
                 url: BASE_URL,
                 potentialAction: {
                   '@type': 'SearchAction',

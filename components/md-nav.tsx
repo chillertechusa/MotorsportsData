@@ -27,8 +27,10 @@ export default function MdNav() {
             <MdLogo size="sm" asLink={false} />
           </Link>
 
-          {/* Nav CTAs */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          {/* Nav CTAs — wrapped in a nav landmark so assistive tech and
+              crawlers can identify the primary navigation on desktop too
+              (previously only the mobile menu was a <nav>). */}
+          <nav aria-label="Main navigation" className="flex items-center gap-2 sm:gap-3">
             <DemoButton
               variant="primary"
               size="sm"
@@ -41,7 +43,7 @@ export default function MdNav() {
             >
               Sign In
             </Link>
-          </div>
+          </nav>
 
           {/* Mobile toggle — hidden, Sign In button replaces it */}
           <button

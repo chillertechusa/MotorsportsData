@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import DemoButton from '@/components/demo-button'
 import MdTelemetryHud from '@/components/landing/md-telemetry-hud'
@@ -13,19 +13,38 @@ const STATS = [
 
 export default function MdHero() {
   const videoRef = useRef<HTMLVideoElement>(null)
+  /* The clip is large and purely decorative, so it must never compete with
+     the headline for LCP. Mount it only after the first paint, and skip it
+     entirely for data-saver and reduced-motion users. The section is black
+     either way, so there is no flash and no layout shift when it appears. */
+  const [showVideo, setShowVideo] = useState(false)
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const saveData = (
+      navigator as Navigator & { connection?: { saveData?: boolean } }
+    ).connection?.saveData
+    if (reducedMotion || saveData) return
+
+    const id = window.requestAnimationFrame(() => setShowVideo(true))
+    return () => window.cancelAnimationFrame(id)
+  }, [])
 
   return (
     <section className="relative min-h-svh overflow-hidden bg-black">
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover"
-        src="/videos/md-hero.mp4"
-      />
+      {showVideo && (
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="none"
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover"
+          src="/videos/md-hero.mp4"
+        />
+      )}
       <div aria-hidden="true" className="absolute inset-0 bg-black/65" />
       <div
         aria-hidden="true"
