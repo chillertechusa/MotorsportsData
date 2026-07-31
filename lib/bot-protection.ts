@@ -2,8 +2,8 @@ import { Redis } from '@upstash/redis'
 import { createHash } from 'crypto'
 
 const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL,
-  token: process.env.UPSTASH_REDIS_REST_TOKEN,
+  url: process.env.KV_REST_API_URL ?? process.env.UPSTASH_REDIS_REST_URL ?? '',
+  token: process.env.KV_REST_API_TOKEN ?? process.env.UPSTASH_REDIS_REST_TOKEN ?? '',
 })
 
 export const RATE_LIMITS = {
@@ -40,23 +40,20 @@ export async function checkRateLimit(
   limit: number,
   windowSeconds: number
 ): Promise<{ allowed: boolean; retryAfter: number; remaining: number }> {
-  const now = Math.floor(Date.now() / 1000)
-  const windowStart = now - windowSeconds
-
   try {
-    // Get current count for this key
-    const current = await redis.get<number>(key)
-    const count = (current ?? 0) + 1
+    // Atomic increment; first request in the window creates the key
+    const count = await redis.incr(key)
 
-    if (count > limit) {
-      // Rate limited — get TTL for retry-after
-      const ttl = await redis.ttl(key)
-      return { allowed: false, retryAfter: Math.max(1, ttl || windowSeconds), remaining: 0 }
+    // Only set the expiry when the key is first created, so the
+    // window is fixed rather than sliding forward on every request.
+    if (count === 1) {
+      await redis.expire(key, windowSeconds)
     }
 
-    // Under limit — increment and set expiry
-    await redis.incr(key)
-    await redis.expire(key, windowSeconds)
+    if (count > limit) {
+      const ttl = await redis.ttl(key)
+      return { allowed: false, retryAfter: Math.max(1, ttl > 0 ? ttl : windowSeconds), remaining: 0 }
+    }
 
     return { allowed: true, retryAfter: 0, remaining: limit - count }
   } catch (err) {
