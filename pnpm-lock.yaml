@@ -134,6 +134,9 @@ importers:
       web-push:
         specifier: ^3.6.7
         version: 3.6.7
+      web-vitals:
+        specifier: ^6.0.1
+        version: 6.0.1
     devDependencies:
       '@playwright/test':
         specifier: ^1.61.1
@@ -5595,6 +5598,9 @@ packages:
   web-streams-polyfill@3.3.3:
     resolution: {integrity: sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==}
     engines: {node: '>= 8'}
+
+  web-vitals@6.0.1:
+    resolution: {integrity: sha512-iF3+kno3Anlqi5fPVTQk9gYLfsCiL8P69Hof+AmZyVVx00E3e/BiGVvu+EsOy6jvTLqTKuiaRloPyw0JtdKbSw==}
 
   webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
@@ -11213,6 +11219,8 @@ snapshots:
       - supports-color
 
   web-streams-polyfill@3.3.3: {}
+
+  web-vitals@6.0.1: {}
 
   webidl-conversions@3.0.1: {}
 

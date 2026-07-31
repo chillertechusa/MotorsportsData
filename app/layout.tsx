@@ -6,7 +6,6 @@ import { CartProvider } from '@/lib/cart-context'
 import CartDrawer from '@/components/store/cart-drawer'
 
 import { ServiceWorkerInit } from '@/components/service-worker-init'
-import { VitalsInit } from '@/components/vitals-init'
 import MdNav from '@/components/md-nav'
 import './globals.css'
 
@@ -219,7 +218,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             ]),
           }}
         />
-        <VitalsInit />
         <CartProvider>
           {/* Fixed navigation — inside CartProvider so CartButton can access cart context */}
           <MdNav />
