@@ -5,7 +5,7 @@ const ROLES = [
 
 export default function MdTeam() {
   return (
-    <section id="team" className="bg-[#0A0A0A] py-24 md:py-32">
+    <section id="team" className="bg-[#0A0A0A] py-20 md:py-24">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
         <div className="mb-16 flex items-end justify-between gap-8 border-b border-zinc-800 pb-8">
           <div>
@@ -13,7 +13,7 @@ export default function MdTeam() {
               The way real teams<br />
               <span className="text-lime">actually run.</span>
             </h2>
-            <p className="mt-6 max-w-xl text-sm leading-relaxed text-zinc-500 sm:text-base">
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-zinc-500 sm:text-base">
               Racing is not a solo sport with a solo login. Eleven roles, scoped permissions,
               and everyone seeing exactly the data they need &mdash; nothing they don&apos;t.
             </p>

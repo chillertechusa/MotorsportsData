@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import DemoButton from '@/components/demo-button'
+import MdTelemetryHud from '@/components/landing/md-telemetry-hud'
 
 const STATS = [
   { stat: '$2,800', label: 'Avg contingency left unclaimed per season' },
@@ -27,7 +28,7 @@ export default function MdHero() {
         className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black to-transparent"
       />
 
-      <div className="relative mx-auto flex min-h-svh max-w-7xl flex-col justify-between px-6 pb-16 pt-28 sm:px-10 lg:px-16">
+      <div className="relative mx-auto flex min-h-svh max-w-7xl flex-col justify-between px-6 pb-12 pt-24 sm:px-10 lg:px-16">
         <div className="flex items-center justify-between">
           <span className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-lime">
             The Racing Program Platform
@@ -37,20 +38,20 @@ export default function MdHero() {
           </span>
         </div>
 
-        <div className="mt-auto pt-16 pb-12">
-          <div className="max-w-5xl">
-            <h1 className="font-sans text-[clamp(3rem,10vw,8rem)] font-black uppercase leading-[0.88] tracking-tight text-white drop-shadow-2xl">
+        <div className="mt-auto flex items-end gap-12 pt-12 pb-10">
+          <div className="max-w-4xl">
+            <h1 className="font-sans text-[clamp(3rem,9vw,7rem)] font-black uppercase leading-[0.88] tracking-tight text-white drop-shadow-2xl">
               Run your entire<br />
               racing <em className="not-italic text-lime">program</em>.
             </h1>
 
-            <p className="mt-8 max-w-2xl text-base leading-relaxed text-zinc-300 sm:text-lg">
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-zinc-300 sm:text-lg">
               Contingency claims. Sponsor money. Season budget. Rider readiness. Setup history.
               AI coaching. One platform from the PW50 to the factory rig &mdash; and it collects
               the money you already earned.
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-8 flex flex-wrap items-center gap-4">
               <DemoButton label="See the platform — live demo" size="lg" role="coach" />
               <Link
                 href="/auth/sign-up"
@@ -60,9 +61,13 @@ export default function MdHero() {
               </Link>
             </div>
           </div>
+
+          <div className="hidden w-[280px] shrink-0 lg:block">
+            <MdTelemetryHud />
+          </div>
         </div>
 
-        <div className="border-t border-white/10 pt-10">
+        <div className="border-t border-white/10 pt-8">
           <div className="grid grid-cols-3 gap-8 sm:gap-12">
             {STATS.map((item) => (
               <div key={item.label}>

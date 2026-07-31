@@ -18,7 +18,7 @@ const MONEY = [
 
 export default function MdMoney() {
   return (
-    <section id="money" className="bg-[#0A0A0A] py-24 md:py-32">
+    <section id="money" className="bg-[#0A0A0A] py-20 md:py-24">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
         <div className="mb-16 flex items-end justify-between gap-8 border-b border-zinc-800 pb-8">
           <div>
@@ -26,7 +26,7 @@ export default function MdMoney() {
               Stop losing money<br />
               <span className="text-zinc-600">you already earned.</span>
             </h2>
-            <p className="mt-6 max-w-xl text-sm leading-relaxed text-zinc-500 sm:text-base">
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-zinc-500 sm:text-base">
               Contingency money goes unclaimed every single season because nobody is tracking
               which programs a result qualifies for. MD does it automatically.
             </p>

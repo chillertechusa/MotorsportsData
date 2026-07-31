@@ -14,7 +14,7 @@ const CARRIES = [
 
 export default function MdCareer() {
   return (
-    <section id="career" className="bg-[#0A0A0A] py-24 md:py-32">
+    <section id="career" className="bg-[#0A0A0A] py-20 md:py-24">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
         <div className="mb-16 flex items-end justify-between gap-8 border-b border-zinc-800 pb-8">
           <div>
@@ -22,7 +22,7 @@ export default function MdCareer() {
               One file. First ride<br />
               <span className="text-lime">to retirement.</span>
             </h2>
-            <p className="mt-6 max-w-xl text-sm leading-relaxed text-zinc-500 sm:text-base">
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-zinc-500 sm:text-base">
               Every other tool makes you start over when you move up. MD is the only platform
               that grows with the career instead of resetting it.
             </p>

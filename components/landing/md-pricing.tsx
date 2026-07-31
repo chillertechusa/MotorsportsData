@@ -53,7 +53,7 @@ const TIERS = [
 
 export default function MdPricing() {
   return (
-    <section id="pricing" className="border-t border-zinc-800 bg-[#0A0A0A] py-24 md:py-32">
+    <section id="pricing" className="border-t border-zinc-800 bg-[#0A0A0A] py-20 md:py-24">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
         <div className="mb-16 flex items-end justify-between gap-8 border-b border-zinc-800 pb-8">
           <div>
@@ -61,7 +61,7 @@ export default function MdPricing() {
               Priced like<br />
               <span className="text-lime">infrastructure.</span>
             </h2>
-            <p className="mt-6 max-w-xl text-sm leading-relaxed text-zinc-500 sm:text-base">
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-zinc-500 sm:text-base">
               A season costs $12,000 to $39,000. The platform that runs it should cost a
               fraction of one blown motor.
             </p>

@@ -17,7 +17,7 @@ const WMX = [
 
 export default function MdWmx() {
   return (
-    <section id="wmx" className="border-y border-lime/25 bg-[#0C0C0C] py-24 md:py-32">
+    <section id="wmx" className="border-y border-lime/25 bg-[#0C0C0C] py-20 md:py-24">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
         <div className="mb-16 flex items-end justify-between gap-8 border-b border-zinc-800 pb-8">
           <div>
@@ -28,7 +28,7 @@ export default function MdWmx() {
               Built for women&apos;s MX.<br />
               <span className="text-lime">Finally.</span>
             </h2>
-            <p className="mt-6 max-w-xl text-sm leading-relaxed text-zinc-400 sm:text-base">
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-zinc-400 sm:text-base">
               Women&apos;s motocross got a real professional platform in 2026 and nobody built
               real data tools for it. No results infrastructure, no progression tracking, no
               program tools. We built them.

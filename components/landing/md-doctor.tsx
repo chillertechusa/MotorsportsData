@@ -25,7 +25,7 @@ const MORE = [
 
 export default function MdDoctor() {
   return (
-    <section id="doctor" className="bg-[#0A0A0A] py-24 md:py-32">
+    <section id="doctor" className="bg-[#0A0A0A] py-20 md:py-24">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
         <div className="mb-16 flex items-end justify-between gap-8 border-b border-zinc-800 pb-8">
           <div>
@@ -33,7 +33,7 @@ export default function MdDoctor() {
               The AI Doctor is<br />
               <span className="text-zinc-600">one of sixteen.</span>
             </h2>
-            <p className="mt-6 max-w-xl text-sm leading-relaxed text-zinc-500 sm:text-base">
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-zinc-500 sm:text-base">
               Describe a symptom and the AI tells you what is wrong and how bad it is. It is a
               great feature. It is also a small part of what the platform does.
             </p>
@@ -60,7 +60,7 @@ export default function MdDoctor() {
           ))}
         </div>
 
-        <div className="mt-20">
+        <div className="mt-14">
           <p className="mb-8 font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-600">
             Also included on every tier
           </p>
