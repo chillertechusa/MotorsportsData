@@ -23,7 +23,7 @@ export default function AdminOnboardingPage() {
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-zinc-100 mb-2">Bike Doctor Admin Setup</h1>
+          <h1 className="text-3xl font-bold text-zinc-100 mb-2">Motorsports Data Admin Setup</h1>
           <p className="text-zinc-400">Follow these steps to configure your instance</p>
         </div>
 
@@ -55,7 +55,7 @@ export default function AdminOnboardingPage() {
             <div>
               <h2 className="text-2xl font-bold text-zinc-100 mb-4">Welcome, Admin</h2>
               <p className="text-zinc-300 mb-6">
-                This wizard will help you set up Bike Doctor for your community. You'll:
+                This wizard will help you set up Motorsports Data for your community. You'll:
               </p>
               <ul className="space-y-3 mb-8 text-zinc-300">
                 <li className="flex items-center gap-3">
@@ -92,7 +92,7 @@ export default function AdminOnboardingPage() {
               </p>
               <input
                 type="email"
-                placeholder="admin@bikedoctor.io"
+                placeholder="admin@motorsportsdata.io"
                 value={verifyEmail}
                 onChange={(e) => setVerifyEmail(e.target.value)}
                 className="w-full bg-zinc-700 border border-zinc-600 rounded-lg px-4 py-3 text-zinc-100 mb-6"
@@ -178,7 +178,7 @@ export default function AdminOnboardingPage() {
               </div>
               <h2 className="text-2xl font-bold text-zinc-100 mb-3">Setup Complete!</h2>
               <p className="text-zinc-400 mb-8">
-                Your Bike Doctor platform is ready. Monitor health and approvals from /admin dashboard.
+                Your Motorsports Data platform is ready. Monitor health and approvals from /admin dashboard.
               </p>
               <Button className="w-full bg-lime-500 hover:bg-lime-600 text-black font-bold">
                 Go to Dashboard

@@ -44,7 +44,7 @@ export default function HelpPage() {
     {
       icon: Lightbulb,
       title: 'Pro Tips',
-      description: 'Maximize your Bike Doctor experience',
+      description: 'Maximize your Motorsports Data experience',
       topics: [
         'Log every session — Even practice helps AI learn',
         'Update setup notes — AI improves with context',
@@ -62,7 +62,7 @@ export default function HelpPage() {
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-zinc-100 mb-4">Help Center</h1>
           <p className="text-lg text-zinc-400">
-            Learn how to get the most out of Bike Doctor
+            Learn how to get the most out of Motorsports Data
           </p>
         </div>
 
@@ -137,7 +137,7 @@ export default function HelpPage() {
               View FAQ
             </Link>
             <a
-              href="mailto:support@bikedoctor.io"
+              href="mailto:support@motorsportsdata.io"
               className="px-6 py-3 bg-lime-500 hover:bg-lime-600 text-black font-bold rounded-lg transition-colors"
             >
               Email Support

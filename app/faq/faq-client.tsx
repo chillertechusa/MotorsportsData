@@ -24,18 +24,11 @@ export default function FaqClient({ categories }: { categories: FaqCategory[] })
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-16 sm:px-10">
+      {/* The page heading and intro live in the server component so they are
+          part of the static HTML; this client island only owns the search box
+          and the interactive accordion. */}
       <div className="mb-12">
-        <span className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-lime">
-          Support
-        </span>
-        <h1 className="mt-5 font-sans text-[clamp(2.25rem,6vw,4rem)] font-black uppercase leading-[0.92] tracking-tight text-white text-balance">
-          Frequently asked questions
-        </h1>
-        <p className="mt-5 text-base leading-relaxed text-zinc-400">
-          Contingency, sponsor money, team roles, and the AI Doctor &mdash; answered.
-        </p>
-
-        <div className="relative mt-8">
+        <div className="relative">
           <Search
             aria-hidden="true"
             className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500"

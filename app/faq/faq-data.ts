@@ -126,3 +126,8 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
     ],
   },
 ]
+
+/** Flattened list used to build the FAQPage structured data. */
+export const FAQ_ITEMS: { q: string; a: string }[] = FAQ_CATEGORIES.flatMap(
+  (category) => category.items,
+)

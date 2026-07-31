@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import DemoLaunchClient from './demo-launch-client'
 
 export const metadata: Metadata = {
-  title: 'Live Demo — Motorsport Data',
-  description: 'Step into a real Motorsport Data coaching account. Pre-loaded with athletes, sessions, training plans, and invoices — no credit card.',
+  title: 'Live Demo — Motorsports Data',
+  description: 'Step into a real Motorsports Data account. Pre-loaded with riders, sessions, contingency claims, and season budget — no credit card.',
   robots: { index: false, follow: false },
 }
 

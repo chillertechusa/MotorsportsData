@@ -14,12 +14,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 1.0,
     },
-    {
-      url: `${BASE_URL}/demo`,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 0.95,
-    },
+    // NOTE: /demo is intentionally absent. It sets `robots: { index: false }`,
+    // and submitting a noindex URL in the sitemap triggers "Submitted URL
+    // marked noindex" errors in Search Console. /demo-booking is the
+    // indexable entry point for demo traffic.
     {
       url: `${BASE_URL}/shop`,
       lastModified: now,
@@ -92,7 +90,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
-    // ── Bike Doctor support pages ──────────────────────────────────────────
+    // ── Support & guide pages ──────────────────────────────────────────
     {
       url: `${BASE_URL}/pricing`,
       lastModified: now,

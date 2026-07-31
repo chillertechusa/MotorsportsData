@@ -1,185 +1,120 @@
-'use client'
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import MdFooter from '@/components/md-footer'
+import { FAQ_CATEGORIES, FAQ_ITEMS } from './faq-data'
+import FaqClient from './faq-client'
 
-import { useState } from 'react'
-import { ChevronDown, Search } from 'lucide-react'
-import { Input } from '@/components/ui/input'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://motorsportsdata.io'
 
-export default function FAQPage() {
-  const [search, setSearch] = useState('')
-  const [openIndex, setOpenIndex] = useState<string | null>(null)
+export const metadata: Metadata = {
+  title: 'FAQ — Contingency, Pricing, Teams & Data Ownership',
+  description:
+    'Answers about contingency automation, sponsor tracking, season P&L, WMX support, team roles, the AI Doctor, pricing from $9/mo, and who owns your racing data.',
+  alternates: { canonical: `${BASE_URL}/faq` },
+  openGraph: {
+    title: 'Motorsports Data FAQ',
+    description:
+      'How contingency claims, sponsor money, team roles, WMX support, and pricing work on Motorsports Data.',
+    url: `${BASE_URL}/faq`,
+    type: 'website',
+  },
+}
 
-  const faqs = [
-    {
-      category: 'Bike Diagnostics',
-      items: [
-        {
-          q: 'How accurate is the Bike Doctor diagnosis?',
-          a: 'The Bike Doctor uses AI trained on thousands of real motocross diagnostic cases. It narrows down likely causes based on your symptom description, severity, and bike model. Always confirm with a shop before major repairs.',
-        },
-        {
-          q: 'What bikes does Bike Doctor support?',
-          a: 'Bike Doctor works with any motocross bike: 2-stroke (YZ, CR, RM, KX) and 4-stroke (CRF, WR, DR, KLX, KX450). We have setup specs for all current models.',
-        },
-        {
-          q: 'Can I get help with jetting?',
-          a: 'Yes! Tell the Bike Doctor your altitude, weather, and how the bike feels on the track. It will recommend pilot, needle, and main jet changes with reasons for each.',
-        },
-        {
-          q: 'Is there a severity rating?',
-          a: 'Yes. Diagnoses include: "Ride it, monitor" (minor, safe to race) | "Fix before next session" (medium, affects performance) | "Do not ride" (critical, safety risk).',
-        },
-      ],
-    },
-    {
-      category: 'Coaching',
-      items: [
-        {
-          q: 'How do I invite a coach?',
-          a: 'Go to Household tab → "Invite Coach" → Enter their email. They receive a link to accept and get read-only access to your bikes and ride log.',
-        },
-        {
-          q: 'What can coaches see?',
-          a: 'Coaches see your bike maintenance notes, setup notebooks, ride log, and readiness status. They cannot export data or download files.',
-        },
-        {
-          q: 'How much does Coach Connect cost?',
-          a: 'Coach Connect is $49/month for unlimited rider connections. Coaches can monitor up to 50 athletes simultaneously.',
-        },
-        {
-          q: 'Can multiple coaches access my data?',
-          a: 'Yes. You can invite as many coaches as you want. Each sees the same read-only data and cannot see each other.',
-        },
-      ],
-    },
-    {
-      category: 'Shops & Work Orders',
-      items: [
-        {
-          q: 'How do I send my diagnosis to a shop?',
-          a: 'After the Bike Doctor generates a diagnosis, click "Send diagnosis to my shop". Enter the shop name/email and it creates a pre-filled work order they can use.',
-        },
-        {
-          q: 'What shops does Bike Doctor connect to?',
-          a: 'We connect to any shop using Clutch DMS. If your shop uses Clutch, work orders arrive automatically. Otherwise, they get an email link.',
-        },
-        {
-          q: 'Is sending a work order free?',
-          a: 'Yes. Sending work orders is free forever. Shops may charge for the service itself.',
-        },
-      ],
-    },
-    {
-      category: 'Guardian & Family',
-      items: [
-        {
-          q: 'Can I track my kids\' bikes?',
-          a: 'Yes. Parents create one account, then add rider profiles for each child. Parent sees all bikes, readiness, and race schedule. Kids get their own login too.',
-        },
-        {
-          q: 'What age can kids have their own account?',
-          a: 'Riders 18+ create their own account. Riders 13-17 need parental consent (COPPA-compliant). Under 13 requires full guardian setup.',
-        },
-        {
-          q: 'Can I see my kid\' ride metrics?',
-          a: 'Yes. Parents see lap times, bike readiness, maintenance schedule, and injury/soreness tracking. Full transparency into their racing program.',
-        },
-      ],
-    },
-    {
-      category: 'Account & Privacy',
-      items: [
-        {
-          q: 'Is my data private?',
-          a: 'Yes. All rider data is encrypted at rest and in transit. Coaches and shops get only the data you explicitly share. See Privacy Policy for details.',
-        },
-        {
-          q: 'Can I delete my account?',
-          a: 'Yes. Go to Settings → Account → Delete Account. All your data is permanently removed within 30 days.',
-        },
-        {
-          q: 'How do I change my password?',
-          a: 'Go to Settings → Security → Change Password. You\'ll need your current password and email verification.',
-        },
-      ],
-    },
-  ]
+export default function FaqPage() {
+  /* FAQPage structured data is built from the same source as the visible
+     answers, so rich results can never drift from the rendered copy. */
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQ_ITEMS.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  }
 
-  const filtered = search
-    ? faqs.map((cat) => ({
-        ...cat,
-        items: cat.items.filter(
-          (item) =>
-            item.q.toLowerCase().includes(search.toLowerCase()) ||
-            item.a.toLowerCase().includes(search.toLowerCase())
-        ),
-      })).filter((cat) => cat.items.length > 0)
-    : faqs
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+      { '@type': 'ListItem', position: 2, name: 'FAQ', item: `${BASE_URL}/faq` },
+    ],
+  }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-zinc-950 to-zinc-900 p-6">
-      <div className="max-w-2xl mx-auto">
-        {/* Header */}
-        <div className="mb-12 text-center">
-          <h1 className="text-3xl font-bold text-zinc-100 mb-4">Frequently Asked Questions</h1>
-          <p className="text-zinc-400 mb-6">Everything you need to know about Bike Doctor</p>
-          
-          {/* Search */}
-          <div className="relative">
-            <Search className="absolute left-3 top-3 h-4 w-4 text-zinc-500" />
-            <Input
-              type="text"
-              placeholder="Search FAQs..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="pl-10 bg-zinc-800 border-zinc-700 text-zinc-100"
-            />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
+      <main className="min-h-screen bg-background">
+        <section className="border-b border-border px-6 py-20 sm:px-10 md:py-24 lg:px-16">
+          {/* max-w-3xl matches the accordion container below so the hero copy
+              and the question list share the same left edge. */}
+          <div className="mx-auto max-w-3xl">
+            <nav aria-label="Breadcrumb" className="mb-8">
+              <ol className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                <li>
+                  <Link href="/" className="transition-colors hover:text-lime">
+                    Home
+                  </Link>
+                </li>
+                <li aria-hidden="true">/</li>
+                <li className="text-foreground">FAQ</li>
+              </ol>
+            </nav>
+
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-lime">
+              Questions
+            </p>
+            <h1 className="mt-5 max-w-4xl font-sans text-[clamp(2.25rem,6vw,4.5rem)] font-black uppercase leading-[0.92] tracking-tight text-foreground">
+              Everything you&apos;re<br />
+              about to <em className="not-italic text-lime">ask</em>.
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
+              Contingency money, sponsor tracking, team roles, WMX, pricing, and who owns your
+              data. If something is still unclear, we answer email in about a day.
+            </p>
           </div>
-        </div>
+        </section>
 
-        {/* FAQs */}
-        <div className="space-y-8">
-          {filtered.map((category, catIdx) => (
-            <div key={catIdx}>
-              <h2 className="text-xl font-bold text-lime-400 mb-4">{category.category}</h2>
-              <div className="space-y-3">
-                {category.items.map((item, itemIdx) => (
-                  <div
-                    key={itemIdx}
-                    className="bg-zinc-800/50 border border-zinc-700 rounded-lg overflow-hidden"
-                  >
-                    <button
-                      onClick={() =>
-                        setOpenIndex(openIndex === `${catIdx}-${itemIdx}` ? null : `${catIdx}-${itemIdx}`)
-                      }
-                      className="w-full px-6 py-4 flex items-center justify-between hover:bg-zinc-700/30 transition-colors text-left"
-                    >
-                      <p className="font-medium text-zinc-100">{item.q}</p>
-                      <ChevronDown
-                        className={`h-5 w-5 text-lime-400 transition-transform ${
-                          openIndex === `${catIdx}-${itemIdx}` ? 'rotate-180' : ''
-                        }`}
-                      />
-                    </button>
-                    {openIndex === `${catIdx}-${itemIdx}` && (
-                      <div className="px-6 py-4 bg-zinc-700/20 border-t border-zinc-700 text-zinc-300">
-                        {item.a}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+        <FaqClient categories={FAQ_CATEGORIES} />
+
+        <section className="border-t border-border px-6 py-20 sm:px-10 md:py-24 lg:px-16">
+          <div className="mx-auto flex max-w-3xl flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h2 className="font-sans text-2xl font-black uppercase tracking-tight text-foreground sm:text-3xl">
+                Still have a question?
+              </h2>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                Email us and a human who actually races will answer &mdash; usually within one
+                business day.
+              </p>
             </div>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div className="mt-12 text-center">
-          <p className="text-zinc-400 mb-4">Can't find what you're looking for?</p>
-          <a href="/help" className="text-lime-400 hover:text-lime-300 font-medium">
-            Visit Help Center → or email support@bikedoctor.io
-          </a>
-        </div>
-      </div>
-    </main>
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href="mailto:support@motorsportsdata.io"
+                className="inline-flex items-center justify-center bg-lime px-8 py-4 font-mono text-sm font-bold uppercase tracking-[0.15em] text-black transition-opacity hover:opacity-90"
+              >
+                Email support
+              </a>
+              <Link
+                href="/pricing"
+                className="inline-flex items-center justify-center border border-border px-8 py-4 font-mono text-sm font-bold uppercase tracking-[0.15em] text-foreground transition-colors hover:border-lime hover:text-lime"
+              >
+                See pricing
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+      <MdFooter />
+    </>
   )
 }

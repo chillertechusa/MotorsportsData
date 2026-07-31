@@ -31,7 +31,7 @@ export const emailTemplates = {
                   <li style="margin:8px 0;">✓ Send diagnoses to your local shop</li>
                 </ul>
                 <div style="text-align:center;margin:28px 0 8px;">
-                  <a href="https://www.bikedoctor.io/data/rider" style="display:inline-block;background:#a3e635;color:#09090b;font-weight:700;font-size:14px;text-decoration:none;padding:12px 28px;border-radius:10px;">Get Started</a>
+                  <a href="https://www.motorsportsdata.io/data/rider" style="display:inline-block;background:#a3e635;color:#09090b;font-weight:700;font-size:14px;text-decoration:none;padding:12px 28px;border-radius:10px;">Get Started</a>
                 </div>
               </td></tr>
             </table>
@@ -66,7 +66,7 @@ export const emailTemplates = {
                   <li style="margin:6px 0;">✓ Injury/soreness alerts</li>
                 </ul>
                 <div style="text-align:center;margin:24px 0;">
-                  <a href="https://www.bikedoctor.io/pricing" style="display:inline-block;background:#a3e635;color:#09090b;font-weight:700;font-size:14px;text-decoration:none;padding:12px 28px;border-radius:10px;">Upgrade to Coach</a>
+                  <a href="https://www.motorsportsdata.io/pricing" style="display:inline-block;background:#a3e635;color:#09090b;font-weight:700;font-size:14px;text-decoration:none;padding:12px 28px;border-radius:10px;">Upgrade to Coach</a>
                 </div>
               </td></tr>
             </table>
@@ -101,7 +101,7 @@ export const emailTemplates = {
                   <li style="margin:6px 0;">✓ Unlimited order volume</li>
                 </ul>
                 <div style="text-align:center;margin:24px 0;">
-                  <a href="https://www.bikedoctor.io/pricing" style="display:inline-block;background:#a3e635;color:#09090b;font-weight:700;font-size:14px;text-decoration:none;padding:12px 28px;border-radius:10px;">Upgrade to Shop</a>
+                  <a href="https://www.motorsportsdata.io/pricing" style="display:inline-block;background:#a3e635;color:#09090b;font-weight:700;font-size:14px;text-decoration:none;padding:12px 28px;border-radius:10px;">Upgrade to Shop</a>
                 </div>
               </td></tr>
             </table>
@@ -128,7 +128,7 @@ export const emailTemplates = {
                 <p style="margin:0 0 16px;color:#fafafa;font-weight:600;font-size:16px;">It's been a while...</p>
                 <p>Log a ride, update your setup notes, or get a diagnosis for that weird sound your bike made last weekend.</p>
                 <div style="text-align:center;margin:20px 0;">
-                  <a href="https://www.bikedoctor.io/data/rider" style="display:inline-block;background:#a3e635;color:#09090b;font-weight:700;font-size:13px;text-decoration:none;padding:10px 24px;border-radius:8px;">Back to Bike Doctor</a>
+                  <a href="https://www.motorsportsdata.io/data/rider" style="display:inline-block;background:#a3e635;color:#09090b;font-weight:700;font-size:13px;text-decoration:none;padding:10px 24px;border-radius:8px;">Back to Motorsports Data</a>
                 </div>
               </td></tr>
             </table>
