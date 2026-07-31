@@ -79,7 +79,31 @@ git push origin <your-branch>   # open a PR, or push to the connected branch
 Import the repo at https://vercel.com/new, then add the environment variables
 from above in Project Settings → Environment Variables. Redeploy after adding them.
 
-## Step 3 — Create the owner/admin account
+## Step 3 — Bot Protection (Upstash Redis)
+
+Bike Doctor uses **Upstash Redis + request fingerprinting** to block automated sign-ups, coach invites, and work order spam:
+
+- **Sign-up rate limit:** 1 per IP per minute, 5 per fingerprint per hour (prevents account farming)
+- **Coach invite rate limit:** 3 per user per hour (prevents spam invites)
+- **Work order rate limit:** 5 per user per day (prevents order abuse)
+- **Fingerprinting:** Combines user-agent, IP, and accept-language to identify bot patterns
+
+When a rate limit is hit, the endpoint returns **429 Too Many Requests** with a `retry-after` header. The frontend should display "Too many attempts. Please try again in X minutes."
+
+To adjust limits, edit `lib/bot-protection.ts` and update the `RATE_LIMITS` constant. Upstash provides real-time metrics at https://console.upstash.com/redis.
+
+**Environment variables required (auto-set by Upstash integration):**
+```bash
+UPSTASH_REDIS_REST_URL=...
+UPSTASH_REDIS_REST_TOKEN=...
+```
+
+**Protected endpoints:**
+- `/api/auth/sign-up-protected` — rate-limited sign-up
+- `/api/md-coach/invite-protected` — rate-limited coach invites
+- `/api/md-owner/send-work-order-protected` — rate-limited work orders
+
+## Step 4 — Create the owner/admin account
 
 The King Console (`/admin`) requires a user whose `role` is `admin` or `owner`.
 Create your first user through the normal sign-up flow at `/auth/sign-up`, then
@@ -95,7 +119,7 @@ UPDATE "user" SET role = 'owner' WHERE email = 'you@example.com';
 > `bcryptjs`, which is not installed. Do not run them as-is. Better Auth stores
 > credentials in the `account` table, so create real accounts via `/auth/sign-up`.
 
-## Step 4 — Verify
+## Step 5 — Verify
 
 - Landing page: `/`
 - Pricing: `/pricing`
@@ -124,6 +148,7 @@ pnpm health:check
 
 - **Database:** Neon auto-scales; use the pooled connection string in serverless.
 - **Email:** Resend free tier is limited; upgrade for production volume.
+- **Bot protection:** Upstash Redis auto-scales; check dashboard for rate limit metrics.
 - **Analytics events** (in `lib/analytics.ts`): `demo_started`, `signup`,
   `coach_invited`, `diagnosis_generated`, `work_order_sent`.
 
