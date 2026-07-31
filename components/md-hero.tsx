@@ -1,25 +1,54 @@
+'use client'
+
 import Link from 'next/link'
 import { ArrowRight, ChevronDown } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import MdHeroTelemetry from '@/components/md-hero-telemetry'
 import MdHeroTelemetryInline from '@/components/md-hero-telemetry-inline'
+import { getHeroVideoConfig } from '@/lib/video-optimizer'
 
 export default function MdHero() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [videoConfig, setVideoConfig] = useState(getHeroVideoConfig())
+
+  // Lazy-load video — only start playback when section is visible
+  useEffect(() => {
+    if (!videoRef.current) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          videoRef.current?.play()
+        } else {
+          videoRef.current?.pause()
+        }
+      },
+      { threshold: 0.25 }
+    )
+
+    observer.observe(videoRef.current)
+    return () => observer.disconnect()
+  }, [])
   return (
     <section
       className="relative flex flex-col justify-start overflow-hidden bg-zinc-950 pt-14 min-h-screen min-h-[100svh]"
       aria-label="Hero"
     >
-      {/* Video background layer */}
+      {/* Video background layer — optimized with lazy loading + format detection */}
       <video
+        ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
+        poster={videoConfig.poster}
+        preload={videoConfig.preload}
         className="absolute inset-0 w-full h-full object-cover -z-10"
         aria-hidden="true"
       >
-        <source src="/assets/hero-background.mp4" type="video/mp4" />
-        <source src="/assets/hero-background.webm" type="video/webm" />
+        {videoConfig.sources.map((source) => (
+          <source key={source.type} src={source.src} type={source.type} />
+        ))}
       </video>
 
       {/* Dark base overlay */}
