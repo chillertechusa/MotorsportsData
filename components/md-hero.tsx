@@ -9,9 +9,22 @@ export default function MdHero() {
       className="relative flex flex-col justify-start overflow-hidden bg-zinc-950 pt-14 min-h-screen min-h-[100svh]"
       aria-label="Hero"
     >
+      {/* Video background layer */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover -z-10"
+        aria-hidden="true"
+      >
+        <source src="/assets/hero-background.mp4" type="video/mp4" />
+        <source src="/assets/hero-background.webm" type="video/webm" />
+      </video>
+
       {/* Dark base overlay */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-zinc-950" />
+        <div className="absolute inset-0 bg-zinc-950/85" />
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-zinc-950 to-transparent" />
       </div>
 
