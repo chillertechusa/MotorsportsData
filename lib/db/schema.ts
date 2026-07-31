@@ -9,6 +9,10 @@ export const user = pgTable('user', {
   image: text('image'),
   createdAt: timestamp('createdAt').notNull().defaultNow(),
   updatedAt: timestamp('updatedAt').notNull().defaultNow(),
+  // Better Auth plugin columns (exist in live DB)
+  twoFactorEnabled: boolean('twoFactorEnabled').default(false),
+  passwordResetToken: text('passwordResetToken'),
+  passwordResetTokenExpiresAt: timestamp('passwordResetTokenExpiresAt'),
   // Platform-level moderation columns (added migration 006)
   banned: boolean('banned').default(false),
   banReason: text('ban_reason'),
@@ -1524,7 +1528,7 @@ export const mdRiderCredits = pgTable('md_rider_credits', {
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 })
 
-// ── Platform Expansion: Legal & Consent (WS2) ─────────────────────────────────
+// ── Platform Expansion: Legal & Consent (WS2) ──────────────────────────��──────
 /**
  * Version registry for legal documents (terms | privacy | data_consent | cookies).
  * is_current marks the version currently in force; status='draft' means DRAFT

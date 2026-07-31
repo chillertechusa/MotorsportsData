@@ -1,9 +1,10 @@
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { auth } from '@/lib/auth'
+import { getMdOwner } from '@/lib/md-owner-auth'
 import { db } from '@/lib/db'
-import { user, mdAccessLog } from '@/lib/db/schema'
-import { eq, desc } from 'drizzle-orm'
+import { user } from '@/lib/db/schema'
+import { eq } from 'drizzle-orm'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Users, Crown, ShieldAlert, BarChart3, Clock, Eye } from 'lucide-react'
@@ -21,11 +22,16 @@ export default async function KingConsolePage() {
     redirect('/auth/sign-in?redirect=/admin')
   }
 
+  // Access is granted if the user is in the MD_OWNER_EMAILS allowlist
+  // OR holds the admin/owner platform role in the database.
+  const mdOwner = await getMdOwner()
   const currentUser = await db.query.user.findFirst({
     where: eq(user.id, session.user.id),
   })
+  const dbRole = (currentUser?.role ?? 'user') as string
+  const hasAccess = mdOwner !== null || dbRole === 'admin' || dbRole === 'owner'
 
-  if (!currentUser || (currentUser.role !== 'admin' && (currentUser.role as string) !== 'owner')) {
+  if (!hasAccess) {
     return (
       <div className="min-h-screen bg-zinc-950 p-8">
         <div className="max-w-3xl mx-auto">
@@ -54,7 +60,7 @@ export default async function KingConsolePage() {
 
   // Fetch recent access log
   const recentAccess = await db.query.mdAccessLog.findMany({
-    orderBy: (t) => [desc(t.createdAt)],
+    orderBy: (t, { desc }) => [desc(t.createdAt)],
     limit: 10,
   })
 
@@ -201,16 +207,18 @@ export default async function KingConsolePage() {
                   <table className="w-full text-xs">
                     <thead>
                       <tr className="border-b border-zinc-700">
-                        <th className="text-left py-2 px-2 text-zinc-400 font-mono">User</th>
-                        <th className="text-left py-2 px-2 text-zinc-400 font-mono">Action</th>
+                        <th className="text-left py-2 px-2 text-zinc-400 font-mono">Viewer</th>
+                        <th className="text-left py-2 px-2 text-zinc-400 font-mono">Role</th>
+                        <th className="text-left py-2 px-2 text-zinc-400 font-mono">Resource</th>
                         <th className="text-left py-2 px-2 text-zinc-400 font-mono">Timestamp</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {recentAccess.map((log, idx) => (
-                        <tr key={idx} className="border-b border-zinc-800">
-                          <td className="py-2 px-2 text-zinc-300">{log.userEmail}</td>
-                          <td className="py-2 px-2 text-zinc-400">{log.action}</td>
+                      {recentAccess.map((log) => (
+                        <tr key={log.id} className="border-b border-zinc-800">
+                          <td className="py-2 px-2 text-zinc-300 font-mono">{log.viewerUserId.slice(0, 12)}…</td>
+                          <td className="py-2 px-2 text-zinc-400 capitalize">{log.viewerRole}</td>
+                          <td className="py-2 px-2 text-zinc-400">{log.resource}</td>
                           <td className="py-2 px-2 text-zinc-500">
                             {log.createdAt
                               ? new Date(log.createdAt).toLocaleString('en-US', {
