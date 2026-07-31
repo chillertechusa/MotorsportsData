@@ -35,31 +35,18 @@ const geistMono = Geist_Mono({
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://motorsportsdata.io'
 
 /**
- * Google Search Console verification tokens.
+ * Google Search Console verification token.
  *
- * Search Console displays the full `<meta>` tag, so the copied value often
- * carries a `google-site-verification=` prefix (and sometimes surrounding
- * quotes). Google compares the `content` attribute to the bare token, so an
- * un-stripped prefix silently fails verification — normalize before rendering.
+ * Hardcoded on purpose: this is the single active token, and reading it from an
+ * env var meant an unset or malformed value silently dropped the tag and
+ * un-verified the property on deploy. `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` is
+ * deliberately NOT consulted here — it holds a stale token and can be removed.
+ *
+ * Store only the bare token, never the `google-site-verification=` prefix that
+ * Search Console shows as part of the full <meta> tag; Google compares the
+ * `content` attribute to the bare value.
  */
-const GOOGLE_VERIFICATION_TOKENS = Array.from(
-  new Set(
-    [
-      '6K7QmQC0Z4g7snmlUcYu5GUfOLOhatqvKrIFtii5_2E',
-      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
-    ]
-      .filter((token): token is string => Boolean(token && token.trim()))
-      .map((token) =>
-        token
-          .trim()
-          .replace(/^['"]|['"]$/g, '')
-          .replace(/^google-site-verification\s*=\s*/i, '')
-          .replace(/^['"]|['"]$/g, '')
-          .trim(),
-      )
-      .filter(Boolean),
-  ),
-)
+const GOOGLE_VERIFICATION_TOKEN = '6K7QmQC0Z4g7snmlUcYu5GUfOLOhatqvKrIFtii5_2E'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -118,21 +105,12 @@ export const metadata: Metadata = {
   // root layout is inherited by every child page that doesn't override it,
   // which told Google that every page was a duplicate of the homepage. Each
   // page now declares its own self-referencing canonical instead.
-  // Search Console verification. Google allows several owners to verify the
-  // same property, each with their own token, so we emit every known token
-  // rather than letting one clobber another.
-  //
-  // The committed token guarantees the tag survives a deploy even if the env
-  // var is ever unset (an unset var silently drops the tag and un-verifies the
-  // property). GOOGLE_VERIFICATION_TOKENS strips any pasted
-  // `google-site-verification=` prefix, because Search Console shows the whole
-  // meta tag and it is easy to paste the attribute instead of just the value —
-  // that prefix had made the previous tag invalid.
+  // Search Console verification — exactly one active Google token.
   //
   // Bing stays env-only since no token has been issued yet; rendering an empty
   // content="" tag is worse than omitting it.
   verification: {
-    google: GOOGLE_VERIFICATION_TOKENS,
+    google: GOOGLE_VERIFICATION_TOKEN,
     ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
       ? { other: { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } }
       : {}),
