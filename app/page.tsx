@@ -1,29 +1,31 @@
 import type { Metadata } from 'next'
 import MdNav from '@/components/md-nav'
 import MdFooter from '@/components/md-footer'
-import DoctorHero from '@/components/landing/doctor-hero'
-import DoctorProblem from '@/components/landing/doctor-problem'
-import DoctorHow from '@/components/landing/doctor-how'
-import DoctorProgram from '@/components/landing/doctor-program'
-import DoctorPricing from '@/components/landing/doctor-pricing'
+import MdHero from '@/components/landing/md-hero'
+import MdMoney from '@/components/landing/md-money'
+import MdCareer from '@/components/landing/md-career'
+import MdWmx from '@/components/landing/md-wmx'
+import MdDoctor from '@/components/landing/md-doctor'
+import MdTeam from '@/components/landing/md-team'
+import MdPricing from '@/components/landing/md-pricing'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://motorsportsdata.io'
 
 export const metadata: Metadata = {
-  title: 'MD — Your Bike Has a Doctor | Free Rider Platform',
+  title: 'MD — Run Your Entire Racing Program | Motorsports Data',
   description:
-    'Describe what you feel on the track. The AI Doctor diagnoses your bike, rates the severity, and sends the full history to your shop. Free for every rider — bike file, body file, ride log, and family program money tools.',
+    'Contingency automation, sponsor money tracking, season P&L, rider readiness, setup history, and AI coaching on one platform. From the PW50 to the factory rig — including first-class WMX support.',
   keywords: [
-    'motocross bike diagnosis', 'dirt bike problems diagnosis', 'motocross maintenance app',
-    'dirt bike maintenance log', 'motocross rider app', 'bike setup notebook',
-    'motocross season budget', 'racing family expenses', 'dirt bike engine hours tracker',
-    'motocross injury log', 'AI bike mechanic',
+    'motocross contingency tracking', 'racing sponsor management', 'motocross season budget',
+    'race team management software', 'motocross program platform', 'WMX data platform',
+    'women\u2019s motocross software', 'racing P&L', 'motocross team roster software',
+    'dirt bike maintenance log', 'AI bike diagnosis',
   ],
   alternates: { canonical: BASE_URL },
   openGraph: {
-    title: 'MD — Your Bike Has a Doctor',
+    title: 'MD — Run Your Entire Racing Program',
     description:
-      'AI diagnosis for your dirt bike, free forever. Symptom to shop in three steps.',
+      'Contingency money, sponsor P&L, season budget, team roles, and AI coaching. One platform, age 4 to Factory Rig.',
     type: 'website',
     url: BASE_URL,
     images: [
@@ -31,7 +33,7 @@ export const metadata: Metadata = {
         url: `${BASE_URL}/assets/og-preview.png`,
         width: 1200,
         height: 630,
-        alt: 'MD — Your Bike Has a Doctor',
+        alt: 'MD — Run Your Entire Racing Program',
       },
     ],
   },
@@ -43,25 +45,41 @@ export default function HomePage() {
     '@type': 'SoftwareApplication',
     name: 'MD — Motorsports Data',
     description:
-      'The free rider platform. AI bike diagnosis, maintenance log, setup notebook, injury and readiness tracking, ride log, and family program money tools. Symptom to shop in three steps.',
+      'The racing program platform. Contingency automation, sponsor money tracking, season P&L, rider readiness, setup history, team roles, and AI coaching — from the PW50 to the factory rig, with first-class WMX support.',
     url: BASE_URL,
     applicationCategory: 'SportsApplication',
     offers: [
       {
         '@type': 'Offer',
-        name: 'Rider',
+        name: 'Rookie',
         priceCurrency: 'USD',
-        price: '0',
+        price: '9',
         description:
-          'Free forever — AI Doctor, bike file, body file, ride log, program money tools, send to shop.',
+          'Ages 4–12. Season budget, schedule, injury and return-to-ride tracking, AI Doctor.',
       },
       {
         '@type': 'Offer',
-        name: 'Coach Connect',
+        name: 'Privateer',
         priceCurrency: 'USD',
         price: '49',
         description:
-          'See your athletes\u2019 bikes in real time. Riders invite you; they own their data.',
+          'Contingency automation, season P&L, sponsor dashboard, AI Doctor, one coach seat.',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Race Team',
+        priceCurrency: 'USD',
+        price: '299',
+        description:
+          'Up to 8 riders, 11 team roles with scoped access, team budget and travel planning.',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Factory Rig',
+        priceCurrency: 'USD',
+        price: '2499',
+        description:
+          'Unlimited riders and staff, full season logistics, dedicated analyst tooling.',
       },
     ],
     author: {
@@ -79,11 +97,13 @@ export default function HomePage() {
       />
       <MdNav />
       <main>
-        <DoctorHero />
-        <DoctorProblem />
-        <DoctorHow />
-        <DoctorProgram />
-        <DoctorPricing />
+        <MdHero />
+        <MdMoney />
+        <MdCareer />
+        <MdWmx />
+        <MdDoctor />
+        <MdTeam />
+        <MdPricing />
       </main>
       <MdFooter />
     </>
