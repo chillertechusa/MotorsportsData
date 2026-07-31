@@ -5,7 +5,7 @@ import { CheckCircle2, Loader2, ShieldCheck, Zap, Users, Lock } from 'lucide-rea
 import { RMS_PLANS, RMS_PLAN_IDS, type RmsPlanId } from '@/lib/md-plans'
 
 const TRUST_BADGES = [
-  { icon: Zap, label: 'Founding season — 30% off forever' },
+  { icon: Zap, label: 'Platform live' },
   { icon: Users, label: 'Zero per-user fees' },
   { icon: ShieldCheck, label: 'Your data never shared, never sold' },
   { icon: Lock, label: 'Secured by Square' },
@@ -163,13 +163,7 @@ export default function MdTeamPartner() {
                     )}
                   </div>
 
-                  {/* Founding badge */}
-                  <div className="flex items-center gap-1.5 mt-2 mb-3">
-                    <span className="inline-block w-1 h-1 rounded-full bg-lime-400 animate-pulse" aria-hidden="true" />
-                    <span className="font-mono text-[9px] text-lime-400 uppercase tracking-widest">
-                      Founding pricing — locked forever
-                    </span>
-                  </div>
+
 
                   {/* Name + who */}
                   <h3
@@ -212,10 +206,10 @@ export default function MdTeamPartner() {
                         {isLoading ? (
                           <>
                             <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-                            Opening...
+                            Signing up...
                           </>
                         ) : (
-                          <>Get {plan.label} &rarr;</>
+                          <>Start {plan.label} &rarr;</>
                         )}
                       </button>
                     ) : (

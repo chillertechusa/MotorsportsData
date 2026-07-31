@@ -38,11 +38,11 @@ export default function MdHero() {
                       sm:max-w-7xl sm:mx-auto
                       pb-6 sm:pb-52 md:pb-56">
 
-        {/* Founding badge */}
+        {/* Live badge */}
         <div className="inline-flex items-center gap-2 bg-lime-400/10 border border-lime-400/30 px-3 py-1 mb-6">
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-lime-400 animate-pulse" aria-hidden="true" />
           <span className="font-mono text-[10px] text-lime-400 uppercase tracking-[0.25em]">
-            Founding Season — 30% off forever
+            Platform Live — Sign Up Now
           </span>
         </div>
 
@@ -71,10 +71,10 @@ export default function MdHero() {
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6 sm:mb-10">
           <Link
-            href="#pricing"
+            href="/auth/sign-up"
             className="group inline-flex items-center justify-center gap-2 bg-lime-400 text-zinc-950 font-bold px-6 py-3.5 hover:bg-lime-300 transition-colors"
           >
-            Claim Founding Pricing
+            Get Started
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
           </Link>
           <Link

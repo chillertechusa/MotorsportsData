@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import MdCampaignBanner from '@/components/md-campaign-banner'
 import MdNav from '@/components/md-nav'
 import MdHero from '@/components/md-hero'
 import MdModuleGrid from '@/components/md-module-grid'
@@ -99,7 +98,6 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
       />
-      <MdCampaignBanner />
       <MdNav />
       <main>
         {/* 1. Hero — "Run your entire racing program. Like a business." */}
