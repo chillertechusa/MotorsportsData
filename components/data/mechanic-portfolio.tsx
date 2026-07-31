@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Wrench, TrendingUp, Calendar, ArrowUpRight, Download, Share2 } from 'lucide-react'
+import { useDiscplineLanguage, type Discipline } from '@/lib/use-discipline-language'
 
 interface PortfolioEntry {
   id: string
@@ -52,8 +53,9 @@ const SAMPLE_PORTFOLIO: PortfolioEntry[] = [
   },
 ]
 
-export function MechanicPortfolio() {
+export function MechanicPortfolio({ discipline = 'mx_sx' }: { discipline?: Discipline }) {
   const [selectedEntry, setSelectedEntry] = useState<PortfolioEntry | null>(null)
+  const lang = useDiscplineLanguage(discipline)
 
   const totalImprovements = SAMPLE_PORTFOLIO.reduce((sum, e) => sum + e.improvement, 0)
   const avgImprovement = (totalImprovements / SAMPLE_PORTFOLIO.length).toFixed(2)
@@ -68,7 +70,7 @@ export function MechanicPortfolio() {
           </div>
           <div>
             <h1 className="text-2xl font-black text-zinc-50">Setup Portfolio</h1>
-            <p className="text-sm text-zinc-500">Your career in setup optimization</p>
+            <p className="text-sm text-zinc-500">Your career in {lang.asset} setup optimization</p>
           </div>
         </div>
 
