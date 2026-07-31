@@ -38,12 +38,18 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Motorsports Dirt lime-green — matched to reference screenshot */
-  --color-lime:        #AAEE22;   /* lime primary */
-  --color-lime-light:  #C0F545;   /* lighter hover */
-  --color-lime-dim:    #AAEE2233;
-  --color-lime-faint:  #AAEE2214;
-  --color-lime-border: #AAEE2259;
+  /* Motorsports Dirt sage-lime — sampled from the MD rider emblem */
+  --color-lime:        #A0C050;   /* lime primary — brand accent */
+  --color-lime-bright: #BADC5A;   /* high-emphasis ticks + hover */
+  --color-lime-light:  #C7E27E;   /* lightest, for small type on black */
+  --color-lime-dim:    #A0C05033;
+  --color-lime-faint:  #A0C05014;
+  --color-lime-border: #A0C05059;
+
+  /* Neutral ink scale — the emblem is 90% monochrome, lime is the spice */
+  --color-ink:         #0A0A0A;
+  --color-ink-raised:  #101010;
+  --color-ink-line:    #1F1F1F;
 
   /* Yamaha blue — exact #0047AB racing livery color */
   --color-yamaha:          oklch(0.43 0.19 260);   /* #0047AB */
@@ -66,7 +72,7 @@
   --foreground: oklch(0.97 0 0);
 
   /* Motorsports Dirt lime-green primary */
-  --primary: #AAEE22;
+  --primary: #A0C050;
   --primary-foreground: oklch(0.08 0 0);
 
   /* Dark surface for cards */
@@ -84,24 +90,24 @@
   --muted-foreground: oklch(0.58 0 0);
 
   /* Motorsports Dirt lime-green accent */
-  --accent: #AAEE22;
+  --accent: #A0C050;
   --accent-foreground: oklch(0.08 0 0);
 
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.20 0 0);
   --input: oklch(0.17 0 0);
-  --ring: #AAEE22;
+  --ring: #A0C050;
 
   --radius: 0.375rem;
 
   --sidebar: oklch(0.11 0 0);
   --sidebar-foreground: oklch(0.97 0 0);
-  --sidebar-primary: #AAEE22;
+  --sidebar-primary: #A0C050;
   --sidebar-primary-foreground: oklch(0.08 0 0);
-  --sidebar-accent: #AAEE22;
+  --sidebar-accent: #A0C050;
   --sidebar-accent-foreground: oklch(0.08 0 0);
   --sidebar-border: oklch(0.20 0 0);
-  --sidebar-ring: #AAEE22;
+  --sidebar-ring: #A0C050;
 }
 
 @layer base {
@@ -191,6 +197,59 @@
   .animate-marquee { animation: none; }
 }
 
+/* ══ MD emblem design language ══
+   Borrowed from the rider emblem: hairline corner brackets, dotted
+   halftone fields, and lime tick rules. Monochrome first, lime as spice. */
+
+/* Two opposing hairline corner brackets — the emblem's framing device */
+.md-bracket {
+  position: relative;
+}
+.md-bracket::before,
+.md-bracket::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--color-lime);
+  pointer-events: none;
+}
+.md-bracket::before {
+  top: -1px;
+  left: -1px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+.md-bracket::after {
+  right: -1px;
+  bottom: -1px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+
+/* Dotted halftone field — the emblem's side texture panels */
+.md-dotfield {
+  background-image: radial-gradient(var(--color-lime) 1px, transparent 1px);
+  background-size: 7px 7px;
+}
+
+/* Lime tick rule — the short dashes flanking emblem labels */
+.md-tick {
+  display: inline-block;
+  height: 2px;
+  width: 24px;
+  background: var(--color-lime);
+}
+
+/* Wide-tracked emblem label */
+.md-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 4px;
@@ -199,5 +258,5 @@
   background: oklch(0.10 0 0);
 }
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.70 0.20 130);
+  background: var(--color-lime);
 }
