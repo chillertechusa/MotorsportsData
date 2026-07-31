@@ -117,7 +117,7 @@ export default function OwnerSidebar() {
     >
       {/* Wordmark */}
       <div className={`flex items-center gap-2.5 px-4 h-14 border-b border-zinc-800 shrink-0 overflow-hidden`}>
-        <div className="shrink-0 h-6 w-6 rounded bg-lime-400 flex items-center justify-center">
+        <div className="shrink-0 h-6 w-6 rounded bg-green-500 flex items-center justify-center">
           <span
             className="text-zinc-950 font-black text-[10px] tracking-tight"
             style={{ fontFamily: 'var(--font-barlow-condensed)' }}
@@ -164,22 +164,22 @@ export default function OwnerSidebar() {
                       title={collapsed ? item.label : undefined}
                       className={`group relative flex items-center gap-2.5 mx-2 px-2.5 py-2 rounded-lg text-sm transition-colors ${
                         active
-                          ? 'bg-lime-400/10 text-lime-400'
+                          ? 'bg-green-500/10 text-green-500'
                           : 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/60'
                       }`}
                     >
                       {/* Active indicator rail */}
                       {active && (
-                        <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 rounded-full bg-lime-400" />
+                        <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 rounded-full bg-green-500" />
                       )}
                       <Icon
-                        className={`shrink-0 h-4 w-4 ${active ? 'text-lime-400' : 'text-zinc-500 group-hover:text-zinc-300'}`}
+                        className={`shrink-0 h-4 w-4 ${active ? 'text-green-500' : 'text-zinc-500 group-hover:text-zinc-300'}`}
                       />
                       {!collapsed && (
                         <span className="truncate font-medium text-[13px]">{item.label}</span>
                       )}
                       {!collapsed && item.badge && (
-                        <span className="ml-auto font-mono text-[9px] px-1.5 py-0.5 rounded bg-lime-400/15 text-lime-400 border border-lime-400/20 uppercase tracking-wider">
+                        <span className="ml-auto font-mono text-[9px] px-1.5 py-0.5 rounded bg-green-500/15 text-green-500 border border-green-500/20 uppercase tracking-wider">
                           {item.badge}
                         </span>
                       )}

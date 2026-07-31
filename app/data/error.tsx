@@ -38,7 +38,7 @@ export default function DataError({
           </div>
         </div>
 
-        <p className="text-xs font-bold tracking-widest uppercase text-lime-400 mb-3">
+        <p className="text-xs font-bold tracking-widest uppercase text-green-500 mb-3">
           Motorsports Data
         </p>
 
@@ -58,7 +58,7 @@ export default function DataError({
 
         <button
           onClick={reset}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-lime-600 hover:bg-lime-500 text-black font-semibold text-sm rounded-lg transition"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-green-600 hover:bg-green-600 text-black font-semibold text-sm rounded-lg transition"
         >
           <RefreshCw className="w-4 h-4" />
           Try again

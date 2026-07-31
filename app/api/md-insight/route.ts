@@ -2,6 +2,8 @@ import { streamText } from 'ai'
 import { NextRequest } from 'next/server'
 import { getSessionTeamId } from '@/lib/md-auth'
 import { logAICall } from '@/lib/ai-cost-logger'
+import { scopeMdAiPrompt } from '@/lib/md-ai-identity'
+import { blockAutomatedRequest } from '@/lib/botid'
 
 /**
  * POST /api/md-insight
@@ -11,6 +13,9 @@ import { logAICall } from '@/lib/ai-cost-logger'
 export async function POST(req: NextRequest) {
   const auth = await getSessionTeamId()
   if (!auth.ok) return new Response('Unauthorized', { status: 401 })
+
+  const botResponse = await blockAutomatedRequest()
+  if (botResponse) return botResponse
 
   const { section, data } = await req.json()
 
@@ -48,13 +53,14 @@ Be direct — no fluff, no greetings, no sign-off. Use specific details from wha
     },
   }
 
-  const systemPrompt = systemPrompts[section]
+  const rolePrompt = systemPrompts[section]
   const userMessage = userMessages[section]?.(data as Record<string, unknown>)
 
-  if (!systemPrompt || !userMessage) {
+  if (!rolePrompt || !userMessage) {
     return new Response('Invalid section', { status: 400 })
   }
 
+  const systemPrompt = await scopeMdAiPrompt(auth.teamId, rolePrompt)
   const INSIGHT_MODEL = 'google/gemini-2.5-flash'
   const t0 = Date.now()
   const result = streamText({

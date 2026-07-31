@@ -63,7 +63,7 @@ function scoreColor(val: number | null, field: ReadinessField): string {
     : field === 'hrv' ? Math.min(val / 80, 1) * 100
     : val
   const normalized = isInverse && field !== 'restingHr' ? 100 - pct : pct
-  if (normalized >= 70) return 'text-lime-400'
+  if (normalized >= 70) return 'text-green-500'
   if (normalized >= 45) return 'text-amber-400'
   return 'text-red-400'
 }
@@ -75,7 +75,7 @@ function fmtDate(d: string) {
 const MEAL_TYPES = ['breakfast', 'pre-ride', 'intra-ride', 'post-ride', 'lunch', 'dinner', 'snack', 'supplement']
 const MEAL_COLORS: Record<string, string> = {
   breakfast: 'bg-amber-500/20 text-amber-400',
-  'pre-ride': 'bg-lime-500/20 text-lime-400',
+  'pre-ride': 'bg-green-600/20 text-green-500',
   'intra-ride': 'bg-cyan-500/20 text-cyan-400',
   'post-ride': 'bg-blue-500/20 text-blue-400',
   lunch: 'bg-orange-500/20 text-orange-400',
@@ -139,12 +139,12 @@ function ReadinessModal({ onClose, onSaved, existing }: {
     <div>
       <div className="flex justify-between mb-1">
         <span className="text-xs uppercase tracking-wider text-zinc-500">{label}</span>
-        <span className="text-xs font-mono text-lime-400">{value ? `${value}${unit}` : '—'}</span>
+        <span className="text-xs font-mono text-green-500">{value ? `${value}${unit}` : '—'}</span>
       </div>
       <input type="range" min={min} max={max} step={min < 1 ? 0.5 : 1}
         value={value || min}
         onChange={e => onChange(e.target.value)}
-        className="w-full accent-lime-400 h-1.5"
+        className="w-full accent-green-500 h-1.5"
       />
       <div className="flex justify-between text-[10px] text-zinc-700 mt-0.5">
         <span>{min}{unit}</span><span>{max}{unit}</span>
@@ -163,7 +163,7 @@ function ReadinessModal({ onClose, onSaved, existing }: {
           <div>
             <label className="block text-xs uppercase tracking-wider text-zinc-500 mb-2">Date</label>
             <input type="date" value={date} onChange={e => setDate(e.target.value)}
-              className="w-full h-11 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none" />
+              className="w-full h-11 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none" />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
@@ -171,13 +171,13 @@ function ReadinessModal({ onClose, onSaved, existing }: {
               <label className="block text-xs uppercase tracking-wider text-zinc-500 mb-2">Sleep (hrs)</label>
               <input type="number" min="0" max="14" step="0.5" value={sleepHours} onChange={e => setSleepHours(e.target.value)}
                 placeholder="8.0"
-                className="w-full h-11 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none" />
+                className="w-full h-11 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none" />
             </div>
             <div>
               <label className="block text-xs uppercase tracking-wider text-zinc-500 mb-2">Resting HR (bpm)</label>
               <input type="number" min="30" max="120" value={restingHr} onChange={e => setRestingHr(e.target.value)}
                 placeholder="48"
-                className="w-full h-11 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none" />
+                className="w-full h-11 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none" />
             </div>
           </div>
 
@@ -185,7 +185,7 @@ function ReadinessModal({ onClose, onSaved, existing }: {
             <label className="block text-xs uppercase tracking-wider text-zinc-500 mb-2">HRV (ms) — morning measurement</label>
             <input type="number" min="0" max="200" value={hrv} onChange={e => setHrv(e.target.value)}
               placeholder="65"
-              className="w-full h-11 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none" />
+              className="w-full h-11 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none" />
           </div>
 
           <Slider label="Energy level" value={energy} onChange={setEnergy} />
@@ -196,14 +196,14 @@ function ReadinessModal({ onClose, onSaved, existing }: {
             <label className="block text-xs uppercase tracking-wider text-zinc-500 mb-2">Notes</label>
             <textarea value={notes} onChange={e => setNotes(e.target.value)} rows={2}
               placeholder="Sore legs, late night, travel day..."
-              className="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-4 py-3 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none resize-none" />
+              className="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-4 py-3 text-sm text-zinc-100 focus:border-green-500 focus:outline-none resize-none" />
           </div>
 
           {error && <p className="text-red-400 text-sm">{error}</p>}
         </div>
         <div className="px-6 pb-5">
           <button onClick={save} disabled={saving}
-            className="w-full h-12 rounded-xl bg-lime-400 text-zinc-950 font-black uppercase tracking-wider text-sm hover:bg-lime-300 transition-colors disabled:opacity-50 flex items-center justify-center gap-2">
+            className="w-full h-12 rounded-xl bg-green-500 text-zinc-950 font-black uppercase tracking-wider text-sm hover:bg-green-400 transition-colors disabled:opacity-50 flex items-center justify-center gap-2">
             {saving && <Loader2 className="h-4 w-4 animate-spin" />}
             {saving ? 'Saving...' : 'Save Check-In'}
           </button>
@@ -284,13 +284,13 @@ function NutritionModal({ onClose, onSaved, date: initialDate }: {
             <div>
               <label className="block text-xs uppercase tracking-wider text-zinc-500 mb-2">Date</label>
               <input type="date" value={logDate} onChange={e => setLogDate(e.target.value)}
-                className="w-full h-11 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none" />
+                className="w-full h-11 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none" />
             </div>
             <div>
               <label className="block text-xs uppercase tracking-wider text-zinc-500 mb-2">Meal</label>
               <div className="relative">
                 <select value={mealType} onChange={e => setMealType(e.target.value)}
-                  className="w-full h-11 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none appearance-none">
+                  className="w-full h-11 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none appearance-none">
                   {MEAL_TYPES.map(m => <option key={m} value={m}>{m}</option>)}
                 </select>
                 <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500 pointer-events-none" />
@@ -304,7 +304,7 @@ function NutritionModal({ onClose, onSaved, date: initialDate }: {
               <input value={query} onChange={e => setQuery(e.target.value)}
                 onKeyDown={e => { if (e.key === 'Enter' && !e.nativeEvent.isComposing) search() }}
                 placeholder="chicken breast, rice, banana..."
-                className="flex-1 h-11 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none" />
+                className="flex-1 h-11 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none" />
               <button onClick={search} disabled={searching}
                 className="h-11 px-4 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition-colors flex items-center gap-2">
                 {searching ? <Loader2 className="h-4 w-4 animate-spin" /> : <Search className="h-4 w-4" />}
@@ -318,7 +318,7 @@ function NutritionModal({ onClose, onSaved, date: initialDate }: {
                 <button key={f.fdcId} onClick={() => { setSelected(f); setResults([]) }}
                   className={`w-full text-left px-4 py-3 rounded-xl border transition-colors ${
                     selected?.fdcId === f.fdcId
-                      ? 'bg-lime-400/10 border-lime-400/30 text-lime-400'
+                      ? 'bg-green-500/10 border-green-500/30 text-green-500'
                       : 'bg-zinc-950 border-zinc-800 text-zinc-300 hover:border-zinc-700'
                   }`}>
                   <p className="text-sm font-semibold truncate">{f.name}</p>
@@ -331,12 +331,12 @@ function NutritionModal({ onClose, onSaved, date: initialDate }: {
           )}
 
           {selected && (
-            <div className="bg-zinc-950 border border-lime-400/20 rounded-xl p-4 space-y-3">
+            <div className="bg-zinc-950 border border-green-500/20 rounded-xl p-4 space-y-3">
               <p className="text-sm font-bold text-zinc-100 truncate">{selected.name}</p>
               <div>
                 <label className="block text-xs uppercase tracking-wider text-zinc-500 mb-2">Quantity (grams)</label>
                 <input type="number" min="1" max="2000" value={qty} onChange={e => setQty(e.target.value)}
-                  className="w-32 h-10 rounded-xl bg-zinc-900 border border-zinc-700 px-3 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none" />
+                  className="w-32 h-10 rounded-xl bg-zinc-900 border border-zinc-700 px-3 text-sm text-zinc-100 focus:border-green-500 focus:outline-none" />
               </div>
               {qty && (
                 <div className="grid grid-cols-4 gap-2 text-center">
@@ -360,7 +360,7 @@ function NutritionModal({ onClose, onSaved, date: initialDate }: {
         </div>
         <div className="px-6 pb-5">
           <button onClick={save} disabled={saving || !selected}
-            className="w-full h-12 rounded-xl bg-lime-400 text-zinc-950 font-black uppercase tracking-wider text-sm hover:bg-lime-300 transition-colors disabled:opacity-40 flex items-center justify-center gap-2">
+            className="w-full h-12 rounded-xl bg-green-500 text-zinc-950 font-black uppercase tracking-wider text-sm hover:bg-green-400 transition-colors disabled:opacity-40 flex items-center justify-center gap-2">
             {saving && <Loader2 className="h-4 w-4 animate-spin" />}
             {saving ? 'Saving...' : 'Log Food'}
           </button>
@@ -432,7 +432,7 @@ function ReadinessTab() {
       {/* KPI strip */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
-          { label: 'Avg Energy', val: avg('energy'), suffix: '/10', icon: Zap, color: 'text-lime-400' },
+          { label: 'Avg Energy', val: avg('energy'), suffix: '/10', icon: Zap, color: 'text-green-500' },
           { label: 'Avg HRV', val: avg('hrv'), suffix: ' ms', icon: Activity, color: 'text-cyan-400' },
           { label: 'Avg Sleep', val: avg('sleepHours'), suffix: ' hrs', icon: Moon, color: 'text-blue-400' },
           { label: 'Avg Fatigue', val: avg('fatigue'), suffix: '/10', icon: TrendingUp, color: 'text-amber-400' },
@@ -455,12 +455,12 @@ function ReadinessTab() {
           <h3 className="font-black uppercase tracking-wide text-zinc-100">Daily Readiness</h3>
           {todayEntry && (
             <p className="text-xs text-zinc-500 mt-0.5">
-              Today: score <span className="text-lime-400 font-mono font-bold">{readinessScore(todayEntry)}</span>
+              Today: score <span className="text-green-500 font-mono font-bold">{readinessScore(todayEntry)}</span>
             </p>
           )}
         </div>
         <button onClick={() => setShowModal(true)}
-          className="flex items-center gap-2 h-10 px-4 rounded-xl bg-lime-400 text-zinc-950 font-bold text-sm uppercase tracking-wider hover:bg-lime-300 transition-colors">
+          className="flex items-center gap-2 h-10 px-4 rounded-xl bg-green-500 text-zinc-950 font-bold text-sm uppercase tracking-wider hover:bg-green-400 transition-colors">
           <Plus className="h-4 w-4" />
           Check In
         </button>
@@ -479,7 +479,7 @@ function ReadinessTab() {
         <div className="space-y-2">
           {entries.map(e => {
             const score = readinessScore(e)
-            const scoreClr = score >= 70 ? 'text-lime-400' : score >= 45 ? 'text-amber-400' : 'text-red-400'
+            const scoreClr = score >= 70 ? 'text-green-500' : score >= 45 ? 'text-amber-400' : 'text-red-400'
             return (
               <div key={e.id} className="bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 flex items-center gap-4">
                 <div className="w-14 text-center shrink-0">
@@ -556,11 +556,11 @@ function NutritionTab() {
       <div className="flex items-center justify-between gap-3 flex-wrap">
         <div className="flex items-center gap-3">
           <input type="date" value={viewDate} onChange={e => setViewDate(e.target.value)}
-            className="h-10 rounded-xl bg-zinc-900 border border-zinc-800 px-3 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none" />
+            className="h-10 rounded-xl bg-zinc-900 border border-zinc-800 px-3 text-sm text-zinc-100 focus:border-green-500 focus:outline-none" />
           <button onClick={() => setViewDate(today())} className="h-10 px-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-xs text-zinc-300 uppercase tracking-wider">Today</button>
         </div>
         <button onClick={() => setShowModal(true)}
-          className="flex items-center gap-2 h-10 px-4 rounded-xl bg-lime-400 text-zinc-950 font-bold text-sm uppercase tracking-wider hover:bg-lime-300 transition-colors">
+          className="flex items-center gap-2 h-10 px-4 rounded-xl bg-green-500 text-zinc-950 font-bold text-sm uppercase tracking-wider hover:bg-green-400 transition-colors">
           <Plus className="h-4 w-4" />
           Log Food
         </button>
@@ -571,7 +571,7 @@ function NutritionTab() {
         <div className="grid grid-cols-4 gap-2">
           {[
             { label: 'Calories', val: `${Math.round(totals.calories)}`, unit: 'kcal', color: 'text-amber-400' },
-            { label: 'Protein', val: `${totals.protein.toFixed(1)}`, unit: 'g', color: 'text-lime-400' },
+            { label: 'Protein', val: `${totals.protein.toFixed(1)}`, unit: 'g', color: 'text-green-500' },
             { label: 'Carbs', val: `${totals.carbs.toFixed(1)}`, unit: 'g', color: 'text-cyan-400' },
             { label: 'Fat', val: `${totals.fat.toFixed(1)}`, unit: 'g', color: 'text-purple-400' },
           ].map(({ label, val, unit, color }) => (
@@ -692,15 +692,15 @@ function HydrationTab() {
               <label className="block text-xs uppercase tracking-wider text-zinc-500 mb-1.5">{label}</label>
               <input type={type} value={value} onChange={e => set(e.target.value)} placeholder={placeholder}
                 step={type === 'number' ? '0.1' : undefined}
-                className="w-full h-11 rounded-xl bg-zinc-950 border border-zinc-800 px-3 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none" />
+                className="w-full h-11 rounded-xl bg-zinc-950 border border-zinc-800 px-3 text-sm text-zinc-100 focus:border-green-500 focus:outline-none" />
             </div>
           ))}
         </div>
         <div className="flex gap-3">
           <input value={notes} onChange={e => setNotes(e.target.value)} placeholder="Hot day, 2-hour moto..."
-            className="flex-1 h-11 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none" />
+            className="flex-1 h-11 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none" />
           <button onClick={save} disabled={saving}
-            className="h-11 px-5 rounded-xl bg-lime-400 text-zinc-950 font-bold text-sm uppercase tracking-wider hover:bg-lime-300 transition-colors disabled:opacity-50 flex items-center gap-2">
+            className="h-11 px-5 rounded-xl bg-green-500 text-zinc-950 font-bold text-sm uppercase tracking-wider hover:bg-green-400 transition-colors disabled:opacity-50 flex items-center gap-2">
             {saving && <Loader2 className="h-4 w-4 animate-spin" />}
             Save
           </button>
@@ -774,7 +774,7 @@ export default function ViewFitness() {
         {tabs.map(({ key, label, icon: Icon }) => (
           <button key={key} onClick={() => setTab(key)}
             className={`flex-1 flex items-center justify-center gap-2 h-10 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${
-              tab === key ? 'bg-lime-400 text-zinc-950' : 'text-zinc-500 hover:text-zinc-300'
+              tab === key ? 'bg-green-500 text-zinc-950' : 'text-zinc-500 hover:text-zinc-300'
             }`}>
             <Icon className="h-4 w-4" />
             <span className="hidden sm:inline">{label}</span>

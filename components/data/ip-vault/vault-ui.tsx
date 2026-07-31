@@ -52,7 +52,7 @@ export function VaultUI() {
       {/* Header */}
       <div>
         <h2 className="text-2xl font-black uppercase tracking-wide text-zinc-50 flex items-center gap-3">
-          <Lock className="h-6 w-6 text-lime-500" />
+          <Lock className="h-6 w-6 text-green-600" />
           IP Vault
         </h2>
         <p className="text-sm text-zinc-400 mt-2">
@@ -63,7 +63,7 @@ export function VaultUI() {
       {/* Stats */}
       <div className="grid md:grid-cols-3 gap-4">
         {[
-          { label: 'Templates', value: templates.length, color: 'text-lime-500' },
+          { label: 'Templates', value: templates.length, color: 'text-green-600' },
           { label: 'Total Access', value: templates.reduce((sum, t) => sum + t.accessCount, 0), color: 'text-blue-500' },
           { label: 'Encrypted', value: templates.filter((t) => t.isEncrypted).length, color: 'text-amber-500' },
         ].map((stat) => (
@@ -126,20 +126,20 @@ export function VaultUI() {
               </p>
             </div>
 
-            <div className="border-2 border-dashed border-zinc-700 rounded-lg p-8 text-center cursor-pointer hover:border-lime-500 transition">
+            <div className="border-2 border-dashed border-zinc-700 rounded-lg p-8 text-center cursor-pointer hover:border-green-600 transition">
               <Upload className="h-8 w-8 text-zinc-500 mx-auto mb-2" />
               <p className="text-sm font-bold text-zinc-300">Drop your file here</p>
               <p className="text-xs text-zinc-500 mt-1">PDF, Word, or image file</p>
             </div>
 
-            <button className="w-full px-4 py-3 bg-lime-500 text-zinc-950 font-bold rounded hover:bg-lime-400 transition">
+            <button className="w-full px-4 py-3 bg-green-600 text-zinc-950 font-bold rounded hover:bg-green-500 transition">
               Upload Template
             </button>
           </div>
         ) : (
           <button
             onClick={() => setShowUpload(true)}
-            className="flex items-center gap-2 px-4 py-2 border border-zinc-700 rounded font-bold text-zinc-300 hover:border-lime-500 transition"
+            className="flex items-center gap-2 px-4 py-2 border border-zinc-700 rounded font-bold text-zinc-300 hover:border-green-600 transition"
           >
             <Plus className="h-4 w-4" />
             Add New Template
@@ -161,7 +161,7 @@ export function VaultUI() {
                   <div className="flex items-center gap-2 mb-2">
                     <h4 className="font-bold text-zinc-50">{template.name}</h4>
                     {template.isEncrypted && (
-                      <Lock className="h-4 w-4 text-lime-500" aria-label="Encrypted" />
+                      <Lock className="h-4 w-4 text-green-600" aria-label="Encrypted" />
                     )}
                   </div>
                   <div className="flex items-center gap-4 text-xs text-zinc-400">
@@ -201,7 +201,7 @@ export function VaultUI() {
       </div>
 
       {/* Info Box */}
-      <div className="border border-lime-500/30 bg-lime-500/5 rounded-lg p-4">
+      <div className="border border-green-600/30 bg-green-600/5 rounded-lg p-4">
         <p className="text-sm text-zinc-300">
           <strong>IP Protection:</strong> All templates are encrypted AES-256. Riders can view assignments but cannot
           export, screenshot, or share. When a rider leaves your program, access is immediately revoked.

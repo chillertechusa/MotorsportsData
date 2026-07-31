@@ -56,7 +56,7 @@ export default function MdBillingManager({ subscription }: { subscription: Subsc
       : sub.cancelAtPeriodEnd
         ? 'text-amber-400'
         : sub.isActive
-          ? 'text-lime-400'
+          ? 'text-green-500'
           : 'text-zinc-400'
 
   const statusLabel =
@@ -110,7 +110,7 @@ export default function MdBillingManager({ subscription }: { subscription: Subsc
           role="status"
           className={`mt-4 rounded-lg border px-4 py-3 text-sm ${
             msg.kind === 'ok'
-              ? 'border-lime-500/30 bg-lime-500/10 text-lime-300'
+              ? 'border-green-600/30 bg-green-600/10 text-green-400'
               : 'border-red-500/30 bg-red-500/10 text-red-300'
           }`}
         >
@@ -151,7 +151,7 @@ export default function MdBillingManager({ subscription }: { subscription: Subsc
 
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link
-              href="/data/pricing"
+              href="/pricing"
               className={buttonVariants({
                 variant: 'outline',
                 className: 'flex-1 border-zinc-700 bg-transparent text-zinc-200 hover:bg-zinc-800',
@@ -223,8 +223,8 @@ export default function MdBillingManager({ subscription }: { subscription: Subsc
             You&apos;re on the free tier. Upgrade to unlock the full platform.
           </p>
           <Link
-            href="/data/pricing"
-            className={buttonVariants({ className: 'mt-4 bg-lime-400 text-zinc-950 hover:bg-lime-300' })}
+            href="/pricing"
+            className={buttonVariants({ className: 'mt-4 bg-green-500 text-zinc-950 hover:bg-green-400' })}
           >
             View plans
           </Link>

@@ -112,7 +112,7 @@ export default function AddVehicleModal({ open, onClose, onAdded }: AddVehicleMo
               onChange={(e) => setName(e.target.value)}
               autoFocus
               placeholder="e.g. #01 YZ450F"
-              className="w-full h-13 py-3 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-lg font-semibold text-zinc-100 placeholder:text-zinc-600 focus:border-lime-400 focus:outline-none"
+              className="w-full h-13 py-3 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-lg font-semibold text-zinc-100 placeholder:text-zinc-600 focus:border-green-500 focus:outline-none"
             />
           </div>
 
@@ -121,7 +121,7 @@ export default function AddVehicleModal({ open, onClose, onAdded }: AddVehicleMo
             <select
               value={type}
               onChange={(e) => setType(e.target.value)}
-              className="w-full h-13 py-3 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-lg font-semibold text-zinc-100 focus:border-lime-400 focus:outline-none appearance-none"
+              className="w-full h-13 py-3 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-lg font-semibold text-zinc-100 focus:border-green-500 focus:outline-none appearance-none"
             >
               {VEHICLE_TYPES.map((t) => (
                 <option key={t} value={t}>
@@ -139,7 +139,7 @@ export default function AddVehicleModal({ open, onClose, onAdded }: AddVehicleMo
             <select
               value={discipline}
               onChange={(e) => setDiscipline(e.target.value)}
-              className="w-full h-13 py-3 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-lg font-semibold text-zinc-100 focus:border-lime-400 focus:outline-none appearance-none"
+              className="w-full h-13 py-3 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-lg font-semibold text-zinc-100 focus:border-green-500 focus:outline-none appearance-none"
             >
               {DISCIPLINES.map((d) => (
                 <option key={d.value} value={d.value}>
@@ -157,7 +157,7 @@ export default function AddVehicleModal({ open, onClose, onAdded }: AddVehicleMo
               step="0.1"
               value={engineHours}
               onChange={(e) => setEngineHours(e.target.value)}
-              className="w-full h-13 py-3 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-lg font-semibold text-zinc-100 focus:border-lime-400 focus:outline-none"
+              className="w-full h-13 py-3 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-lg font-semibold text-zinc-100 focus:border-green-500 focus:outline-none"
             />
           </div>
 
@@ -169,7 +169,7 @@ export default function AddVehicleModal({ open, onClose, onAdded }: AddVehicleMo
             <select
               value={specKey}
               onChange={(e) => setSpecKey(e.target.value)}
-              className="w-full h-13 py-3 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm font-semibold text-zinc-100 focus:border-lime-400 focus:outline-none appearance-none"
+              className="w-full h-13 py-3 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm font-semibold text-zinc-100 focus:border-green-500 focus:outline-none appearance-none"
             >
               <option value="">No spec book selected</option>
               {MD_SPEC_DATA.map((s) => (
@@ -179,7 +179,7 @@ export default function AddVehicleModal({ open, onClose, onAdded }: AddVehicleMo
               ))}
             </select>
             {specKey && (
-              <p className="mt-1.5 text-[11px] text-lime-400 font-mono">
+              <p className="mt-1.5 text-[11px] text-green-500 font-mono">
                 Spec Book linked — MD Intel will use OEM data for this bike.
               </p>
             )}
@@ -194,7 +194,7 @@ export default function AddVehicleModal({ open, onClose, onAdded }: AddVehicleMo
           <button
             onClick={save}
             disabled={saving}
-            className="w-full h-14 rounded-xl flex items-center justify-center gap-2 bg-lime-400 text-zinc-950 font-black uppercase tracking-wide active:bg-lime-300 transition-colors disabled:opacity-60"
+            className="w-full h-14 rounded-xl flex items-center justify-center gap-2 bg-green-500 text-zinc-950 font-black uppercase tracking-wide active:bg-green-400 transition-colors disabled:opacity-60"
           >
             {saving ? (
               <>

@@ -28,8 +28,8 @@ export default function MdHero() {
       />
 
       {/* ── Corner accent lines ── */}
-      <div aria-hidden="true" className="pointer-events-none absolute top-16 right-0 w-px h-64 bg-gradient-to-b from-lime-400/50 to-transparent" />
-      <div aria-hidden="true" className="pointer-events-none absolute top-16 right-0 w-64 h-px bg-gradient-to-l from-lime-400/50 to-transparent" />
+      <div aria-hidden="true" className="pointer-events-none absolute top-16 right-0 w-px h-64 bg-gradient-to-b from-green-500/50 to-transparent" />
+      <div aria-hidden="true" className="pointer-events-none absolute top-16 right-0 w-64 h-px bg-gradient-to-l from-green-500/50 to-transparent" />
 
       {/* ── Simulated live-session telemetry overlay ── */}
       <MdHeroTelemetry />
@@ -41,8 +41,8 @@ export default function MdHero() {
 
         {/* Eyebrow */}
         <div className="flex items-center gap-2 mb-4">
-          <div className="h-0.5 w-6 sm:w-8 bg-lime-400" />
-          <span className="font-mono text-[10px] sm:text-xs text-lime-400 uppercase tracking-[0.25em]">
+          <div className="h-0.5 w-6 sm:w-8 bg-green-500" />
+          <span className="font-mono text-[10px] sm:text-xs text-green-500 uppercase tracking-[0.25em]">
             Watch Live Data. Simulated.
           </span>
         </div>
@@ -57,7 +57,7 @@ export default function MdHero() {
           }}
         >
           Every Lap.{' '}
-          <span className="text-lime-400">Every Data Point.</span>
+          <span className="text-green-500">Every Data Point.</span>
         </h1>
 
         {/* Subheadline */}
@@ -69,7 +69,7 @@ export default function MdHero() {
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6 sm:mb-10">
           <Link
             href="/#demo"
-            className="group inline-flex items-center justify-center gap-2 bg-lime-400 text-zinc-950 font-semibold px-6 py-3.5 rounded-lg hover:bg-lime-300 transition-colors"
+            className="group inline-flex items-center justify-center gap-2 bg-green-500 text-zinc-950 font-semibold px-6 py-3.5 rounded-lg hover:bg-green-400 transition-colors"
           >
             <Play className="h-4 w-4" fill="currentColor" />
             Watch Demo
@@ -126,7 +126,7 @@ export default function MdHero() {
               className="bg-zinc-950/80 border border-zinc-800 px-5 py-4 min-w-[148px] backdrop-blur-sm"
               style={{ animation: `mdFadeUp 0.7s cubic-bezier(0.22,1,0.36,1) ${0.5 + i * 0.12}s both` }}
             >
-              <p className="text-lime-400 text-3xl font-black leading-none" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
+              <p className="text-green-500 text-3xl font-black leading-none" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
                 {stat.value}
               </p>
               <p className="font-mono text-xs text-zinc-500 uppercase tracking-widest mt-1">

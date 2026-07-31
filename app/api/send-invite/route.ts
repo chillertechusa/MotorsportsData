@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Prepare email content
-    const inviteUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'https://motorsportsdata.io'}/data/sign-in?mode=sign-up&team_id=${team_id}`
+    const inviteUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'https://motorsportsdata.io'}/auth/sign-up?team_id=${team_id}`
     
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

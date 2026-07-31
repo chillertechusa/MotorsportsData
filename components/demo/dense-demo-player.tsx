@@ -107,10 +107,10 @@ export function DenseDemoPlayer() {
             className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-zinc-950/70 backdrop-blur-sm group"
             aria-label="Play demo"
           >
-            <span className="flex items-center justify-center h-20 w-20 rounded-full bg-lime-400 text-zinc-950 group-hover:scale-110 transition-transform">
+            <span className="flex items-center justify-center h-20 w-20 rounded-full bg-green-500 text-zinc-950 group-hover:scale-110 transition-transform">
               <Play className="h-9 w-9 ml-1" fill="currentColor" />
             </span>
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-lime-400">Play 120-Second Demo</span>
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-green-500">Play 120-Second Demo</span>
             <span className="text-zinc-400 text-sm">{SCENE_TOTAL} live scenes · every metric moving in real time</span>
           </button>
         )}
@@ -155,7 +155,7 @@ export function DenseDemoPlayer() {
             value={t}
             onChange={(e) => seek(parseFloat(e.target.value))}
             aria-label="Seek demo timeline"
-            className="w-full h-1.5 appearance-none bg-zinc-800 rounded-full cursor-pointer accent-lime-400"
+            className="w-full h-1.5 appearance-none bg-zinc-800 rounded-full cursor-pointer accent-green-500"
             style={{ background: `linear-gradient(to right, rgb(163 230 53) ${pct}%, rgb(39 39 42) ${pct}%)` }}
           />
           <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 pointer-events-none">
@@ -174,7 +174,7 @@ export function DenseDemoPlayer() {
             <button onClick={() => skip(-10)} aria-label="Back 10 seconds" className="flex items-center justify-center h-9 w-9 rounded border border-zinc-700 text-zinc-300 hover:bg-zinc-800 transition-colors">
               <RotateCcw className="h-4 w-4" />
             </button>
-            <button onClick={toggle} aria-label={playing ? 'Pause' : 'Play'} className="flex items-center justify-center h-10 w-10 rounded bg-lime-400 text-zinc-950 hover:bg-lime-300 transition-colors">
+            <button onClick={toggle} aria-label={playing ? 'Pause' : 'Play'} className="flex items-center justify-center h-10 w-10 rounded bg-green-500 text-zinc-950 hover:bg-green-400 transition-colors">
               {playing ? <Pause className="h-5 w-5" fill="currentColor" /> : <Play className="h-5 w-5 ml-0.5" fill="currentColor" />}
             </button>
             <button onClick={() => skip(10)} aria-label="Forward 10 seconds" className="flex items-center justify-center h-9 w-9 rounded border border-zinc-700 text-zinc-300 hover:bg-zinc-800 transition-colors">
@@ -191,7 +191,7 @@ export function DenseDemoPlayer() {
               <button
                 key={c.label}
                 onClick={() => { seek(c.at); setStarted(true); setPlaying(true) }}
-                className={`font-mono text-[10px] uppercase tracking-wider px-2.5 py-1.5 rounded transition-colors ${activeChapter.label === c.label ? 'bg-lime-400/15 text-lime-400' : 'text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800'}`}
+                className={`font-mono text-[10px] uppercase tracking-wider px-2.5 py-1.5 rounded transition-colors ${activeChapter.label === c.label ? 'bg-green-500/15 text-green-500' : 'text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800'}`}
               >
                 {i + 1}. {c.label}
               </button>

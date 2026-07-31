@@ -16,7 +16,7 @@ const DISC_ICONS: Record<string, LucideIcon> = {
 
 /* Accent colours hardcoded so Tailwind can tree-shake correctly */
 const DISC_ACCENT: Record<DisciplineId, { text: string; border: string; bg: string; bar: string }> = {
-  mx_sx:      { text: 'text-lime-400',   border: 'border-lime-400',   bg: 'bg-lime-400/10',   bar: 'bg-lime-400' },
+  mx_sx:      { text: 'text-green-500',   border: 'border-green-500',   bg: 'bg-green-500/10',   bar: 'bg-green-500' },
   enduro:     { text: 'text-green-400',  border: 'border-green-400',  bg: 'bg-green-400/10',  bar: 'bg-green-400' },
   fmx:        { text: 'text-orange-400', border: 'border-orange-400', bg: 'bg-orange-400/10', bar: 'bg-orange-400' },
   flat_track: { text: 'text-yellow-400', border: 'border-yellow-400', bg: 'bg-yellow-400/10', bar: 'bg-yellow-400' },
@@ -24,7 +24,7 @@ const DISC_ACCENT: Record<DisciplineId, { text: string; border: string; bg: stri
   pit_bike:   { text: 'text-pink-400',   border: 'border-pink-400',   bg: 'bg-pink-400/10',   bar: 'bg-pink-400' },
   nascar:     { text: 'text-red-400',    border: 'border-red-400',    bg: 'bg-red-400/10',    bar: 'bg-red-400' },
   drag:       { text: 'text-orange-500', border: 'border-orange-500', bg: 'bg-orange-500/10', bar: 'bg-orange-500' },
-  rally:      { text: 'text-sky-400',    border: 'border-sky-400',    bg: 'bg-sky-400/10',    bar: 'bg-sky-400' },
+  rally:      { text: 'text-blue-500',    border: 'border-sky-400',    bg: 'bg-blue-600/10',    bar: 'bg-sky-400' },
   karting:    { text: 'text-purple-400', border: 'border-purple-400', bg: 'bg-purple-400/10', bar: 'bg-purple-400' },
 }
 
@@ -339,14 +339,14 @@ export default function MultiSportDemo() {
 
         {/* Section header */}
         <div className="max-w-3xl mb-12">
-          <p className="font-mono text-[10px] text-lime-400 uppercase tracking-[0.3em] mb-4">
+          <p className="font-mono text-[10px] text-green-500 uppercase tracking-[0.3em] mb-4">
             // one platform — every discipline — several lenses
           </p>
           <h2
             className="text-zinc-100 uppercase leading-none tracking-tight text-balance mb-4"
             style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: 'clamp(2.2rem, 4.5vw, 4rem)' }}
           >
-            Your Program. <span className="text-lime-400">Your Operating System.</span>
+            Your Program. <span className="text-green-500">Your Operating System.</span>
           </h2>
           <p className="text-zinc-400 text-lg leading-relaxed">
             Pick your discipline and your role — watch the platform re-skin its vocabulary, metrics, race-day playbook, and AI coaching to fit exactly how you race. Same platform, your lens.
@@ -395,7 +395,7 @@ export default function MultiSportDemo() {
                   onClick={() => setRole(r.id)}
                   className={`px-6 py-3 border font-black text-sm uppercase tracking-widest transition-all ${
                     selected
-                      ? 'bg-lime-400 text-zinc-950 border-lime-400 shadow-[0_0_20px_rgba(163,230,53,0.2)]'
+                      ? 'bg-green-500 text-zinc-950 border-green-500 shadow-[0_0_20px_rgba(163,230,53,0.2)]'
                       : 'text-zinc-400 border-zinc-800 hover:border-zinc-600 hover:text-zinc-100 hover:bg-zinc-900'
                   }`}
                 >
@@ -543,7 +543,7 @@ export default function MultiSportDemo() {
           </div>
           <a
             href="#pricing"
-            className="inline-flex items-center gap-2 bg-lime-400 text-zinc-950 font-black text-sm uppercase tracking-widest px-8 py-4 hover:bg-lime-300 transition-colors shadow-[0_0_24px_rgba(163,230,53,0.25)] whitespace-nowrap"
+            className="inline-flex items-center gap-2 bg-green-500 text-zinc-950 font-black text-sm uppercase tracking-widest px-8 py-4 hover:bg-green-400 transition-colors shadow-[0_0_24px_rgba(163,230,53,0.25)] whitespace-nowrap"
           >
             Lock Your Founding Price
             <ArrowRight className="h-4 w-4" aria-hidden="true" />

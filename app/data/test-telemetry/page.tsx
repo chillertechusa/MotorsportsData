@@ -114,7 +114,7 @@ export default function TestTelemetryPage() {
           <button
             onClick={() => sendTelemetry('single')}
             disabled={loading}
-            className="px-4 py-3 bg-lime-500 text-zinc-950 font-bold rounded hover:bg-lime-400 disabled:opacity-50 flex items-center gap-2"
+            className="px-4 py-3 bg-green-600 text-zinc-950 font-bold rounded hover:bg-green-500 disabled:opacity-50 flex items-center gap-2"
           >
             <Play className="h-4 w-4" />
             Send Single Point
@@ -165,7 +165,7 @@ export default function TestTelemetryPage() {
             <div className="space-y-3">
               <div>
                 <p className="text-sm text-zinc-400">Total Requests</p>
-                <p className="text-2xl font-black text-lime-500">
+                <p className="text-2xl font-black text-green-600">
                   {logs.filter((l) => l.type === 'success').length}
                 </p>
               </div>
@@ -217,7 +217,7 @@ export default function TestTelemetryPage() {
         </div>
 
         {/* Next Steps */}
-        <div className="mt-8 border border-lime-500/30 bg-lime-500/5 rounded-lg p-6">
+        <div className="mt-8 border border-green-600/30 bg-green-600/5 rounded-lg p-6">
           <h3 className="font-bold mb-3">Next Steps</h3>
           <ol className="space-y-2 text-sm text-zinc-300">
             <li>✅ Test ingestion (this page)</li>

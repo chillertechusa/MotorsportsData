@@ -18,8 +18,8 @@ export default function TermsPage() {
           may use the Platform, what you may and may not do, who owns the data and intellectual
           property involved, and the terms for accounts that access rider data. Please read them
           alongside our{' '}
-          <a href="/legal/privacy" className="text-lime-400 hover:underline">Privacy Policy</a> and{' '}
-          <a href="/legal/data-consent" className="text-lime-400 hover:underline">Data Sharing &amp; Consent</a> policy.
+          <a href="/legal/privacy" className="text-green-500 hover:underline">Privacy Policy</a> and{' '}
+          <a href="/legal/data-consent" className="text-green-500 hover:underline">Data Sharing &amp; Consent</a> policy.
         </>
       }
     >

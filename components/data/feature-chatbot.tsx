@@ -92,7 +92,7 @@ export default function FeatureChatbot({ feature, title }: FeatureChatbotProps) 
       {/* Floating chat button */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-8 right-8 z-40 h-14 w-14 rounded-full bg-lime-400 hover:bg-lime-300 text-zinc-950 shadow-lg flex items-center justify-center transition-all hover:scale-110"
+        className="fixed bottom-8 right-8 z-40 h-14 w-14 rounded-full bg-green-500 hover:bg-green-400 text-zinc-950 shadow-lg flex items-center justify-center transition-all hover:scale-110"
         aria-label="Open chat"
       >
         {open ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
@@ -104,7 +104,7 @@ export default function FeatureChatbot({ feature, title }: FeatureChatbotProps) 
           {/* Header */}
           <div className="border-b border-zinc-800 px-5 py-4 flex items-center justify-between">
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-lime-400">Feature Help</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-green-500">Feature Help</p>
               <p className="text-sm text-zinc-300 mt-1">{title} Assistant</p>
             </div>
             <button
@@ -128,7 +128,7 @@ export default function FeatureChatbot({ feature, title }: FeatureChatbotProps) 
                 <div
                   className={`max-w-xs rounded-lg px-4 py-2.5 text-sm leading-relaxed ${
                     msg.role === 'user'
-                      ? 'bg-lime-400/20 text-lime-100 border border-lime-400/30'
+                      ? 'bg-green-500/20 text-green-200 border border-green-500/30'
                       : 'bg-zinc-800 text-zinc-300 border border-zinc-700'
                   }`}
                 >
@@ -152,12 +152,12 @@ export default function FeatureChatbot({ feature, title }: FeatureChatbotProps) 
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSend()}
               placeholder="Ask for help..."
-              className="flex-1 bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-lime-400 transition-colors"
+              className="flex-1 bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-green-500 transition-colors"
             />
             <button
               onClick={handleSend}
               disabled={loading || !input.trim()}
-              className="h-9 w-9 rounded-lg bg-lime-400 hover:bg-lime-300 disabled:opacity-50 disabled:cursor-not-allowed text-zinc-950 flex items-center justify-center transition-colors"
+              className="h-9 w-9 rounded-lg bg-green-500 hover:bg-green-400 disabled:opacity-50 disabled:cursor-not-allowed text-zinc-950 flex items-center justify-center transition-colors"
             >
               <Send className="h-4 w-4" />
             </button>

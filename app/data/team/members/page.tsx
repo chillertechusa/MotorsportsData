@@ -16,8 +16,8 @@ interface TeamMember {
 
 const ROLE_COLORS: Record<string, string> = {
   owner: 'bg-red-100 text-red-800',
-  coach: 'bg-blue-100 text-blue-800',
-  mechanic: 'bg-orange-100 text-orange-800',
+  coach: 'bg-[var(--color-yamaha-faint)] text-[var(--color-yamaha-light)]',
+  mechanic: 'bg-[var(--color-yamaha-faint)] text-[var(--color-yamaha)]',
   mechanic_coach: 'bg-purple-100 text-purple-800',
 }
 
@@ -101,7 +101,7 @@ export default function TeamMembersPage() {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-lime-500 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
           <p>Loading team members...</p>
         </div>
       </div>
@@ -119,7 +119,7 @@ export default function TeamMembersPage() {
           </div>
           <button
             onClick={() => setShowAddMember(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-lime-500 text-black font-bold rounded hover:bg-lime-400 transition"
+            className="flex items-center gap-2 px-4 py-2 bg-green-600 text-black font-bold rounded hover:bg-green-500 transition"
           >
             <Plus className="h-5 w-5" />
             Add Member
@@ -239,7 +239,7 @@ export default function TeamMembersPage() {
                             setEditingMemberId(member.id)
                             setEditingRole(member.role)
                           }}
-                          className="p-2 text-gray-600 hover:text-lime-500 transition"
+                          className="p-2 text-gray-600 hover:text-green-600 transition"
                           title="Edit role"
                         >
                           <Edit2 className="h-4 w-4" />

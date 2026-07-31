@@ -45,7 +45,7 @@ export function RiderComparison({ riders, referenceLap = 0 }: RiderComparisonPro
               return (
                 <tr
                   key={rider.riderEmail}
-                  className={`border-b border-zinc-800 ${isLeader ? 'bg-lime-950/30' : 'hover:bg-zinc-800/50'}`}
+                  className={`border-b border-zinc-800 ${isLeader ? 'bg-zinc-950/30' : 'hover:bg-zinc-800/50'}`}
                 >
                   <td className="py-3 px-4">
                     <div>
@@ -57,7 +57,7 @@ export function RiderComparison({ riders, referenceLap = 0 }: RiderComparisonPro
                     </div>
                   </td>
                   <td className="text-center py-3 px-4">
-                    <div className={`font-mono font-semibold ${isLeader ? 'text-lime-400' : 'text-blue-400'}`}>
+                    <div className={`font-mono font-semibold ${isLeader ? 'text-green-500' : 'text-blue-400'}`}>
                       {rider.bestLap?.toFixed(2)}s
                     </div>
                   </td>
@@ -90,7 +90,7 @@ export function RiderComparison({ riders, referenceLap = 0 }: RiderComparisonPro
       <div className="mt-4 pt-4 border-t border-zinc-800 grid grid-cols-3 gap-4 text-sm">
         <div>
           <div className="text-muted-foreground mb-1">Total Riders</div>
-          <div className="text-2xl font-bold text-lime-400">{riders.length}</div>
+          <div className="text-2xl font-bold text-green-500">{riders.length}</div>
         </div>
         <div>
           <div className="text-muted-foreground mb-1">Pace Spread</div>

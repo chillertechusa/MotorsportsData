@@ -79,10 +79,10 @@ export default function MdHeroTelemetryInline() {
       {/* Live badge */}
       <div className="flex items-center gap-2 mb-3">
         <span className="relative flex h-1.5 w-1.5">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime-400 opacity-60" />
-          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-lime-400" />
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-60" />
+          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
         </span>
-        <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-lime-400">
+        <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-green-500">
           Live Session · Simulated
         </span>
       </div>
@@ -104,7 +104,7 @@ export default function MdHeroTelemetryInline() {
             Lap · Last {fmtLap(lastLap)}
           </p>
           <p
-            className="text-lime-400 text-xl leading-none font-black tabular-nums"
+            className="text-green-500 text-xl leading-none font-black tabular-nums"
             style={{ fontFamily: 'var(--font-barlow-condensed)' }}
           >
             {fmtLap(t.lapMs)}
@@ -117,7 +117,7 @@ export default function MdHeroTelemetryInline() {
           </div>
           <div className="h-1.5 w-full bg-zinc-800 overflow-hidden">
             <div
-              className="h-full bg-lime-400 transition-[width] duration-75 ease-out"
+              className="h-full bg-green-500 transition-[width] duration-75 ease-out"
               style={{ width: `${rpmPct}%` }}
             />
           </div>
@@ -129,9 +129,9 @@ export default function MdHeroTelemetryInline() {
 
 function Stat({ label, value, unit, accent }: { label: string; value: string; unit: string; accent?: boolean }) {
   return (
-    <div className={`bg-zinc-950/80 border px-2.5 py-2 backdrop-blur-sm ${accent ? 'border-lime-400/40' : 'border-zinc-800'}`}>
+    <div className={`bg-zinc-950/80 border px-2.5 py-2 backdrop-blur-sm ${accent ? 'border-green-500/40' : 'border-zinc-800'}`}>
       <p className="font-mono text-[7px] uppercase tracking-[0.12em] text-zinc-500 mb-0.5 truncate">{label}</p>
-      <p className={`leading-none ${accent ? 'text-lime-400' : 'text-zinc-100'}`}>
+      <p className={`leading-none ${accent ? 'text-green-500' : 'text-zinc-100'}`}>
         <span
           className="text-base font-black tabular-nums"
           style={{ fontFamily: 'var(--font-barlow-condensed)' }}

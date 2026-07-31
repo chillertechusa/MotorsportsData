@@ -52,7 +52,7 @@ export function NotificationsSettings() {
         className={`px-6 py-3 font-black uppercase tracking-widest rounded text-sm transition-colors ${
           subscription
             ? 'bg-zinc-800 text-zinc-100 hover:bg-zinc-700 disabled:opacity-50'
-            : 'bg-lime-400 text-zinc-950 hover:bg-lime-300 disabled:opacity-50'
+            : 'bg-green-500 text-zinc-950 hover:bg-green-400 disabled:opacity-50'
         }`}
       >
         {loading ? 'Updating...' : subscription ? 'Disable Notifications' : 'Enable Notifications'}

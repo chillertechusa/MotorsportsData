@@ -28,7 +28,7 @@ export default async function SessionComparePage() {
         <div className="text-center max-w-md">
           <h1 className="text-2xl font-black text-zinc-100 mb-4">No Vehicles Yet</h1>
           <p className="text-zinc-400 mb-6">Add a vehicle to your fleet to start comparing sessions.</p>
-          <a href="/data/fleet" className="inline-block bg-lime-400 text-zinc-950 px-6 py-3 font-black uppercase tracking-widest hover:bg-lime-300 transition-colors">
+          <a href="/data/fleet" className="inline-block bg-green-500 text-zinc-950 px-6 py-3 font-black uppercase tracking-widest hover:bg-green-400 transition-colors">
             Back to Fleet
           </a>
         </div>

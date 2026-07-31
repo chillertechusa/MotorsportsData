@@ -47,8 +47,8 @@ export async function getSessionsInDateRange(
     .where(
       and(
         eq(mdSessions.vehicleId, vehicleId),
-        gte(mdSessions.sessionDate, startDate),
-        lte(mdSessions.sessionDate, endDate),
+        gte(mdSessions.sessionDate, startDate.toISOString().slice(0, 10)),
+        lte(mdSessions.sessionDate, endDate.toISOString().slice(0, 10)),
       ),
     )
     .orderBy(desc(mdSessions.sessionDate))
@@ -68,7 +68,10 @@ export async function getTeamReadinessHistory(teamId: string, days = 14) {
     .select()
     .from(mdRiderReadiness)
     .where(
-      and(eq(mdRiderReadiness.teamId, teamId), gte(mdRiderReadiness.entryDate, cutoffDate)),
+      and(
+        eq(mdRiderReadiness.teamId, teamId),
+        gte(mdRiderReadiness.entryDate, cutoffDate.toISOString().slice(0, 10)),
+      ),
     )
     .orderBy(desc(mdRiderReadiness.entryDate))
 }

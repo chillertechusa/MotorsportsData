@@ -5,8 +5,12 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server'
+import { getSessionTeamId } from '@/lib/md-auth'
 
 export async function GET(request: NextRequest) {
+  const auth = await getSessionTeamId()
+  if (!auth.ok) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
   try {
     const searchParams = request.nextUrl.searchParams
     const type = searchParams.get('type') || 'summary'
@@ -15,6 +19,11 @@ export async function GET(request: NextRequest) {
 
     if (!teamId) {
       return NextResponse.json({ error: 'teamId required' }, { status: 400 })
+    }
+
+    // Caller may only export their own team data
+    if (teamId !== auth.teamId) {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
     }
 
     if (type === 'summary') {

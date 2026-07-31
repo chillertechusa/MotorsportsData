@@ -72,7 +72,7 @@ export function ProgressionTracker({ vehicles, teamId }: { vehicles: Vehicle[]; 
             <select
               value={selectedVehicle}
               onChange={(e) => setSelectedVehicle(e.target.value)}
-              className="w-full bg-zinc-950 border border-zinc-800 rounded px-4 py-3 text-zinc-100 focus:outline-none focus:border-lime-400"
+              className="w-full bg-zinc-950 border border-zinc-800 rounded px-4 py-3 text-zinc-100 focus:outline-none focus:border-green-500"
             >
               {vehicles.map((v) => (
                 <option key={v.id} value={v.id}>
@@ -90,7 +90,7 @@ export function ProgressionTracker({ vehicles, teamId }: { vehicles: Vehicle[]; 
               value={filterTrack}
               onChange={(e) => setFilterTrack(e.target.value)}
               placeholder="e.g., Southwick"
-              className="w-full bg-zinc-950 border border-zinc-800 rounded px-4 py-3 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-lime-400"
+              className="w-full bg-zinc-950 border border-zinc-800 rounded px-4 py-3 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-green-500"
             />
           </div>
         </div>
@@ -100,7 +100,7 @@ export function ProgressionTracker({ vehicles, teamId }: { vehicles: Vehicle[]; 
           <div className="grid md:grid-cols-4 gap-6 mb-12">
             <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6">
               <p className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-2">Total Sessions</p>
-              <p className="text-3xl font-black text-lime-400">{progression.totalSessions}</p>
+              <p className="text-3xl font-black text-green-500">{progression.totalSessions}</p>
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6">
@@ -140,7 +140,7 @@ export function ProgressionTracker({ vehicles, teamId }: { vehicles: Vehicle[]; 
                       {session.feedback && <p className="text-sm text-zinc-500 italic mt-2">"{session.feedback}"</p>}
                     </div>
                     <div className="text-right">
-                      <p className="text-2xl font-black text-lime-400">{formatTime(session.lapTime)}</p>
+                      <p className="text-2xl font-black text-green-500">{formatTime(session.lapTime)}</p>
                       {session.improvement && session.improvement !== 0 && (
                         <p className={`text-sm font-mono mt-2 ${session.improvement > 0 ? 'text-green-400' : 'text-orange-400'}`}>
                           {session.improvement > 0 ? '+' : ''}{session.improvement.toFixed(2)}s

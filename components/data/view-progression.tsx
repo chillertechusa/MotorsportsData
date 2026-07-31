@@ -27,8 +27,8 @@ type RiderProfile = {
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const CATEGORIES: Record<string, { label: string; icon: typeof Trophy; color: string; bg: string }> = {
-  first: { label: 'First', icon: Star, color: 'text-sky-400', bg: 'bg-sky-500/10 border-sky-500/30' },
-  skill: { label: 'New Skill', icon: TrendingUp, color: 'text-lime-400', bg: 'bg-lime-500/10 border-lime-500/30' },
+  first: { label: 'First', icon: Star, color: 'text-blue-500', bg: 'bg-blue-600/10 border-blue-600/30' },
+  skill: { label: 'New Skill', icon: TrendingUp, color: 'text-green-500', bg: 'bg-green-600/10 border-green-600/30' },
   class_move: { label: 'Moved Up', icon: ArrowUpRight, color: 'text-violet-400', bg: 'bg-violet-500/10 border-violet-500/30' },
   race: { label: 'Race', icon: Flag, color: 'text-orange-400', bg: 'bg-orange-500/10 border-orange-500/30' },
   podium: { label: 'Podium', icon: Trophy, color: 'text-amber-400', bg: 'bg-amber-500/10 border-amber-500/30' },
@@ -69,8 +69,8 @@ function ProfileCard({ profile, onEdit }: { profile: RiderProfile; onEdit: () =>
     <div className="rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 p-5">
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-center gap-4">
-          <div className="h-14 w-14 rounded-2xl bg-lime-500/15 border border-lime-500/30 flex items-center justify-center">
-            <Baby className="h-7 w-7 text-lime-400" />
+          <div className="h-14 w-14 rounded-2xl bg-green-600/15 border border-green-600/30 flex items-center justify-center">
+            <Baby className="h-7 w-7 text-green-500" />
           </div>
           <div>
             <h3 className="text-lg font-bold text-zinc-100">{profile.riderName || 'Your Rider'}</h3>
@@ -84,7 +84,7 @@ function ProfileCard({ profile, onEdit }: { profile: RiderProfile; onEdit: () =>
         </div>
         <button
           onClick={onEdit}
-          className="flex items-center gap-1.5 h-9 px-3 rounded-lg bg-zinc-800 border border-zinc-700 text-xs font-semibold text-zinc-300 hover:border-lime-400 hover:text-lime-400 transition-colors"
+          className="flex items-center gap-1.5 h-9 px-3 rounded-lg bg-zinc-800 border border-zinc-700 text-xs font-semibold text-zinc-300 hover:border-green-500 hover:text-green-500 transition-colors"
         >
           <Edit2 className="h-3.5 w-3.5" />
           Edit
@@ -106,20 +106,20 @@ function GraduationNudge({ profile }: { profile: RiderProfile }) {
   if (!agedUp && !bigBike) return null
 
   return (
-    <div className="rounded-2xl bg-gradient-to-br from-lime-500/15 to-emerald-500/5 border border-lime-500/40 p-5">
+    <div className="rounded-2xl bg-gradient-to-br from-green-500/15 to-emerald-500/5 border border-green-600/40 p-5">
       <div className="flex items-start gap-3">
-        <div className="h-10 w-10 rounded-xl bg-lime-500/20 border border-lime-500/40 flex items-center justify-center shrink-0">
-          <ArrowUpRight className="h-5 w-5 text-lime-400" />
+        <div className="h-10 w-10 rounded-xl bg-green-600/20 border border-green-600/40 flex items-center justify-center shrink-0">
+          <ArrowUpRight className="h-5 w-5 text-green-500" />
         </div>
         <div className="flex-1">
-          <h4 className="text-sm font-bold text-lime-300">Time to move up to Privateer</h4>
+          <h4 className="text-sm font-bold text-green-400">Time to move up to Privateer</h4>
           <p className="text-xs text-zinc-300 mt-1 leading-relaxed">
             {profile.riderName || 'Your rider'} is stepping up{age !== null ? ` at ${age}` : ''}
             {bigBike ? ' onto a bigger bike' : ''}. The Privateer plan unlocks setup sheets, the full part vault,
             session logging, and MD Intel — the tools a racing program needs.
           </p>
           <a href="/data/checkout?plan=privateer">
-            <Button className="mt-3 h-9 bg-lime-500 hover:bg-lime-400 text-zinc-950 font-bold text-xs">
+            <Button className="mt-3 h-9 bg-green-600 hover:bg-green-500 text-zinc-950 font-bold text-xs">
               Upgrade to Privateer
             </Button>
           </a>
@@ -183,7 +183,7 @@ function MilestoneModal({
                 <button
                   key={s.title}
                   onClick={() => setForm(f => ({ ...f, title: s.title, category: s.category }))}
-                  className="h-8 px-3 rounded-lg bg-zinc-800 border border-zinc-700 text-xs text-zinc-300 hover:border-lime-400 hover:text-lime-400 transition-colors"
+                  className="h-8 px-3 rounded-lg bg-zinc-800 border border-zinc-700 text-xs text-zinc-300 hover:border-green-500 hover:text-green-500 transition-colors"
                 >
                   {s.title}
                 </button>
@@ -199,7 +199,7 @@ function MilestoneModal({
               value={form.title}
               onChange={e => setForm(f => ({ ...f, title: e.target.value }))}
               placeholder="e.g. First podium"
-              className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+              className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
             />
           </div>
 
@@ -229,7 +229,7 @@ function MilestoneModal({
               type="date"
               value={form.milestoneDate}
               onChange={e => setForm(f => ({ ...f, milestoneDate: e.target.value }))}
-              className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+              className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
             />
           </div>
 
@@ -240,13 +240,13 @@ function MilestoneModal({
               onChange={e => setForm(f => ({ ...f, notes: e.target.value }))}
               placeholder="What happened, how it felt, who was there..."
               rows={3}
-              className="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-4 py-3 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none resize-none"
+              className="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-4 py-3 text-sm text-zinc-100 focus:border-green-500 focus:outline-none resize-none"
             />
           </div>
 
           {error && <p className="text-xs text-red-400">{error}</p>}
 
-          <Button onClick={handleSubmit} disabled={saving} className="w-full h-12 bg-lime-500 hover:bg-lime-400 text-zinc-950 font-bold">
+          <Button onClick={handleSubmit} disabled={saving} className="w-full h-12 bg-green-600 hover:bg-green-500 text-zinc-950 font-bold">
             {saving ? 'Saving...' : existing ? 'Save changes' : 'Add milestone'}
           </Button>
         </div>
@@ -302,7 +302,7 @@ function ProfileModal({
               value={form.riderName}
               onChange={e => setForm(f => ({ ...f, riderName: e.target.value }))}
               placeholder="e.g. Cody"
-              className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+              className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
             />
           </div>
           <div>
@@ -314,7 +314,7 @@ function ProfileModal({
               value={form.riderBirthYear}
               onChange={e => setForm(f => ({ ...f, riderBirthYear: e.target.value }))}
               placeholder="e.g. 2017"
-              className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+              className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
             />
           </div>
           <div>
@@ -322,13 +322,13 @@ function ProfileModal({
             <select
               value={form.riderClass}
               onChange={e => setForm(f => ({ ...f, riderClass: e.target.value }))}
-              className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+              className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
             >
               <option value="">Select a class...</option>
               {YOUTH_CLASSES.map(c => <option key={c} value={c}>{c}</option>)}
             </select>
           </div>
-          <Button onClick={handleSubmit} disabled={saving} className="w-full h-12 bg-lime-500 hover:bg-lime-400 text-zinc-950 font-bold">
+          <Button onClick={handleSubmit} disabled={saving} className="w-full h-12 bg-green-600 hover:bg-green-500 text-zinc-950 font-bold">
             {saving ? 'Saving...' : 'Save details'}
           </Button>
         </div>
@@ -371,7 +371,7 @@ export default function ViewProgression() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="h-8 w-8 rounded-full border-2 border-zinc-700 border-t-lime-400 animate-spin" />
+        <div className="h-8 w-8 rounded-full border-2 border-zinc-700 border-t-green-500 animate-spin" />
       </div>
     )
   }
@@ -386,7 +386,7 @@ export default function ViewProgression() {
           <h2 className="text-xl font-bold text-zinc-100">Progression</h2>
           <p className="text-sm text-zinc-500">Every first, every step up — the rider&apos;s story from day one.</p>
         </div>
-        <Button onClick={() => setShowAdd(true)} className="h-10 bg-lime-500 hover:bg-lime-400 text-zinc-950 font-bold shrink-0">
+        <Button onClick={() => setShowAdd(true)} className="h-10 bg-green-600 hover:bg-green-500 text-zinc-950 font-bold shrink-0">
           <Plus className="h-4 w-4 mr-1" /> Add
         </Button>
       </div>
@@ -405,7 +405,7 @@ export default function ViewProgression() {
           </div>
           <p className="text-sm font-semibold text-zinc-300">Start the story</p>
           <p className="text-xs text-zinc-500 mt-1 max-w-xs mx-auto">Log that first ride, first jump, first race. You&apos;ll be glad you kept track.</p>
-          <Button onClick={() => setShowAdd(true)} className="mt-4 h-9 bg-lime-500 hover:bg-lime-400 text-zinc-950 font-bold text-xs">
+          <Button onClick={() => setShowAdd(true)} className="mt-4 h-9 bg-green-600 hover:bg-green-500 text-zinc-950 font-bold text-xs">
             <Plus className="h-3.5 w-3.5 mr-1" /> Add first milestone
           </Button>
         </div>
@@ -434,7 +434,7 @@ export default function ViewProgression() {
                         {m.notes && <p className="text-xs text-zinc-400 mt-1.5 leading-relaxed">{m.notes}</p>}
                       </div>
                       <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
-                        <button onClick={() => setEditing(m)} className="h-7 w-7 rounded-lg bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-lime-400">
+                        <button onClick={() => setEditing(m)} className="h-7 w-7 rounded-lg bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-green-500">
                           <Edit2 className="h-3.5 w-3.5" />
                         </button>
                         <button onClick={() => handleDelete(m.id)} className="h-7 w-7 rounded-lg bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-red-400">

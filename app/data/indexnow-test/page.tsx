@@ -34,7 +34,7 @@ export default function IndexNowTestPage() {
     const urls = [
       'https://motorsportsdata.io/',
       'https://motorsportsdata.io/data',
-      'https://motorsportsdata.io/data/pricing',
+      'https://motorsportsdata.io/pricing',
       'https://motorsportsdata.io/shop',
     ]
     setLoading(true)
@@ -47,7 +47,7 @@ export default function IndexNowTestPage() {
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100 p-8">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-2xl font-bold mb-2 text-lime-400">IndexNow Test</h1>
+        <h1 className="text-2xl font-bold mb-2 text-green-500">IndexNow Test</h1>
         <p className="text-xs text-zinc-500 mb-8">
           Notify Bing, Yandex, and other search engines of new/updated URLs
         </p>
@@ -62,7 +62,7 @@ export default function IndexNowTestPage() {
             <button
               onClick={handleSubmitSitemap}
               disabled={loading}
-              className="px-4 py-2 bg-lime-400 text-zinc-950 font-bold text-xs rounded uppercase disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              className="px-4 py-2 bg-green-500 text-zinc-950 font-bold text-xs rounded uppercase disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
             >
               {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
               Submit Sitemap
@@ -78,7 +78,7 @@ export default function IndexNowTestPage() {
             <div className="flex gap-2">
               <input
                 type="text"
-                placeholder="e.g., /data/pricing"
+                placeholder="e.g., /pricing"
                 value={urlInput}
                 onChange={(e) => setUrlInput(e.target.value)}
                 className="flex-1 px-3 py-2 text-xs bg-zinc-800 border border-zinc-700 rounded text-zinc-100 placeholder-zinc-600"
@@ -112,14 +112,14 @@ export default function IndexNowTestPage() {
 
         {/* Result */}
         {result && (
-          <div className={`mt-6 p-4 rounded-lg flex items-start gap-3 ${result.success ? 'bg-lime-950 border border-lime-700' : 'bg-red-950 border border-red-700'}`}>
+          <div className={`mt-6 p-4 rounded-lg flex items-start gap-3 ${result.success ? 'bg-zinc-950 border border-green-800' : 'bg-red-950 border border-red-700'}`}>
             {result.success ? (
-              <CheckCircle2 className="h-5 w-5 text-lime-400 mt-0.5 flex-shrink-0" />
+              <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
             ) : (
               <AlertCircle className="h-5 w-5 text-red-400 mt-0.5 flex-shrink-0" />
             )}
             <div>
-              <p className={`text-sm font-bold ${result.success ? 'text-lime-300' : 'text-red-300'}`}>
+              <p className={`text-sm font-bold ${result.success ? 'text-green-400' : 'text-red-300'}`}>
                 {result.success ? 'Success' : 'Error'}
               </p>
               <p className="text-xs text-zinc-300">{result.message}</p>

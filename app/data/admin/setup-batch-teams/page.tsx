@@ -37,7 +37,7 @@ export default function BatchTeamSetupPage() {
     <main className="flex flex-1 items-center justify-center p-6">
       <div className="w-full max-w-2xl">
         <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8">
-          <h1 className="text-2xl font-black uppercase tracking-widest text-lime-400 mb-2">
+          <h1 className="text-2xl font-black uppercase tracking-widest text-green-500 mb-2">
             Batch Team Setup
           </h1>
           <p className="text-zinc-400 text-sm mb-8">
@@ -56,7 +56,7 @@ export default function BatchTeamSetupPage() {
           <button
             onClick={handleCreateAccounts}
             disabled={loading}
-            className="w-full bg-lime-400 text-zinc-950 font-black uppercase tracking-widest py-4 rounded-xl hover:bg-lime-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="w-full bg-green-500 text-zinc-950 font-black uppercase tracking-widest py-4 rounded-xl hover:bg-green-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {loading ? 'Creating...' : 'CREATE BATCH ACCOUNTS'}
           </button>
@@ -69,8 +69,8 @@ export default function BatchTeamSetupPage() {
 
           {result && (
             <div className="mt-6 space-y-4">
-              <div className="p-4 bg-lime-400/10 border border-lime-400 rounded-lg">
-                <p className="font-black uppercase text-lime-400 text-sm mb-3">
+              <div className="p-4 bg-green-500/10 border border-green-500 rounded-lg">
+                <p className="font-black uppercase text-green-500 text-sm mb-3">
                   ✓ Batch Creation Complete
                 </p>
                 <div className="font-mono text-xs text-zinc-300 space-y-1">
@@ -90,7 +90,7 @@ export default function BatchTeamSetupPage() {
                       </span>
                     </div>
                     {account.success ? (
-                      <p className="font-mono text-xs text-lime-400">✓ Created</p>
+                      <p className="font-mono text-xs text-green-500">✓ Created</p>
                     ) : (
                       <p className="font-mono text-xs text-red-400">✗ {account.error}</p>
                     )}

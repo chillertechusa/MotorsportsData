@@ -63,8 +63,8 @@ export function MechanicPortfolio() {
       {/* Header */}
       <div className="space-y-4">
         <div className="flex items-center gap-3 mb-6">
-          <div className="rounded-lg bg-lime-500/10 border border-lime-500/20 p-3">
-            <Wrench className="h-6 w-6 text-lime-400" />
+          <div className="rounded-lg bg-green-600/10 border border-green-600/20 p-3">
+            <Wrench className="h-6 w-6 text-green-500" />
           </div>
           <div>
             <h1 className="text-2xl font-black text-zinc-50">Setup Portfolio</h1>
@@ -76,7 +76,7 @@ export function MechanicPortfolio() {
         <div className="grid grid-cols-3 gap-4">
           <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-4">
             <p className="text-xs text-zinc-500 uppercase tracking-wider mb-2">Total Setups</p>
-            <p className="text-3xl font-black text-lime-400">{SAMPLE_PORTFOLIO.length}</p>
+            <p className="text-3xl font-black text-green-500">{SAMPLE_PORTFOLIO.length}</p>
           </div>
           <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-4">
             <p className="text-xs text-zinc-500 uppercase tracking-wider mb-2">Avg Improvement</p>
@@ -152,15 +152,15 @@ export function MechanicPortfolio() {
           <Download className="h-4 w-4" />
           Download Portfolio
         </button>
-        <button className="px-4 py-2 rounded-lg bg-lime-500 hover:bg-lime-600 text-zinc-950 text-sm font-semibold flex items-center gap-2 transition-colors">
+        <button className="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-600 text-zinc-950 text-sm font-semibold flex items-center gap-2 transition-colors">
           <Share2 className="h-4 w-4" />
           Share Portfolio
         </button>
       </div>
 
       {/* Portfolio Summary */}
-      <div className="border border-lime-500/40 bg-lime-500/5 rounded-xl p-6">
-        <p className="text-sm text-lime-300">
+      <div className="border border-green-600/40 bg-green-600/5 rounded-xl p-6">
+        <p className="text-sm text-green-400">
           <strong>Portfolio Strength:</strong> Your setup changes have delivered an average of <strong>{avgImprovement}% lap time improvement</strong> across {SAMPLE_PORTFOLIO.length} modifications. This portfolio is your career record — take it with you as you move between teams. Share this with potential employers to showcase your setup engineering capability.
         </p>
       </div>

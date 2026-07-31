@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default async function AgentPortalPage() {
   const session = await auth.api.getSession({ headers: await headers() })
   if (!session?.user?.id) {
-    redirect('/data/sign-in?redirect=/data/agent')
+    redirect('/auth/sign-in?redirect=/data/agent')
   }
 
   const { account, entitled, entries } = await getAgentRoster()

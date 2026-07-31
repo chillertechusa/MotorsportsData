@@ -101,7 +101,7 @@ export async function runQACheckout(): Promise<QACheckoutResult> {
     const monthlyPlans = await db
       .select()
       .from(mdSquarePlanCatalog)
-      .where(eq(mdSquarePlanCatalog.billingFrequency, 'monthly'))
+      .where(eq(mdSquarePlanCatalog.frequency, 'monthly'))
 
     if (!Array.isArray(monthlyPlans) || monthlyPlans.length === 0) {
       throw new Error('No monthly pricing plans found')

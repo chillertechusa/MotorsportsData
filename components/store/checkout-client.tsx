@@ -57,6 +57,7 @@ export default function CheckoutClient({
   })
   const [submitting, setSubmitting] = useState(false)
   const [cardReady, setCardReady] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const cardRef = useRef<any>(null)
   const cardContainerRef = useRef<HTMLDivElement>(null)

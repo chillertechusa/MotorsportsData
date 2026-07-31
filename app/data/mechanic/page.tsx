@@ -29,7 +29,7 @@ export default function MechanicPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/data/pricing" className="px-6 py-3 bg-amber-400 text-zinc-950 font-bold rounded hover:bg-amber-300 transition-colors flex items-center justify-center gap-2">
+            <Link href="/#pricing" className="px-6 py-3 bg-amber-400 text-zinc-950 font-bold rounded hover:bg-amber-300 transition-colors flex items-center justify-center gap-2">
               Start at $29/mo <ArrowRight className="h-4 w-4" />
             </Link>
             <Link href="/" className="px-6 py-3 border border-zinc-700 text-zinc-100 font-semibold rounded hover:border-zinc-600 transition-colors">
@@ -176,7 +176,7 @@ export default function MechanicPage() {
           <p className="text-lg text-zinc-400 mb-8">
             Start tracking your work, prove your value, and carry your reputation with you.
           </p>
-          <Link href="/data/pricing" className="inline-flex items-center gap-2 px-8 py-3 bg-amber-400 text-zinc-950 font-bold rounded hover:bg-amber-300 transition-colors">
+          <Link href="/#pricing" className="inline-flex items-center gap-2 px-8 py-3 bg-amber-400 text-zinc-950 font-bold rounded hover:bg-amber-300 transition-colors">
             Get Started — $29/mo <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

@@ -108,7 +108,7 @@ export default function UploadAssetsPage() {
         onDrop={handleDrop}
         className={`relative border-2 border-dashed rounded-none px-8 py-16 flex flex-col items-center justify-center gap-4 cursor-pointer transition-colors ${
           dragging
-            ? 'border-lime-400 bg-lime-400/5'
+            ? 'border-green-500 bg-green-500/5'
             : uploading
             ? 'border-zinc-700 bg-zinc-900/50 pointer-events-none'
             : 'border-zinc-700 hover:border-zinc-500 bg-zinc-900/30'
@@ -129,7 +129,7 @@ export default function UploadAssetsPage() {
             </p>
             <div className="h-1 bg-zinc-800 w-full">
               <div
-                className="h-1 bg-lime-400 transition-all duration-200"
+                className="h-1 bg-green-500 transition-all duration-200"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -142,7 +142,7 @@ export default function UploadAssetsPage() {
             </svg>
             <div className="text-center">
               <p className="text-zinc-300 text-sm font-semibold">
-                Drop file here or <span className="text-lime-400">browse</span>
+                Drop file here or <span className="text-green-500">browse</span>
               </p>
               <p className="font-mono text-xs text-zinc-600 mt-1 uppercase tracking-widest">
                 MP4, MOV, PNG, JPG — up to 150 MB
@@ -175,15 +175,15 @@ export default function UploadAssetsPage() {
               </div>
               <button
                 onClick={() => copy(f.url)}
-                className="shrink-0 font-mono text-xs uppercase tracking-widest px-3 py-1.5 border border-zinc-700 text-zinc-300 hover:border-lime-400 hover:text-lime-400 transition-colors"
+                className="shrink-0 font-mono text-xs uppercase tracking-widest px-3 py-1.5 border border-zinc-700 text-zinc-300 hover:border-green-500 hover:text-green-500 transition-colors"
               >
                 {copied === f.url ? 'Copied!' : 'Copy URL'}
               </button>
             </div>
           ))}
 
-          <div className="border border-lime-400/20 bg-lime-400/5 px-4 py-3 space-y-1">
-            <p className="font-mono text-xs text-lime-400 uppercase tracking-widest">Next step</p>
+          <div className="border border-green-500/20 bg-green-500/5 px-4 py-3 space-y-1">
+            <p className="font-mono text-xs text-green-500 uppercase tracking-widest">Next step</p>
             <p className="text-sm text-zinc-400">
               Copy the URL above, then add it as{' '}
               <code className="text-zinc-200 bg-zinc-800 px-1 rounded text-xs">HERO_VIDEO_URL</code>{' '}

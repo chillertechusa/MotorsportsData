@@ -1,6 +1,6 @@
 import { db } from '@/lib/db'
 import { mdLiveAlerts, mdAlertThresholds, mdLiveSessions } from '@/lib/db/schema'
-import { eq, and } from 'drizzle-orm'
+import { eq, and, isNull } from 'drizzle-orm'
 
 interface TelemetryPoint {
   timestamp: number
@@ -143,7 +143,7 @@ export async function getActiveAlerts(liveSessionId: string) {
     .where(
       and(
         eq(mdLiveAlerts.liveSessionId, liveSessionId),
-        eq(mdLiveAlerts.acknowledgedAt, null)
+        isNull(mdLiveAlerts.acknowledgedAt)
       )
     )
 }

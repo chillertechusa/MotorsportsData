@@ -84,7 +84,7 @@ export function ViewMultiRiderTelemetry() {
               onClick={() => setSelectedRider(r.riderId)}
               className={`px-4 py-2 rounded-lg text-sm font-bold transition ${
                 selectedRider === r.riderId || (selectedRider === null && r === riders[0])
-                  ? 'bg-lime-500 text-zinc-950'
+                  ? 'bg-green-600 text-zinc-950'
                   : 'border border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-zinc-500'
               }`}
             >
@@ -105,7 +105,7 @@ export function ViewMultiRiderTelemetry() {
               onClick={() => setSelectedLap(lap.lapNumber)}
               className={`px-4 py-2 rounded-lg text-sm font-bold transition ${
                 selectedLap === lap.lapNumber
-                  ? 'bg-lime-500 text-zinc-950'
+                  ? 'bg-green-600 text-zinc-950'
                   : 'border border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-zinc-500'
               }`}
             >
@@ -165,7 +165,7 @@ export function ViewMultiRiderTelemetry() {
                       onClick={() => setComparisonRider(comparisonRider === r.riderId ? null : r.riderId)}
                       className={`px-3 py-1 rounded text-xs font-bold transition ${
                         comparisonRider === r.riderId
-                          ? 'bg-lime-500 text-zinc-950'
+                          ? 'bg-green-600 text-zinc-950'
                           : 'border border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-500'
                       }`}
                     >

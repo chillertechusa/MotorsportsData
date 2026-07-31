@@ -82,7 +82,7 @@ async function queueWebhookDelivery(
           'X-MD-Attempt': String(attempt),
         },
         body: payloadString,
-        timeout: 10000,
+        signal: AbortSignal.timeout(10_000),
       })
 
       statusCode = response.status

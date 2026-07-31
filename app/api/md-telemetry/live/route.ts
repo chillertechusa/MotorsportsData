@@ -1,10 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { getSessionTeamId } from '@/lib/md-auth'
 
 // Simple in-memory WebSocket manager
 // In production, use Socket.IO or dedicated WebSocket service
 const connections = new Map<string, Set<any>>()
 
 export async function GET(req: NextRequest) {
+  const auth = await getSessionTeamId()
+  if (!auth.ok) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
   const { searchParams } = new URL(req.url)
   const sessionId = searchParams.get('sessionId')
 

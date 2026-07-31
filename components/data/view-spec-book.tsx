@@ -11,8 +11,8 @@ import type { BikeSpec } from '@/lib/md-specs/types'
 function SectionHeader({ icon: Icon, title }: { icon: typeof BookOpen; title: string }) {
   return (
     <div className="flex items-center gap-2 mb-3">
-      <Icon className="h-4 w-4 text-lime-400 shrink-0" />
-      <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-lime-400">{title}</h3>
+      <Icon className="h-4 w-4 text-green-500 shrink-0" />
+      <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-green-500">{title}</h3>
     </div>
   )
 }
@@ -64,9 +64,9 @@ function SpecBookDisplay({ spec }: { spec: BikeSpec }) {
   return (
     <div className="space-y-4">
       {/* Header */}
-      <div className="rounded-xl border border-lime-400/30 bg-lime-400/5 px-5 py-4 flex flex-wrap items-center gap-3 justify-between">
+      <div className="rounded-xl border border-green-500/30 bg-green-500/5 px-5 py-4 flex flex-wrap items-center gap-3 justify-between">
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-lime-400 mb-0.5">OEM Spec Book</p>
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-green-500 mb-0.5">OEM Spec Book</p>
           <h2 className="text-xl font-black uppercase tracking-wide text-zinc-50">
             {spec.year} {spec.make} {spec.model}
           </h2>
@@ -168,7 +168,7 @@ function SpecBookDisplay({ spec }: { spec: BikeSpec }) {
               .sort((a, b) => a.intervalHours - b.intervalHours)
               .map((s, i) => (
                 <div key={i} className="flex items-start gap-3 py-1.5 border-b border-zinc-800 last:border-0">
-                  <span className="text-[10px] font-mono font-bold text-lime-400 bg-lime-400/10 rounded px-1.5 py-0.5 shrink-0 mt-0.5 whitespace-nowrap">
+                  <span className="text-[10px] font-mono font-bold text-green-500 bg-green-500/10 rounded px-1.5 py-0.5 shrink-0 mt-0.5 whitespace-nowrap">
                     {s.intervalHours} hr
                   </span>
                   <div>
@@ -248,13 +248,13 @@ export default function ViewSpecBook({ vehicles }: { vehicles: Vehicle[] }) {
               onClick={() => setSelectedVehicleId(v.id)}
               className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold transition-colors border ${
                 v.id === selectedVehicleId
-                  ? 'bg-lime-400/15 border-lime-400/40 text-lime-400'
+                  ? 'bg-green-500/15 border-green-500/40 text-green-500'
                   : 'border-zinc-800 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200'
               }`}
             >
               {v.name}
               {v.specKey && (
-                <span className="text-[9px] font-bold uppercase tracking-wider text-lime-500 bg-lime-400/10 rounded px-1">
+                <span className="text-[9px] font-bold uppercase tracking-wider text-green-600 bg-green-500/10 rounded px-1">
                   OEM
                 </span>
               )}

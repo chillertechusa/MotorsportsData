@@ -40,8 +40,8 @@ export default function SecurityView() {
       <header className="border-b border-zinc-900 px-6 py-3 flex items-center justify-between">
         <MdLogo size="sm" showWordmark={true} asLink={true} />
         <a
-          href="/data/pricing"
-          className="text-sm font-semibold text-lime-400 hover:text-lime-300 transition-colors"
+          href="/pricing"
+          className="text-sm font-semibold text-green-500 hover:text-green-400 transition-colors"
         >
           View Plans
         </a>
@@ -50,7 +50,7 @@ export default function SecurityView() {
       <main className="max-w-4xl mx-auto px-6 py-16 space-y-20">
         {/* Hero */}
         <div className="text-center space-y-4">
-          <div className="inline-flex items-center gap-2 rounded-full border border-lime-400/30 bg-lime-400/10 px-4 py-1.5 text-sm font-semibold text-lime-300">
+          <div className="inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1.5 text-sm font-semibold text-green-400">
             <Shield className="h-4 w-4" />
             Enterprise-Grade Security
           </div>
@@ -85,8 +85,8 @@ export default function SecurityView() {
             <div key={fs.number} className="rounded-2xl border border-zinc-800 bg-zinc-900 overflow-hidden">
               <div className="flex items-center gap-4 px-6 py-5 border-b border-zinc-800">
                 <span className="text-4xl font-black text-zinc-700 leading-none">{fs.number}</span>
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-lime-400/10 border border-lime-400/20">
-                  <fs.icon className="h-6 w-6 text-lime-400" />
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-green-500/10 border border-green-500/20">
+                  <fs.icon className="h-6 w-6 text-green-500" />
                 </div>
                 <h3 className="text-xl font-black uppercase tracking-wide text-zinc-50">{fs.title}</h3>
               </div>
@@ -96,7 +96,7 @@ export default function SecurityView() {
                   <p className="text-zinc-300 italic">&ldquo;{fs.threat}&rdquo;</p>
                 </div>
                 <div className="px-6 py-5">
-                  <p className="text-xs font-bold uppercase tracking-widest text-lime-400 mb-2">The Fix</p>
+                  <p className="text-xs font-bold uppercase tracking-widest text-green-500 mb-2">The Fix</p>
                   <p className="text-zinc-300">{fs.solution}</p>
                   <p className="mt-3 text-xs text-zinc-600 font-mono">{fs.detail}</p>
                 </div>
@@ -118,7 +118,7 @@ export default function SecurityView() {
             'Backed and monitored by Chiller Tech Support LLC — 24/7 trackside coverage on Factory Rig',
           ].map((item) => (
             <div key={item} className="flex items-start gap-3">
-              <CheckCircle className="h-5 w-5 text-lime-400 shrink-0 mt-0.5" />
+              <CheckCircle className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
               <p className="text-zinc-300">{item}</p>
             </div>
           ))}
@@ -131,8 +131,8 @@ export default function SecurityView() {
             <span className="text-zinc-300 font-semibold">Chiller Tech Support LLC</span>
           </p>
           <a
-            href="/data/pricing"
-            className="inline-flex items-center gap-2 rounded-xl bg-lime-400 px-8 py-4 text-base font-black uppercase tracking-wide text-zinc-950 hover:bg-lime-300 transition-colors"
+            href="/pricing"
+            className="inline-flex items-center gap-2 rounded-xl bg-green-500 px-8 py-4 text-base font-black uppercase tracking-wide text-zinc-950 hover:bg-green-400 transition-colors"
           >
             Get Protected <ExternalLink className="h-4 w-4" />
           </a>

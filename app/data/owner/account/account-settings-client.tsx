@@ -154,7 +154,7 @@ export function AccountSettingsClient({
               Owner Console
             </Link>
           </div>
-          <span className="font-mono text-xs uppercase tracking-wider text-lime-400">
+          <span className="font-mono text-xs uppercase tracking-wider text-green-500">
             Account Settings
           </span>
         </div>
@@ -171,7 +171,7 @@ export function AccountSettingsClient({
         {/* Identity */}
         <section className="rounded-xl border border-zinc-800 bg-zinc-900 p-5">
           <div className="flex items-center gap-2 mb-4">
-            <User className="h-4 w-4 text-lime-400" />
+            <User className="h-4 w-4 text-green-500" />
             <h2 className="font-mono text-xs uppercase tracking-wider text-zinc-400">Identity</h2>
           </div>
           <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -189,7 +189,7 @@ export function AccountSettingsClient({
         {/* Change password */}
         <section className="rounded-xl border border-zinc-800 bg-zinc-900 p-5">
           <div className="flex items-center gap-2 mb-4">
-            <KeyRound className="h-4 w-4 text-lime-400" />
+            <KeyRound className="h-4 w-4 text-green-500" />
             <h2 className="font-mono text-xs uppercase tracking-wider text-zinc-400">
               Change Password
             </h2>
@@ -207,7 +207,7 @@ export function AccountSettingsClient({
                   value={currentPassword}
                   onChange={(e) => setCurrentPassword(e.target.value)}
                   autoComplete="current-password"
-                  className="w-full h-10 rounded-lg bg-zinc-950 border border-zinc-700 px-3 pr-10 text-sm text-zinc-100 focus:outline-none focus:border-lime-400 transition-colors"
+                  className="w-full h-10 rounded-lg bg-zinc-950 border border-zinc-700 px-3 pr-10 text-sm text-zinc-100 focus:outline-none focus:border-green-500 transition-colors"
                 />
                 <button
                   type="button"
@@ -231,7 +231,7 @@ export function AccountSettingsClient({
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   autoComplete="new-password"
-                  className="w-full h-10 rounded-lg bg-zinc-950 border border-zinc-700 px-3 pr-10 text-sm text-zinc-100 focus:outline-none focus:border-lime-400 transition-colors"
+                  className="w-full h-10 rounded-lg bg-zinc-950 border border-zinc-700 px-3 pr-10 text-sm text-zinc-100 focus:outline-none focus:border-green-500 transition-colors"
                 />
                 <button
                   type="button"
@@ -255,7 +255,7 @@ export function AccountSettingsClient({
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 autoComplete="new-password"
-                className="w-full h-10 rounded-lg bg-zinc-950 border border-zinc-700 px-3 text-sm text-zinc-100 focus:outline-none focus:border-lime-400 transition-colors"
+                className="w-full h-10 rounded-lg bg-zinc-950 border border-zinc-700 px-3 text-sm text-zinc-100 focus:outline-none focus:border-green-500 transition-colors"
               />
             </div>
 
@@ -264,7 +264,7 @@ export function AccountSettingsClient({
                 type="checkbox"
                 checked={revokeOthers}
                 onChange={(e) => setRevokeOthers(e.target.checked)}
-                className="h-4 w-4 rounded border-zinc-700 bg-zinc-950 accent-lime-400"
+                className="h-4 w-4 rounded border-zinc-700 bg-zinc-950 accent-green-500"
               />
               Sign out all other devices after changing password (recommended)
             </label>
@@ -273,7 +273,7 @@ export function AccountSettingsClient({
               <div
                 className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-sm ${
                   pwFeedback.kind === 'ok'
-                    ? 'border-lime-400/30 bg-lime-400/10 text-lime-300'
+                    ? 'border-green-500/30 bg-green-500/10 text-green-400'
                     : 'border-red-500/30 bg-red-500/10 text-red-300'
                 }`}
               >
@@ -290,7 +290,7 @@ export function AccountSettingsClient({
               <button
                 type="submit"
                 disabled={changing}
-                className="inline-flex items-center gap-2 h-10 px-4 rounded-lg bg-lime-400 hover:bg-lime-300 disabled:opacity-60 disabled:cursor-not-allowed transition-colors font-mono text-xs uppercase tracking-wider text-zinc-950 font-bold"
+                className="inline-flex items-center gap-2 h-10 px-4 rounded-lg bg-green-500 hover:bg-green-400 disabled:opacity-60 disabled:cursor-not-allowed transition-colors font-mono text-xs uppercase tracking-wider text-zinc-950 font-bold"
               >
                 {changing ? (
                   <RefreshCw className="h-4 w-4 animate-spin" />
@@ -307,7 +307,7 @@ export function AccountSettingsClient({
         <section className="rounded-xl border border-zinc-800 bg-zinc-900 p-5">
           <div className="flex items-center justify-between gap-3 mb-4">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="h-4 w-4 text-lime-400" />
+              <ShieldCheck className="h-4 w-4 text-green-500" />
               <h2 className="font-mono text-xs uppercase tracking-wider text-zinc-400">
                 Active Sessions
               </h2>
@@ -326,7 +326,7 @@ export function AccountSettingsClient({
             <div
               className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-sm mb-4 ${
                 sessionFeedback.kind === 'ok'
-                  ? 'border-lime-400/30 bg-lime-400/10 text-lime-300'
+                  ? 'border-green-500/30 bg-green-500/10 text-green-400'
                   : 'border-red-500/30 bg-red-500/10 text-red-300'
               }`}
             >
@@ -360,7 +360,7 @@ export function AccountSettingsClient({
                             {shortUserAgent(s.userAgent)}
                           </span>
                           {isCurrent && (
-                            <span className="font-mono text-[10px] uppercase tracking-wider text-lime-400 border border-lime-400/30 rounded px-1.5 py-0.5">
+                            <span className="font-mono text-[10px] uppercase tracking-wider text-green-500 border border-green-500/30 rounded px-1.5 py-0.5">
                               This device
                             </span>
                           )}

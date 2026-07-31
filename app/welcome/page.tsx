@@ -78,7 +78,7 @@ export default function WelcomePage() {
     }
   }
 
-  const fieldCls = 'w-full bg-zinc-900 border border-zinc-700 text-zinc-100 text-sm px-4 py-3 placeholder:text-zinc-600 focus:outline-none focus:border-lime-400/70 transition-colors'
+  const fieldCls = 'w-full bg-zinc-900 border border-zinc-700 text-zinc-100 text-sm px-4 py-3 placeholder:text-zinc-600 focus:outline-none focus:border-green-500/70 transition-colors'
   const labelCls = 'block font-mono text-[11px] text-zinc-500 uppercase tracking-widest mb-1.5'
 
   const STEPS: Step[] = ['team', 'riders', 'tools']
@@ -87,7 +87,7 @@ export default function WelcomePage() {
   if (step === 'done') {
     return (
       <main className="min-h-screen bg-zinc-950 flex flex-col items-center justify-center px-4 text-center">
-        <CheckCircle2 className="h-16 w-16 text-lime-400 mb-6" aria-hidden="true" />
+        <CheckCircle2 className="h-16 w-16 text-green-500 mb-6" aria-hidden="true" />
         <h1
           className="text-zinc-100 text-4xl uppercase mb-4"
           style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900 }}
@@ -100,7 +100,7 @@ export default function WelcomePage() {
         </p>
         <button
           onClick={() => router.push('/data')}
-          className="inline-flex items-center gap-2 bg-lime-400 text-zinc-950 font-black text-sm uppercase tracking-widest px-8 py-4 hover:bg-lime-300 transition-colors"
+          className="inline-flex items-center gap-2 bg-green-500 text-zinc-950 font-black text-sm uppercase tracking-widest px-8 py-4 hover:bg-green-400 transition-colors"
         >
           Go to Platform
           <ChevronRight className="h-4 w-4" aria-hidden="true" />
@@ -114,7 +114,7 @@ export default function WelcomePage() {
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="mb-10">
-          <p className="font-mono text-xs text-lime-400 uppercase tracking-[0.3em] mb-3">
+          <p className="font-mono text-xs text-green-500 uppercase tracking-[0.3em] mb-3">
             // Founding Rig Onboarding
           </p>
           <h1
@@ -136,8 +136,8 @@ export default function WelcomePage() {
             return (
               <div key={label} className="flex items-center">
                 <div className={`flex items-center justify-center h-7 w-7 text-xs font-black font-mono border transition-colors ${
-                  done ? 'bg-lime-400 border-lime-400 text-zinc-950' :
-                  active ? 'border-lime-400 text-lime-400' : 'border-zinc-700 text-zinc-600'
+                  done ? 'bg-green-500 border-green-500 text-zinc-950' :
+                  active ? 'border-green-500 text-green-500' : 'border-zinc-700 text-zinc-600'
                 }`}>
                   {done ? <CheckCircle2 className="h-4 w-4" aria-hidden="true" /> : i + 1}
                 </div>
@@ -186,7 +186,7 @@ export default function WelcomePage() {
               type="button"
               onClick={() => setStep('riders')}
               disabled={!form.teamName || !form.primaryContact || !form.contactEmail}
-              className="inline-flex items-center justify-center gap-2 bg-lime-400 text-zinc-950 font-black text-sm uppercase tracking-widest px-8 py-4 hover:bg-lime-300 transition-colors disabled:opacity-40 disabled:cursor-not-allowed mt-2"
+              className="inline-flex items-center justify-center gap-2 bg-green-500 text-zinc-950 font-black text-sm uppercase tracking-widest px-8 py-4 hover:bg-green-400 transition-colors disabled:opacity-40 disabled:cursor-not-allowed mt-2"
             >
               Next: Riders & Bikes <ChevronRight className="h-4 w-4" aria-hidden="true" />
             </button>
@@ -225,7 +225,7 @@ export default function WelcomePage() {
                 type="button"
                 onClick={() => setStep('tools')}
                 disabled={!form.riderCount}
-                className="flex-[2] inline-flex items-center justify-center gap-2 bg-lime-400 text-zinc-950 font-black text-sm uppercase tracking-widest px-8 py-3.5 hover:bg-lime-300 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                className="flex-[2] inline-flex items-center justify-center gap-2 bg-green-500 text-zinc-950 font-black text-sm uppercase tracking-widest px-8 py-3.5 hover:bg-green-400 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Next: Tools & Data <ChevronRight className="h-4 w-4" aria-hidden="true" />
               </button>
@@ -261,7 +261,7 @@ export default function WelcomePage() {
                       type="button"
                       onClick={() => toggleDataSource(src)}
                       className={`font-mono text-[11px] uppercase tracking-widest px-3 py-2 border transition-colors ${
-                        active ? 'border-lime-400 text-lime-400 bg-lime-400/5' : 'border-zinc-700 text-zinc-500 hover:border-zinc-500'
+                        active ? 'border-green-500 text-green-500 bg-green-500/5' : 'border-zinc-700 text-zinc-500 hover:border-zinc-500'
                       }`}
                     >
                       {src}
@@ -293,7 +293,7 @@ export default function WelcomePage() {
                 type="button"
                 onClick={submit}
                 disabled={saving}
-                className="flex-[2] inline-flex items-center justify-center gap-2 bg-lime-400 text-zinc-950 font-black text-sm uppercase tracking-widest px-8 py-3.5 hover:bg-lime-300 transition-colors disabled:opacity-50"
+                className="flex-[2] inline-flex items-center justify-center gap-2 bg-green-500 text-zinc-950 font-black text-sm uppercase tracking-widest px-8 py-3.5 hover:bg-green-400 transition-colors disabled:opacity-50"
               >
                 {saving ? <><Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> Saving...</> : <>Submit Rig Profile <CheckCircle2 className="h-4 w-4" aria-hidden="true" /></>}
               </button>

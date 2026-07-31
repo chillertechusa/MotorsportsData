@@ -43,9 +43,9 @@ export function RiderDetailPanel({
 
         {/* Live Status */}
         {isConnected && (
-          <div className="px-6 py-2 bg-lime-950 border-b border-lime-900 flex items-center gap-2">
-            <div className="w-2 h-2 bg-lime-400 rounded-full animate-pulse"></div>
-            <span className="text-xs text-lime-300">Live streaming</span>
+          <div className="px-6 py-2 bg-zinc-950 border-b border-green-950 flex items-center gap-2">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span className="text-xs text-green-400">Live streaming</span>
           </div>
         )}
 
@@ -73,7 +73,7 @@ export function RiderDetailPanel({
 
             <div className="bg-zinc-800 rounded p-4">
               <p className="text-xs text-muted-foreground mb-1">Best Lap</p>
-              <p className="font-mono text-lg text-lime-400">
+              <p className="font-mono text-lg text-green-500">
                 {data.bestLapTime
                   ? `${Math.floor(data.bestLapTime / 60)}:${(data.bestLapTime % 60).toFixed(2)}`
                   : '—'}

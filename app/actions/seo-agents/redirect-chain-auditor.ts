@@ -25,7 +25,7 @@ export async function runRedirectChainAudit(): Promise<HealthCheck> {
     
     // Test critical redirect paths
     const testPaths = [
-      '/data/checkout', // Should redirect to /data/pricing or /checkout/tier
+      '/data/checkout', // Should redirect to /pricing or /checkout/tier
       '/data/plans/rookie', // Should redirect to /rookie
       '/data/plans/privateer', // Should redirect to /privateer
       '/data/plans/race_team', // Should redirect to /race_team

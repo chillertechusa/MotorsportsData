@@ -65,7 +65,7 @@ function rankIcon(rank: number) {
 function lastResultColor(result: string | null) {
   if (!result) return 'text-zinc-600'
   if (result === '1st') return 'text-yellow-400'
-  if (['2nd', '3rd'].includes(result)) return 'text-lime-400'
+  if (['2nd', '3rd'].includes(result)) return 'text-green-500'
   if (['DNF', 'DNS', 'DSQ'].includes(result)) return 'text-red-400'
   return 'text-zinc-400'
 }
@@ -94,8 +94,8 @@ function timeAgo(dateStr: string) {
 function EmptyState({ onAdd }: { onAdd: () => void }) {
   return (
     <div className="flex flex-col items-center justify-center py-24 text-center">
-      <div className="mb-5 inline-flex h-20 w-20 items-center justify-center rounded-full border border-lime-400/20 bg-lime-400/5">
-        <Trophy className="h-9 w-9 text-lime-400" />
+      <div className="mb-5 inline-flex h-20 w-20 items-center justify-center rounded-full border border-green-500/20 bg-green-500/5">
+        <Trophy className="h-9 w-9 text-green-500" />
       </div>
       <h2 className="mb-2 text-xl font-black uppercase tracking-wide text-zinc-100">
         No Championships Tracked
@@ -105,7 +105,7 @@ function EmptyState({ onAdd }: { onAdd: () => void }) {
       </p>
       <button
         onClick={onAdd}
-        className="inline-flex items-center gap-2 rounded-xl bg-lime-400 px-6 py-3 text-sm font-bold uppercase tracking-wider text-zinc-950 hover:bg-lime-300 transition-colors"
+        className="inline-flex items-center gap-2 rounded-xl bg-green-500 px-6 py-3 text-sm font-bold uppercase tracking-wider text-zinc-950 hover:bg-green-400 transition-colors"
       >
         <Plus className="h-4 w-4" />
         Add Championship
@@ -141,7 +141,7 @@ function SeriesForm({ initial, onSave, onCancel }: SeriesFormProps) {
             value={seriesName}
             onChange={(e) => setSeriesName(e.target.value)}
             placeholder="e.g. 2025 AMA Supercross 450"
-            className="w-full rounded-xl border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-lime-400 focus:outline-none"
+            className="w-full rounded-xl border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-green-500 focus:outline-none"
           />
         </div>
         <div>
@@ -149,7 +149,7 @@ function SeriesForm({ initial, onSave, onCancel }: SeriesFormProps) {
           <select
             value={discipline}
             onChange={(e) => setDiscipline(e.target.value)}
-            className="w-full rounded-xl border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+            className="w-full rounded-xl border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
           >
             {DISCIPLINES.map((d) => (
               <option key={d.value} value={d.value}>{d.label}</option>
@@ -164,7 +164,7 @@ function SeriesForm({ initial, onSave, onCancel }: SeriesFormProps) {
             onChange={(e) => setYear(Number(e.target.value))}
             min={2020}
             max={2030}
-            className="w-full rounded-xl border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+            className="w-full rounded-xl border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
           />
         </div>
         <div>
@@ -175,7 +175,7 @@ function SeriesForm({ initial, onSave, onCancel }: SeriesFormProps) {
             onChange={(e) => setCurrentRound(Number(e.target.value))}
             min={1}
             max={totalRounds}
-            className="w-full rounded-xl border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+            className="w-full rounded-xl border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
           />
         </div>
         <div>
@@ -186,7 +186,7 @@ function SeriesForm({ initial, onSave, onCancel }: SeriesFormProps) {
             onChange={(e) => setTotalRounds(Number(e.target.value))}
             min={1}
             max={30}
-            className="w-full rounded-xl border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+            className="w-full rounded-xl border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
           />
         </div>
       </div>
@@ -194,7 +194,7 @@ function SeriesForm({ initial, onSave, onCancel }: SeriesFormProps) {
         <button
           onClick={() => onSave({ seriesName, discipline, year, currentRound, totalRounds })}
           disabled={!seriesName.trim()}
-          className="flex items-center gap-2 rounded-xl bg-lime-400 px-5 py-2.5 text-sm font-bold uppercase tracking-wider text-zinc-950 hover:bg-lime-300 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          className="flex items-center gap-2 rounded-xl bg-green-500 px-5 py-2.5 text-sm font-bold uppercase tracking-wider text-zinc-950 hover:bg-green-400 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
         >
           <Check className="h-4 w-4" />
           {initial ? 'Save Changes' : 'Create Series'}
@@ -292,7 +292,7 @@ function StandingsEditor({ seriesId, initial, onSaved, onCancel }: StandingsEdit
             value={row.riderName}
             onChange={(e) => updateRow(i, 'riderName', e.target.value)}
             placeholder="Rider name"
-            className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-lime-400 focus:outline-none col-span-1"
+            className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-green-500 focus:outline-none col-span-1"
           />
           {/* Rider number */}
           <input
@@ -300,14 +300,14 @@ function StandingsEditor({ seriesId, initial, onSaved, onCancel }: StandingsEdit
             value={row.riderNumber ?? ''}
             onChange={(e) => updateRow(i, 'riderNumber', e.target.value ? Number(e.target.value) : null)}
             placeholder="No."
-            className="hidden sm:block rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-lime-400 focus:outline-none"
+            className="hidden sm:block rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-green-500 focus:outline-none"
           />
           {/* Team name */}
           <input
             value={row.teamName ?? ''}
             onChange={(e) => updateRow(i, 'teamName', e.target.value || null)}
             placeholder="Team"
-            className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-lime-400 focus:outline-none"
+            className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-green-500 focus:outline-none"
           />
           {/* Points */}
           <input
@@ -315,13 +315,13 @@ function StandingsEditor({ seriesId, initial, onSaved, onCancel }: StandingsEdit
             value={row.points}
             onChange={(e) => updateRow(i, 'points', Number(e.target.value))}
             placeholder="Pts"
-            className="hidden sm:block rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-lime-400 focus:outline-none"
+            className="hidden sm:block rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-green-500 focus:outline-none"
           />
           {/* Last result */}
           <select
             value={row.lastResult ?? ''}
             onChange={(e) => updateRow(i, 'lastResult', e.target.value || null)}
-            className="hidden sm:block rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+            className="hidden sm:block rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
           >
             <option value="">—</option>
             {LAST_RESULTS.map((r) => <option key={r} value={r}>{r}</option>)}
@@ -350,7 +350,7 @@ function StandingsEditor({ seriesId, initial, onSaved, onCancel }: StandingsEdit
         <button
           onClick={handleSave}
           disabled={saving}
-          className="flex items-center gap-2 rounded-xl bg-lime-400 px-5 py-2.5 text-sm font-bold uppercase tracking-wider text-zinc-950 hover:bg-lime-300 disabled:opacity-50 transition-colors"
+          className="flex items-center gap-2 rounded-xl bg-green-500 px-5 py-2.5 text-sm font-bold uppercase tracking-wider text-zinc-950 hover:bg-green-400 disabled:opacity-50 transition-colors"
         >
           {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
           Save Standings
@@ -390,7 +390,7 @@ function SeriesCard({ data, onEdit, onDelete, onEditStandings }: SeriesCardProps
       <div className="flex items-start justify-between gap-4 p-5 pb-4">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap mb-1">
-            <Trophy className="h-4 w-4 text-lime-400 shrink-0" />
+            <Trophy className="h-4 w-4 text-green-500 shrink-0" />
             <h3 className="text-base font-black uppercase tracking-wide text-zinc-100 truncate">
               {series.seriesName}
             </h3>
@@ -409,7 +409,7 @@ function SeriesCard({ data, onEdit, onDelete, onEditStandings }: SeriesCardProps
           <button
             onClick={onEditStandings}
             title="Update standings"
-            className="flex h-9 w-9 items-center justify-center rounded-xl text-zinc-500 hover:text-lime-400 hover:bg-zinc-800 transition-colors"
+            className="flex h-9 w-9 items-center justify-center rounded-xl text-zinc-500 hover:text-green-500 hover:bg-zinc-800 transition-colors"
           >
             <RefreshCw className="h-4 w-4" />
           </button>
@@ -448,7 +448,7 @@ function SeriesCard({ data, onEdit, onDelete, onEditStandings }: SeriesCardProps
             {leader.teamName && <p className="text-xs text-zinc-500 truncate">{leader.teamName}</p>}
           </div>
           <div className="text-right shrink-0">
-            <p className="text-2xl font-black text-lime-400 tabular-nums leading-none">{leader.points}</p>
+            <p className="text-2xl font-black text-green-500 tabular-nums leading-none">{leader.points}</p>
             <p className="text-[10px] uppercase tracking-widest text-zinc-600">pts</p>
           </div>
         </div>
@@ -492,7 +492,7 @@ function SeriesCard({ data, onEdit, onDelete, onEditStandings }: SeriesCardProps
                   {/* Team */}
                   <p className="hidden sm:block text-xs text-zinc-500 truncate">{row.teamName ?? '—'}</p>
                   {/* Points */}
-                  <span className={`text-sm font-black tabular-nums ${row.rank === 1 ? 'text-lime-400' : 'text-zinc-300'}`}>
+                  <span className={`text-sm font-black tabular-nums ${row.rank === 1 ? 'text-green-500' : 'text-zinc-300'}`}>
                     {row.points}
                   </span>
                   {/* Last result */}
@@ -581,7 +581,7 @@ export function ViewStandings() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-32">
-        <Loader2 className="h-8 w-8 animate-spin text-lime-400" />
+        <Loader2 className="h-8 w-8 animate-spin text-green-500" />
       </div>
     )
   }
@@ -629,7 +629,7 @@ export function ViewStandings() {
         {!showSeriesForm && (
           <button
             onClick={() => setShowSeriesForm(true)}
-            className="flex items-center gap-2 rounded-xl bg-lime-400 px-4 py-2.5 text-sm font-bold uppercase tracking-wider text-zinc-950 hover:bg-lime-300 transition-colors"
+            className="flex items-center gap-2 rounded-xl bg-green-500 px-4 py-2.5 text-sm font-bold uppercase tracking-wider text-zinc-950 hover:bg-green-400 transition-colors"
           >
             <Plus className="h-4 w-4" />
             Add Series

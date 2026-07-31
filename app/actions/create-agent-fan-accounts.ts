@@ -13,7 +13,8 @@ export async function createAgentAndFanAccounts() {
   const client = await pool.connect()
 
   try {
-    const password = 'thaddyboy454'
+    const password = process.env.QA_SEED_PASSWORD
+    if (!password) throw new Error('QA_SEED_PASSWORD env var is not set')
     const hashedPw = await hashPassword(password)
 
     const accounts = [

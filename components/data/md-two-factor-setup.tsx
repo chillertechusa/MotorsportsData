@@ -21,7 +21,7 @@ export default function MdTwoFactorSetup() {
   const [copied, setCopied] = useState(false)
 
   const inputClass =
-    'w-full rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400/30 transition-colors'
+    'w-full rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500/30 transition-colors'
 
   async function handleEnable() {
     if (!password) {
@@ -93,9 +93,9 @@ export default function MdTwoFactorSetup() {
 
   if (step === 'done') {
     return (
-      <div className="w-full max-w-md rounded-2xl border border-lime-400/30 bg-zinc-900 p-8 text-center">
-        <div className="mb-5 inline-flex h-16 w-16 items-center justify-center rounded-full bg-lime-400/10 border border-lime-400/20">
-          <ShieldCheck className="h-8 w-8 text-lime-400" />
+      <div className="w-full max-w-md rounded-2xl border border-green-500/30 bg-zinc-900 p-8 text-center">
+        <div className="mb-5 inline-flex h-16 w-16 items-center justify-center rounded-full bg-green-500/10 border border-green-500/20">
+          <ShieldCheck className="h-8 w-8 text-green-500" />
         </div>
         <h2 className="text-2xl font-black uppercase tracking-tight text-zinc-50 mb-2">
           2FA Enabled
@@ -111,7 +111,7 @@ export default function MdTwoFactorSetup() {
             </p>
             <div className="grid grid-cols-2 gap-2">
               {backupCodes.map((c) => (
-                <code key={c} className="text-xs font-mono text-lime-400 bg-zinc-900 rounded px-2 py-1">
+                <code key={c} className="text-xs font-mono text-green-500 bg-zinc-900 rounded px-2 py-1">
                   {c}
                 </code>
               ))}
@@ -124,7 +124,7 @@ export default function MdTwoFactorSetup() {
 
         <button
           onClick={() => router.push('/data')}
-          className="inline-flex items-center gap-2 rounded-xl bg-lime-400 px-6 py-3 text-sm font-bold uppercase tracking-wider text-zinc-950 hover:bg-lime-300 transition-colors"
+          className="inline-flex items-center gap-2 rounded-xl bg-green-500 px-6 py-3 text-sm font-bold uppercase tracking-wider text-zinc-950 hover:bg-green-400 transition-colors"
         >
           Enter Platform
           <ArrowRight className="h-4 w-4" />
@@ -162,15 +162,15 @@ export default function MdTwoFactorSetup() {
           <div className="mb-6">
             <p className="text-xs text-zinc-500 text-center mb-2">Can&apos;t scan? Enter this key manually:</p>
             <div className="flex items-center gap-2 rounded-lg bg-zinc-800 border border-zinc-700 px-3 py-2">
-              <code className="flex-1 text-xs font-mono text-lime-400 break-all">
+              <code className="flex-1 text-xs font-mono text-green-500 break-all">
                 {totpUri.match(/secret=([^&]+)/)?.[1] ?? ''}
               </code>
               <button
                 onClick={handleCopySecret}
-                className="shrink-0 text-zinc-400 hover:text-lime-400 transition-colors"
+                className="shrink-0 text-zinc-400 hover:text-green-500 transition-colors"
                 aria-label="Copy secret"
               >
-                {copied ? <Check className="h-4 w-4 text-lime-400" /> : <Copy className="h-4 w-4" />}
+                {copied ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
               </button>
             </div>
           </div>
@@ -197,7 +197,7 @@ export default function MdTwoFactorSetup() {
         <button
           onClick={handleVerify}
           disabled={loading || code.length !== 6}
-          className="w-full h-12 rounded-xl bg-lime-400 text-zinc-950 font-bold uppercase tracking-wider text-sm hover:bg-lime-300 transition-colors disabled:opacity-40 flex items-center justify-center gap-2"
+          className="w-full h-12 rounded-xl bg-green-500 text-zinc-950 font-bold uppercase tracking-wider text-sm hover:bg-green-400 transition-colors disabled:opacity-40 flex items-center justify-center gap-2"
         >
           {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <>Confirm & Enable <ArrowRight className="h-4 w-4" /></>}
         </button>
@@ -241,7 +241,7 @@ export default function MdTwoFactorSetup() {
       <button
         onClick={handleEnable}
         disabled={loading || !password}
-        className="w-full h-12 rounded-xl bg-lime-400 text-zinc-950 font-bold uppercase tracking-wider text-sm hover:bg-lime-300 transition-colors disabled:opacity-40 flex items-center justify-center gap-2"
+        className="w-full h-12 rounded-xl bg-green-500 text-zinc-950 font-bold uppercase tracking-wider text-sm hover:bg-green-400 transition-colors disabled:opacity-40 flex items-center justify-center gap-2"
       >
         {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <>Continue <ArrowRight className="h-4 w-4" /></>}
       </button>

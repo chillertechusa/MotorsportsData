@@ -89,7 +89,7 @@ export function CoachingDashboard({ vehicles }: { vehicles: Vehicle[] }) {
             <select
               value={selectedVehicle}
               onChange={(e) => setSelectedVehicle(e.target.value)}
-              className="w-full bg-zinc-950 border border-zinc-800 rounded px-4 py-3 text-zinc-100 focus:outline-none focus:border-lime-400"
+              className="w-full bg-zinc-950 border border-zinc-800 rounded px-4 py-3 text-zinc-100 focus:outline-none focus:border-green-500"
             >
               {vehicles.map((v) => (
                 <option key={v.id} value={v.id}>
@@ -104,7 +104,7 @@ export function CoachingDashboard({ vehicles }: { vehicles: Vehicle[] }) {
             <select
               value={selectedSession}
               onChange={(e) => setSelectedSession(e.target.value)}
-              className="w-full bg-zinc-950 border border-zinc-800 rounded px-4 py-3 text-zinc-100 focus:outline-none focus:border-lime-400"
+              className="w-full bg-zinc-950 border border-zinc-800 rounded px-4 py-3 text-zinc-100 focus:outline-none focus:border-green-500"
             >
               {sessions.map((s) => (
                 <option key={s.id} value={s.id}>
@@ -120,7 +120,7 @@ export function CoachingDashboard({ vehicles }: { vehicles: Vehicle[] }) {
           <button
             onClick={analyzeSession}
             disabled={!selectedSession || loading}
-            className="bg-lime-400 text-zinc-950 px-8 py-4 font-black uppercase tracking-widest rounded hover:bg-lime-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors inline-flex items-center gap-2"
+            className="bg-green-500 text-zinc-950 px-8 py-4 font-black uppercase tracking-widest rounded hover:bg-green-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors inline-flex items-center gap-2"
           >
             <MessageSquare className="h-4 w-4" />
             {loading ? 'Analyzing...' : 'Get Coaching Analysis'}
@@ -149,11 +149,11 @@ export function CoachingDashboard({ vehicles }: { vehicles: Vehicle[] }) {
                 <Award className="h-5 w-5" /> Performance Rating
               </h3>
               <div className="flex items-center gap-4">
-                <div className="text-5xl font-black text-lime-400">{analysis.overallRating}/10</div>
+                <div className="text-5xl font-black text-green-500">{analysis.overallRating}/10</div>
                 <div className="flex-1">
                   <div className="bg-zinc-800 rounded-full h-3 w-full overflow-hidden">
                     <div
-                      className="bg-lime-400 h-full transition-all"
+                      className="bg-green-500 h-full transition-all"
                       style={{ width: `${(analysis.overallRating / 10) * 100}%` }}
                     />
                   </div>
@@ -192,14 +192,14 @@ export function CoachingDashboard({ vehicles }: { vehicles: Vehicle[] }) {
             </div>
 
             {/* Next steps */}
-            <div className="bg-zinc-900 border border-lime-900 rounded-lg p-6">
-              <h3 className="text-lg font-black text-lime-400 mb-4 flex items-center gap-2">
+            <div className="bg-zinc-900 border border-green-950 rounded-lg p-6">
+              <h3 className="text-lg font-black text-green-500 mb-4 flex items-center gap-2">
                 <MessageSquare className="h-5 w-5" /> Recommended Next Steps
               </h3>
               <ol className="space-y-2">
                 {analysis.nextSteps.map((step, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <span className="text-lime-400 font-black mt-1">{i + 1}.</span>
+                    <span className="text-green-500 font-black mt-1">{i + 1}.</span>
                     <span className="text-zinc-300">{step}</span>
                   </li>
                 ))}

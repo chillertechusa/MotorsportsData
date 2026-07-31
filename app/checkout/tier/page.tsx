@@ -26,12 +26,12 @@ export default async function TierCheckoutPage({ searchParams }: Props) {
   const session = await auth.api.getSession({ headers: await headers() })
   if (!session?.user) {
     const redirectParam = tier ? encodeURIComponent(`/checkout/tier?tier=${tier}`) : ''
-    redirect(`/data/sign-in?mode=sign-up${redirectParam ? `&redirect=${redirectParam}` : ''}`)
+    redirect(`/auth/sign-up${redirectParam ? `?redirect=${redirectParam}` : ''}`)
   }
 
   // Validate tier — send to pricing if unknown
   if (!tier || !isMdPlanId(tier)) {
-    redirect('/data/pricing')
+    redirect('/#pricing')
   }
 
   // Free Rider doesn't need checkout — go straight to platform

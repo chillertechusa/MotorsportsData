@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { put } from '@vercel/blob'
 import { getSessionTeamId, assertFactoryTier } from '@/lib/md-auth'
+import { blockAutomatedRequest } from '@/lib/botid'
 
 export const runtime = 'nodejs'
 export const maxDuration = 60
@@ -11,6 +12,9 @@ const ALLOWED_TYPES = ['video/mp4', 'video/quicktime', 'video/x-msvideo', 'video
 export async function POST(req: NextRequest) {
   const authResult = await getSessionTeamId()
   if (!authResult.ok) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const botResponse = await blockAutomatedRequest()
+  if (botResponse) return botResponse
 
   const isFactory = await assertFactoryTier(authResult.teamId)
   if (!isFactory) {

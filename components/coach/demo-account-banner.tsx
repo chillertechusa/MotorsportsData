@@ -31,7 +31,7 @@ export default function DemoAccountBanner({ teamId, createdAt }: DemoAccountBann
     const expires = new Date(createdAt).getTime() + TWO_HOURS_MS
     const update = () => setTimeLeft(expires - Date.now())
     update()
-    const id = setInterval(update, 30000)
+    const id = setInterval(update, 60000) // re-check every minute
     return () => clearInterval(id)
   }, [teamId, createdAt])
 
@@ -56,7 +56,7 @@ export default function DemoAccountBanner({ teamId, createdAt }: DemoAccountBann
       </div>
       <div className="flex shrink-0 items-center gap-2">
         <Link
-          href="/checkout/tier?tier=coach_pro&utm_source=demo_banner"
+          href="/auth/sign-up?plan=coach_pro&utm_source=demo_banner"
           className="flex items-center gap-1 rounded border border-amber-500/40 bg-amber-500/10 px-3 py-1 text-xs font-semibold text-amber-300 transition-colors hover:bg-amber-500/20"
         >
           Start real account

@@ -176,8 +176,8 @@ export default function BaselineScanner({ vehicleId, vehicleName }: Props) {
       {/* Card header */}
       <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-800">
         <div className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-lime-400/10 border border-lime-400/20">
-            <ScanLine className="h-5 w-5 text-lime-400" />
+          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-500/10 border border-green-500/20">
+            <ScanLine className="h-5 w-5 text-green-500" />
           </span>
           <div>
             <p className="font-bold uppercase tracking-wide text-zinc-100 text-sm">Baseline Scanner</p>
@@ -205,7 +205,7 @@ export default function BaselineScanner({ vehicleId, vehicleName }: Props) {
             onDrop={onDrop}
             className={`relative flex flex-col items-center justify-center gap-4 rounded-xl border-2 border-dashed py-12 px-6 text-center transition-colors cursor-pointer ${
               dragging
-                ? 'border-lime-400 bg-lime-400/5'
+                ? 'border-green-500 bg-green-500/5'
                 : 'border-zinc-700 hover:border-zinc-500 hover:bg-zinc-800/40'
             }`}
             onClick={() => fileRef.current?.click()}
@@ -217,8 +217,8 @@ export default function BaselineScanner({ vehicleId, vehicleName }: Props) {
               className="sr-only"
               onChange={onFileInput}
             />
-            <span className={`flex h-16 w-16 items-center justify-center rounded-2xl transition-colors ${dragging ? 'bg-lime-400/15' : 'bg-zinc-800'}`}>
-              <Upload className={`h-8 w-8 ${dragging ? 'text-lime-400' : 'text-zinc-500'}`} />
+            <span className={`flex h-16 w-16 items-center justify-center rounded-2xl transition-colors ${dragging ? 'bg-green-500/15' : 'bg-zinc-800'}`}>
+              <Upload className={`h-8 w-8 ${dragging ? 'text-green-500' : 'text-zinc-500'}`} />
             </span>
             <div>
               <p className="font-bold text-zinc-200">Drop service manual here</p>
@@ -227,7 +227,7 @@ export default function BaselineScanner({ vehicleId, vehicleName }: Props) {
               </p>
               <p className="text-xs text-zinc-600 mt-2">JPG · PNG · WebP · PDF</p>
             </div>
-            <span className="inline-flex items-center gap-2 h-10 px-5 rounded-full bg-lime-400/10 border border-lime-400/25 text-lime-400 text-sm font-semibold">
+            <span className="inline-flex items-center gap-2 h-10 px-5 rounded-full bg-green-500/10 border border-green-500/25 text-green-500 text-sm font-semibold">
               <FileImage className="h-4 w-4" />
               Browse Files
             </span>
@@ -239,9 +239,9 @@ export default function BaselineScanner({ vehicleId, vehicleName }: Props) {
           <div className="flex flex-col items-center justify-center gap-6 py-12">
             <div className="relative flex items-center justify-center">
               {/* Outer glow ring */}
-              <span className="absolute h-20 w-20 rounded-full bg-lime-400/15 animate-ping" />
-              <span className="relative flex h-16 w-16 items-center justify-center rounded-full bg-lime-400/10 border border-lime-400/30">
-                <Loader2 className="h-8 w-8 text-lime-400 animate-spin" />
+              <span className="absolute h-20 w-20 rounded-full bg-green-500/15 animate-ping" />
+              <span className="relative flex h-16 w-16 items-center justify-center rounded-full bg-green-500/10 border border-green-500/30">
+                <Loader2 className="h-8 w-8 text-green-500 animate-spin" />
               </span>
             </div>
             <div className="text-center">
@@ -252,7 +252,7 @@ export default function BaselineScanner({ vehicleId, vehicleName }: Props) {
               {[0, 150, 300].map((d) => (
                 <span
                   key={d}
-                  className="h-1.5 w-8 rounded-full bg-lime-400/30 animate-pulse"
+                  className="h-1.5 w-8 rounded-full bg-green-500/30 animate-pulse"
                   style={{ animationDelay: `${d}ms` }}
                 />
               ))}
@@ -264,7 +264,7 @@ export default function BaselineScanner({ vehicleId, vehicleName }: Props) {
         {(phase === 'confirm' || phase === 'saving') && edited && (
           <div className="space-y-5">
             <div>
-              <p className="text-sm font-semibold text-lime-400 uppercase tracking-wider mb-1">
+              <p className="text-sm font-semibold text-green-500 uppercase tracking-wider mb-1">
                 Factory Baseline Extracted
               </p>
               <p className="text-sm text-zinc-500">
@@ -296,7 +296,7 @@ export default function BaselineScanner({ vehicleId, vehicleName }: Props) {
               <button
                 onClick={saveBaseline}
                 disabled={phase === 'saving'}
-                className="flex items-center gap-2.5 h-12 px-6 rounded-xl bg-lime-400 text-zinc-950 font-black uppercase tracking-wide text-sm transition-colors active:bg-lime-300 disabled:opacity-60"
+                className="flex items-center gap-2.5 h-12 px-6 rounded-xl bg-green-500 text-zinc-950 font-black uppercase tracking-wide text-sm transition-colors active:bg-green-400 disabled:opacity-60"
               >
                 {phase === 'saving' ? (
                   <><Loader2 className="h-4 w-4 animate-spin" /> Saving...</>
@@ -311,8 +311,8 @@ export default function BaselineScanner({ vehicleId, vehicleName }: Props) {
         {/* DONE — success state */}
         {phase === 'done' && (
           <div className="flex flex-col items-center gap-5 py-10 text-center">
-            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-lime-400/15 border border-lime-400/30">
-              <CheckCircle className="h-9 w-9 text-lime-400" />
+            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-green-500/15 border border-green-500/30">
+              <CheckCircle className="h-9 w-9 text-green-500" />
             </span>
             <div>
               <p className="text-lg font-black text-zinc-50 uppercase tracking-wide">Baseline Saved</p>

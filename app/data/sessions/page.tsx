@@ -16,7 +16,7 @@ export const metadata = {
 export default async function SessionsPage() {
   const session = await auth.api.getSession({ headers: await headers() })
   if (!session?.user?.id) {
-    redirect('/data/sign-in?redirect=/data/sessions')
+    redirect('/auth/sign-in?redirect=/data/sessions')
   }
 
   const [membership] = await db
@@ -26,7 +26,7 @@ export default async function SessionsPage() {
     .limit(1)
 
   if (!membership) {
-    redirect('/data/pricing?reason=no-team')
+    redirect('/#pricing')
   }
 
   return (

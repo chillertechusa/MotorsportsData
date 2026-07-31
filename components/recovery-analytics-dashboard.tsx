@@ -73,7 +73,7 @@ export function RecoveryAnalyticsDashboard() {
             onClick={() => setDays(d)}
             className={`px-4 py-2 rounded font-semibold transition ${
               days === d
-                ? 'bg-lime-600 text-black'
+                ? 'bg-green-600 text-black'
                 : 'bg-zinc-800 text-foreground hover:bg-zinc-700'
             }`}
           >
@@ -111,10 +111,10 @@ export function RecoveryAnalyticsDashboard() {
         {/* Recovered */}
         <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6">
           <div className="flex items-center gap-2 mb-2">
-            <CheckCircle className="w-5 h-5 text-lime-400" />
+            <CheckCircle className="w-5 h-5 text-green-500" />
             <span className="text-sm text-muted-foreground">Converted</span>
           </div>
-          <div className="text-3xl font-bold text-lime-400">
+          <div className="text-3xl font-bold text-green-500">
             {data.metrics.recovered}
           </div>
           <p className="text-xs text-muted-foreground mt-1">new subscribers</p>
@@ -134,12 +134,12 @@ export function RecoveryAnalyticsDashboard() {
       </div>
 
       {/* Estimated Value Recovered */}
-      <div className="bg-gradient-to-r from-lime-950 to-lime-900 border border-lime-700 rounded-lg p-6">
-        <h3 className="text-lg font-bold text-lime-200 mb-2">Revenue Recovered</h3>
-        <div className="text-4xl font-bold text-lime-300 mb-1">
+      <div className="bg-gradient-to-r from-green-950 to-green-950 border border-green-800 rounded-lg p-6">
+        <h3 className="text-lg font-bold text-green-300 mb-2">Revenue Recovered</h3>
+        <div className="text-4xl font-bold text-green-400 mb-1">
           ${recoveredValue}
         </div>
-        <p className="text-sm text-lime-200">
+        <p className="text-sm text-green-300">
           Estimated value from recovered checkouts (based on average plan value)
         </p>
       </div>
@@ -156,13 +156,13 @@ export function RecoveryAnalyticsDashboard() {
                 </p>
                 <div className="flex gap-4 mt-2 text-sm text-muted-foreground">
                   <span>{plan.abandoned} abandoned</span>
-                  <span className="text-lime-400">
+                  <span className="text-green-500">
                     {plan.converted} converted
                   </span>
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-2xl font-bold text-lime-400">
+                <div className="text-2xl font-bold text-green-500">
                   {plan.recoveryRate.toFixed(1)}%
                 </div>
                 <p className="text-xs text-muted-foreground">recovery rate</p>

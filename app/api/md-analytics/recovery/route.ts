@@ -3,15 +3,17 @@ import { db } from '@/lib/db'
 import { mdAbandonedCheckouts } from '@/lib/db/schema'
 import { gte } from 'drizzle-orm'
 import { withCache, cacheKey, TTL } from '@/lib/cache'
+import { getMdOwner } from '@/lib/md-owner-auth'
 
 export const dynamic = 'force-dynamic'
 
 /**
  * GET /api/md-analytics/recovery?days=30
- * Returns abandoned checkout recovery metrics.
- * Cached in Redis: 1h TTL (recovery stats change hourly with the cron).
+ * Returns abandoned checkout recovery metrics. Owner-only.
  */
 export async function GET(req: NextRequest) {
+  const owner = await getMdOwner()
+  if (!owner) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   try {
     const { searchParams } = new URL(req.url)
     const days = parseInt(searchParams.get('days') || '30')

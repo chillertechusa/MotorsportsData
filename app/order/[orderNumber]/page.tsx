@@ -110,7 +110,7 @@ export default async function OrderConfirmationPage({
 
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
-              href="/data/sign-in"
+              href="/auth/sign-in"
               className="w-full bg-primary px-8 py-3 text-center text-sm font-black uppercase tracking-widest text-primary-foreground hover:bg-primary/90 sm:w-auto"
               style={{ fontFamily: 'var(--font-barlow-condensed)' }}
             >

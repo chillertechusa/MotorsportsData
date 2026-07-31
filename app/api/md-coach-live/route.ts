@@ -3,6 +3,7 @@ import { db } from '@/lib/db'
 import { mdLiveSessions, mdLiveTelemetry } from '@/lib/db/schema'
 import { eq, desc } from 'drizzle-orm'
 import { withErrorTrackedRoute } from '@/lib/sentry/api-route-wrapper'
+import { getSessionTeamId } from '@/lib/md-auth'
 
 /**
  * Coach AI Live Recommendations
@@ -11,6 +12,8 @@ import { withErrorTrackedRoute } from '@/lib/sentry/api-route-wrapper'
  * Body: { liveSessionId, lastN: number (default 50) }
  */
 async function handler(req: NextRequest) {
+  const auth = await getSessionTeamId()
+  if (!auth.ok) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   try {
     const { liveSessionId, lastN = 50 } = await req.json()
 

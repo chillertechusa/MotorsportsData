@@ -16,7 +16,7 @@ export const metadata = {
 export default async function AnalyticsPage() {
   const session = await auth.api.getSession({ headers: await headers() })
   if (!session?.user?.id) {
-    redirect('/data/sign-in?redirect=/data/analytics')
+    redirect('/auth/sign-in?redirect=/data/analytics')
   }
 
   // Check team membership
@@ -27,7 +27,7 @@ export default async function AnalyticsPage() {
     .limit(1)
 
   if (!membership) {
-    redirect('/data/pricing?reason=no-team')
+    redirect('/#pricing')
   }
 
   // Check subscription tier for analytics access (Race Team + only)
@@ -49,8 +49,8 @@ export default async function AnalyticsPage() {
             Unlock real-time performance trends, rider comparisons, and coaching ROI tracking.
           </p>
           <a
-            href="/data/pricing"
-            className="inline-block px-6 py-2 bg-lime-500 text-zinc-950 font-bold rounded-lg hover:bg-lime-400 transition"
+            href="/#pricing"
+            className="inline-block px-6 py-2 bg-green-600 text-zinc-950 font-bold rounded-lg hover:bg-green-500 transition"
           >
             View Pricing
           </a>

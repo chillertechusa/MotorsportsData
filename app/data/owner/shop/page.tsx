@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic'
 
 export default async function ShopManagementPage() {
   const owner = await getMdOwner()
-  if (!owner) redirect('/data/sign-in')
+  if (!owner) redirect('/auth/sign-in')
 
   const [stats, orders, products] = await Promise.all([
     getShopStats(),

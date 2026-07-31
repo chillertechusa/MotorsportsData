@@ -41,7 +41,7 @@ interface ParsedPreview {
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 const FORMAT_COLORS: Record<string, string> = {
-  CSV: 'text-lime-400 bg-lime-400/10 border-lime-400/30',
+  CSV: 'text-green-500 bg-green-500/10 border-green-500/30',
   XML: 'text-blue-400 bg-blue-400/10 border-blue-400/30',
   GPX: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/30',
   FIT: 'text-amber-400 bg-amber-400/10 border-amber-400/30',
@@ -156,10 +156,10 @@ function ChannelBadge({ label, active }: { label: string; active: boolean }) {
   return (
     <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs font-medium ${
       active
-        ? 'border-lime-400/40 bg-lime-400/10 text-lime-300'
+        ? 'border-green-500/40 bg-green-500/10 text-green-400'
         : 'border-zinc-700 bg-zinc-800 text-zinc-500'
     }`}>
-      {active && <span className="h-1.5 w-1.5 rounded-full bg-lime-400" />}
+      {active && <span className="h-1.5 w-1.5 rounded-full bg-green-500" />}
       {label}
     </span>
   )
@@ -209,9 +209,9 @@ function FieldMapRow({ raw, canonical }: { raw: string; canonical: string }) {
     <div className="flex items-center gap-2 py-1.5 border-b border-zinc-800/60 last:border-0">
       <span className="w-40 font-mono text-xs text-zinc-400 truncate">{raw}</span>
       <ArrowRight className="h-3 w-3 shrink-0 text-zinc-600" />
-      <span className={`font-mono text-xs truncate ${mapped ? 'text-lime-400' : 'text-zinc-500'}`}>{canonical}</span>
+      <span className={`font-mono text-xs truncate ${mapped ? 'text-green-500' : 'text-zinc-500'}`}>{canonical}</span>
       {mapped && (
-        <span className="ml-auto shrink-0 rounded border border-lime-400/30 bg-lime-400/10 px-1.5 py-0.5 text-[10px] text-lime-400">mapped</span>
+        <span className="ml-auto shrink-0 rounded border border-green-500/30 bg-green-500/10 px-1.5 py-0.5 text-[10px] text-green-500">mapped</span>
       )}
     </div>
   )
@@ -320,7 +320,7 @@ export function ViewTelemetryImport() {
           onClick={() => inputRef.current?.click()}
           className={`relative flex flex-col items-center justify-center gap-4 rounded-2xl border-2 border-dashed p-14 cursor-pointer transition-all ${
             dragOver
-              ? 'border-lime-400/60 bg-lime-400/5'
+              ? 'border-green-500/60 bg-green-500/5'
               : 'border-zinc-700 bg-zinc-900 hover:border-zinc-600 hover:bg-zinc-800/50'
           }`}
         >
@@ -333,7 +333,7 @@ export function ViewTelemetryImport() {
           />
           {phase === 'parsing' ? (
             <>
-              <RefreshCw className="h-10 w-10 text-lime-400 animate-spin" />
+              <RefreshCw className="h-10 w-10 text-green-500 animate-spin" />
               <p className="text-sm font-medium text-zinc-300">Parsing file…</p>
             </>
           ) : (
@@ -399,10 +399,10 @@ export function ViewTelemetryImport() {
   if (phase === 'done' && importResult) {
     return (
       <div className="space-y-6">
-        <div className="flex items-start gap-4 rounded-2xl border border-lime-400/30 bg-lime-400/5 p-6">
-          <CheckCircle className="mt-0.5 h-6 w-6 shrink-0 text-lime-400" />
+        <div className="flex items-start gap-4 rounded-2xl border border-green-500/30 bg-green-500/5 p-6">
+          <CheckCircle className="mt-0.5 h-6 w-6 shrink-0 text-green-500" />
           <div>
-            <p className="font-semibold text-lime-300">Import successful</p>
+            <p className="font-semibold text-green-400">Import successful</p>
             <p className="mt-1 text-sm text-zinc-300">{importResult.message}</p>
             <p className="mt-1 font-mono text-xs text-zinc-500">Import ID: {importResult.importId}</p>
           </div>
@@ -568,7 +568,7 @@ export function ViewTelemetryImport() {
             <button
               onClick={handleCommit}
               disabled={phase === 'committing'}
-              className="flex items-center gap-2 rounded-xl bg-lime-400 px-5 py-2 text-sm font-bold text-zinc-900 hover:bg-lime-300 disabled:opacity-60 transition-colors"
+              className="flex items-center gap-2 rounded-xl bg-green-500 px-5 py-2 text-sm font-bold text-zinc-900 hover:bg-green-400 disabled:opacity-60 transition-colors"
             >
               {phase === 'committing' ? (
                 <><RefreshCw className="h-4 w-4 animate-spin" /> Importing…</>

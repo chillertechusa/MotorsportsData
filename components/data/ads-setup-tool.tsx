@@ -31,7 +31,7 @@ function CopyButton({ value, label }: { value: string; label?: string }) {
       type="button"
       onClick={copy}
       aria-label={label ? `Copy ${label}` : 'Copy'}
-      className="inline-flex items-center gap-1.5 rounded-md border border-zinc-700 bg-zinc-800/60 px-2.5 py-1.5 text-xs font-mono text-zinc-300 transition-colors hover:border-lime-400/50 hover:text-lime-400"
+      className="inline-flex items-center gap-1.5 rounded-md border border-zinc-700 bg-zinc-800/60 px-2.5 py-1.5 text-xs font-mono text-zinc-300 transition-colors hover:border-green-500/50 hover:text-green-500"
     >
       {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
       {copied ? 'Copied' : 'Copy'}
@@ -118,7 +118,7 @@ export default function AdsSetupTool() {
     <div className="mx-auto w-full max-w-3xl px-5 py-12 lg:py-16">
       {/* Header */}
       <div className="mb-8">
-        <p className="font-mono text-xs uppercase tracking-[0.3em] text-lime-400 mb-3">
+        <p className="font-mono text-xs uppercase tracking-[0.3em] text-green-500 mb-3">
           Internal Tool · Noindex
         </p>
         <h1 className="text-3xl lg:text-4xl font-black uppercase tracking-tight text-zinc-50 text-balance">
@@ -139,7 +139,7 @@ export default function AdsSetupTool() {
             className="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/60 px-3.5 py-2"
           >
             <span
-              className={`h-2 w-2 rounded-full ${pill.ok ? 'bg-lime-400' : 'bg-zinc-600'}`}
+              className={`h-2 w-2 rounded-full ${pill.ok ? 'bg-green-500' : 'bg-zinc-600'}`}
               aria-hidden="true"
             />
             <span className="text-xs font-semibold text-zinc-300">{pill.label}</span>
@@ -155,7 +155,7 @@ export default function AdsSetupTool() {
         </h2>
         <p className="text-xs text-zinc-500 mb-4">Paste this into the URL field of the wizard.</p>
         <div className="flex items-center justify-between gap-3 rounded-lg border border-zinc-700 bg-zinc-950/60 px-4 py-3">
-          <code className="font-mono text-sm text-lime-400">/data/checkout/success</code>
+          <code className="font-mono text-sm text-green-500">/data/checkout/success</code>
           <CopyButton value="/data/checkout/success" label="confirmation URL" />
         </div>
       </section>
@@ -176,7 +176,7 @@ export default function AdsSetupTool() {
             <input
               value={txn}
               onChange={(e) => setTxn(e.target.value)}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2.5 font-mono text-sm text-zinc-100 outline-none focus:border-lime-400/60"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2.5 font-mono text-sm text-zinc-100 outline-none focus:border-green-500/60"
             />
           </label>
           <label className="block">
@@ -187,7 +187,7 @@ export default function AdsSetupTool() {
               value={value}
               onChange={(e) => setValue(e.target.value)}
               inputMode="decimal"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2.5 font-mono text-sm text-zinc-100 outline-none focus:border-lime-400/60"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2.5 font-mono text-sm text-zinc-100 outline-none focus:border-green-500/60"
             />
           </label>
           <label className="block">
@@ -198,7 +198,7 @@ export default function AdsSetupTool() {
               value={currency}
               onChange={(e) => setCurrency(e.target.value.toUpperCase())}
               maxLength={3}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2.5 font-mono text-sm text-zinc-100 outline-none focus:border-lime-400/60"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2.5 font-mono text-sm text-zinc-100 outline-none focus:border-green-500/60"
             />
           </label>
           <label className="block">
@@ -209,7 +209,7 @@ export default function AdsSetupTool() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2.5 font-mono text-sm text-zinc-100 outline-none focus:border-lime-400/60"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2.5 font-mono text-sm text-zinc-100 outline-none focus:border-green-500/60"
             />
           </label>
         </div>
@@ -226,7 +226,7 @@ export default function AdsSetupTool() {
                 href={scanUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-md border border-zinc-700 bg-zinc-800/60 px-2.5 py-1.5 text-xs font-mono text-zinc-300 transition-colors hover:border-lime-400/50 hover:text-lime-400"
+                className="inline-flex items-center gap-1.5 rounded-md border border-zinc-700 bg-zinc-800/60 px-2.5 py-1.5 text-xs font-mono text-zinc-300 transition-colors hover:border-green-500/50 hover:text-green-500"
               >
                 <ExternalLink className="h-3.5 w-3.5" />
                 Open
@@ -270,7 +270,7 @@ export default function AdsSetupTool() {
                   <td className="px-4 py-3 font-mono text-xs text-zinc-400">{row.value}</td>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2">
-                      <code className="font-mono text-xs text-lime-400">{row.selector}</code>
+                      <code className="font-mono text-xs text-green-500">{row.selector}</code>
                       <CopyButton value={row.selector} label={`${row.field} selector`} />
                     </div>
                   </td>
@@ -294,7 +294,7 @@ export default function AdsSetupTool() {
           type="button"
           onClick={testFire}
           disabled={!gtagReady}
-          className="inline-flex items-center gap-2 rounded-xl bg-lime-400 px-6 py-3.5 text-sm font-black uppercase tracking-wider text-zinc-950 transition-colors hover:bg-lime-300 disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex items-center gap-2 rounded-xl bg-green-500 px-6 py-3.5 text-sm font-black uppercase tracking-wider text-zinc-950 transition-colors hover:bg-green-400 disabled:cursor-not-allowed disabled:opacity-50"
         >
           <Zap className="h-4 w-4" />
           {gtagReady ? 'Fire test conversion' : 'Waiting for gtag…'}

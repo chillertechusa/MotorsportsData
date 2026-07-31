@@ -50,12 +50,12 @@ export default function OwnerMonitoringPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-zinc-500 uppercase font-semibold">Status</p>
-                <p className="text-2xl font-bold text-lime-400 mt-1">
+                <p className="text-2xl font-bold text-green-500 mt-1">
                   {monitoring?.status === 'healthy' ? 'Healthy' : 'Issues'}
                 </p>
               </div>
               {monitoring?.status === 'healthy' ? (
-                <CheckCircle className="h-8 w-8 text-lime-400" />
+                <CheckCircle className="h-8 w-8 text-green-500" />
               ) : (
                 <AlertTriangle className="h-8 w-8 text-amber-400" />
               )}
@@ -76,11 +76,11 @@ export default function OwnerMonitoringPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-zinc-500 uppercase font-semibold">Uptime</p>
-                <p className="text-2xl font-bold text-lime-400 mt-1">
+                <p className="text-2xl font-bold text-green-500 mt-1">
                   {monitoring?.uptime || '99.9'}%
                 </p>
               </div>
-              <TrendingUp className="h-8 w-8 text-lime-400/30" />
+              <TrendingUp className="h-8 w-8 text-green-500/30" />
             </div>
           </div>
 
@@ -132,15 +132,15 @@ export default function OwnerMonitoringPage() {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-zinc-400">LCP (Largest Contentful Paint)</span>
-                <span className="text-sm font-semibold text-lime-400">2.1s</span>
+                <span className="text-sm font-semibold text-green-500">2.1s</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-zinc-400">FID (First Input Delay)</span>
-                <span className="text-sm font-semibold text-lime-400">45ms</span>
+                <span className="text-sm font-semibold text-green-500">45ms</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-zinc-400">CLS (Cumulative Layout Shift)</span>
-                <span className="text-sm font-semibold text-lime-400">0.08</span>
+                <span className="text-sm font-semibold text-green-500">0.08</span>
               </div>
             </div>
           </div>
@@ -151,12 +151,12 @@ export default function OwnerMonitoringPage() {
               <div className="flex items-center justify-between">
                 <span className="text-sm text-zinc-400">Database Queries</span>
                 <span className="text-sm font-semibold">
-                  <span className="text-lime-400">42ms</span> avg
+                  <span className="text-green-500">42ms</span> avg
                 </span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-zinc-400">Cache Hit Rate</span>
-                <span className="text-sm font-semibold text-lime-400">87%</span>
+                <span className="text-sm font-semibold text-green-500">87%</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-zinc-400">Request Volume</span>
@@ -213,7 +213,7 @@ export default function OwnerMonitoringPage() {
             </div>
             <button
               onClick={() => setSelectedError(null)}
-              className="mt-6 w-full bg-lime-500 hover:bg-lime-600 text-black font-semibold py-2 rounded-lg transition-colors"
+              className="mt-6 w-full bg-green-600 hover:bg-green-600 text-black font-semibold py-2 rounded-lg transition-colors"
             >
               Close
             </button>

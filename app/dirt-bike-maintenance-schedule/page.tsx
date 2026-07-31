@@ -68,12 +68,12 @@ export default function DirtBikeMaintenanceSchedulePage() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <MdReveal>
               <div className="flex items-center gap-2 mb-6">
-                <div className="h-px w-8 bg-lime-400" />
-                <span className="font-mono text-xs text-lime-400 uppercase tracking-[0.3em]">Maintenance Reference</span>
+                <div className="h-px w-8 bg-green-500" />
+                <span className="font-mono text-xs text-green-500 uppercase tracking-[0.3em]">Maintenance Reference</span>
               </div>
               <h1 className="text-zinc-100 uppercase leading-none tracking-tight text-balance mb-6" style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
                 Dirt Bike Maintenance Schedule:<br />
-                <span className="text-lime-400">Hours-Based PM Guide</span>
+                <span className="text-green-500">Hours-Based PM Guide</span>
               </h1>
               <p className="text-zinc-400 text-lg leading-relaxed max-w-3xl mb-6">
                 Every maintenance interval for 4-stroke and 2-stroke motocross bikes, listed by engine hours. Built for racers who track their bikes by use, not the calendar.
@@ -93,8 +93,8 @@ export default function DirtBikeMaintenanceSchedulePage() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <MdReveal className="mb-8">
               <div className="flex items-center gap-2 mb-4">
-                <div className="h-px w-8 bg-lime-400" />
-                <span className="font-mono text-xs text-lime-400 uppercase tracking-[0.3em]">4-Stroke (250F / 450F)</span>
+                <div className="h-px w-8 bg-green-500" />
+                <span className="font-mono text-xs text-green-500 uppercase tracking-[0.3em]">4-Stroke (250F / 450F)</span>
               </div>
               <h2 className="text-zinc-100 uppercase leading-none" style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: 'clamp(1.8rem, 3vw, 2.5rem)' }}>
                 4-Stroke Maintenance Schedule
@@ -105,10 +105,10 @@ export default function DirtBikeMaintenanceSchedulePage() {
                 <table className="w-full border border-zinc-800 text-sm">
                   <thead>
                     <tr className="bg-zinc-900 border-b border-zinc-800">
-                      <th className="px-4 py-3 text-left font-mono text-[10px] text-lime-400 uppercase tracking-widest">Interval</th>
-                      <th className="px-4 py-3 text-left font-mono text-[10px] text-lime-400 uppercase tracking-widest">Task</th>
-                      <th className="px-4 py-3 text-left font-mono text-[10px] text-lime-400 uppercase tracking-widest hidden md:table-cell">Parts</th>
-                      <th className="px-4 py-3 text-left font-mono text-[10px] text-lime-400 uppercase tracking-widest hidden lg:table-cell">Notes</th>
+                      <th className="px-4 py-3 text-left font-mono text-[10px] text-green-500 uppercase tracking-widest">Interval</th>
+                      <th className="px-4 py-3 text-left font-mono text-[10px] text-green-500 uppercase tracking-widest">Task</th>
+                      <th className="px-4 py-3 text-left font-mono text-[10px] text-green-500 uppercase tracking-widest hidden md:table-cell">Parts</th>
+                      <th className="px-4 py-3 text-left font-mono text-[10px] text-green-500 uppercase tracking-widest hidden lg:table-cell">Notes</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -117,7 +117,7 @@ export default function DirtBikeMaintenanceSchedulePage() {
                         <td className="px-4 py-3">
                           <div className="flex items-center gap-2">
                             <Clock className="h-3 w-3 text-zinc-600 shrink-0" />
-                            <span className="font-mono text-xs text-lime-400 whitespace-nowrap">{row.interval}</span>
+                            <span className="font-mono text-xs text-green-500 whitespace-nowrap">{row.interval}</span>
                           </div>
                         </td>
                         <td className="px-4 py-3 text-zinc-300 font-medium">{row.task}</td>
@@ -137,8 +137,8 @@ export default function DirtBikeMaintenanceSchedulePage() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <MdReveal className="mb-8">
               <div className="flex items-center gap-2 mb-4">
-                <div className="h-px w-8 bg-lime-400" />
-                <span className="font-mono text-xs text-lime-400 uppercase tracking-[0.3em]">2-Stroke (125cc / 250cc)</span>
+                <div className="h-px w-8 bg-green-500" />
+                <span className="font-mono text-xs text-green-500 uppercase tracking-[0.3em]">2-Stroke (125cc / 250cc)</span>
               </div>
               <h2 className="text-zinc-100 uppercase leading-none" style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: 'clamp(1.8rem, 3vw, 2.5rem)' }}>
                 2-Stroke Maintenance Schedule
@@ -149,10 +149,10 @@ export default function DirtBikeMaintenanceSchedulePage() {
                 <table className="w-full border border-zinc-800 text-sm">
                   <thead>
                     <tr className="bg-zinc-950 border-b border-zinc-800">
-                      <th className="px-4 py-3 text-left font-mono text-[10px] text-lime-400 uppercase tracking-widest">Interval</th>
-                      <th className="px-4 py-3 text-left font-mono text-[10px] text-lime-400 uppercase tracking-widest">Task</th>
-                      <th className="px-4 py-3 text-left font-mono text-[10px] text-lime-400 uppercase tracking-widest hidden md:table-cell">Parts</th>
-                      <th className="px-4 py-3 text-left font-mono text-[10px] text-lime-400 uppercase tracking-widest hidden lg:table-cell">Notes</th>
+                      <th className="px-4 py-3 text-left font-mono text-[10px] text-green-500 uppercase tracking-widest">Interval</th>
+                      <th className="px-4 py-3 text-left font-mono text-[10px] text-green-500 uppercase tracking-widest">Task</th>
+                      <th className="px-4 py-3 text-left font-mono text-[10px] text-green-500 uppercase tracking-widest hidden md:table-cell">Parts</th>
+                      <th className="px-4 py-3 text-left font-mono text-[10px] text-green-500 uppercase tracking-widest hidden lg:table-cell">Notes</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -161,7 +161,7 @@ export default function DirtBikeMaintenanceSchedulePage() {
                         <td className="px-4 py-3">
                           <div className="flex items-center gap-2">
                             <Clock className="h-3 w-3 text-zinc-600 shrink-0" />
-                            <span className="font-mono text-xs text-lime-400 whitespace-nowrap">{row.interval}</span>
+                            <span className="font-mono text-xs text-green-500 whitespace-nowrap">{row.interval}</span>
                           </div>
                         </td>
                         <td className="px-4 py-3 text-zinc-300 font-medium">{row.task}</td>
@@ -181,7 +181,7 @@ export default function DirtBikeMaintenanceSchedulePage() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <MdReveal className="mb-8">
               <h2 className="text-zinc-100 uppercase leading-none" style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: 'clamp(1.8rem, 3vw, 2.5rem)' }}>
-                The Three Rules That Prevent <span className="text-lime-400">Most Engine Failures</span>
+                The Three Rules That Prevent <span className="text-green-500">Most Engine Failures</span>
               </h2>
             </MdReveal>
             <div className="grid sm:grid-cols-3 gap-4">
@@ -191,8 +191,8 @@ export default function DirtBikeMaintenanceSchedulePage() {
                 { num: '03', title: 'Don\'t defer valve checks', body: 'A tight exhaust valve burns before any other symptom appears. Check clearances on schedule. By the time the bike is hard to start, the valve seat is already damaged.' },
               ].map((item) => (
                 <MdReveal key={item.num}>
-                  <div className="border border-zinc-800 p-6 hover:border-lime-400/30 transition-colors h-full">
-                    <p className="font-mono text-xs text-lime-400 uppercase tracking-[0.3em] mb-3">{item.num}</p>
+                  <div className="border border-zinc-800 p-6 hover:border-green-500/30 transition-colors h-full">
+                    <p className="font-mono text-xs text-green-500 uppercase tracking-[0.3em] mb-3">{item.num}</p>
                     <h3 className="text-zinc-100 uppercase mb-3" style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: '1.3rem' }}>{item.title}</h3>
                     <p className="text-zinc-500 text-sm leading-relaxed">{item.body}</p>
                   </div>
@@ -206,11 +206,11 @@ export default function DirtBikeMaintenanceSchedulePage() {
         <section className="py-16 bg-zinc-900">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <MdReveal>
-              <div className="border border-lime-400/20 bg-zinc-950 p-8 flex flex-col md:flex-row gap-8 items-start">
+              <div className="border border-green-500/20 bg-zinc-950 p-8 flex flex-col md:flex-row gap-8 items-start">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-4">
-                    <div className="h-px w-8 bg-lime-400" />
-                    <span className="font-mono text-xs text-lime-400 uppercase tracking-[0.3em]">Part Vault</span>
+                    <div className="h-px w-8 bg-green-500" />
+                    <span className="font-mono text-xs text-green-500 uppercase tracking-[0.3em]">Part Vault</span>
                   </div>
                   <h3 className="text-zinc-100 uppercase mb-3" style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: '2rem' }}>
                     Stop tracking hours in your head.
@@ -219,10 +219,10 @@ export default function DirtBikeMaintenanceSchedulePage() {
                     The Part Vault tracks every service item by install date and engine hours. Critical alerts fire before you hit the service limit — not after the race when the valve has already tightened. Privateer plan and above.
                   </p>
                   <div className="flex flex-wrap gap-3">
-                    <Link href="/data/privateer" className="inline-flex items-center gap-2 bg-lime-400 text-zinc-950 px-6 py-3 font-black text-xs uppercase tracking-widest hover:bg-lime-300 transition-colors">
+                    <Link href="/data/privateer" className="inline-flex items-center gap-2 bg-green-500 text-zinc-950 px-6 py-3 font-black text-xs uppercase tracking-widest hover:bg-green-400 transition-colors">
                       See the Privateer Plan <ChevronRight className="h-3.5 w-3.5" />
                     </Link>
-                    <Link href="/data/rookie" className="inline-flex items-center gap-2 border border-zinc-700 text-zinc-400 px-6 py-3 font-mono text-xs uppercase tracking-widest hover:border-lime-400 hover:text-lime-400 transition-colors">
+                    <Link href="/data/rookie" className="inline-flex items-center gap-2 border border-zinc-700 text-zinc-400 px-6 py-3 font-mono text-xs uppercase tracking-widest hover:border-green-500 hover:text-green-500 transition-colors">
                       Rookie Plan — $9/mo
                     </Link>
                   </div>
@@ -239,7 +239,7 @@ export default function DirtBikeMaintenanceSchedulePage() {
                       <span className="text-zinc-300 text-xs">{p.part}</span>
                       <div className="flex items-center gap-2">
                         <span className="font-mono text-[10px] text-zinc-600">{p.hours}</span>
-                        <CheckCircle2 className={`h-3 w-3 ${p.status === 'critical' ? 'text-red-400' : p.status === 'warning' ? 'text-amber-400' : 'text-lime-400'}`} />
+                        <CheckCircle2 className={`h-3 w-3 ${p.status === 'critical' ? 'text-red-400' : p.status === 'warning' ? 'text-amber-400' : 'text-green-500'}`} />
                       </div>
                     </div>
                   ))}

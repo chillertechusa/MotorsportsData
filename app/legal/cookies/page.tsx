@@ -63,7 +63,7 @@ export default function CookiesPage() {
           install the{' '}
           <a
             href="https://tools.google.com/dlpage/gaoptout"
-            className="text-lime-400 hover:underline"
+            className="text-green-500 hover:underline"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -72,7 +72,7 @@ export default function CookiesPage() {
           . For advertising preferences, visit{' '}
           <a
             href="https://adssettings.google.com"
-            className="text-lime-400 hover:underline"
+            className="text-green-500 hover:underline"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -94,7 +94,7 @@ export default function CookiesPage() {
       <LegalSection n={6} title="Contact">
         <p>
           Questions about our cookie practices:{' '}
-          <a href="mailto:privacy@motorsportsdata.io" className="text-lime-400 hover:underline">
+          <a href="mailto:privacy@motorsportsdata.io" className="text-green-500 hover:underline">
             privacy@motorsportsdata.io
           </a>
         </p>

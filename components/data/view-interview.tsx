@@ -178,14 +178,14 @@ const SCENARIOS: Scenario[] = [
 // ── Score color helper ────────────────────────────────────────────────────────
 
 function scoreColor(score: number): string {
-  if (score >= 80) return 'text-lime-400'
+  if (score >= 80) return 'text-green-500'
   if (score >= 60) return 'text-yellow-400'
   if (score >= 40) return 'text-orange-400'
   return 'text-red-400'
 }
 
 function scoreBg(score: number): string {
-  if (score >= 80) return 'bg-lime-400/10 border-lime-400/30'
+  if (score >= 80) return 'bg-green-500/10 border-green-500/30'
   if (score >= 60) return 'bg-yellow-400/10 border-yellow-400/30'
   if (score >= 40) return 'bg-orange-400/10 border-orange-400/30'
   return 'bg-red-400/10 border-red-400/30'
@@ -358,18 +358,18 @@ export default function ViewInterview({ tier }: Props) {
               className="w-full text-left bg-zinc-900 border border-zinc-800 hover:border-zinc-600 hover:bg-zinc-800 rounded-2xl p-5 transition-all group"
             >
               <div className="flex items-start gap-4">
-                <div className="h-12 w-12 rounded-xl bg-zinc-800 group-hover:bg-lime-400/10 border border-zinc-700 group-hover:border-lime-400/30 flex items-center justify-center shrink-0 transition-all">
-                  <scenario.icon className="h-5 w-5 text-zinc-400 group-hover:text-lime-400 transition-colors" />
+                <div className="h-12 w-12 rounded-xl bg-zinc-800 group-hover:bg-green-500/10 border border-zinc-700 group-hover:border-green-500/30 flex items-center justify-center shrink-0 transition-all">
+                  <scenario.icon className="h-5 w-5 text-zinc-400 group-hover:text-green-500 transition-colors" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
                     <p className="font-bold text-zinc-100 group-hover:text-white">{scenario.label}</p>
-                    <ChevronRight className="h-4 w-4 text-zinc-600 group-hover:text-lime-400 transition-colors shrink-0" />
+                    <ChevronRight className="h-4 w-4 text-zinc-600 group-hover:text-green-500 transition-colors shrink-0" />
                   </div>
                   <p className="text-xs text-zinc-500 mt-0.5 uppercase tracking-wide">{scenario.sub}</p>
                   <p className="text-sm text-zinc-400 mt-2 leading-relaxed line-clamp-2">{scenario.context}</p>
                   {factory && scenario.factoryNote && (
-                    <p className="text-xs text-lime-400/70 mt-2 font-medium">
+                    <p className="text-xs text-green-500/70 mt-2 font-medium">
                       Factory Rig: {scenario.factoryNote}
                     </p>
                   )}
@@ -470,12 +470,12 @@ export default function ViewInterview({ tier }: Props) {
           <ArrowLeft className="h-5 w-5" />
         </button>
         <div className="flex items-center gap-2">
-          <activeScenario.icon className="h-4 w-4 text-lime-400" />
+          <activeScenario.icon className="h-4 w-4 text-green-500" />
           <span className="text-sm font-bold text-zinc-300 uppercase tracking-wide">
             {activeScenario.label}
           </span>
           {factory && (
-            <span className="text-[10px] font-bold uppercase tracking-wider bg-lime-400/10 text-lime-400 border border-lime-400/30 rounded-full px-2 py-0.5">
+            <span className="text-[10px] font-bold uppercase tracking-wider bg-green-500/10 text-green-500 border border-green-500/30 rounded-full px-2 py-0.5">
               Factory Rig
             </span>
           )}
@@ -530,7 +530,7 @@ export default function ViewInterview({ tier }: Props) {
             <button
               onClick={submitAnswer}
               disabled={answer.trim().length < 10 || streaming}
-              className="flex items-center gap-2 bg-lime-400 hover:bg-lime-300 text-zinc-950 font-bold px-5 py-2.5 rounded-xl text-sm transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 bg-green-500 hover:bg-green-400 text-zinc-950 font-bold px-5 py-2.5 rounded-xl text-sm transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             >
               {streaming ? (
                 <>
@@ -554,7 +554,7 @@ export default function ViewInterview({ tier }: Props) {
       {/* Loading state while waiting for AI feedback */}
       {streaming && !parsedFeedback && (
         <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-6 flex items-center gap-3">
-          <Loader2 className="h-4 w-4 animate-spin text-lime-400 shrink-0" />
+          <Loader2 className="h-4 w-4 animate-spin text-green-500 shrink-0" />
           <p className="text-sm font-medium text-zinc-400">MD Coach is reviewing your answer...</p>
         </div>
       )}
@@ -592,7 +592,7 @@ export default function ViewInterview({ tier }: Props) {
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle2 className="h-4 w-4 text-lime-400" />
+                  <CheckCircle2 className="h-4 w-4 text-green-500" />
                   <p className="text-sm font-bold text-zinc-300 uppercase tracking-wide">MD Coach Feedback</p>
                 </div>
                 <p className="text-sm text-zinc-300 leading-relaxed">{parsedFeedback.overall}</p>
@@ -611,7 +611,7 @@ export default function ViewInterview({ tier }: Props) {
                   <div className="h-1.5 bg-zinc-800 rounded-full overflow-hidden">
                     <div
                       className={`h-full rounded-full transition-all ${
-                        dim.score >= 80 ? 'bg-lime-400' : dim.score >= 60 ? 'bg-yellow-400' : dim.score >= 40 ? 'bg-orange-400' : 'bg-red-400'
+                        dim.score >= 80 ? 'bg-green-500' : dim.score >= 60 ? 'bg-yellow-400' : dim.score >= 40 ? 'bg-orange-400' : 'bg-red-400'
                       }`}
                       style={{ width: `${dim.score}%` }}
                     />
@@ -622,11 +622,11 @@ export default function ViewInterview({ tier }: Props) {
             </div>
 
             {/* Drill tip */}
-            <div className="bg-lime-400/5 border border-lime-400/20 rounded-xl p-4">
+            <div className="bg-green-500/5 border border-green-500/20 rounded-xl p-4">
               <div className="flex items-start gap-2">
-                <Clock className="h-4 w-4 text-lime-400 shrink-0 mt-0.5" />
+                <Clock className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-xs font-bold text-lime-400 uppercase tracking-wide mb-1">Practice Drill</p>
+                  <p className="text-xs font-bold text-green-500 uppercase tracking-wide mb-1">Practice Drill</p>
                   <p className="text-sm text-zinc-300 leading-relaxed">{parsedFeedback.tip}</p>
                 </div>
               </div>
@@ -637,7 +637,7 @@ export default function ViewInterview({ tier }: Props) {
           <div className="flex items-center gap-3">
             <button
               onClick={newQuestion}
-              className="flex items-center gap-2 bg-lime-400 hover:bg-lime-300 text-zinc-950 font-bold px-5 py-2.5 rounded-xl text-sm transition-colors"
+              className="flex items-center gap-2 bg-green-500 hover:bg-green-400 text-zinc-950 font-bold px-5 py-2.5 rounded-xl text-sm transition-colors"
             >
               <RefreshCw className="h-4 w-4" />
               New Question

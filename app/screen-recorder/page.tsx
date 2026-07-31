@@ -12,13 +12,13 @@ export const metadata: Metadata = {
 
 export default async function ScreenRecorderPage() {
   const owner = await getMdOwner()
-  if (!owner) redirect('/data/sign-in')
+  if (!owner) redirect('/auth/sign-in')
 
   return (
     <main className="min-h-screen bg-zinc-950 px-4 py-12 sm:py-16">
       <div className="mx-auto max-w-4xl">
         <header className="mb-8 text-center">
-          <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-lime-400">
+          <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-green-500">
             Owner Tool
           </p>
           <h1 className="text-balance text-4xl font-black uppercase tracking-tight text-zinc-50 sm:text-5xl">
@@ -38,16 +38,16 @@ export default async function ScreenRecorderPage() {
           </h2>
           <ol className="flex flex-col gap-2 text-sm leading-relaxed text-zinc-300">
             <li>
-              <span className="font-bold text-lime-400">1.</span> Toggle System Audio and/or
+              <span className="font-bold text-green-500">1.</span> Toggle System Audio and/or
               Microphone depending on what you want in the recording.
             </li>
             <li>
-              <span className="font-bold text-lime-400">2.</span> Click Start Recording, then pick
+              <span className="font-bold text-green-500">2.</span> Click Start Recording, then pick
               the screen, window, or tab to share. To capture tab audio in Chrome/Edge, choose a
               tab and enable &quot;Share tab audio.&quot;
             </li>
             <li>
-              <span className="font-bold text-lime-400">3.</span> Pause or stop anytime, then
+              <span className="font-bold text-green-500">3.</span> Pause or stop anytime, then
               preview and download the file. Saves as .webm (or .mp4 where supported).
             </li>
           </ol>

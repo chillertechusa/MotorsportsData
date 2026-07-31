@@ -37,9 +37,9 @@ export function LiveDashboardTeam({
           </p>
         </div>
         {isLive && (
-          <div className="flex items-center gap-2 px-4 py-2 bg-lime-950 border border-lime-700 rounded-lg">
-            <div className="w-2 h-2 bg-lime-400 rounded-full animate-pulse"></div>
-            <span className="text-lime-300 font-semibold text-sm">LIVE</span>
+          <div className="flex items-center gap-2 px-4 py-2 bg-zinc-950 border border-green-800 rounded-lg">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span className="text-green-400 font-semibold text-sm">LIVE</span>
           </div>
         )}
       </div>

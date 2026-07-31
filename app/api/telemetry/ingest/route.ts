@@ -68,9 +68,9 @@ export async function POST(request: NextRequest) {
   // Auth: accept either a valid API key (devices) or a live session (browser)
   const authHeader = request.headers.get('authorization')
   const apiKeyRow = authHeader ? await validateApiKey(authHeader) : null
-  const sessionTeamId = apiKeyRow ? null : await getSessionTeamId(request)
+  const sessionAuth = apiKeyRow ? null : await getSessionTeamId()
 
-  if (!apiKeyRow && !sessionTeamId) {
+  if (!apiKeyRow && !sessionAuth?.ok) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
     // Normalize channel vocabulary per discipline
     // Each point may carry a disciplineId field; fall back to the team's configured discipline
     const normalizedPoints = validPoints.map((p) => {
-      const disciplineId = (p as Record<string, unknown>).disciplineId as string | undefined
+      const disciplineId = (p as unknown as Record<string, unknown>).disciplineId as string | undefined
       return normalizeTelemetryFrame(p as unknown as Record<string, unknown>, disciplineId)
     })
 

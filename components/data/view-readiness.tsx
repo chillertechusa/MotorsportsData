@@ -60,7 +60,7 @@ export function ViewReadiness() {
   }, [])
 
   const getScoreColor = (score: number) => {
-    if (score >= 90) return 'text-lime-400'
+    if (score >= 90) return 'text-green-500'
     if (score >= 75) return 'text-blue-400'
     if (score >= 60) return 'text-amber-400'
     return 'text-orange-400'
@@ -115,10 +115,10 @@ export function ViewReadiness() {
 
         <div className="border border-zinc-800 bg-zinc-900 p-4 rounded-lg">
           <div className="flex items-center gap-2 mb-2">
-            <Zap className="h-4 w-4 text-lime-400" />
+            <Zap className="h-4 w-4 text-green-500" />
             <span className="text-xs font-bold text-zinc-400">HRV</span>
           </div>
-          <p className="text-3xl font-black text-lime-400">{readiness.hrv}ms</p>
+          <p className="text-3xl font-black text-green-500">{readiness.hrv}ms</p>
         </div>
 
         <div className="border border-zinc-800 bg-zinc-900 p-4 rounded-lg">
@@ -140,14 +140,14 @@ export function ViewReadiness() {
         </div>
       </div>
 
-      <div className="border border-lime-500/40 bg-lime-500/5 p-4 rounded-lg">
-        <p className="text-sm text-lime-300">Follow taper protocol: Light Thursday, Rest Friday, Peak Saturday at 7:00 PM.</p>
+      <div className="border border-green-600/40 bg-green-600/5 p-4 rounded-lg">
+        <p className="text-sm text-green-400">Follow taper protocol: Light Thursday, Rest Friday, Peak Saturday at 7:00 PM.</p>
       </div>
 
       {/* Taper Protocol */}
-      <div className="border border-lime-900 bg-lime-950 bg-opacity-20 p-6 rounded-lg">
-        <h3 className="text-lg font-bold text-lime-300 mb-3">Taper Protocol</h3>
-        <p className="text-lime-100 text-sm leading-relaxed">{readiness.tapperRecommendation}</p>
+      <div className="border border-green-950 bg-zinc-950 bg-opacity-20 p-6 rounded-lg">
+        <h3 className="text-lg font-bold text-green-400 mb-3">Taper Protocol</h3>
+        <p className="text-green-200 text-sm leading-relaxed">{readiness.tapperRecommendation}</p>
       </div>
 
       {/* Warnings */}

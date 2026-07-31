@@ -26,7 +26,7 @@ const FEATURES: Feature[] = [
     title: 'Training Progression',
     description: 'Track every ride with telemetry, lap times, and fitness metrics across weeks.',
     icon: Bike,
-    color: 'from-sky-500/20 to-sky-500/5',
+    color: 'from-blue-600/20 to-blue-600/5',
     accent: 'sky',
   },
   {
@@ -42,7 +42,7 @@ const FEATURES: Feature[] = [
     title: 'Live Race Telemetry',
     description: 'Real-time GPS lap timing, speed traces, and live pit callouts during races.',
     icon: Radio,
-    color: 'from-lime-500/20 to-lime-500/5',
+    color: 'from-green-500/20 to-green-500/5',
     accent: 'lime',
   },
   {
@@ -90,7 +90,7 @@ const FEATURES: Feature[] = [
     title: 'MD Intel Search',
     description: 'Ask your AI crew chief any setup question from your R&D archive.',
     icon: Sparkles,
-    color: 'from-lime-500/20 to-lime-500/5',
+    color: 'from-green-500/20 to-green-500/5',
     accent: 'lime',
   },
   {
@@ -154,7 +154,7 @@ const FEATURES: Feature[] = [
     title: 'Race Schedule',
     description: 'Calendar integration with results, gate times, and travel details.',
     icon: Calendar,
-    color: 'from-sky-500/20 to-sky-500/5',
+    color: 'from-blue-600/20 to-blue-600/5',
     accent: 'sky',
   },
   {
@@ -186,7 +186,7 @@ const FEATURES: Feature[] = [
     title: 'Offline/PWA',
     description: 'Access setup sheets in the pits with zero signal.',
     icon: Radio,
-    color: 'from-lime-500/20 to-lime-500/5',
+    color: 'from-green-500/20 to-green-500/5',
     accent: 'lime',
   },
   {
@@ -268,7 +268,7 @@ export default function MdFeatureShowcase() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-16 text-center max-w-3xl mx-auto">
-          <p className="font-mono text-xs text-lime-400 uppercase tracking-[0.3em] mb-4">
+          <p className="font-mono text-xs text-green-500 uppercase tracking-[0.3em] mb-4">
             &#47;&#47; platform-features
           </p>
           <h2
@@ -295,12 +295,12 @@ export default function MdFeatureShowcase() {
                 }}
                 className={`w-full text-left px-4 py-3 border transition-all duration-200 ${
                   selectedId === idx
-                    ? 'border-lime-400 bg-lime-400/10'
+                    ? 'border-green-500 bg-green-500/10'
                     : 'border-zinc-800 bg-zinc-900/40 hover:border-zinc-700'
                 }`}
               >
                 <span className={`font-mono text-xs uppercase tracking-widest ${
-                  selectedId === idx ? 'text-lime-400' : 'text-zinc-500'
+                  selectedId === idx ? 'text-green-500' : 'text-zinc-500'
                 }`}>
                   {String(feature.id).padStart(2, '0')}
                 </span>
@@ -328,7 +328,7 @@ export default function MdFeatureShowcase() {
                 <div className="flex items-start justify-between mb-8">
                   <div className="flex items-center gap-4">
                     <div className="p-3 rounded-lg bg-zinc-900/60 border border-zinc-800">
-                      <SelectedIcon className="h-6 w-6 text-lime-400" />
+                      <SelectedIcon className="h-6 w-6 text-green-500" />
                     </div>
                     <div>
                       <p className="font-mono text-xs text-zinc-500 uppercase tracking-widest">Feature</p>
@@ -342,7 +342,7 @@ export default function MdFeatureShowcase() {
                       </div>
                     </div>
                   </div>
-                  <span className="font-mono text-2xl font-black text-lime-400/60">{String(selected.id).padStart(2, '0')}</span>
+                  <span className="font-mono text-2xl font-black text-green-500/60">{String(selected.id).padStart(2, '0')}</span>
                 </div>
                 <p className="text-zinc-300 text-lg leading-relaxed max-w-md">{selected.description}</p>
               </div>
@@ -353,7 +353,7 @@ export default function MdFeatureShowcase() {
                   <p className="font-mono text-xs text-zinc-600 uppercase tracking-widest">Available on</p>
                   <div className="flex gap-2">
                     {['Privateer', 'Race Team', 'Factory Rig'].map(tier => (
-                      <span key={tier} className="font-mono text-xs text-lime-400 px-2 py-1 border border-lime-400/30 bg-lime-400/5 rounded">
+                      <span key={tier} className="font-mono text-xs text-green-500 px-2 py-1 border border-green-500/30 bg-green-500/5 rounded">
                         {tier}
                       </span>
                     ))}
@@ -361,7 +361,7 @@ export default function MdFeatureShowcase() {
                 </div>
                 <Link
                   href="/data/demo"
-                  className="px-5 py-2.5 bg-lime-400 text-zinc-950 font-mono text-xs font-bold uppercase tracking-widest hover:bg-lime-300 transition-colors"
+                  className="px-5 py-2.5 bg-green-500 text-zinc-950 font-mono text-xs font-bold uppercase tracking-widest hover:bg-green-400 transition-colors"
                 >
                   See in Action
                 </Link>
@@ -371,7 +371,7 @@ export default function MdFeatureShowcase() {
             {/* Progress bar */}
             <div className="mt-4 h-1 bg-zinc-900 rounded overflow-hidden">
               <div
-                className="h-full bg-lime-400 transition-all duration-300"
+                className="h-full bg-green-500 transition-all duration-300"
                 style={{ width: `${((selectedId ?? 0) + 1) / FEATURES.length * 100}%` }}
               />
             </div>
@@ -385,7 +385,7 @@ export default function MdFeatureShowcase() {
                 onClick={() => setAutoPlay(!autoPlay)}
                 className={`font-mono text-xs uppercase tracking-widest px-3 py-1.5 border transition-colors ${
                   autoPlay
-                    ? 'border-lime-400 text-lime-400'
+                    ? 'border-green-500 text-green-500'
                     : 'border-zinc-700 text-zinc-500 hover:border-zinc-600'
                 }`}
               >

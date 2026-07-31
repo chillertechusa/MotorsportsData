@@ -30,7 +30,7 @@ export default async function RiderProfilePage({
 
   const session = await auth.api.getSession({ headers: await headers() })
   if (!session?.user?.id) {
-    redirect(`/data/sign-in?redirect=/data/agent/rider/${teamId}`)
+    redirect(`/auth/sign-in?redirect=/data/agent/rider/${teamId}`)
   }
 
   const result = await getRiderProfileForAgent(teamId)
@@ -54,7 +54,7 @@ export default async function RiderProfilePage({
             {result.reason === 'not_entitled' && (
               <Link
                 href="/checkout/tier?tier=agent"
-                className="inline-flex items-center gap-2 rounded-xl bg-lime-400 px-5 py-2.5 text-sm font-black uppercase tracking-widest text-zinc-950 hover:bg-lime-300"
+                className="inline-flex items-center gap-2 rounded-xl bg-green-500 px-5 py-2.5 text-sm font-black uppercase tracking-widest text-zinc-950 hover:bg-green-400"
               >
                 Subscribe
               </Link>
@@ -81,7 +81,7 @@ export default async function RiderProfilePage({
         {/* Header */}
         <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.25em] text-lime-400">Rider Profile</p>
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-green-500">Rider Profile</p>
             <h1 className="mt-1 text-3xl font-black tracking-tight text-balance">{profile.riderName}</h1>
             <p className="mt-1 text-zinc-400">
               {[profile.riderClass, profile.discipline, age ? `Age ${age}` : null]
@@ -91,7 +91,7 @@ export default async function RiderProfilePage({
           </div>
           <a
             href={`/api/agent/pitch/${profile.teamId}`}
-            className="inline-flex items-center gap-2 rounded-xl bg-lime-400 px-5 py-2.5 text-sm font-black uppercase tracking-widest text-zinc-950 transition-colors hover:bg-lime-300"
+            className="inline-flex items-center gap-2 rounded-xl bg-green-500 px-5 py-2.5 text-sm font-black uppercase tracking-widest text-zinc-950 transition-colors hover:bg-green-400"
           >
             <FileText className="h-4 w-4" /> Export Pitch PDF
           </a>
@@ -156,7 +156,7 @@ export default async function RiderProfilePage({
                       <td className="px-4 py-3 text-zinc-400">
                         {[s.trackSurface, s.trackConditions].filter(Boolean).join(', ') || '—'}
                       </td>
-                      <td className="px-4 py-3 text-right font-mono text-lime-400">{fmtLap(s.bestLapSeconds)}</td>
+                      <td className="px-4 py-3 text-right font-mono text-green-500">{fmtLap(s.bestLapSeconds)}</td>
                     </tr>
                   ))}
                 </tbody>

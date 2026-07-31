@@ -1,5 +1,6 @@
 // @ts-check
 import { withSentryConfig } from '@sentry/nextjs'
+import { withBotId } from 'botid/next/config'
 
 /** @type {import('next').NextConfig} */
 
@@ -99,7 +100,7 @@ const nextConfig = {
   },
 }
 
-export default withSentryConfig(nextConfig, {
+export default withBotId(withSentryConfig(nextConfig, {
   // Your Sentry org + project slugs (set SENTRY_ORG / SENTRY_PROJECT env vars
   // or fill them in here if you prefer hardcoded values).
   org: process.env.SENTRY_ORG,
@@ -114,4 +115,4 @@ export default withSentryConfig(nextConfig, {
   // Disable the Sentry SDK size overhead in the browser bundle during local dev
   disableClientWebpackPlugin: !process.env.NEXT_PUBLIC_SENTRY_DSN,
   disableServerWebpackPlugin: !process.env.NEXT_PUBLIC_SENTRY_DSN,
-})
+}))

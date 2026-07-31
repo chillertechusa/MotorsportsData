@@ -147,7 +147,7 @@ export default function MdCheckoutClient({
     } else {
       const existing = document.querySelector<HTMLScriptElement>(`script[src="${sdkSrc}"]`)
       if (existing) {
-        existing.addEventListener('load', initCard, { once: true })
+        existing.addEventListener('load', () => void initCard(), { once: true })
         existing.addEventListener(
           'error',
           () => !cancelled && setError('Could not load the payment provider. Please refresh.'),
@@ -157,7 +157,7 @@ export default function MdCheckoutClient({
         const script = document.createElement('script')
         script.src = sdkSrc
         script.async = true
-        script.addEventListener('load', initCard, { once: true })
+        script.addEventListener('load', () => void initCard(), { once: true })
         script.addEventListener(
           'error',
           () => !cancelled && setError('Could not load the payment provider. Please refresh.'),
@@ -264,7 +264,7 @@ export default function MdCheckoutClient({
   const planLabel = MD_PLAN_LABELS[plan]
 
   const inputClass =
-    'w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-zinc-50 placeholder:text-zinc-500 focus:border-lime-400 focus:outline-none transition-colors text-sm'
+    'w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-zinc-50 placeholder:text-zinc-500 focus:border-green-500 focus:outline-none transition-colors text-sm'
 
   return (
     <main className="mx-auto max-w-5xl px-5 lg:px-8 py-12 lg:py-16">
@@ -272,7 +272,7 @@ export default function MdCheckoutClient({
 
         {/* Left — form */}
         <div>
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-lime-400 mb-2">
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-green-500 mb-2">
             Subscription Checkout
           </p>
           <h1 className="text-3xl lg:text-4xl font-black uppercase tracking-tight text-zinc-50 mb-8">
@@ -317,7 +317,7 @@ export default function MdCheckoutClient({
                     onClick={() => setFrequency('annual')}
                     className={`flex-1 rounded-lg border px-4 py-3 text-sm font-bold uppercase tracking-wider transition-all ${
                       frequency === 'annual'
-                        ? 'border-lime-400 bg-lime-400/10 text-lime-400'
+                        ? 'border-green-500 bg-green-500/10 text-green-500'
                         : 'border-zinc-700 bg-zinc-900 text-zinc-400 hover:border-zinc-600'
                     }`}
                   >
@@ -333,7 +333,7 @@ export default function MdCheckoutClient({
                     onClick={() => setFrequency('monthly')}
                     className={`flex-1 rounded-lg border px-4 py-3 text-sm font-bold uppercase tracking-wider transition-all ${
                       frequency === 'monthly'
-                        ? 'border-lime-400 bg-lime-400/10 text-lime-400'
+                        ? 'border-green-500 bg-green-500/10 text-green-500'
                         : 'border-zinc-700 bg-zinc-900 text-zinc-400 hover:border-zinc-600'
                     }`}
                   >
@@ -350,7 +350,7 @@ export default function MdCheckoutClient({
                   type="checkbox"
                   checked={form.smsOptIn}
                   onChange={(e) => setForm((f) => ({ ...f, smsOptIn: e.target.checked }))}
-                  className="mt-1 h-4 w-4 rounded border-zinc-600 accent-lime-400 cursor-pointer"
+                  className="mt-1 h-4 w-4 rounded border-zinc-600 accent-green-500 cursor-pointer"
                   aria-label="Opt in to SMS communications"
                 />
                 <div className="flex-1 text-sm">
@@ -367,7 +367,7 @@ export default function MdCheckoutClient({
                       href="/legal/privacy"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-lime-400 hover:text-lime-300 underline transition-colors"
+                      className="text-green-500 hover:text-green-400 underline transition-colors"
                     >
                       Privacy Policy
                     </a>
@@ -375,7 +375,7 @@ export default function MdCheckoutClient({
                       href="/legal/terms"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-lime-400 hover:text-lime-300 underline transition-colors"
+                      className="text-green-500 hover:text-green-400 underline transition-colors"
                     >
                       Terms of Service
                     </a>
@@ -411,7 +411,7 @@ export default function MdCheckoutClient({
             <button
               type="submit"
               disabled={submitting || (!isFreeAccount && !cardReady)}
-              className="w-full h-14 rounded-xl bg-lime-400 text-zinc-950 font-black uppercase tracking-wider text-lg hover:bg-lime-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full h-14 rounded-xl bg-green-500 text-zinc-950 font-black uppercase tracking-wider text-lg hover:bg-green-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {submitting ? (
                 <>
@@ -446,7 +446,7 @@ export default function MdCheckoutClient({
                   href="/terms"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lime-400 hover:text-lime-300 underline transition-colors"
+                  className="text-green-500 hover:text-green-400 underline transition-colors"
                 >
                   Terms of Service
                 </a>{' '}
@@ -486,7 +486,7 @@ export default function MdCheckoutClient({
 
           <div className="border-t border-zinc-800 pt-4 flex items-center justify-between">
             <span className="font-mono text-xs uppercase tracking-widest text-zinc-400">Total due today</span>
-            <span className="text-lime-400 text-2xl font-black">{formatCents(amountCents)}</span>
+            <span className="text-green-500 text-2xl font-black">{formatCents(amountCents)}</span>
           </div>
 
           <div className="mt-6 space-y-2.5">
@@ -496,7 +496,7 @@ export default function MdCheckoutClient({
               'Secured by Square Payments',
             ].map((line) => (
               <div key={line} className="flex items-center gap-2 text-xs text-zinc-500">
-                <span className="h-1.5 w-1.5 rounded-full bg-lime-400 shrink-0" />
+                <span className="h-1.5 w-1.5 rounded-full bg-green-500 shrink-0" />
                 {line}
               </div>
             ))}

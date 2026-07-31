@@ -82,7 +82,7 @@ export default function MdResetPasswordClient() {
   }
 
   const inputClass =
-    'w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-zinc-50 placeholder:text-zinc-500 focus:border-lime-400 focus:outline-none transition-colors text-sm'
+    'w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-zinc-50 placeholder:text-zinc-500 focus:border-green-500 focus:outline-none transition-colors text-sm'
 
   if (validating) {
     return (
@@ -103,7 +103,7 @@ export default function MdResetPasswordClient() {
           </p>
           <Link
             href="/data/forgot-password"
-            className="inline-block px-4 py-2 rounded-xl bg-lime-400 text-zinc-950 font-bold text-sm hover:bg-lime-300 transition-colors"
+            className="inline-block px-4 py-2 rounded-xl bg-green-500 text-zinc-950 font-bold text-sm hover:bg-green-400 transition-colors"
           >
             Request New Link
           </Link>
@@ -116,7 +116,7 @@ export default function MdResetPasswordClient() {
     <div className="w-full max-w-sm">
       {/* Heading */}
       <div className="mb-8 text-center">
-        <p className="font-mono text-xs uppercase tracking-[0.3em] text-lime-400 mb-2">
+        <p className="font-mono text-xs uppercase tracking-[0.3em] text-green-500 mb-2">
           Password Recovery
         </p>
         <h1 className="text-3xl font-black uppercase tracking-tight text-zinc-50">
@@ -128,9 +128,9 @@ export default function MdResetPasswordClient() {
       </div>
 
       {success ? (
-        <div className="rounded-xl border border-lime-500/30 bg-lime-500/10 px-6 py-4 text-center">
-          <div className="mx-auto mb-4 h-12 w-12 rounded-full bg-lime-400/20 flex items-center justify-center">
-            <CheckCircle className="h-6 w-6 text-lime-400" />
+        <div className="rounded-xl border border-green-600/30 bg-green-600/10 px-6 py-4 text-center">
+          <div className="mx-auto mb-4 h-12 w-12 rounded-full bg-green-500/20 flex items-center justify-center">
+            <CheckCircle className="h-6 w-6 text-green-500" />
           </div>
           <h2 className="text-lg font-bold text-zinc-50 mb-2">Password reset successful</h2>
           <p className="text-sm text-zinc-400">
@@ -175,7 +175,7 @@ export default function MdResetPasswordClient() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full h-12 rounded-xl bg-lime-400 text-zinc-950 font-black uppercase tracking-wider text-sm hover:bg-lime-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full h-12 rounded-xl bg-green-500 text-zinc-950 font-black uppercase tracking-wider text-sm hover:bg-green-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {loading ? (
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -192,7 +192,7 @@ export default function MdResetPasswordClient() {
       {/* Back to sign-in */}
       <div className="mt-8 text-center text-xs text-zinc-600">
         <p>
-          <Link href="/data/sign-in" className="text-lime-400 hover:underline font-semibold">
+          <Link href="/data/sign-in" className="text-green-500 hover:underline font-semibold">
             Back to Sign In
           </Link>
         </p>

@@ -10,7 +10,7 @@ export const metadata = {
 
 export default async function OwnerConsolePage() {
   const owner = await getMdOwner()
-  if (!owner) redirect('/data/sign-in')
+  if (!owner) redirect('/auth/sign-in')
 
   const financials = await getOwnerFinancials()
 

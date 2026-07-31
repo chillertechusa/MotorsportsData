@@ -6,16 +6,16 @@ import { TEST_ACCOUNTS, type SeedResult } from '@/lib/md-test-accounts'
 import { CheckCircle2, RefreshCw, Copy, ExternalLink, Shield } from 'lucide-react'
 
 const TIER_COLORS: Record<string, string> = {
-  rookie: 'text-sky-400 border-sky-500/40 bg-sky-500/10',
-  privateer: 'text-lime-400 border-lime-500/40 bg-lime-500/10',
+  rookie: 'text-blue-500 border-blue-600/40 bg-blue-600/10',
+  privateer: 'text-green-500 border-green-600/40 bg-green-600/10',
   race_team: 'text-amber-400 border-amber-500/40 bg-amber-500/10',
   factory_rig: 'text-red-400 border-red-500/40 bg-red-500/10',
 }
 
 const STATUS_LABELS: Record<string, { label: string; color: string }> = {
-  created: { label: 'Created', color: 'text-lime-400' },
+  created: { label: 'Created', color: 'text-green-500' },
   already_exists: { label: 'Already existed', color: 'text-zinc-400' },
-  tier_updated: { label: 'Tier reset', color: 'text-sky-400' },
+  tier_updated: { label: 'Tier reset', color: 'text-blue-500' },
   error: { label: 'Error', color: 'text-red-400' },
 }
 
@@ -32,7 +32,7 @@ function CopyButton({ text }: { text: string }) {
       className="ml-1.5 text-zinc-500 hover:text-zinc-300 transition-colors"
       title="Copy"
     >
-      {copied ? <CheckCircle2 className="h-3.5 w-3.5 text-lime-400" /> : <Copy className="h-3.5 w-3.5" />}
+      {copied ? <CheckCircle2 className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
     </button>
   )
 }
@@ -71,7 +71,7 @@ export default function TestAccountsPage() {
           <button
             onClick={handleSeed}
             disabled={running}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-lime-400 text-zinc-950 font-bold text-sm uppercase tracking-wider hover:bg-lime-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shrink-0"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-500 text-zinc-950 font-bold text-sm uppercase tracking-wider hover:bg-green-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shrink-0"
           >
             <RefreshCw className={`h-4 w-4 ${running ? 'animate-spin' : ''}`} />
             {running ? 'Seeding...' : 'Seed / Reset'}
@@ -146,10 +146,10 @@ export default function TestAccountsPage() {
             Square is in <span className="text-red-400 font-bold">PRODUCTION</span> mode — any checkout
             test will charge a real card. To safely test the checkout flow, log in as any account above
             (they are pre-seeded with an active tier so the rig loads), then go to{' '}
-            <a href="/data/pricing" className="text-lime-400 underline">/data/pricing</a> and
+            <a href="/pricing" className="text-green-500 underline">/pricing</a> and
             attempt to subscribe to a different plan to exercise the full charge path.
             Use a Square sandbox account by adding{' '}
-            <code className="text-sky-400">NEXT_PUBLIC_SQUARE_APPLICATION_ID=sandbox-...</code>{' '}
+            <code className="text-blue-500">NEXT_PUBLIC_SQUARE_APPLICATION_ID=sandbox-...</code>{' '}
             in Vercel env vars (Preview environment) to run a zero-money end-to-end test.
           </p>
         </div>

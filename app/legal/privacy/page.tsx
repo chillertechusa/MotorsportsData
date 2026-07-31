@@ -39,7 +39,7 @@ export default function PrivacyPage() {
           a parent or legal guardian to provide identifying information and to consent before the
           child&apos;s personal data is collected or used. A guardian may review the child&apos;s
           information, request its deletion, and withdraw consent at any time by contacting{' '}
-          <a href="mailto:privacy@motorsportsdata.io" className="text-lime-400 hover:underline">privacy@motorsportsdata.io</a>.
+          <a href="mailto:privacy@motorsportsdata.io" className="text-green-500 hover:underline">privacy@motorsportsdata.io</a>.
           If we learn we have collected data from a child under 13 without the required consent, we
           will delete it.
         </p>
@@ -63,7 +63,7 @@ export default function PrivacyPage() {
           identify you; this aggregated data is owned by Motorsport Data and may be used to improve
           the Platform and in data products. Anonymized aggregate data cannot reasonably be used to
           re-identify an individual rider. See our{' '}
-          <a href="/legal/data-consent" className="text-lime-400 hover:underline">Data Sharing &amp; Consent</a> policy.
+          <a href="/legal/data-consent" className="text-green-500 hover:underline">Data Sharing &amp; Consent</a> policy.
         </p>
       </LegalSection>
 
@@ -108,7 +108,7 @@ export default function PrivacyPage() {
           You can access and update account information, manage or revoke data-access grants to
           external accounts, and request export or deletion. Guardians can exercise these rights on
           behalf of a minor. Contact{' '}
-          <a href="mailto:privacy@motorsportsdata.io" className="text-lime-400 hover:underline">privacy@motorsportsdata.io</a>.
+          <a href="mailto:privacy@motorsportsdata.io" className="text-green-500 hover:underline">privacy@motorsportsdata.io</a>.
         </p>
       </LegalSection>
 
@@ -116,7 +116,7 @@ export default function PrivacyPage() {
         <p>
           We use cookies and similar technologies to operate the Platform, remember preferences, and
           understand usage. See our{' '}
-          <a href="/legal/cookies" className="text-lime-400 hover:underline">Cookie Policy</a> for
+          <a href="/legal/cookies" className="text-green-500 hover:underline">Cookie Policy</a> for
           details and choices.
         </p>
       </LegalSection>

@@ -82,7 +82,7 @@ export function LiveCoachChat({ liveSessionId, riderName }: LiveCoachChatProps) 
       {/* Header */}
       <div className="border-b border-slate-800 p-4">
         <div className="flex items-center gap-2">
-          <MessageCircle className="h-5 w-5 text-lime-400" />
+          <MessageCircle className="h-5 w-5 text-green-500" />
           <div>
             <p className="text-sm font-bold uppercase tracking-wider text-slate-400">Live Coach AI</p>
             <p className="text-xs text-slate-500">Ask questions about {riderName}'s lap</p>
@@ -105,7 +105,7 @@ export function LiveCoachChat({ liveSessionId, riderName }: LiveCoachChatProps) 
             <div
               className={`max-w-xs rounded-lg px-4 py-2 ${
                 msg.role === 'user'
-                  ? 'bg-lime-500/20 border border-lime-500/30 text-lime-100'
+                  ? 'bg-green-600/20 border border-green-600/30 text-green-200'
                   : 'bg-slate-800 border border-slate-700 text-slate-100'
               }`}
             >
@@ -122,9 +122,9 @@ export function LiveCoachChat({ liveSessionId, riderName }: LiveCoachChatProps) 
 
         {loading && (
           <div className="flex gap-2">
-            <div className="w-2 h-2 rounded-full bg-lime-400 animate-bounce" />
-            <div className="w-2 h-2 rounded-full bg-lime-400 animate-bounce" style={{ animationDelay: '0.1s' }} />
-            <div className="w-2 h-2 rounded-full bg-lime-400 animate-bounce" style={{ animationDelay: '0.2s' }} />
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-bounce" />
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-bounce" style={{ animationDelay: '0.1s' }} />
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-bounce" style={{ animationDelay: '0.2s' }} />
           </div>
         )}
 
@@ -139,12 +139,12 @@ export function LiveCoachChat({ liveSessionId, riderName }: LiveCoachChatProps) 
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask about setup, pace, or strategy..."
           disabled={loading}
-          className="flex-1 rounded-lg bg-slate-800 border border-slate-700 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-lime-500 disabled:opacity-50"
+          className="flex-1 rounded-lg bg-slate-800 border border-slate-700 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-green-600 disabled:opacity-50"
         />
         <button
           type="submit"
           disabled={loading || !input.trim()}
-          className="p-2 rounded-lg bg-lime-500 hover:bg-lime-600 text-slate-900 font-bold disabled:opacity-50 disabled:cursor-not-allowed transition"
+          className="p-2 rounded-lg bg-green-600 hover:bg-green-600 text-slate-900 font-bold disabled:opacity-50 disabled:cursor-not-allowed transition"
         >
           <Send className="h-4 w-4" />
         </button>

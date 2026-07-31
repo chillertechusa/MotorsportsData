@@ -41,7 +41,7 @@ async function CoachCommandContent() {
         </div>
         <Link
           href="/data/coach/roster?action=add"
-          className="inline-flex items-center gap-2 bg-lime-400 text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-lime-300 transition-colors"
+          className="inline-flex items-center gap-2 bg-green-500 text-zinc-950 text-sm font-bold px-4 py-2 hover:bg-green-400 transition-colors"
         >
           Add Athlete
         </Link>
@@ -52,7 +52,7 @@ async function CoachCommandContent() {
         {KPI_TILES.map(({ label, value, icon: Icon, sub }) => (
           <div key={label} className="bg-zinc-900 border border-zinc-800 p-5">
             <div className="flex items-center gap-2 mb-3">
-              <Icon className="h-4 w-4 text-lime-400" aria-hidden="true" />
+              <Icon className="h-4 w-4 text-green-500" aria-hidden="true" />
               <span className="font-mono text-[9px] uppercase tracking-widest text-zinc-500">{label}</span>
             </div>
             <p className="text-3xl font-black text-zinc-100" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
@@ -68,7 +68,7 @@ async function CoachCommandContent() {
         <section>
           <div className="flex items-center justify-between mb-3">
             <h2 className="text-xs font-mono uppercase tracking-widest text-zinc-400">Upcoming Sessions</h2>
-            <Link href="/data/coach/sessions" className="flex items-center gap-1 text-xs text-lime-400 hover:text-lime-300">
+            <Link href="/data/coach/sessions" className="flex items-center gap-1 text-xs text-green-500 hover:text-green-400">
               View all <ArrowRight className="h-3 w-3" />
             </Link>
           </div>
@@ -76,7 +76,7 @@ async function CoachCommandContent() {
             <div className="border border-dashed border-zinc-800 p-8 text-center">
               <CalendarDays className="h-8 w-8 text-zinc-700 mx-auto mb-2" />
               <p className="text-zinc-500 text-sm">No sessions scheduled yet.</p>
-              <Link href="/data/coach/sessions?action=add" className="text-lime-400 text-sm hover:text-lime-300 mt-1 inline-block">
+              <Link href="/data/coach/sessions?action=add" className="text-green-500 text-sm hover:text-green-400 mt-1 inline-block">
                 Schedule first session &rarr;
               </Link>
             </div>
@@ -100,7 +100,7 @@ async function CoachCommandContent() {
                         {s.location ?? 'Location TBD'} &middot; {s.durationMinutes}min &middot; {(s as { athleteCount?: number }).athleteCount ?? 0} athletes
                       </p>
                     </div>
-                    <span className="font-mono text-[9px] uppercase tracking-wider text-lime-400 border border-lime-400/30 bg-lime-400/5 px-2 py-0.5 shrink-0">
+                    <span className="font-mono text-[9px] uppercase tracking-wider text-green-500 border border-green-500/30 bg-green-500/5 px-2 py-0.5 shrink-0">
                       {s.sessionType}
                     </span>
                   </div>
@@ -114,7 +114,7 @@ async function CoachCommandContent() {
         <section>
           <div className="flex items-center justify-between mb-3">
             <h2 className="text-xs font-mono uppercase tracking-widest text-zinc-400">Active Roster</h2>
-            <Link href="/data/coach/roster" className="flex items-center gap-1 text-xs text-lime-400 hover:text-lime-300">
+            <Link href="/data/coach/roster" className="flex items-center gap-1 text-xs text-green-500 hover:text-green-400">
               Full roster <ArrowRight className="h-3 w-3" />
             </Link>
           </div>
@@ -122,7 +122,7 @@ async function CoachCommandContent() {
             <div className="border border-dashed border-zinc-800 p-8 text-center">
               <Users className="h-8 w-8 text-zinc-700 mx-auto mb-2" />
               <p className="text-zinc-500 text-sm">No athletes on your roster yet.</p>
-              <Link href="/data/coach/roster?action=add" className="text-lime-400 text-sm hover:text-lime-300 mt-1 inline-block">
+              <Link href="/data/coach/roster?action=add" className="text-green-500 text-sm hover:text-green-400 mt-1 inline-block">
                 Add first athlete &rarr;
               </Link>
             </div>
@@ -130,7 +130,7 @@ async function CoachCommandContent() {
             <div className="grid grid-cols-2 gap-2">
               {activeClients.map((c) => (
                 <Link key={c.id} href={`/data/coach/roster/${c.id}`}
-                  className="bg-zinc-900 border border-zinc-800 hover:border-lime-400/30 transition-colors p-4 flex items-center gap-3">
+                  className="bg-zinc-900 border border-zinc-800 hover:border-green-500/30 transition-colors p-4 flex items-center gap-3">
                   <div className="h-9 w-9 bg-zinc-800 border border-zinc-700 flex items-center justify-center text-xs font-bold text-zinc-300 shrink-0">
                     {c.firstName[0]}{c.lastName[0]}
                   </div>
@@ -146,10 +146,10 @@ async function CoachCommandContent() {
       </div>
 
       {/* Rig Doctor AI strip */}
-      <div className="border border-lime-400/20 bg-lime-400/5 p-4 flex items-start gap-3">
-        <Cpu className="h-4 w-4 text-lime-400 mt-0.5 shrink-0" aria-hidden="true" />
+      <div className="border border-green-500/20 bg-green-500/5 p-4 flex items-start gap-3">
+        <Cpu className="h-4 w-4 text-green-500 mt-0.5 shrink-0" aria-hidden="true" />
         <div>
-          <p className="font-mono text-[9px] uppercase tracking-widest text-lime-400 mb-1">Rig Doctor AI</p>
+          <p className="font-mono text-[9px] uppercase tracking-widest text-green-500 mb-1">Rig Doctor AI</p>
           <p className="text-sm text-zinc-400">
             {kpis.activeAthletes === 0
               ? 'Add your first athlete to unlock AI-powered training recommendations and performance insights.'

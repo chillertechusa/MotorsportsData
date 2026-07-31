@@ -69,7 +69,7 @@ export default function CoachLayout({ children }: { children: React.ReactNode })
                 className={cn(
                   'flex items-center gap-2.5 px-3 py-2 text-sm rounded-sm transition-colors',
                   isActive
-                    ? 'bg-lime-400/10 text-lime-400 border border-lime-400/20'
+                    ? 'bg-green-500/10 text-green-500 border border-green-500/20'
                     : 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/60 border border-transparent',
                 )}
               >

@@ -30,12 +30,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // NOTE: /data/plans/[tier] all 307 → their canonical pages below, so we list
     // the canonical pages only. /data itself is auth-protected (not indexable).
     {
-      url: `${BASE_URL}/data/pricing`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.95,
-    },
-    {
       url: `${BASE_URL}/data/security`,
       lastModified: now,
       changeFrequency: 'monthly',
@@ -94,6 +88,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // ── Demo booking ───────────────────────────────────────────────────────
     {
       url: `${BASE_URL}/demo-booking`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    // ── Bike Doctor support pages ──────────────────────────────────────────
+    {
+      url: `${BASE_URL}/pricing`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/faq`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/help`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,

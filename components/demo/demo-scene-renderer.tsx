@@ -30,7 +30,7 @@ export default function DemoSceneRenderer({ scene, progress, demoData, t }: Scen
 
         {/* Title + subtitle overlay */}
         <div className="absolute top-6 left-6 right-6">
-          <p className="text-xs uppercase tracking-widest text-lime-400 font-mono font-bold mb-1">{scene.label}</p>
+          <p className="text-xs uppercase tracking-widest text-green-500 font-mono font-bold mb-1">{scene.label}</p>
           <h2 className="text-4xl font-black text-zinc-50">{scene.title}</h2>
           <p className="text-zinc-400 mt-1">{scene.subtitle}</p>
         </div>
@@ -63,7 +63,7 @@ function DashboardScene({ readiness, progress }: { readiness: any[]; progress: n
   return (
     <div className="flex gap-8" style={{ transform: `scale(${scale})` }}>
       <div className="flex-1 space-y-4">
-        <div className="text-6xl font-black text-lime-400">{latest.score}</div>
+        <div className="text-6xl font-black text-green-500">{latest.score}</div>
         <p className="text-sm text-zinc-400">Readiness Score (Peak Condition)</p>
       </div>
       <div className="flex-1 space-y-2 text-sm">
@@ -80,8 +80,8 @@ function DashboardScene({ readiness, progress }: { readiness: any[]; progress: n
           <span className="text-zinc-200 font-mono">{latest.sleepHours} hrs</span>
         </div>
         <div className="flex justify-between pt-2 border-t border-zinc-700">
-          <span className="text-lime-400">Trend</span>
-          <span className="text-lime-400 font-bold">↑ Improving</span>
+          <span className="text-green-500">Trend</span>
+          <span className="text-green-500 font-bold">↑ Improving</span>
         </div>
       </div>
     </div>
@@ -93,7 +93,7 @@ function TrainingScene({ training, progress }: { training: any[]; progress: numb
   return (
     <div className="space-y-3 max-w-lg">
       {displayTraining.map((t, i) => (
-        <div key={i} className="border-l-2 border-lime-400 pl-4 py-2">
+        <div key={i} className="border-l-2 border-green-500 pl-4 py-2">
           <div className="flex justify-between items-start mb-1">
             <p className="font-bold text-zinc-100">{t.type}</p>
             <p className="text-xs text-zinc-500 font-mono">{t.duration} min</p>
@@ -101,7 +101,7 @@ function TrainingScene({ training, progress }: { training: any[]; progress: numb
           <p className="text-sm text-zinc-400">{t.notes}</p>
           <div className="h-1 bg-zinc-800 mt-2 rounded-full">
             <div
-              className="h-full bg-lime-400 rounded-full"
+              className="h-full bg-green-500 rounded-full"
               style={{ width: `${Math.min(100, (t.intensity / 10) * 100)}%` }}
             />
           </div>
@@ -130,7 +130,7 @@ function SessionScene({ session, progress }: { session: any; progress: number })
         <div className="flex gap-4">
           <div>
             <p className="text-xs text-zinc-500">Avg Speed</p>
-            <p className="text-2xl font-bold text-lime-400">{session.avgSpeed.toFixed(1)}</p>
+            <p className="text-2xl font-bold text-green-500">{session.avgSpeed.toFixed(1)}</p>
             <p className="text-xs text-zinc-600">km/h</p>
           </div>
           <div>
@@ -169,7 +169,7 @@ function CoachingScene({ coaching, progress }: { coaching: any[]; progress: numb
     <div className="space-y-2 max-w-lg">
       {displayCoaching.map((c, i) => (
         <div key={i} className="bg-zinc-900/50 border border-zinc-800 p-3 rounded">
-          <p className="text-xs uppercase tracking-wider text-lime-400 font-mono mb-1">
+          <p className="text-xs uppercase tracking-wider text-green-500 font-mono mb-1">
             {c.type} • Lap {c.lapNum}
           </p>
           <p className="text-sm text-zinc-200">{c.message}</p>
@@ -193,7 +193,7 @@ function ResultsScene({ competitive, progress }: { competitive: any[]; progress:
         <div
           key={i}
           className={`grid grid-cols-4 gap-4 text-xs ${
-            r.riderName.includes('You') ? 'text-lime-400 font-bold' : 'text-zinc-400'
+            r.riderName.includes('You') ? 'text-green-500 font-bold' : 'text-zinc-400'
           }`}
         >
           <span>{r.lap}</span>
@@ -239,7 +239,7 @@ function MetricBox({
   label,
   value,
   unit = '',
-  color = 'text-lime-400',
+  color = 'text-green-500',
 }: {
   label: string
   value: string | number

@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import MdLogo from './md-logo'
+import DemoButton from './demo-button'
 
 
 export default function MdNav() {
@@ -16,7 +17,7 @@ export default function MdNav() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/98 backdrop-blur-lg border-b border-zinc-800/40">
       {/* Subtle gradient accent at top */}
-      <div aria-hidden="true" className="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-lime-400/30 to-transparent" />
+      <div aria-hidden="true" className="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-500/30 to-transparent" />
 
       <div className="w-full px-4 sm:px-6 lg:px-10 relative">
         <div className="flex items-center justify-between h-14">
@@ -26,13 +27,21 @@ export default function MdNav() {
             <MdLogo size="sm" asLink={false} />
           </Link>
 
-          {/* Sign In — always visible, far right */}
-          <Link
-            href="/data/sign-in?redirect=/data"
-            className="px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-lime-400 border border-lime-400/40 rounded-lg hover:bg-lime-400/10 transition-colors"
-          >
-            Sign In
-          </Link>
+          {/* Nav CTAs */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            <DemoButton
+              variant="primary"
+              size="sm"
+              label="Try Demo"
+              className="rounded-lg font-black text-[11px] tracking-widest"
+            />
+            <Link
+              href="/auth/sign-in"
+              className="px-4 py-1.5 text-xs font-semibold text-zinc-400 border border-zinc-700 rounded-lg hover:border-zinc-500 hover:text-zinc-200 transition-colors"
+            >
+              Sign In
+            </Link>
+          </div>
 
           {/* Mobile toggle — hidden, Sign In button replaces it */}
           <button

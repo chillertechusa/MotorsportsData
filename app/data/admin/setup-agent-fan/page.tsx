@@ -40,13 +40,13 @@ export default function SetupAgentFanPage() {
               <p className="font-semibold text-zinc-300">Agent Tier</p>
               <p className="text-sm text-zinc-400 mt-1">Email: ptown_agent@motorsportsdata.io</p>
               <p className="text-sm text-zinc-400">Password: thaddyboy454</p>
-              <p className="text-sm text-lime-400 mt-2">Premium B2B ($999/mo)</p>
+              <p className="text-sm text-green-500 mt-2">Premium B2B ($999/mo)</p>
             </div>
             <div className="border border-zinc-800 bg-zinc-950/50 p-4 rounded">
               <p className="font-semibold text-zinc-300">Fan Tier</p>
               <p className="text-sm text-zinc-400 mt-1">Email: ptown_fan@motorsportsdata.io</p>
               <p className="text-sm text-zinc-400">Password: thaddyboy454</p>
-              <p className="text-sm text-lime-400 mt-2">Community Engagement (Free)</p>
+              <p className="text-sm text-green-500 mt-2">Community Engagement (Free)</p>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@ export default function SetupAgentFanPage() {
         <button
           onClick={handleCreate}
           disabled={loading}
-          className="bg-lime-400 text-zinc-950 px-8 py-4 rounded font-black uppercase tracking-widest hover:bg-lime-300 transition-colors disabled:opacity-50"
+          className="bg-green-500 text-zinc-950 px-8 py-4 rounded font-black uppercase tracking-widest hover:bg-green-400 transition-colors disabled:opacity-50"
         >
           {loading ? 'Creating...' : 'CREATE AGENT + FAN ACCOUNTS'}
         </button>
@@ -67,19 +67,19 @@ export default function SetupAgentFanPage() {
         )}
 
         {result && (
-          <div className="mt-8 bg-lime-950/30 border border-lime-800 rounded-lg p-4">
-            <p className="text-lime-400 font-semibold">✓ Accounts Created</p>
+          <div className="mt-8 bg-zinc-950/30 border border-green-900 rounded-lg p-4">
+            <p className="text-green-500 font-semibold">✓ Accounts Created</p>
             <div className="mt-4 space-y-3">
-              <div className="border-l-2 border-lime-400 pl-3">
-                <p className="text-lime-300 text-sm font-semibold">{result.agent.email}</p>
-                <p className="text-lime-400 text-xs mt-1">Agent Tier • $999/mo</p>
+              <div className="border-l-2 border-green-500 pl-3">
+                <p className="text-green-400 text-sm font-semibold">{result.agent.email}</p>
+                <p className="text-green-500 text-xs mt-1">Agent Tier • $999/mo</p>
               </div>
-              <div className="border-l-2 border-lime-400 pl-3">
-                <p className="text-lime-300 text-sm font-semibold">{result.fan.email}</p>
-                <p className="text-lime-400 text-xs mt-1">Fan Tier • Free</p>
+              <div className="border-l-2 border-green-500 pl-3">
+                <p className="text-green-400 text-sm font-semibold">{result.fan.email}</p>
+                <p className="text-green-500 text-xs mt-1">Fan Tier • Free</p>
               </div>
             </div>
-            <p className="text-lime-300 text-xs mt-4">Both accounts ready for testing at /data/sign-in</p>
+            <p className="text-green-400 text-xs mt-4">Both accounts ready for testing at /data/sign-in</p>
           </div>
         )}
       </div>

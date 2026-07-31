@@ -132,7 +132,7 @@ export function SessionComparison() {
     const deltaNum = Number(delta?.delta || 0)
     const isImprovement = deltaNum < 0
     return (
-      <div className={`border ${highlight ? 'border-lime-500/50 bg-lime-500/5' : 'border-zinc-800 bg-zinc-900'} rounded-lg p-4`}>
+      <div className={`border ${highlight ? 'border-green-600/50 bg-green-600/5' : 'border-zinc-800 bg-zinc-900'} rounded-lg p-4`}>
         <div className="flex items-center gap-2 mb-3">
           {icon}
           <span className="text-xs font-bold text-zinc-400 uppercase">{label}</span>
@@ -147,7 +147,7 @@ export function SessionComparison() {
           </div>
           <div>
             <p className="text-xs text-zinc-500 mb-1">Race Day</p>
-            <p className="text-2xl font-black text-lime-400">
+            <p className="text-2xl font-black text-green-500">
               {valueB}
               <span className="text-xs text-zinc-500 ml-1">{unit}</span>
             </p>
@@ -155,7 +155,7 @@ export function SessionComparison() {
         </div>
         {delta && (
           <div className="mt-3 pt-3 border-t border-zinc-700">
-            <p className={`text-xs font-bold ${isImprovement ? 'text-lime-400' : 'text-orange-400'}`}>
+            <p className={`text-xs font-bold ${isImprovement ? 'text-green-500' : 'text-orange-400'}`}>
               {isImprovement ? '↓' : '↑'} {Math.abs(Number(delta.delta))} {unit} ({Math.abs(Number(delta.percent))}%)
             </p>
           </div>
@@ -177,7 +177,7 @@ export function SessionComparison() {
           <button
             onClick={handleExportPDF}
             disabled={exporting}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-lime-500/10 border border-lime-500/30 hover:border-lime-500/50 text-lime-400 text-sm font-bold transition disabled:opacity-50"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-600/10 border border-green-600/30 hover:border-green-600/50 text-green-500 text-sm font-bold transition disabled:opacity-50"
           >
             {exporting ? (
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -208,8 +208,8 @@ export function SessionComparison() {
           <p className="text-sm text-zinc-50 font-bold mt-1">{sessionA.name}</p>
           <p className="text-xs text-zinc-500 mt-1">{sessionA.date}</p>
         </div>
-        <div className="border border-lime-500/40 bg-lime-500/5 rounded-lg p-4">
-          <p className="text-xs font-bold text-lime-400 uppercase">Race Day</p>
+        <div className="border border-green-600/40 bg-green-600/5 rounded-lg p-4">
+          <p className="text-xs font-bold text-green-500 uppercase">Race Day</p>
           <p className="text-sm text-zinc-50 font-bold mt-1">{sessionB.name}</p>
           <p className="text-xs text-zinc-500 mt-1">{sessionB.date}</p>
         </div>
@@ -225,7 +225,7 @@ export function SessionComparison() {
               onClick={() => setSelectedLap(lapNum)}
               className={`px-4 py-2 rounded-lg text-sm font-bold transition ${
                 selectedLap === lapNum
-                  ? 'bg-lime-500 text-zinc-950'
+                  ? 'bg-green-600 text-zinc-950'
                   : 'border border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-zinc-500'
               }`}
             >
@@ -289,7 +289,7 @@ export function SessionComparison() {
                 <tr className="bg-zinc-800/50">
                   <th className="px-4 py-2 text-left text-zinc-400 font-bold">Metric</th>
                   <th className="px-4 py-2 text-left text-blue-400 font-bold">Training</th>
-                  <th className="px-4 py-2 text-left text-lime-400 font-bold">Race</th>
+                  <th className="px-4 py-2 text-left text-green-500 font-bold">Race</th>
                   <th className="px-4 py-2 text-left text-orange-400 font-bold">Delta</th>
                 </tr>
               </thead>
@@ -297,31 +297,31 @@ export function SessionComparison() {
                 <tr className="border-b border-zinc-800/50 hover:bg-zinc-800/20">
                   <td className="px-4 py-2 text-zinc-300">Lap Time</td>
                   <td className="px-4 py-2 text-blue-400 font-bold">{(lapA.time / 1000).toFixed(2)}s</td>
-                  <td className="px-4 py-2 text-lime-400 font-bold">{(lapB.time / 1000).toFixed(2)}s</td>
+                  <td className="px-4 py-2 text-green-500 font-bold">{(lapB.time / 1000).toFixed(2)}s</td>
                   <td className="px-4 py-2 text-orange-400 font-bold">{timeDelta?.delta}ms</td>
                 </tr>
                 <tr className="border-b border-zinc-800/50 hover:bg-zinc-800/20">
                   <td className="px-4 py-2 text-zinc-300">Avg Heart Rate</td>
                   <td className="px-4 py-2 text-blue-400 font-bold">{lapA.heartRate}</td>
-                  <td className="px-4 py-2 text-lime-400 font-bold">{lapB.heartRate}</td>
+                  <td className="px-4 py-2 text-green-500 font-bold">{lapB.heartRate}</td>
                   <td className="px-4 py-2 text-orange-400 font-bold">+{Number(hrDelta?.delta)}</td>
                 </tr>
                 <tr className="border-b border-zinc-800/50 hover:bg-zinc-800/20">
                   <td className="px-4 py-2 text-zinc-300">Peak Power</td>
                   <td className="px-4 py-2 text-blue-400 font-bold">{lapA.power}W</td>
-                  <td className="px-4 py-2 text-lime-400 font-bold">{lapB.power}W</td>
+                  <td className="px-4 py-2 text-green-500 font-bold">{lapB.power}W</td>
                   <td className="px-4 py-2 text-orange-400 font-bold">+{Number(powerDelta?.delta)}W</td>
                 </tr>
                 <tr className="border-b border-zinc-800/50 hover:bg-zinc-800/20">
                   <td className="px-4 py-2 text-zinc-300">Max Speed</td>
                   <td className="px-4 py-2 text-blue-400 font-bold">{lapA.speed} mph</td>
-                  <td className="px-4 py-2 text-lime-400 font-bold">{lapB.speed} mph</td>
+                  <td className="px-4 py-2 text-green-500 font-bold">{lapB.speed} mph</td>
                   <td className="px-4 py-2 text-orange-400 font-bold">+{Number(speedDelta?.delta)} mph</td>
                 </tr>
                 <tr className="hover:bg-zinc-800/20">
                   <td className="px-4 py-2 text-zinc-300">Temperature</td>
                   <td className="px-4 py-2 text-blue-400 font-bold">{lapA.temperature}°C</td>
-                  <td className="px-4 py-2 text-lime-400 font-bold">{lapB.temperature}°C</td>
+                  <td className="px-4 py-2 text-green-500 font-bold">{lapB.temperature}°C</td>
                   <td className="px-4 py-2 text-orange-400 font-bold">+{lapB.temperature - lapA.temperature}°</td>
                 </tr>
               </tbody>
@@ -341,7 +341,7 @@ export function SessionComparison() {
               <p className="text-xs font-bold text-zinc-400">Heart Rate Progression</p>
               <div className="flex gap-2 text-xs">
                 <span className="text-blue-400">Training</span>
-                <span className="text-lime-400">Race Day</span>
+                <span className="text-green-500">Race Day</span>
               </div>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -377,7 +377,7 @@ export function SessionComparison() {
               <p className="text-xs font-bold text-zinc-400">Power Output</p>
               <div className="flex gap-2 text-xs">
                 <span className="text-blue-400">Training</span>
-                <span className="text-lime-400">Race Day</span>
+                <span className="text-green-500">Race Day</span>
               </div>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -417,8 +417,8 @@ export function SessionComparison() {
         </div>
       )}
 
-      <div className="border border-lime-500/40 bg-lime-500/5 p-4 rounded-lg">
-        <p className="text-sm text-lime-300">✓ Race day shows 8-10% power increase and 5-10 bpm higher, proving peak readiness achieved.</p>
+      <div className="border border-green-600/40 bg-green-600/5 p-4 rounded-lg">
+        <p className="text-sm text-green-400">✓ Race day shows 8-10% power increase and 5-10 bpm higher, proving peak readiness achieved.</p>
       </div>
     </div>
   )

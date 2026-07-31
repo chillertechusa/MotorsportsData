@@ -3,6 +3,8 @@ import { streamText } from 'ai'
 import { getSessionTeamId } from '@/lib/md-auth'
 import { logAICall } from '@/lib/ai-cost-logger'
 import { fetchContextBrief } from '@/lib/md-mechanic-context'
+import { scopeMdAiPrompt } from '@/lib/md-ai-identity'
+import { blockAutomatedRequest } from '@/lib/botid'
 
 /**
  * POST /api/md-mechanic/setup-coach
@@ -16,6 +18,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: auth.error }, { status: auth.status })
   }
 
+  const botResponse = await blockAutomatedRequest()
+  if (botResponse) return botResponse
+
   try {
     const { message, vehicleId } = await req.json()
 
@@ -27,7 +32,7 @@ export async function POST(req: NextRequest) {
     const context = await fetchContextBrief(auth.teamId)
 
     // Build system prompt for mechanic setup coaching
-    const systemPrompt = `You are an elite motocross setup coach assistant for mechanics. You provide expert guidance on:
+    const systemPrompt = await scopeMdAiPrompt(auth.teamId, `You are an elite motocross setup coach assistant for mechanics. You provide expert guidance on:
 - Suspension tuning (spring rates, damping adjustments, compression, rebound)
 - Tire pressure optimization (pressure ranges per track conditions, performance correlation)
 - Weight distribution and bike geometry (CG height, rake angle, wheelbase balance)
@@ -49,7 +54,7 @@ Never make up specific products or part numbers. Reference general categories (e
 Focus on correlating setup changes to measurable performance improvements (lap times, rider confidence, track feedback).
 
 Setup history this session: ${JSON.stringify(context.recentSetups?.slice(0, 3))}
-Vehicle performance baseline: ${JSON.stringify(context.metrics)}`
+Vehicle performance baseline: ${JSON.stringify(context.metrics)}`)
 
     // Stream the response using Claude Opus via AI Gateway
     const SETUP_COACH_MODEL = 'google/gemini-2.5-flash'

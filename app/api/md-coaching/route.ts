@@ -6,6 +6,8 @@ import { db } from '@/lib/db'
 import { mdSessions, mdSetupLogs } from '@/lib/db/schema'
 import { getSessionTeamId, assertVehicleOwnership, assertRaceTeamOrAbove } from '@/lib/md-auth'
 import { checkRateLimit } from '@/lib/rate-limit'
+import { scopeMdAiPrompt } from '@/lib/md-ai-identity'
+import { blockAutomatedRequest } from '@/lib/botid'
 
 const COACHING_MODEL = 'google/gemini-2.5-pro'
 
@@ -40,6 +42,9 @@ export async function POST(req: Request) {
   if (!authResult.ok) {
     return NextResponse.json({ error: authResult.error }, { status: authResult.status })
   }
+
+  const botResponse = await blockAutomatedRequest()
+  if (botResponse) return botResponse
 
   // Paywall — coaching AI is a Race Team+ feature.
   const allowed = await assertRaceTeamOrAbove(authResult.teamId)
@@ -83,9 +88,9 @@ export async function POST(req: Request) {
     const lapLine =
       typeof session.bestLapSeconds === 'number' ? `\n- Best lap: ${session.bestLapSeconds.toFixed(1)}s` : ''
 
-    const system = `You are an expert motocross/dirt bike coach. Analyze the rider's session and respond with ONLY a JSON object (no prose, no markdown fences) in exactly this shape:
+    const system = await scopeMdAiPrompt(authResult.teamId, `You are an expert motocross/dirt bike coach. Analyze the rider's session and respond with ONLY a JSON object (no prose, no markdown fences) in exactly this shape:
 {"overallRating": <number 0-10>, "strengths": [<2-5 strings>], "improvements": [<2-5 strings>], "nextSteps": [<2-5 strings>]}
-Be encouraging but honest. Focus on actionable advice.`
+Be encouraging but honest. Focus on actionable advice.`)
 
     const prompt = `Session Data:
 - Track: ${session.trackName}

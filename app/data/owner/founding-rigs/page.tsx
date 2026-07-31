@@ -9,7 +9,7 @@ export const metadata = { title: 'Founding Rigs | Owner Console' }
 export default async function FoundingRigsPage() {
   const auth = await getSessionTeamId()
   if (!auth.ok || (auth.role !== 'owner' && auth.role !== 'manager')) {
-    redirect('/data/sign-in?redirect=/data/owner/founding-rigs')
+    redirect('/auth/sign-in?redirect=/data/owner/founding-rigs')
   }
 
   const { rigs } = await getFoundingRigs()
@@ -28,7 +28,7 @@ export default async function FoundingRigsPage() {
     <div className="max-w-6xl mx-auto px-4 py-10">
       {/* Header */}
       <div className="mb-8">
-        <p className="font-mono text-xs text-lime-400 uppercase tracking-widest mb-1">King Console</p>
+        <p className="font-mono text-xs text-green-500 uppercase tracking-widest mb-1">King Console</p>
         <h1
           className="text-zinc-100 text-4xl uppercase"
           style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900 }}
@@ -43,12 +43,12 @@ export default async function FoundingRigsPage() {
       {/* KPI row */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
         {[
-          { label: 'Team Rigs', value: `${used} / ${FOUNDING_SLOT_CAP}`, icon: Users, color: 'text-lime-400' },
+          { label: 'Team Rigs', value: `${used} / ${FOUNDING_SLOT_CAP}`, icon: Users, color: 'text-green-500' },
           { label: 'Rig Slots Left', value: String(remaining), icon: Lock, color: remaining <= 10 ? 'text-red-400' : 'text-zinc-100' },
-          { label: 'Founding Coaches', value: `${coachUsed} / ${FOUNDING_COACH_CAP}`, icon: Users, color: 'text-lime-400' },
+          { label: 'Founding Coaches', value: `${coachUsed} / ${FOUNDING_COACH_CAP}`, icon: Users, color: 'text-green-500' },
           { label: 'Coach Spots Left', value: String(coachRemaining), icon: Lock, color: 'text-zinc-100' },
-          { label: 'Combined MRR', value: `$${(totalMRR / 100).toLocaleString()}`, icon: DollarSign, color: 'text-lime-400' },
-          { label: 'Onboarded', value: `${onboarded} / ${rigs.length}`, icon: CheckCircle2, color: 'text-lime-400' },
+          { label: 'Combined MRR', value: `$${(totalMRR / 100).toLocaleString()}`, icon: DollarSign, color: 'text-green-500' },
+          { label: 'Onboarded', value: `${onboarded} / ${rigs.length}`, icon: CheckCircle2, color: 'text-green-500' },
         ].map(({ label, value, icon: Icon, color }) => (
           <div key={label} className="bg-zinc-900 border border-zinc-800 p-5">
             <div className="flex items-center justify-between mb-3">
@@ -66,11 +66,11 @@ export default async function FoundingRigsPage() {
       <div className="mb-8 bg-zinc-900 border border-zinc-800 p-5">
         <div className="flex items-center justify-between mb-3">
           <span className="font-mono text-xs text-zinc-500 uppercase tracking-widest">Enrollment Progress</span>
-          <span className="font-mono text-xs text-lime-400 font-black">{pct}% full</span>
+          <span className="font-mono text-xs text-green-500 font-black">{pct}% full</span>
         </div>
         <div className="h-2 w-full bg-zinc-800 overflow-hidden">
           <div
-            className="h-full bg-lime-400 transition-all duration-700"
+            className="h-full bg-green-500 transition-all duration-700"
             style={{ width: `${pct}%` }}
             aria-label={`${pct}% of founding slots claimed`}
           />
@@ -101,7 +101,7 @@ export default async function FoundingRigsPage() {
             <tbody>
               {rigs.map((rig) => (
                 <tr key={rig.id} className="border-b border-zinc-800/50 hover:bg-zinc-800/30 transition-colors">
-                  <td className="px-5 py-3.5 font-black text-lime-400" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
+                  <td className="px-5 py-3.5 font-black text-green-500" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
                     <span className="block font-mono text-[9px] text-zinc-500 uppercase tracking-widest">
                       {rig.cohort === 'founding_coach' ? 'Coach' : 'Rig'}
                     </span>
@@ -111,7 +111,7 @@ export default async function FoundingRigsPage() {
                     {rig.teamId}
                   </td>
                   <td className="px-5 py-3.5">
-                    <span className={`font-mono text-[10px] uppercase tracking-widest px-2 py-1 border ${rig.planId === 'factory_rig' ? 'border-zinc-500 text-zinc-300' : 'border-lime-400/40 text-lime-400'}`}>
+                    <span className={`font-mono text-[10px] uppercase tracking-widest px-2 py-1 border ${rig.planId === 'factory_rig' ? 'border-zinc-500 text-zinc-300' : 'border-green-500/40 text-green-500'}`}>
                       {rig.planId === 'factory_rig'
                         ? 'Factory Rig'
                         : rig.planId === 'coach_pro'
@@ -130,7 +130,7 @@ export default async function FoundingRigsPage() {
                   </td>
                   <td className="px-5 py-3.5">
                     {rig.onboardingComplete ? (
-                      <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-lime-400">
+                      <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-green-500">
                         <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" /> Done
                       </span>
                     ) : (

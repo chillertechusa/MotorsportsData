@@ -20,7 +20,7 @@ export default function DataConsentPage() {
             you own your raw data and nobody sees it without your consent.
           </strong>{' '}
           Read it together with our{' '}
-          <a href="/legal/privacy" className="text-lime-400 hover:underline">Privacy Policy</a>.
+          <a href="/legal/privacy" className="text-green-500 hover:underline">Privacy Policy</a>.
         </>
       }
     >
@@ -98,7 +98,7 @@ export default function DataConsentPage() {
       <LegalSection n={9} title="Questions">
         <p>
           For any question about data sharing or to exercise your rights, contact{' '}
-          <a href="mailto:privacy@motorsportsdata.io" className="text-lime-400 hover:underline">privacy@motorsportsdata.io</a>.
+          <a href="mailto:privacy@motorsportsdata.io" className="text-green-500 hover:underline">privacy@motorsportsdata.io</a>.
         </p>
       </LegalSection>
     </LegalDocLayout>

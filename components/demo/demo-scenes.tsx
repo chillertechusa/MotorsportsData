@@ -147,8 +147,8 @@ function Scene5({ t }: { t: number }) {
 
 function RecCard({ tag, text, accent }: { tag: string; text: string; accent?: boolean }) {
   return (
-    <div className={`flex items-center gap-3 border px-3 py-2 rounded ${accent ? 'border-lime-400/40 bg-lime-400/5' : 'border-zinc-800 bg-zinc-900/40'}`}>
-      <span className={`font-mono text-sm tabular-nums shrink-0 ${accent ? 'text-lime-400' : 'text-cyan-400'}`} style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900 }}>
+    <div className={`flex items-center gap-3 border px-3 py-2 rounded ${accent ? 'border-green-500/40 bg-green-500/5' : 'border-zinc-800 bg-zinc-900/40'}`}>
+      <span className={`font-mono text-sm tabular-nums shrink-0 ${accent ? 'text-green-500' : 'text-cyan-400'}`} style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900 }}>
         {tag}
       </span>
       <span className="text-zinc-300 text-xs leading-tight">{text}</span>
@@ -179,7 +179,7 @@ function Scene7({ t }: { t: number }) {
           <RacingBar label="Lap Time" value={98.42} max={105} unit="s" color={COLORS.ZINC} />
         </div>
         <div>
-          <span className="font-mono text-[9px] uppercase tracking-widest text-lime-400">AI-Optimized</span>
+          <span className="font-mono text-[9px] uppercase tracking-widest text-green-500">AI-Optimized</span>
           <RacingBar label="Lap Time" value={lerp(98.42, 96.71, easeOut(p))} max={105} unit="s" color={LIME} highlight />
         </div>
         <div className="text-center mt-1">
@@ -337,7 +337,7 @@ function Scene16({ t }: { t: number }) {
       <div className="flex flex-col gap-2 h-full justify-center">
         {rows.map((r, i) => (
           <div key={r.name} className="flex items-center gap-2">
-            <span className={`font-mono text-xs w-6 ${r.me ? 'text-lime-400' : 'text-zinc-500'}`}>P{i + 1}</span>
+            <span className={`font-mono text-xs w-6 ${r.me ? 'text-green-500' : 'text-zinc-500'}`}>P{i + 1}</span>
             <div className="flex-1">
               <RacingBar label={r.name} value={r.v} max={100} unit="" color={r.me ? LIME : COLORS.ZINC} highlight={r.me} />
             </div>
@@ -371,7 +371,7 @@ function Scene17({ t }: { t: number }) {
                   : { left: '50%', width: `${clamp((s.d / 0.5) * 50, 0, 50)}%`, background: ORANGE }}
               />
             </div>
-            <span className={`font-mono text-xs tabular-nums w-14 text-right ${s.d < 0 ? 'text-lime-400' : 'text-orange-400'}`}>
+            <span className={`font-mono text-xs tabular-nums w-14 text-right ${s.d < 0 ? 'text-green-500' : 'text-orange-400'}`}>
               {s.d > 0 ? '+' : ''}{s.d.toFixed(2)}
             </span>
           </div>
@@ -452,7 +452,7 @@ function Scene22({ t }: { t: number }) {
         {roles.map((r, i) => (
           <span
             key={r}
-            className={`font-mono text-xs uppercase tracking-wider px-3 py-2 rounded border transition-colors ${i < lit ? 'border-lime-400/50 bg-lime-400/10 text-lime-300' : 'border-zinc-800 bg-zinc-900/30 text-zinc-600'}`}
+            className={`font-mono text-xs uppercase tracking-wider px-3 py-2 rounded border transition-colors ${i < lit ? 'border-green-500/50 bg-green-500/10 text-green-400' : 'border-zinc-800 bg-zinc-900/30 text-zinc-600'}`}
           >
             {r}
           </span>
@@ -472,7 +472,7 @@ function Scene23({ t }: { t: number }) {
           <BigStat value={5} label="Tiers From Free" color={ORANGE} />
         </div>
         <p className="text-zinc-100 text-center text-balance" style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: 'clamp(1.5rem,4vw,2.4rem)' }}>
-          EVERY LAP. <span className="text-lime-400">EVERY DATA POINT.</span>
+          EVERY LAP. <span className="text-green-500">EVERY DATA POINT.</span>
         </p>
       </div>
     </SceneFrame>

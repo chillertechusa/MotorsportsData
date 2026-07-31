@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default async function TwoFactorSetupPage() {
   const session = await auth.api.getSession({ headers: await headers() })
-  if (!session?.user) redirect('/data/sign-in')
+  if (!session?.user) redirect('/auth/sign-in')
 
   return (
     <div className="min-h-screen bg-zinc-950 flex flex-col">

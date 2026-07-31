@@ -72,7 +72,7 @@ export default function OwnerLoginPage() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded text-white placeholder-zinc-500 focus:outline-none focus:border-lime-400 transition"
+                  className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded text-white placeholder-zinc-500 focus:outline-none focus:border-green-500 transition"
                   placeholder="motorsportsdata@gmail.com"
                   disabled={loading}
                 />
@@ -88,7 +88,7 @@ export default function OwnerLoginPage() {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded text-white placeholder-zinc-500 focus:outline-none focus:border-lime-400 transition"
+                  className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded text-white placeholder-zinc-500 focus:outline-none focus:border-green-500 transition"
                   placeholder="Enter your password"
                   disabled={loading}
                 />
@@ -106,7 +106,7 @@ export default function OwnerLoginPage() {
               <button
                 type="submit"
                 disabled={loading || !password}
-                className="w-full px-4 py-3 bg-lime-400 text-zinc-950 font-black uppercase tracking-widest rounded hover:bg-lime-300 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full px-4 py-3 bg-green-500 text-zinc-950 font-black uppercase tracking-widest rounded hover:bg-green-400 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 <LogIn className="h-5 w-5" />
                 {loading ? 'Authenticating...' : 'Sign In as Owner'}

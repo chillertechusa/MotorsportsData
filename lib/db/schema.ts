@@ -9,11 +9,17 @@ export const user = pgTable('user', {
   image: text('image'),
   createdAt: timestamp('createdAt').notNull().defaultNow(),
   updatedAt: timestamp('updatedAt').notNull().defaultNow(),
+  // Better Auth plugin columns (exist in live DB)
+  twoFactorEnabled: boolean('twoFactorEnabled').default(false),
+  passwordResetToken: text('passwordResetToken'),
+  passwordResetTokenExpiresAt: timestamp('passwordResetTokenExpiresAt'),
   // Platform-level moderation columns (added migration 006)
   banned: boolean('banned').default(false),
   banReason: text('ban_reason'),
   bannedAt: timestamp('banned_at'),
-  // Platform-level role: 'user' | 'coach' | 'admin' | 'owner'
+  // Platform-level role (gatekeeper hierarchy)
+  // 'user' (rider/guardian) | 'pro_rider' | 'coach' | 'shop' | 'team' | 'brand' | 'admin' | 'owner'
+  // Tiers 5-6 (team/brand) are only assignable from the King Console — never self-service.
   role: varchar('role', { length: 20 }).default('user'),
 })
 
@@ -54,6 +60,17 @@ export const verification = pgTable('verification', {
 })
 
 // ── App enums ─────────────────────────────────────────────────────────────────
+export const roleEnum = pgEnum('user_role', [
+  'user',        // rider / guardian account (default)
+  'pro_rider',   // rider with pro license — auto-locked file
+  'coach',       // reads athletes' bikes via invites
+  'shop',        // receives work orders from Clutch DMS webhook
+  'team',        // tier 5 — MD-approved, paid, search access
+  'brand',       // tier 6 — MD-approved, paid, sponsorship targeting
+  'admin',       // MD staff
+  'owner',       // MD founder / system owner
+])
+
 export const orderStatusEnum = pgEnum('order_status', [
   'pending', 'in_production', 'quality_check', 'ready', 'shipped', 'completed', 'cancelled',
 ])
@@ -494,7 +511,65 @@ export const mdSponsors = pgTable('md_sponsors', {
   status: varchar('status', { length: 50 }).notNull().default('active'),
   deliverables: jsonb('deliverables').$type<string[]>().default([]),
   notes: text('notes'),
+  /** Billing contact for invoicing this sponsor through Square. */
+  contactEmail: varchar('contact_email', { length: 255 }),
+  contactName: varchar('contact_name', { length: 255 }),
+  /** Square customer id, created on first invoice and reused after. */
+  squareCustomerId: varchar('square_customer_id', { length: 100 }),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
+})
+
+/**
+ * Sponsor invoices — Rail 2 of the money model. The family generates a real
+ * Square invoice from inside MD, the sponsor pays by card/ACH on Square's
+ * hosted page, and the webhook marks it paid. MD is where the money lives.
+ */
+export const mdInvoices = pgTable('md_invoices', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  teamId: uuid('team_id').references(() => mdTeams.id, { onDelete: 'cascade' }).notNull(),
+  sponsorId: uuid('sponsor_id').references(() => mdSponsors.id, { onDelete: 'set null' }),
+  /** Human-readable number shown to the sponsor, e.g. MD-2026-0007. */
+  invoiceNumber: varchar('invoice_number', { length: 40 }).notNull(),
+  title: varchar('title', { length: 255 }).notNull(),
+  description: text('description'),
+  amountCents: integer('amount_cents').notNull(),
+  /** draft | sent | paid | canceled | failed */
+  status: varchar('status', { length: 20 }).notNull().default('draft'),
+  /** Square-side identifiers for webhook reconciliation. */
+  squareInvoiceId: varchar('square_invoice_id', { length: 100 }),
+  squareOrderId: varchar('square_order_id', { length: 100 }),
+  /** Square-hosted payment page the sponsor pays on. */
+  publicUrl: text('public_url'),
+  dueDate: date('due_date'),
+  sentAt: timestamp('sent_at', { withTimezone: true }),
+  paidAt: timestamp('paid_at', { withTimezone: true }),
+  createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
+})
+
+/**
+ * One Square seller connection per racing household. Tokens are encrypted with
+ * AES-256-GCM before storage; plaintext credentials never enter the database.
+ * Sponsor invoice proceeds settle directly into this family's Square account.
+ */
+export const mdSquareConnections = pgTable('md_square_connections', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  teamId: uuid('team_id').references(() => mdTeams.id, { onDelete: 'cascade' }).notNull().unique(),
+  merchantId: varchar('merchant_id', { length: 100 }).notNull(),
+  locationId: varchar('location_id', { length: 100 }).notNull(),
+  merchantName: varchar('merchant_name', { length: 255 }),
+  accessTokenEncrypted: text('access_token_encrypted').notNull(),
+  accessTokenIv: varchar('access_token_iv', { length: 32 }).notNull(),
+  accessTokenTag: varchar('access_token_tag', { length: 32 }).notNull(),
+  refreshTokenEncrypted: text('refresh_token_encrypted').notNull(),
+  refreshTokenIv: varchar('refresh_token_iv', { length: 32 }).notNull(),
+  refreshTokenTag: varchar('refresh_token_tag', { length: 32 }).notNull(),
+  expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
+  /** active | refresh_failed | revoked */
+  status: varchar('status', { length: 30 }).notNull().default('active'),
+  scopes: jsonb('scopes').$type<string[]>().default([]),
+  connectedAt: timestamp('connected_at', { withTimezone: true }).defaultNow(),
+  refreshedAt: timestamp('refreshed_at', { withTimezone: true }).defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
 })
 
 export const mdRiderReadiness = pgTable('md_rider_readiness', {
@@ -1453,7 +1528,7 @@ export const mdRiderCredits = pgTable('md_rider_credits', {
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 })
 
-// ── Platform Expansion: Legal & Consent (WS2) ─────────────────────────────────
+// ── Platform Expansion: Legal & Consent (WS2) ──────────────────────────��──────
 /**
  * Version registry for legal documents (terms | privacy | data_consent | cookies).
  * is_current marks the version currently in force; status='draft' means DRAFT
@@ -1582,8 +1657,40 @@ export const mdRiderProfiles = pgTable('md_rider_profiles', {
   promotedAt: timestamp('promoted_at', { withTimezone: true }),
   /** Email to send to when the rider is eligible for promotion. */
   riderEmail: varchar('rider_email', { length: 255 }),
+  /**
+   * Gatekeeper: whether this rider is visible to paid tier-5/6 buyers
+   * (teams/scouts/brands). Default OFF, always. For minor profiles only the
+   * guardian account can toggle this.
+   */
+  discoverable: boolean('discoverable').notNull().default(false),
+  /**
+   * Set when the rider turns pro (AMA pro license). A non-null value walls the
+   * file off from ALL paid-tier search/analytics until the pro explicitly
+   * re-opts in. Teams pay pros — they don't get their data for free.
+   */
+  proLockedAt: timestamp('pro_locked_at', { withTimezone: true }),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
+})
+
+/**
+ * Gatekeeper audit log — every view of a rider file by a paid-tier account
+ * (coach, team, scout, brand) is recorded from day one. No export, no API,
+ * no scraping: this table is the enforcement receipt.
+ */
+export const mdAccessLog = pgTable('md_access_log', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  /** user.id of the viewer (coach/team/brand account). */
+  viewerUserId: text('viewer_user_id').notNull(),
+  /** Viewer's platform role at time of access (coach | team | brand | admin). */
+  viewerRole: varchar('viewer_role', { length: 20 }).notNull(),
+  /** The rider profile that was viewed (null for team-level views). */
+  riderProfileId: uuid('rider_profile_id').references(() => mdRiderProfiles.id, { onDelete: 'cascade' }),
+  /** Team whose data was accessed (for adult riders without a rider profile row). */
+  teamId: uuid('team_id').references(() => mdTeams.id, { onDelete: 'cascade' }),
+  /** What was viewed: 'profile' | 'bike' | 'sessions' | 'body' | 'search_result'. */
+  resource: varchar('resource', { length: 40 }).notNull(),
+  createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 })
 
 // ── Founding Rigs (Aug 31 2026 enrollment) ────────────────────────────────────

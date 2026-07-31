@@ -5,6 +5,7 @@ import { getSessionTeamId, assertFactoryTier } from '@/lib/md-auth'
 import { db } from '@/lib/db'
 import { mdVideoAnalyses } from '@/lib/db/schema'
 import { and, eq } from 'drizzle-orm'
+import { blockAutomatedRequest } from '@/lib/botid'
 
 export const runtime = 'nodejs'
 export const maxDuration = 120
@@ -41,6 +42,9 @@ Rules:
 export async function POST(req: NextRequest) {
   const authResult = await getSessionTeamId()
   if (!authResult.ok) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const botResponse = await blockAutomatedRequest()
+  if (botResponse) return botResponse
 
   const { teamId } = authResult
   const isFactory = await assertFactoryTier(teamId)

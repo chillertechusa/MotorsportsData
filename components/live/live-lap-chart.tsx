@@ -22,13 +22,13 @@ export function LiveLapChart({ data, bestLapTime }: LiveLapChartProps) {
         <div>
           <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400">Lap Time Trend</h3>
           <p className="text-2xl font-black text-slate-50">{data[data.length - 1]?.lapTime.toFixed(2)}s</p>
-          <p className={`text-sm ${delta > 0 ? 'text-red-400' : 'text-lime-400'}`}>
+          <p className={`text-sm ${delta > 0 ? 'text-red-400' : 'text-green-500'}`}>
             {delta > 0 ? '+' : ''}{delta.toFixed(2)}s vs best
           </p>
         </div>
         <div className="text-right">
           <p className="text-xs text-slate-500">Best Lap</p>
-          <p className="text-2xl font-black text-lime-400">{bestLapTime.toFixed(2)}s</p>
+          <p className="text-2xl font-black text-green-500">{bestLapTime.toFixed(2)}s</p>
         </div>
       </div>
 

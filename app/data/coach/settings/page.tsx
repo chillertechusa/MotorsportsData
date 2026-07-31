@@ -23,11 +23,11 @@ export default function CoachSettingsPage() {
               <input
                 type="text"
                 placeholder={placeholder}
-                className="w-full bg-zinc-950 border border-zinc-700 text-zinc-100 text-sm px-3 py-2 placeholder:text-zinc-700 focus:outline-none focus:border-lime-400/50"
+                className="w-full bg-zinc-950 border border-zinc-700 text-zinc-100 text-sm px-3 py-2 placeholder:text-zinc-700 focus:outline-none focus:border-green-500/50"
               />
             </div>
           ))}
-          <button className="bg-lime-400 text-zinc-950 text-sm font-bold px-5 py-2 hover:bg-lime-300 transition-colors">
+          <button className="bg-green-500 text-zinc-950 text-sm font-bold px-5 py-2 hover:bg-green-400 transition-colors">
             Save Profile
           </button>
         </div>
@@ -61,8 +61,8 @@ export default function CoachSettingsPage() {
                 <p className="text-sm text-zinc-200">{label}</p>
                 <p className="text-xs text-zinc-600">{sub}</p>
               </div>
-              <div className="h-5 w-10 bg-lime-400/20 border border-lime-400/30 rounded-full relative cursor-pointer">
-                <div className="h-4 w-4 bg-lime-400 rounded-full absolute right-0.5 top-0.5 transition-all" />
+              <div className="h-5 w-10 bg-green-500/20 border border-green-500/30 rounded-full relative cursor-pointer">
+                <div className="h-4 w-4 bg-green-500 rounded-full absolute right-0.5 top-0.5 transition-all" />
               </div>
             </div>
           ))}

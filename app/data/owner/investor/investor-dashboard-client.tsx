@@ -37,7 +37,7 @@ function StatCard({
   return (
     <div className={`rounded-2xl border p-6 flex flex-col gap-3 ${
       accent
-        ? 'bg-lime-400 border-lime-300'
+        ? 'bg-green-500 border-lime-300'
         : 'bg-zinc-900 border-zinc-800'
     }`}>
       <div className="flex items-center justify-between">
@@ -107,13 +107,13 @@ export default function InvestorDashboardClient({
             <ArrowLeft className="h-4 w-4" />
           </Link>
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-lime-400">Motorsport Data</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-green-500">Motorsport Data</p>
             <h1 className="text-lg font-black tracking-tight">Investor Dashboard</h1>
           </div>
         </div>
         <div className="flex items-center gap-3">
           <span className="hidden sm:flex items-center gap-2 text-xs text-zinc-500">
-            <span className="h-2 w-2 rounded-full bg-lime-400 animate-pulse" />
+            <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
             Live · {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
           </span>
           <span className="text-xs text-zinc-600 hidden md:block">{ownerEmail}</span>
@@ -141,11 +141,11 @@ export default function InvestorDashboardClient({
             </div>
             <div>
               <p className="text-xs text-zinc-500 uppercase tracking-widest">Stage</p>
-              <p className="text-sm font-bold text-lime-400">Pre-Seed</p>
+              <p className="text-sm font-bold text-green-500">Pre-Seed</p>
             </div>
             <div>
               <p className="text-xs text-zinc-500 uppercase tracking-widest">Founder equity</p>
-              <p className="text-sm font-bold text-lime-400">51%+ protected</p>
+              <p className="text-sm font-bold text-green-500">51%+ protected</p>
             </div>
           </div>
         </div>
@@ -186,7 +186,7 @@ export default function InvestorDashboardClient({
               <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-400">Revenue Timeline</h2>
               <p className="text-xs text-zinc-600 mt-1">30-day rolling daily MRR contribution</p>
             </div>
-            <span className="text-2xl font-black text-lime-400 tabular-nums">{fmt$(mrrCents)}</span>
+            <span className="text-2xl font-black text-green-500 tabular-nums">{fmt$(mrrCents)}</span>
           </div>
           <ResponsiveContainer width="100%" height={220}>
             <AreaChart data={revenueTimeline} margin={{ top: 4, right: 0, left: 0, bottom: 0 }}>
@@ -287,9 +287,9 @@ export default function InvestorDashboardClient({
                 <span className="text-3xl font-black text-zinc-50 tabular-nums">{fmt$(aiCostCentsThisMonth)}</span>
                 <span className="text-xs text-zinc-500">vs {fmt$(mrrCents)} MRR</span>
               </div>
-              <div className="rounded-xl bg-lime-400/10 border border-lime-400/30 p-4 flex flex-col gap-1 col-span-2">
-                <span className="text-xs text-lime-400 uppercase tracking-wider font-bold">AI Gross Margin</span>
-                <span className="text-3xl font-black text-lime-400 tabular-nums">{aiMarginPct}%</span>
+              <div className="rounded-xl bg-green-500/10 border border-green-500/30 p-4 flex flex-col gap-1 col-span-2">
+                <span className="text-xs text-green-500 uppercase tracking-wider font-bold">AI Gross Margin</span>
+                <span className="text-3xl font-black text-green-500 tabular-nums">{aiMarginPct}%</span>
                 <span className="text-xs text-zinc-500">{fmt$(aiMarginCents)} remaining after AI cost</span>
               </div>
             </div>
@@ -364,9 +364,9 @@ export default function InvestorDashboardClient({
                       </td>
                       <td className="py-3 pr-4">
                         <span className={`inline-flex items-center gap-1.5 text-xs font-semibold ${
-                          s.status === 'active' ? 'text-lime-400' : 'text-zinc-500'
+                          s.status === 'active' ? 'text-green-500' : 'text-zinc-500'
                         }`}>
-                          <span className={`h-1.5 w-1.5 rounded-full ${s.status === 'active' ? 'bg-lime-400' : 'bg-zinc-600'}`} />
+                          <span className={`h-1.5 w-1.5 rounded-full ${s.status === 'active' ? 'bg-green-500' : 'bg-zinc-600'}`} />
                           {s.status}
                         </span>
                       </td>
@@ -389,10 +389,10 @@ export default function InvestorDashboardClient({
         </div>
 
         {/* ── White-label pipeline ── */}
-        <div className="rounded-2xl border border-lime-400/20 bg-lime-400/5 p-6">
+        <div className="rounded-2xl border border-green-500/20 bg-green-500/5 p-6">
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
             <div>
-              <h2 className="text-sm font-bold uppercase tracking-widest text-lime-400 mb-1">White-Label Pipeline</h2>
+              <h2 className="text-sm font-bold uppercase tracking-widest text-green-500 mb-1">White-Label Pipeline</h2>
               <p className="text-zinc-300 text-sm leading-relaxed max-w-xl">
                 The motorcycle product is the proof of concept. The engine licenses to NASCAR, NHRA, drag racing, karting, and rally.
                 Each vertical gets its own branded overlay. The infrastructure is identical. Development cost per new sport: near zero.
@@ -402,7 +402,7 @@ export default function InvestorDashboardClient({
               {['NASCAR', 'NHRA', 'Karting', 'Rally'].map((sport) => (
                 <div key={sport} className="rounded-lg bg-zinc-900 border border-zinc-700 px-3 py-2 text-center">
                   <p className="text-xs text-zinc-500 font-bold uppercase tracking-wider">{sport}</p>
-                  <p className="text-xs text-lime-400 font-bold mt-0.5">Target</p>
+                  <p className="text-xs text-green-500 font-bold mt-0.5">Target</p>
                 </div>
               ))}
             </div>

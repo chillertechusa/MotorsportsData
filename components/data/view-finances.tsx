@@ -17,10 +17,10 @@ const EXPENSE_CATEGORIES = [
 type ExpenseCategory = typeof EXPENSE_CATEGORIES[number]
 
 const CATEGORY_COLORS: Record<ExpenseCategory | 'Other', string> = {
-  'Entry Fees': 'bg-lime-400/15 text-lime-400 border-lime-400/30',
+  'Entry Fees': 'bg-green-500/15 text-green-500 border-green-500/30',
   'Parts':      'bg-amber-400/15 text-amber-400 border-amber-400/30',
   'Fuel':       'bg-orange-400/15 text-orange-400 border-orange-400/30',
-  'Travel':     'bg-sky-400/15 text-sky-400 border-sky-400/30',
+  'Travel':     'bg-sky-400/15 text-blue-500 border-blue-600/30',
   'Lodging':    'bg-indigo-400/15 text-indigo-400 border-indigo-400/30',
   'Tires':      'bg-red-400/15 text-red-400 border-red-400/30',
   'Gear':       'bg-purple-400/15 text-purple-400 border-purple-400/30',
@@ -80,12 +80,12 @@ function KpiCard({ label, value, sub, icon: Icon, accent = false }: {
   label: string; value: string; sub?: string; icon: typeof DollarSign; accent?: boolean
 }) {
   return (
-    <div className={`rounded-2xl border p-5 flex flex-col gap-1 ${accent ? 'bg-lime-400/5 border-lime-400/30' : 'bg-zinc-900 border-zinc-800'}`}>
+    <div className={`rounded-2xl border p-5 flex flex-col gap-1 ${accent ? 'bg-green-500/5 border-green-500/30' : 'bg-zinc-900 border-zinc-800'}`}>
       <div className="flex items-center justify-between">
         <p className="text-xs uppercase tracking-widest text-zinc-500">{label}</p>
-        <Icon className={`h-4 w-4 ${accent ? 'text-lime-400' : 'text-zinc-600'}`} />
+        <Icon className={`h-4 w-4 ${accent ? 'text-green-500' : 'text-zinc-600'}`} />
       </div>
-      <p className={`text-2xl font-black font-mono ${accent ? 'text-lime-400' : 'text-zinc-100'}`}>{value}</p>
+      <p className={`text-2xl font-black font-mono ${accent ? 'text-green-500' : 'text-zinc-100'}`}>{value}</p>
       {sub && <p className="text-[11px] text-zinc-500">{sub}</p>}
     </div>
   )
@@ -147,7 +147,7 @@ function AddExpenseModal({
                   onClick={() => setCategory(c)}
                   className={`py-2 px-2 rounded-xl text-xs font-bold border transition-colors ${
                     category === c
-                      ? 'bg-lime-400 text-zinc-950 border-lime-400'
+                      ? 'bg-green-500 text-zinc-950 border-green-500'
                       : 'bg-zinc-900 text-zinc-400 border-zinc-800 hover:border-zinc-600'
                   }`}
                 >
@@ -164,14 +164,14 @@ function AddExpenseModal({
               <input
                 type="number" min="0.01" step="0.01" value={amount}
                 onChange={(e) => setAmount(e.target.value)} required placeholder="0.00"
-                className="w-full h-12 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-lg font-bold text-zinc-100 focus:border-lime-400 focus:outline-none"
+                className="w-full h-12 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-lg font-bold text-zinc-100 focus:border-green-500 focus:outline-none"
               />
             </div>
             <div>
               <label className="block text-xs uppercase tracking-wider text-zinc-500 mb-2">Date</label>
               <input
                 type="date" value={date} onChange={(e) => setDate(e.target.value)} required
-                className="w-full h-12 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-sm font-semibold text-zinc-100 focus:border-lime-400 focus:outline-none"
+                className="w-full h-12 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-sm font-semibold text-zinc-100 focus:border-green-500 focus:outline-none"
               />
             </div>
           </div>
@@ -182,7 +182,7 @@ function AddExpenseModal({
             <input
               type="text" value={description} onChange={(e) => setDescription(e.target.value)}
               placeholder="e.g. Piston kit, gate fee, fuel stop"
-              className="w-full h-12 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+              className="w-full h-12 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
             />
           </div>
 
@@ -192,7 +192,7 @@ function AddExpenseModal({
               <label className="block text-xs uppercase tracking-wider text-zinc-500 mb-2">Vehicle (optional)</label>
               <select
                 value={vehicleId} onChange={(e) => setVehicleId(e.target.value)}
-                className="w-full h-12 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-sm font-semibold text-zinc-100 focus:border-lime-400 focus:outline-none appearance-none"
+                className="w-full h-12 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-sm font-semibold text-zinc-100 focus:border-green-500 focus:outline-none appearance-none"
               >
                 <option value="">All / Team</option>
                 {vehicles.map((v) => <option key={v.id} value={v.id}>{v.name}</option>)}
@@ -204,7 +204,7 @@ function AddExpenseModal({
 
           <button
             type="submit" disabled={saving}
-            className="w-full h-13 rounded-xl bg-lime-400 text-zinc-950 font-black uppercase tracking-wide text-sm hover:bg-lime-300 disabled:opacity-50 transition-colors"
+            className="w-full h-13 rounded-xl bg-green-500 text-zinc-950 font-black uppercase tracking-wide text-sm hover:bg-green-400 disabled:opacity-50 transition-colors"
           >
             {saving ? 'Saving...' : 'Log Expense'}
           </button>
@@ -268,7 +268,7 @@ function AddSponsorModal({ onClose, onAdded }: { onClose: () => void; onAdded: (
             <input
               type="text" value={sponsorName} onChange={(e) => setSponsorName(e.target.value)} required
               placeholder="e.g. Rocky Mountain ATV/MC"
-              className="w-full h-12 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-sm font-semibold text-zinc-100 focus:border-lime-400 focus:outline-none"
+              className="w-full h-12 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-sm font-semibold text-zinc-100 focus:border-green-500 focus:outline-none"
             />
           </div>
 
@@ -277,7 +277,7 @@ function AddSponsorModal({ onClose, onAdded }: { onClose: () => void; onAdded: (
               <label className="block text-xs uppercase tracking-wider text-zinc-500 mb-2">Type</label>
               <select
                 value={sponsorType} onChange={(e) => setSponsorType(e.target.value)}
-                className="w-full h-12 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-sm font-semibold text-zinc-100 focus:border-lime-400 focus:outline-none appearance-none"
+                className="w-full h-12 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-sm font-semibold text-zinc-100 focus:border-green-500 focus:outline-none appearance-none"
               >
                 {SPONSOR_TYPES.map((t) => <option key={t} value={t}>{SPONSOR_TYPE_LABEL[t]}</option>)}
               </select>
@@ -287,7 +287,7 @@ function AddSponsorModal({ onClose, onAdded }: { onClose: () => void; onAdded: (
               <input
                 type="number" min="0" step="0.01" value={value} onChange={(e) => setValue(e.target.value)}
                 placeholder="0"
-                className="w-full h-12 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-lg font-bold text-zinc-100 focus:border-lime-400 focus:outline-none"
+                className="w-full h-12 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-lg font-bold text-zinc-100 focus:border-green-500 focus:outline-none"
               />
             </div>
           </div>
@@ -296,7 +296,7 @@ function AddSponsorModal({ onClose, onAdded }: { onClose: () => void; onAdded: (
             <label className="block text-xs uppercase tracking-wider text-zinc-500 mb-2">Season</label>
             <input
               type="text" value={season} onChange={(e) => setSeason(e.target.value)} placeholder="2026"
-              className="w-full h-12 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-sm font-semibold text-zinc-100 focus:border-lime-400 focus:outline-none"
+              className="w-full h-12 rounded-xl bg-zinc-900 border border-zinc-800 px-4 text-sm font-semibold text-zinc-100 focus:border-green-500 focus:outline-none"
             />
           </div>
 
@@ -307,7 +307,7 @@ function AddSponsorModal({ onClose, onAdded }: { onClose: () => void; onAdded: (
                 type="text" value={deliverable} onChange={(e) => setDeliverable(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addDeliverable() } }}
                 placeholder="e.g. Decal on #80 panel"
-                className="flex-1 h-10 rounded-xl bg-zinc-900 border border-zinc-800 px-3 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+                className="flex-1 h-10 rounded-xl bg-zinc-900 border border-zinc-800 px-3 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
               />
               <button
                 type="button" onClick={addDeliverable}
@@ -333,7 +333,7 @@ function AddSponsorModal({ onClose, onAdded }: { onClose: () => void; onAdded: (
             <textarea
               value={notes} onChange={(e) => setNotes(e.target.value)} rows={2}
               placeholder="Contract details, contact info..."
-              className="w-full rounded-xl bg-zinc-900 border border-zinc-800 px-4 py-3 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none resize-none"
+              className="w-full rounded-xl bg-zinc-900 border border-zinc-800 px-4 py-3 text-sm text-zinc-100 focus:border-green-500 focus:outline-none resize-none"
             />
           </div>
 
@@ -341,7 +341,7 @@ function AddSponsorModal({ onClose, onAdded }: { onClose: () => void; onAdded: (
 
           <button
             type="submit" disabled={saving}
-            className="w-full h-13 rounded-xl bg-lime-400 text-zinc-950 font-black uppercase tracking-wide text-sm hover:bg-lime-300 disabled:opacity-50 transition-colors"
+            className="w-full h-13 rounded-xl bg-green-500 text-zinc-950 font-black uppercase tracking-wide text-sm hover:bg-green-400 disabled:opacity-50 transition-colors"
           >
             {saving ? 'Saving...' : 'Add Sponsor'}
           </button>
@@ -430,7 +430,7 @@ export default function ViewFinances({ vehicles, tier }: ViewFinancesProps) {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="h-8 w-8 rounded-full border-2 border-lime-400 border-t-transparent animate-spin" />
+        <div className="h-8 w-8 rounded-full border-2 border-green-500 border-t-transparent animate-spin" />
       </div>
     )
   }
@@ -453,7 +453,7 @@ export default function ViewFinances({ vehicles, tier }: ViewFinancesProps) {
           </button>
           <button
             onClick={() => setShowAddExpense(true)}
-            className="flex items-center gap-2 h-10 px-4 rounded-xl bg-lime-400 text-zinc-950 text-xs font-black uppercase tracking-wide hover:bg-lime-300 transition-colors"
+            className="flex items-center gap-2 h-10 px-4 rounded-xl bg-green-500 text-zinc-950 text-xs font-black uppercase tracking-wide hover:bg-green-400 transition-colors"
           >
             <Plus className="h-4 w-4" /> Expense
           </button>
@@ -513,7 +513,7 @@ export default function ViewFinances({ vehicles, tier }: ViewFinancesProps) {
                         </div>
                         <div className="h-1.5 bg-zinc-800 rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-lime-400 rounded-full transition-all duration-500"
+                            className="h-full bg-green-500 rounded-full transition-all duration-500"
                             style={{ width: `${pct}%` }}
                           />
                         </div>
@@ -554,7 +554,7 @@ export default function ViewFinances({ vehicles, tier }: ViewFinancesProps) {
           <div className="flex gap-2 flex-wrap">
             <select
               value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}
-              className="h-9 rounded-xl bg-zinc-900 border border-zinc-800 px-3 text-xs font-semibold text-zinc-300 focus:border-lime-400 focus:outline-none appearance-none pr-7"
+              className="h-9 rounded-xl bg-zinc-900 border border-zinc-800 px-3 text-xs font-semibold text-zinc-300 focus:border-green-500 focus:outline-none appearance-none pr-7"
             >
               <option value="All">All Categories</option>
               {EXPENSE_CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
@@ -562,7 +562,7 @@ export default function ViewFinances({ vehicles, tier }: ViewFinancesProps) {
             {vehicles.length > 0 && (
               <select
                 value={filterVehicle} onChange={(e) => setFilterVehicle(e.target.value)}
-                className="h-9 rounded-xl bg-zinc-900 border border-zinc-800 px-3 text-xs font-semibold text-zinc-300 focus:border-lime-400 focus:outline-none appearance-none pr-7"
+                className="h-9 rounded-xl bg-zinc-900 border border-zinc-800 px-3 text-xs font-semibold text-zinc-300 focus:border-green-500 focus:outline-none appearance-none pr-7"
               >
                 <option value="All">All Vehicles</option>
                 {vehicles.map((v) => <option key={v.id} value={v.id}>{v.name}</option>)}
@@ -580,7 +580,7 @@ export default function ViewFinances({ vehicles, tier }: ViewFinancesProps) {
               <p className="text-zinc-500 text-sm text-center">No expenses logged yet.<br />Start tracking your season costs.</p>
               <button
                 onClick={() => setShowAddExpense(true)}
-                className="flex items-center gap-2 h-10 px-5 rounded-xl bg-lime-400 text-zinc-950 text-xs font-black uppercase tracking-wide"
+                className="flex items-center gap-2 h-10 px-5 rounded-xl bg-green-500 text-zinc-950 text-xs font-black uppercase tracking-wide"
               >
                 <Plus className="h-4 w-4" /> Log First Expense
               </button>
@@ -600,7 +600,7 @@ export default function ViewFinances({ vehicles, tier }: ViewFinancesProps) {
                           </span>
                         )}
                         {e.linkedScheduleEventId && (
-                          <span className="flex items-center gap-1 text-[11px] text-lime-600">
+                          <span className="flex items-center gap-1 text-[11px] text-green-700">
                             <CalendarDays className="h-3 w-3" /> Race event
                           </span>
                         )}
@@ -635,7 +635,7 @@ export default function ViewFinances({ vehicles, tier }: ViewFinancesProps) {
               <p className="text-zinc-500 text-sm text-center">No sponsors tracked yet.<br />Add your first sponsor to start managing deliverables.</p>
               <button
                 onClick={() => setShowAddSponsor(true)}
-                className="flex items-center gap-2 h-10 px-5 rounded-xl bg-lime-400 text-zinc-950 text-xs font-black uppercase tracking-wide"
+                className="flex items-center gap-2 h-10 px-5 rounded-xl bg-green-500 text-zinc-950 text-xs font-black uppercase tracking-wide"
               >
                 <Plus className="h-4 w-4" /> Add First Sponsor
               </button>
@@ -650,14 +650,14 @@ export default function ViewFinances({ vehicles, tier }: ViewFinancesProps) {
                         <p className="font-black text-zinc-100 uppercase tracking-wide">{s.sponsorName}</p>
                         <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold uppercase border ${
                           s.status === 'active'
-                            ? 'bg-lime-400/10 text-lime-400 border-lime-400/30'
+                            ? 'bg-green-500/10 text-green-500 border-green-500/30'
                             : 'bg-zinc-800 text-zinc-500 border-zinc-700'
                         }`}>{s.status}</span>
                         <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase bg-zinc-800 text-zinc-400 border border-zinc-700">
                           {SPONSOR_TYPE_LABEL[s.sponsorType] ?? s.sponsorType}
                         </span>
                       </div>
-                      <p className="text-xl font-black font-mono text-lime-400">{fmt(s.valueCents)}</p>
+                      <p className="text-xl font-black font-mono text-green-500">{fmt(s.valueCents)}</p>
                       {s.season && <p className="text-[11px] text-zinc-500">{s.season} season</p>}
                     </div>
                     <button

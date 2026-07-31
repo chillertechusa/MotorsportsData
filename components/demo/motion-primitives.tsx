@@ -100,7 +100,7 @@ export function RacingBar({
   const pct = clamp((value / max) * 100, 0, 100)
   return (
     <div className="flex items-center gap-2">
-      <span className={`font-mono text-[10px] uppercase tracking-wider w-24 shrink-0 truncate ${highlight ? 'text-lime-400' : 'text-zinc-400'}`}>
+      <span className={`font-mono text-[10px] uppercase tracking-wider w-24 shrink-0 truncate ${highlight ? 'text-green-500' : 'text-zinc-400'}`}>
         {label}
       </span>
       <div className="relative flex-1 h-4 bg-zinc-800/60 rounded-sm overflow-hidden">

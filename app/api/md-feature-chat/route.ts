@@ -1,6 +1,10 @@
 import { streamText } from 'ai'
 import { NextRequest } from 'next/server'
 import { logAICall } from '@/lib/ai-cost-logger'
+import { getSessionTeamId } from '@/lib/md-auth'
+import { checkRateLimit } from '@/lib/rate-limit'
+import { scopeMdAiPrompt } from '@/lib/md-ai-identity'
+import { blockAutomatedRequest } from '@/lib/botid'
 
 const FEATURE_CONTEXT: Record<string, string> = {
   fitness: 'You are a fitness and readiness coach. Help the user understand their HRV, sleep, energy, and recovery metrics. Give actionable advice on training load and rest days. Keep responses concise (2–3 sentences max).',
@@ -15,6 +19,20 @@ const FEATURE_CONTEXT: Record<string, string> = {
 }
 
 export async function POST(req: NextRequest) {
+  const auth = await getSessionTeamId()
+  if (!auth.ok) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 })
+
+  const botResponse = await blockAutomatedRequest()
+  if (botResponse) return botResponse
+
+  const rateLimit = checkRateLimit(`md-feature-chat:${auth.teamId}`, 12, 60_000)
+  if (!rateLimit.allowed) {
+    return new Response(JSON.stringify({ error: 'Too many requests' }), {
+      status: 429,
+      headers: { 'Retry-After': String(Math.ceil(rateLimit.retryAfterMs / 1000)) },
+    })
+  }
+
   try {
     const { feature, messages } = await req.json()
 
@@ -22,7 +40,7 @@ export async function POST(req: NextRequest) {
       return new Response(JSON.stringify({ error: 'Invalid feature' }), { status: 400 })
     }
 
-    const systemPrompt = FEATURE_CONTEXT[feature]
+    const systemPrompt = await scopeMdAiPrompt(auth.teamId, FEATURE_CONTEXT[feature])
 
     const FCHAT_MODEL = 'google/gemini-2.5-flash'
     const t0 = Date.now()
@@ -35,7 +53,7 @@ export async function POST(req: NextRequest) {
       })),
       maxOutputTokens: 80,
       onFinish: ({ usage, finishReason }) => {
-        void logAICall({ route: 'md-feature-chat', model: FCHAT_MODEL, inputTokens: usage.inputTokens ?? 0, outputTokens: usage.outputTokens ?? 0, latencyMs: Date.now() - t0, finishReason })
+        void logAICall({ route: 'md-feature-chat', model: FCHAT_MODEL, inputTokens: usage.inputTokens ?? 0, outputTokens: usage.outputTokens ?? 0, latencyMs: Date.now() - t0, finishReason, teamId: auth.teamId })
       },
     })
 

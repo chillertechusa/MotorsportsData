@@ -89,12 +89,12 @@ export default function MdHeroTelemetry() {
     >
       {/* ── Live session badge (top-right of hero) ── */}
       <div className="hidden md:flex absolute top-24 right-6 lg:right-10 flex-col items-end gap-2">
-        <div className="flex items-center gap-2 bg-zinc-950/70 border border-lime-400/30 px-3 py-1.5 backdrop-blur-sm">
+        <div className="flex items-center gap-2 bg-zinc-950/70 border border-green-500/30 px-3 py-1.5 backdrop-blur-sm">
           <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime-400 opacity-60" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-lime-400" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-60" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-lime-400">
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-green-500">
             Live Session · Simulated
           </span>
         </div>
@@ -119,7 +119,7 @@ export default function MdHeroTelemetry() {
             <div className="flex items-end gap-2.5">
               <div className="bg-zinc-950/75 border border-zinc-800 px-4 py-2.5 backdrop-blur-sm min-w-[132px]">
                 <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-500 mb-1">Lap · Last {fmtLap(lastLap)}</p>
-                <p className="text-lime-400 text-2xl leading-none font-black tabular-nums" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
+                <p className="text-green-500 text-2xl leading-none font-black tabular-nums" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
                   {fmtLap(t.lapMs)}
                 </p>
               </div>
@@ -129,7 +129,7 @@ export default function MdHeroTelemetry() {
                   <p className="font-mono text-[10px] text-zinc-300 tabular-nums">{t.rpm.toLocaleString()}</p>
                 </div>
                 <div className="h-1.5 w-full bg-zinc-800 overflow-hidden">
-                  <div className="h-full bg-lime-400 transition-[width] duration-75 ease-out" style={{ width: `${rpmPct}%` }} />
+                  <div className="h-full bg-green-500 transition-[width] duration-75 ease-out" style={{ width: `${rpmPct}%` }} />
                 </div>
               </div>
             </div>
@@ -142,9 +142,9 @@ export default function MdHeroTelemetry() {
 
 function Readout({ label, value, unit, accent }: { label: string; value: string; unit: string; accent?: boolean }) {
   return (
-    <div className={`bg-zinc-950/75 border px-3.5 py-2.5 backdrop-blur-sm min-w-[92px] ${accent ? 'border-lime-400/40' : 'border-zinc-800'}`}>
+    <div className={`bg-zinc-950/75 border px-3.5 py-2.5 backdrop-blur-sm min-w-[92px] ${accent ? 'border-green-500/40' : 'border-zinc-800'}`}>
       <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-500 mb-1">{label}</p>
-      <p className={`leading-none ${accent ? 'text-lime-400' : 'text-zinc-100'}`}>
+      <p className={`leading-none ${accent ? 'text-green-500' : 'text-zinc-100'}`}>
         <span
           className="text-2xl font-black tabular-nums"
           style={{ fontFamily: 'var(--font-barlow-condensed)' }}

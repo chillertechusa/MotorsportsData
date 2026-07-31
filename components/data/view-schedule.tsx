@@ -42,8 +42,8 @@ const EVENT_TYPES: { value: EventType; label: string; icon: typeof Flag }[] = [
 ]
 
 const EVENT_COLORS: Record<EventType, string> = {
-  race: 'bg-lime-400/10 border-lime-400/30 text-lime-400',
-  practice: 'bg-sky-400/10 border-sky-400/30 text-sky-400',
+  race: 'bg-green-500/10 border-green-500/30 text-green-500',
+  practice: 'bg-blue-600/10 border-blue-600/30 text-blue-500',
   maintenance: 'bg-amber-400/10 border-amber-400/30 text-amber-400',
 }
 
@@ -54,8 +54,8 @@ const EVENT_ACCENT: Record<EventType, string> = {
 }
 
 const CONDITION_COLOR: Record<string, string> = {
-  Ideal: 'text-lime-400',
-  Good: 'text-sky-400',
+  Ideal: 'text-green-500',
+  Good: 'text-blue-500',
   Fair: 'text-amber-400',
   Rough: 'text-orange-400',
   Wet: 'text-red-400',
@@ -106,7 +106,7 @@ function WeatherCard({ lat, lng }: { lat: number; lng: number }) {
     <div className="mt-3 rounded-xl bg-zinc-900/60 border border-zinc-800 p-3">
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-center gap-2">
-          <CondIcon className="h-5 w-5 text-sky-400 shrink-0" />
+          <CondIcon className="h-5 w-5 text-blue-500 shrink-0" />
           <div>
             <p className="text-base font-bold text-zinc-100">{c.temp_c}°C <span className="text-zinc-500 font-normal text-sm">/ {Math.round(c.temp_c * 9/5 + 32)}°F</span></p>
             <p className="text-xs text-zinc-400">{c.condition}</p>
@@ -128,9 +128,9 @@ function WeatherCard({ lat, lng }: { lat: number; lng: number }) {
           return (
             <div key={day.date} className="flex-1 min-w-[52px] rounded-lg bg-zinc-800/60 p-1.5 text-center">
               <p className="text-[10px] text-zinc-500">{new Date(day.date + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'short' })}</p>
-              <DayIcon className="h-3 w-3 text-sky-400 mx-auto my-0.5" />
+              <DayIcon className="h-3 w-3 text-blue-500 mx-auto my-0.5" />
               <p className="text-[10px] font-semibold text-zinc-200">{day.max_c}°</p>
-              {day.rain_chance > 0 && <p className="text-[10px] text-sky-400">{day.rain_chance}%</p>}
+              {day.rain_chance > 0 && <p className="text-[10px] text-blue-500">{day.rain_chance}%</p>}
             </div>
           )
         })}
@@ -210,7 +210,7 @@ function EventCard({
           </div>
           <div className="flex items-center gap-2 shrink-0">
             {isPast && event.finishPosition && (
-              <span className="flex items-center gap-1 text-xs font-bold text-lime-400">
+              <span className="flex items-center gap-1 text-xs font-bold text-green-500">
                 <Trophy className="h-3 w-3" />P{event.finishPosition}
               </span>
             )}
@@ -261,7 +261,7 @@ function EventCard({
           {seriesLinks && (
             <div className="rounded-xl bg-zinc-800/50 border border-zinc-700/60 p-3">
               <div className="flex items-center gap-1.5 mb-2">
-                <Trophy className="h-3.5 w-3.5 text-lime-400" />
+                <Trophy className="h-3.5 w-3.5 text-green-500" />
                 <p className="text-xs font-semibold text-zinc-300">{seriesLinks.label}</p>
               </div>
               <p className="text-[11px] text-zinc-500 mb-2.5">Official results & points — {seriesLinks.org}</p>
@@ -270,7 +270,7 @@ function EventCard({
                   href={seriesLinks.resultsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 h-8 px-3 rounded-lg bg-zinc-950 border border-zinc-700 text-xs font-semibold text-zinc-200 hover:border-lime-400 hover:text-lime-400 transition-colors"
+                  className="flex items-center gap-1.5 h-8 px-3 rounded-lg bg-zinc-950 border border-zinc-700 text-xs font-semibold text-zinc-200 hover:border-green-500 hover:text-green-500 transition-colors"
                 >
                   <ListOrdered className="h-3.5 w-3.5" />
                   Results
@@ -280,7 +280,7 @@ function EventCard({
                   href={seriesLinks.standingsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 h-8 px-3 rounded-lg bg-zinc-950 border border-zinc-700 text-xs font-semibold text-zinc-200 hover:border-sky-400 hover:text-sky-400 transition-colors"
+                  className="flex items-center gap-1.5 h-8 px-3 rounded-lg bg-zinc-950 border border-zinc-700 text-xs font-semibold text-zinc-200 hover:border-blue-600 hover:text-blue-500 transition-colors"
                 >
                   <BarChart3 className="h-3.5 w-3.5" />
                   Standings
@@ -301,7 +301,7 @@ function EventCard({
               {!showResultForm ? (
                 <button
                   onClick={() => setShowResultForm(true)}
-                  className="flex items-center gap-1.5 text-xs text-lime-400 hover:text-lime-300 font-semibold"
+                  className="flex items-center gap-1.5 text-xs text-green-500 hover:text-green-400 font-semibold"
                 >
                   <Pencil className="h-3 w-3" />
                   {event.finishPosition ? `Edit result (P${event.finishPosition})` : 'Log finish position'}
@@ -316,21 +316,21 @@ function EventCard({
                       placeholder="Finish pos."
                       value={pos}
                       onChange={e => setPos(e.target.value)}
-                      className="w-24 h-9 rounded-lg bg-zinc-950 border border-zinc-700 px-3 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+                      className="w-24 h-9 rounded-lg bg-zinc-950 border border-zinc-700 px-3 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
                     />
                     <input
                       type="url"
                       placeholder="Official results URL (optional)"
                       value={url}
                       onChange={e => setUrl(e.target.value)}
-                      className="flex-1 h-9 rounded-lg bg-zinc-950 border border-zinc-700 px-3 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+                      className="flex-1 h-9 rounded-lg bg-zinc-950 border border-zinc-700 px-3 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
                     />
                   </div>
                   <div className="flex gap-2">
                     <button
                       onClick={saveResult}
                       disabled={saving}
-                      className="h-8 px-4 rounded-lg bg-lime-400 text-zinc-950 text-xs font-bold flex items-center gap-1 disabled:opacity-60"
+                      className="h-8 px-4 rounded-lg bg-green-500 text-zinc-950 text-xs font-bold flex items-center gap-1 disabled:opacity-60"
                     >
                       {saving ? <Loader2 className="h-3 w-3 animate-spin" /> : 'Save'}
                     </button>
@@ -340,7 +340,7 @@ function EventCard({
               )}
               {event.seriesResultUrl && (
                 <a href={event.seriesResultUrl} target="_blank" rel="noopener noreferrer"
-                  className="mt-2 flex items-center gap-1 text-xs text-sky-400 hover:text-sky-300">
+                  className="mt-2 flex items-center gap-1 text-xs text-blue-500 hover:text-blue-400">
                   <ExternalLink className="h-3 w-3" />Official results
                 </a>
               )}
@@ -488,7 +488,7 @@ function AddEventModal({
               value={title}
               onChange={e => setTitle(e.target.value)}
               placeholder="e.g. Round 3 — Red Bud MX"
-              className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+              className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
               required
             />
           </div>
@@ -500,7 +500,7 @@ function AddEventModal({
                 type="date"
                 value={eventDate}
                 onChange={e => setEventDate(e.target.value)}
-                className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+                className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
                 required
               />
             </div>
@@ -509,7 +509,7 @@ function AddEventModal({
               <select
                 value={vehicleId}
                 onChange={e => setVehicleId(e.target.value)}
-                className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none appearance-none"
+                className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none appearance-none"
               >
                 <option value="">Any / all bikes</option>
                 {vehicles.map(v => <option key={v.id} value={v.id}>{v.name}</option>)}
@@ -524,20 +524,20 @@ function AddEventModal({
                 value={trackName}
                 onChange={e => { setTrackName(e.target.value); setGeoResult(null) }}
                 placeholder="e.g. Red Bud MX, Buchanan MI"
-                className="flex-1 h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+                className="flex-1 h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
               />
               <button
                 type="button"
                 onClick={handleGeocodeTrack}
                 disabled={!trackName.trim() || geocoding}
-                className="h-12 px-3 rounded-xl bg-zinc-800 border border-zinc-700 text-xs text-zinc-300 hover:border-sky-400 hover:text-sky-400 disabled:opacity-40 transition-colors flex items-center gap-1.5"
+                className="h-12 px-3 rounded-xl bg-zinc-800 border border-zinc-700 text-xs text-zinc-300 hover:border-blue-600 hover:text-blue-500 disabled:opacity-40 transition-colors flex items-center gap-1.5"
               >
                 {geocoding ? <Loader2 className="h-3 w-3 animate-spin" /> : <MapPin className="h-3 w-3" />}
                 Pin
               </button>
             </div>
             {geoResult && (
-              <p className="mt-1.5 text-[11px] text-sky-400 font-mono flex items-center gap-1">
+              <p className="mt-1.5 text-[11px] text-blue-500 font-mono flex items-center gap-1">
                 <MapPin className="h-3 w-3" />{geoResult.display} — weather pinned
               </p>
             )}
@@ -551,10 +551,10 @@ function AddEventModal({
                   value={series}
                   onChange={e => setSeries(e.target.value)}
                   placeholder="e.g. AMA Pro MX"
-                  className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+                  className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
                 />
                 {resolveSeriesLinks(series) && (
-                  <p className="mt-1.5 text-[11px] text-lime-400 flex items-center gap-1">
+                  <p className="mt-1.5 text-[11px] text-green-500 flex items-center gap-1">
                     <Trophy className="h-3 w-3" />
                     {resolveSeriesLinks(series)!.label} — official results linked
                   </p>
@@ -570,7 +570,7 @@ function AddEventModal({
                 value={entryFee}
                 onChange={e => setEntryFee(e.target.value)}
                 placeholder="0"
-                className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none"
+                className="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-800 px-4 text-sm text-zinc-100 focus:border-green-500 focus:outline-none"
               />
             </div>
           </div>
@@ -582,7 +582,7 @@ function AddEventModal({
               onChange={e => setNotes(e.target.value)}
               rows={2}
               placeholder="Gate position, class, setup goals..."
-              className="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-4 py-3 text-sm text-zinc-100 focus:border-lime-400 focus:outline-none resize-none leading-relaxed"
+              className="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-4 py-3 text-sm text-zinc-100 focus:border-green-500 focus:outline-none resize-none leading-relaxed"
             />
           </div>
 
@@ -591,7 +591,7 @@ function AddEventModal({
           <button
             type="submit"
             disabled={saving}
-            className="w-full h-12 rounded-xl bg-lime-400 text-zinc-950 font-bold text-sm flex items-center justify-center gap-2 disabled:opacity-60"
+            className="w-full h-12 rounded-xl bg-green-500 text-zinc-950 font-bold text-sm flex items-center justify-center gap-2 disabled:opacity-60"
           >
             {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
             Add Event
@@ -659,7 +659,7 @@ export default function ViewSchedule({ vehicles }: { vehicles: Vehicle[] }) {
         </div>
         <button
           onClick={() => setShowAdd(true)}
-          className="flex items-center gap-2 h-10 px-4 rounded-xl bg-lime-400 text-zinc-950 font-bold text-sm hover:bg-lime-300 transition-colors"
+          className="flex items-center gap-2 h-10 px-4 rounded-xl bg-green-500 text-zinc-950 font-bold text-sm hover:bg-green-400 transition-colors"
         >
           <Plus className="h-4 w-4" />
           Add Event
@@ -668,17 +668,17 @@ export default function ViewSchedule({ vehicles }: { vehicles: Vehicle[] }) {
 
       {/* Next race banner */}
       {nextRace && (
-        <div className="rounded-2xl bg-lime-400/5 border border-lime-400/20 p-4 flex items-center gap-3">
-          <Flag className="h-5 w-5 text-lime-400 shrink-0" />
+        <div className="rounded-2xl bg-green-500/5 border border-green-500/20 p-4 flex items-center gap-3">
+          <Flag className="h-5 w-5 text-green-500 shrink-0" />
           <div className="min-w-0">
             <p className="text-xs text-zinc-500 uppercase tracking-wider">Next Race</p>
             <p className="font-bold text-zinc-100 truncate">{nextRace.title}</p>
             <p className="text-xs text-zinc-400">{formatDate(nextRace.eventDate)}{nextRace.trackName ? ` — ${nextRace.trackName}` : ''}</p>
           </div>
           {daysUntil(nextRace.eventDate) === 0 ? (
-            <span className="ml-auto text-sm font-black text-lime-400">TODAY</span>
+            <span className="ml-auto text-sm font-black text-green-500">TODAY</span>
           ) : (
-            <span className="ml-auto text-2xl font-black text-lime-400 tabular-nums">{daysUntil(nextRace.eventDate)}<span className="text-sm font-normal text-zinc-500 ml-0.5">d</span></span>
+            <span className="ml-auto text-2xl font-black text-green-500 tabular-nums">{daysUntil(nextRace.eventDate)}<span className="text-sm font-normal text-zinc-500 ml-0.5">d</span></span>
           )}
         </div>
       )}

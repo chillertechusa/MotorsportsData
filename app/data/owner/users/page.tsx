@@ -164,7 +164,7 @@ export default function OwnerUsersPage() {
                         <select
                           value={u.role ?? 'user'}
                           onChange={(e) => handleRoleChange(u.id, e.target.value)}
-                          className="bg-zinc-800 border border-zinc-700 rounded px-2 py-1 text-xs text-zinc-200 focus:outline-none focus:border-lime-500"
+                          className="bg-zinc-800 border border-zinc-700 rounded px-2 py-1 text-xs text-zinc-200 focus:outline-none focus:border-green-600"
                         >
                           <option value="user">User</option>
                           <option value="coach">Coach</option>
@@ -175,7 +175,7 @@ export default function OwnerUsersPage() {
                       <td className="px-5 py-3.5">
                         <div className="flex flex-col gap-1">
                           <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold w-fit ${
-                            u.banned ? 'bg-red-500/15 text-red-400' : 'bg-lime-500/15 text-lime-400'
+                            u.banned ? 'bg-red-500/15 text-red-400' : 'bg-green-600/15 text-green-500'
                           }`}>
                             {u.banned ? <Ban className="h-3 w-3" /> : <CheckCircle2 className="h-3 w-3" />}
                             {u.banned ? 'Suspended' : 'Active'}
@@ -203,10 +203,10 @@ export default function OwnerUsersPage() {
                               type="button"
                               onClick={() => handleUnsuspend(u)}
                               disabled={isPending}
-                              className="p-1.5 hover:bg-lime-500/10 rounded transition-colors disabled:opacity-50"
+                              className="p-1.5 hover:bg-green-600/10 rounded transition-colors disabled:opacity-50"
                               title="Lift suspension"
                             >
-                              <CheckCircle2 className="h-3.5 w-3.5 text-lime-500" />
+                              <CheckCircle2 className="h-3.5 w-3.5 text-green-600" />
                             </button>
                           ) : (
                             <button
@@ -243,7 +243,7 @@ export default function OwnerUsersPage() {
           <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50">
             <div className="bg-zinc-900 border border-zinc-800 rounded-xl max-w-md w-full p-6">
               <div className="flex items-center gap-3 mb-5">
-                <Shield className="h-5 w-5 text-lime-400" />
+                <Shield className="h-5 w-5 text-green-500" />
                 <h2 className="text-lg font-bold text-zinc-100">Audit — {selectedUser.name ?? selectedUser.email}</h2>
               </div>
               <div className="space-y-3 text-sm">
