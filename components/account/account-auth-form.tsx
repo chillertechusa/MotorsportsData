@@ -1,12 +1,16 @@
 'use client'
 
 import { authClient } from '@/lib/auth-client'
+import { useBotID } from '@/hooks/use-botid'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useState } from 'react'
 
 export default function AccountAuthForm({ mode }: { mode: 'sign-in' | 'sign-up' }) {
   const router = useRouter()
+  const { check: checkBot, botError } = useBotID(
+    mode === 'sign-up' ? '/api/auth/botid-signup' : '/api/auth/botid-signup',
+  )
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -22,6 +26,12 @@ export default function AccountAuthForm({ mode }: { mode: 'sign-in' | 'sign-up' 
 
     try {
       if (isSignUp) {
+        // Check with BotID first — if bot detected, abort
+        if (!(await checkBot())) {
+          setLoading(false)
+          return
+        }
+
         const { error } = await authClient.signUp.email({ email, password, name })
         if (error) {
           setError(error.message ?? 'Could not create account.')
@@ -87,8 +97,10 @@ export default function AccountAuthForm({ mode }: { mode: 'sign-in' | 'sign-up' 
         aria-label="Password"
       />
 
-      {error && (
-        <p className="border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>
+      {(error || botError) && (
+        <p className="border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">
+          {error || botError}
+        </p>
       )}
 
       <button

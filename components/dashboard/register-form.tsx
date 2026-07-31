@@ -1,11 +1,13 @@
 'use client'
 
 import { authClient } from '@/lib/auth-client'
+import { useBotID } from '@/hooks/use-botid'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 export default function DashboardRegisterForm() {
   const router = useRouter()
+  const { check: checkBot, botError } = useBotID('/api/auth/botid-signup')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -16,6 +18,13 @@ export default function DashboardRegisterForm() {
     e.preventDefault()
     setError('')
     setLoading(true)
+
+    // Check with BotID first — if bot detected, abort
+    if (!(await checkBot())) {
+      setLoading(false)
+      return
+    }
+
     const { error: authError } = await authClient.signUp.email({ name, email, password })
     if (authError) {
       setError(authError.message ?? 'Registration failed')
@@ -46,7 +55,7 @@ export default function DashboardRegisterForm() {
           className="w-full bg-[#1a1a1a] border border-border text-foreground px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors"
           placeholder="Min 8 characters" minLength={8} />
       </div>
-      {error && <p className="text-destructive text-sm">{error}</p>}
+      {(error || botError) && <p className="text-destructive text-sm">{error || botError}</p>}
       <button type="submit" disabled={loading}
         className="w-full bg-primary text-primary-foreground font-black uppercase tracking-widest py-3 text-sm hover:bg-primary/90 transition-colors disabled:opacity-50"
         style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
