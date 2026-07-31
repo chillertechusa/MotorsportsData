@@ -6,7 +6,6 @@ import { isMdPlanId } from '@/lib/md-plans'
 import { db } from '@/lib/db'
 import { userProfiles } from '@/lib/db/schema'
 import { eq } from 'drizzle-orm'
-import MdNav from '@/components/md-nav'
 import TierCheckoutClient from '@/components/store/tier-checkout-client'
 import type { Metadata } from 'next'
 
@@ -61,7 +60,6 @@ export default async function TierCheckoutPage({ searchParams }: Props) {
 
   return (
     <>
-      <MdNav />
       <main className="pt-16 min-h-screen bg-background">
         <TierCheckoutClient
           tier={tier}

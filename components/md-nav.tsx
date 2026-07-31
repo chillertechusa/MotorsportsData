@@ -17,7 +17,7 @@ export default function MdNav() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/98 backdrop-blur-lg border-b border-zinc-800/40">
       {/* Subtle gradient accent at top */}
-      <div aria-hidden="true" className="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-500/30 to-transparent" />
+      <div aria-hidden="true" className="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-lime/40 to-transparent" />
 
       <div className="w-full px-4 sm:px-6 lg:px-10 relative">
         <div className="flex items-center justify-between h-14">
@@ -27,8 +27,10 @@ export default function MdNav() {
             <MdLogo size="sm" asLink={false} />
           </Link>
 
-          {/* Nav CTAs */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          {/* Nav CTAs — wrapped in a nav landmark so assistive tech and
+              crawlers can identify the primary navigation on desktop too
+              (previously only the mobile menu was a <nav>). */}
+          <nav aria-label="Main navigation" className="flex items-center gap-2 sm:gap-3">
             <DemoButton
               variant="primary"
               size="sm"
@@ -41,7 +43,7 @@ export default function MdNav() {
             >
               Sign In
             </Link>
-          </div>
+          </nav>
 
           {/* Mobile toggle — hidden, Sign In button replaces it */}
           <button

@@ -34,23 +34,38 @@ const geistMono = Geist_Mono({
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://motorsportsdata.io'
 
+/**
+ * Google Search Console verification token.
+ *
+ * Hardcoded on purpose: this is the single active token, and reading it from an
+ * env var meant an unset or malformed value silently dropped the tag and
+ * un-verified the property on deploy. `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` is
+ * deliberately NOT consulted here — it holds a stale token and can be removed.
+ *
+ * Store only the bare token, never the `google-site-verification=` prefix that
+ * Search Console shows as part of the full <meta> tag; Google compares the
+ * `content` attribute to the bare value.
+ */
+const GOOGLE_VERIFICATION_TOKEN = '6K7QmQC0Z4g7snmlUcYu5GUfOLOhatqvKrIFtii5_2E'
+
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Bike Doctor — AI Motocross Diagnostics & Rider Tracking',
-    template: '%s | Bike Doctor',
+    default: 'Motorsports Data — Run Your Entire Racing Program',
+    template: '%s | Motorsports Data',
   },
   description:
-    'Free AI-powered bike diagnostics, maintenance tracking, and ride logging for motocross riders. Tell the Bike Doctor what your KTM or Yamaha is doing — get instant diagnosis and fix instructions. Connect to your local shop with one click.',
+    'Contingency automation, sponsor money tracking, season P&L, rider readiness, setup history, and AI coaching on one platform. From the PW50 to the factory rig — with first-class WMX support. Plans from $9/mo.',
   keywords: [
-    'motorsport data', 'motocross app', 'dirt bike maintenance tracker', 'racing platform',
-    'race coach AI', 'motocross setup log', 'part lifecycle tracking', 'youth motocross',
-    'supercross data', 'video analysis motocross', 'rider progression', 'factory mechanic software',
-    'MD Intel', 'MXGP', 'AMA Pro MX', 'motocross injury tracker',
+    'motocross contingency tracking', 'racing sponsor management', 'motocross season budget',
+    'race team management software', 'motocross program platform', 'WMX data platform',
+    'women\u2019s motocross software', 'racing P&L', 'motocross team roster software',
+    'dirt bike maintenance tracker', 'motocross setup log', 'part lifecycle tracking',
+    'youth motocross', 'rider progression', 'motocross injury tracker', 'AI bike diagnosis',
   ],
-  authors: [{ name: 'Motorsport Data', url: BASE_URL }],
-  creator: 'Motorsport Data',
-  publisher: 'Motorsport Data',
+  authors: [{ name: 'Motorsports Data', url: BASE_URL }],
+  creator: 'Motorsports Data',
+  publisher: 'Motorsports Data',
   robots: {
     index: true,
     follow: true,
@@ -63,48 +78,43 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Bike Doctor — Your Free Motocross Diagnostic AI',
+    title: 'Motorsports Data — Run Your Entire Racing Program',
     description:
-      'Describe your bike issue. Get instant AI diagnosis, severity rating, and fix instructions. Free forever for riders. $49/mo for coaches, $99/mo for shops.',
+      'Contingency money, sponsor P&L, season budget, team roles, rider readiness, and AI coaching. One platform, age 4 to Factory Rig. Plans from $9/mo.',
     type: 'website',
     url: BASE_URL,
-    siteName: 'Motorsport Data',
+    siteName: 'Motorsports Data',
     locale: 'en_US',
     images: [
       {
         url: `${BASE_URL}/assets/og-preview.png`,
         width: 1200,
         height: 630,
-        alt: 'Motorsport Data — Comprehensive power sports and racing analytics platform',
+        alt: 'Motorsports Data — the racing program platform',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bike Doctor — AI for Your Motocross Bike',
+    title: 'Motorsports Data — Run Your Entire Racing Program',
     description:
-      'Free app that listens to riders describe their bike issue and gives instant diagnosis with severity ratings and fix instructions.',
+      'Contingency automation, sponsor money, season P&L, rider readiness, and AI coaching on one platform. From the PW50 to the factory rig.',
     images: [`${BASE_URL}/assets/og-preview.png`],
   },
   // NOTE: intentionally NO `alternates.canonical` here. A canonical set in the
   // root layout is inherited by every child page that doesn't override it,
   // which told Google that every page was a duplicate of the homepage. Each
   // page now declares its own self-referencing canonical instead.
-  // Only emit verification meta tags when the env vars are actually set —
-  // rendering empty content="" tags is worse than omitting them.
-  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
-  process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
-    ? {
-        verification: {
-          ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-            ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
-            : {}),
-          ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
-            ? { other: { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } }
-            : {}),
-        },
-      }
-    : {}),
+  // Search Console verification — exactly one active Google token.
+  //
+  // Bing stays env-only since no token has been issued yet; rendering an empty
+  // content="" tag is worse than omitting it.
+  verification: {
+    google: GOOGLE_VERIFICATION_TOKEN,
+    ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { other: { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } }
+      : {}),
+  },
   icons: {
     icon: [
       { url: '/icon-md.png', sizes: '512x512', type: 'image/png' },
@@ -193,17 +203,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               {
                 '@context': 'https://schema.org',
                 '@type': 'Organization',
-                name: 'Motorsport Data',
+                name: 'Motorsports Data',
                 url: BASE_URL,
                 logo: `${BASE_URL}/images/md-logo.png`,
                 description:
-                  'The operating system for a racing career. AI-powered platform tracking bike, setup, body, and mind from youth to factory level.',
+                  'The racing program platform. Contingency automation, sponsor money tracking, season P&L, rider readiness, setup history, team roles, and AI coaching — from the PW50 to the factory rig.',
                 sameAs: [],
               },
               {
                 '@context': 'https://schema.org',
                 '@type': 'WebSite',
-                name: 'Motorsport Data',
+                name: 'Motorsports Data',
                 url: BASE_URL,
                 potentialAction: {
                   '@type': 'SearchAction',

@@ -38,12 +38,18 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Motorsports Dirt lime-green — matched to reference screenshot */
-  --color-lime:        #AAEE22;   /* lime primary */
-  --color-lime-light:  #C0F545;   /* lighter hover */
-  --color-lime-dim:    #AAEE2233;
-  --color-lime-faint:  #AAEE2214;
-  --color-lime-border: #AAEE2259;
+  /* Motorsports Dirt neon lime — electric, not avocado */
+  --color-lime:        #CCFF00;   /* neon primary */
+  --color-lime-bright: #DDFF44;   /* hover / high-emphasis */
+  --color-lime-light:  #EEFFAA;   /* small type on black */
+  --color-lime-dim:    #CCFF0033;
+  --color-lime-faint:  #CCFF0014;
+  --color-lime-border: #CCFF0059;
+
+  /* Neutral ink scale — the emblem is 90% monochrome, lime is the spice */
+  --color-ink:         #0A0A0A;
+  --color-ink-raised:  #101010;
+  --color-ink-line:    #1F1F1F;
 
   /* Yamaha blue — exact #0047AB racing livery color */
   --color-yamaha:          oklch(0.43 0.19 260);   /* #0047AB */
@@ -66,7 +72,7 @@
   --foreground: oklch(0.97 0 0);
 
   /* Motorsports Dirt lime-green primary */
-  --primary: #AAEE22;
+  --primary: #CCFF00;
   --primary-foreground: oklch(0.08 0 0);
 
   /* Dark surface for cards */
@@ -84,24 +90,24 @@
   --muted-foreground: oklch(0.58 0 0);
 
   /* Motorsports Dirt lime-green accent */
-  --accent: #AAEE22;
+  --accent: #CCFF00;
   --accent-foreground: oklch(0.08 0 0);
 
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.20 0 0);
   --input: oklch(0.17 0 0);
-  --ring: #AAEE22;
+  --ring: #CCFF00;
 
   --radius: 0.375rem;
 
   --sidebar: oklch(0.11 0 0);
   --sidebar-foreground: oklch(0.97 0 0);
-  --sidebar-primary: #AAEE22;
+  --sidebar-primary: #CCFF00;
   --sidebar-primary-foreground: oklch(0.08 0 0);
-  --sidebar-accent: #AAEE22;
+  --sidebar-accent: #CCFF00;
   --sidebar-accent-foreground: oklch(0.08 0 0);
   --sidebar-border: oklch(0.20 0 0);
-  --sidebar-ring: #AAEE22;
+  --sidebar-ring: #CCFF00;
 }
 
 @layer base {
@@ -191,6 +197,15 @@
   .animate-marquee { animation: none; }
 }
 
+/* Wide-tracked mono label — used across landing sections */
+.md-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 4px;
@@ -199,5 +214,5 @@
   background: oklch(0.10 0 0);
 }
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.70 0.20 130);
+  background: var(--color-lime);
 }

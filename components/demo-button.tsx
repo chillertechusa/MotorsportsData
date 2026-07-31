@@ -64,10 +64,10 @@ export default function DemoButton({
   const variantClasses = {
     primary: isError
       ? 'bg-red-500/20 border border-red-500/40 text-red-400 cursor-not-allowed'
-      : 'bg-green-500 text-zinc-950 hover:bg-green-400 active:scale-[0.98]',
+      : 'bg-lime text-ink hover:bg-lime-bright active:scale-[0.98]',
     ghost: isError
       ? 'border border-red-500/40 text-red-400 cursor-not-allowed'
-      : 'border border-zinc-700 text-zinc-300 hover:border-green-500/50 hover:text-zinc-100',
+      : 'border border-zinc-700 text-zinc-300 hover:border-lime-border hover:text-zinc-100',
   }[variant]
 
   return (

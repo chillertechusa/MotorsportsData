@@ -96,6 +96,16 @@ const nextConfig = {
         source: '/(.*)',
         headers: SECURITY_HEADERS,
       },
+      {
+        // Long-lived immutable caching for heavy static media in /public.
+        // These filenames are unhashed, so without this they revalidate on
+        // every visit — which meant refetching the multi-MB hero clip and the
+        // full-size logo/icon PNGs on each page view.
+        source: '/:path*.:ext(mp4|webm|jpg|jpeg|png|webp|avif|svg|woff2|ico)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
     ]
   },
 }

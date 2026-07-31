@@ -1,5 +1,4 @@
 import Footer from '@/components/footer'
-import MdNav from '@/components/md-nav'
 import { getProductBySlug, getProducts } from '@/app/actions/store'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
@@ -33,7 +32,6 @@ export default async function ProductPage({
 
   return (
     <>
-      <MdNav />
       <main className="pt-16">
         <ProductDetail product={product} related={related} />
       </main>
