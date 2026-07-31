@@ -13,7 +13,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         // Block ONLY auth-gated / transactional / tooling paths.
         // IMPORTANT: do NOT block `/data/` wholesale — the public marketing
-        // pages /data/pricing, /data/security and /data/mechanic live under
+        // pages /data/security and /data/mechanic live under
         // /data and are in the sitemap. Blocking the whole subtree would
         // de-index them ("Blocked by robots.txt"). List private subpaths only.
         disallow: [

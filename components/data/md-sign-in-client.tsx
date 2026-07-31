@@ -411,7 +411,7 @@ export default function MdSignInClient({
       {/* Back to pricing */}
       <div className="mt-4 text-center">
         <Link
-          href="/data/pricing"
+          href="/pricing"
           className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors"
         >
           Back to Pricing

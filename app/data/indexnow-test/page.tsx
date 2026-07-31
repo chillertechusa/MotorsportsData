@@ -34,7 +34,7 @@ export default function IndexNowTestPage() {
     const urls = [
       'https://motorsportsdata.io/',
       'https://motorsportsdata.io/data',
-      'https://motorsportsdata.io/data/pricing',
+      'https://motorsportsdata.io/pricing',
       'https://motorsportsdata.io/shop',
     ]
     setLoading(true)
@@ -78,7 +78,7 @@ export default function IndexNowTestPage() {
             <div className="flex gap-2">
               <input
                 type="text"
-                placeholder="e.g., /data/pricing"
+                placeholder="e.g., /pricing"
                 value={urlInput}
                 onChange={(e) => setUrlInput(e.target.value)}
                 className="flex-1 px-3 py-2 text-xs bg-zinc-800 border border-zinc-700 rounded text-zinc-100 placeholder-zinc-600"

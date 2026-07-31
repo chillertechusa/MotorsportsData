@@ -151,7 +151,7 @@ export default function MdBillingManager({ subscription }: { subscription: Subsc
 
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link
-              href="/data/pricing"
+              href="/pricing"
               className={buttonVariants({
                 variant: 'outline',
                 className: 'flex-1 border-zinc-700 bg-transparent text-zinc-200 hover:bg-zinc-800',
@@ -223,7 +223,7 @@ export default function MdBillingManager({ subscription }: { subscription: Subsc
             You&apos;re on the free tier. Upgrade to unlock the full platform.
           </p>
           <Link
-            href="/data/pricing"
+            href="/pricing"
             className={buttonVariants({ className: 'mt-4 bg-green-500 text-zinc-950 hover:bg-green-400' })}
           >
             View plans

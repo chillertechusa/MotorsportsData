@@ -160,7 +160,7 @@ export default function TierCheckoutClient({ tier, squareReady, appId, locationI
       <div className="mx-auto max-w-md px-4 py-24 text-center">
         <h1 className="text-foreground text-3xl font-black uppercase mb-4">Invalid Plan</h1>
         <p className="text-muted-foreground mb-8">The tier you selected could not be found.</p>
-        <a href="/data/pricing" className="text-green-500 underline text-sm">View all plans</a>
+        <a href="/pricing" className="text-green-500 underline text-sm">View all plans</a>
       </div>
     )
   }

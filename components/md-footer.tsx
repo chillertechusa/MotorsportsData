@@ -5,7 +5,7 @@ import MdLogo from './md-logo'
 const footerLinks = [
   { label: 'Features', href: '/#features' },
   { label: 'See It Live', href: '/demo' },
-  { label: 'Pricing', href: '/data/pricing' },
+  { label: 'Pricing', href: '/pricing' },
   { label: 'Security', href: '/data/security' },
   { label: 'Buy Merch', href: '/shop' },
   { label: 'Login', href: '/data' },

@@ -111,7 +111,7 @@ async function sendSlackAlert(
       ],
     }
 
-    const response = await fetch(rule.slackWebhookUrl, {
+    const response = await fetch(rule.slackWebhookUrl!, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),

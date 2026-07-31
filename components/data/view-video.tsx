@@ -90,7 +90,7 @@ function UpgradePanel() {
         jump technique, and racecraft, timestamped and scored by AI. Included on the Factory Rig plan.
       </p>
       <Link
-        href="/data/pricing"
+        href="/pricing"
         className="inline-flex items-center gap-2 h-14 px-8 rounded-2xl bg-green-500 text-zinc-950 font-black uppercase tracking-wide text-base active:bg-green-400 transition-colors"
       >
         See Factory Rig <ArrowRight className="h-5 w-5" />

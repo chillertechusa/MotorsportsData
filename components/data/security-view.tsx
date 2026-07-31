@@ -40,7 +40,7 @@ export default function SecurityView() {
       <header className="border-b border-zinc-900 px-6 py-3 flex items-center justify-between">
         <MdLogo size="sm" showWordmark={true} asLink={true} />
         <a
-          href="/data/pricing"
+          href="/pricing"
           className="text-sm font-semibold text-green-500 hover:text-green-400 transition-colors"
         >
           View Plans
@@ -131,7 +131,7 @@ export default function SecurityView() {
             <span className="text-zinc-300 font-semibold">Chiller Tech Support LLC</span>
           </p>
           <a
-            href="/data/pricing"
+            href="/pricing"
             className="inline-flex items-center gap-2 rounded-xl bg-green-500 px-8 py-4 text-base font-black uppercase tracking-wide text-zinc-950 hover:bg-green-400 transition-colors"
           >
             Get Protected <ExternalLink className="h-4 w-4" />

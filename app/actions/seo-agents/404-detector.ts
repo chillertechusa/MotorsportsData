@@ -28,7 +28,7 @@ export async function run404Detector(): Promise<HealthCheck> {
       '/coach',
       '/checkout/tier',
       '/data/sign-in',
-      '/data/pricing',
+      '/pricing',
       '/about',
       '/legal/privacy',
       '/legal/terms',

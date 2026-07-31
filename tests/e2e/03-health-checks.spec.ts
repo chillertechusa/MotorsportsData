@@ -21,7 +21,7 @@ test.describe('Phase 3: Health Checks & Monitoring', () => {
     
     for (const checkType of checkTypes) {
       // Should show each check type
-      const checkElement = page.locator(`text=${checkType}`, { exact: false })
+      const checkElement = page.getByText(checkType, { exact: false })
       await expect(checkElement).toBeVisible({ timeout: 5000 })
     }
   })
@@ -70,26 +70,20 @@ test.describe('Phase 3: Health Checks & Monitoring', () => {
   })
   
   test('should make API call to health checks endpoint', async ({ context }) => {
-    // Intercept API calls
-    let apiResponse = null
-    
-    context.on('response', async (response) => {
-      if (response.url().includes('/api/health-checks')) {
-        apiResponse = response
-      }
-    })
-    
     const page = await context.newPage()
+    const responsePromise = page
+      .waitForResponse((response) => response.url().includes('/api/health-checks'), {
+        timeout: 10_000,
+      })
+      .catch(() => null)
+
     await page.goto('/data/owner/health-checks')
-    
-    // Wait for API call
-    await page.waitForLoadState('networkidle')
-    
+    const apiResponse = await responsePromise
+
     if (apiResponse) {
       expect(apiResponse.status()).toBe(200)
       const data = await apiResponse.json()
-      
-      // Verify response structure
+
       expect(data).toHaveProperty('checks')
       expect(data).toHaveProperty('summary')
       expect(Array.isArray(data.checks)).toBe(true)

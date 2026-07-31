@@ -147,7 +147,7 @@ export default function MdCheckoutClient({
     } else {
       const existing = document.querySelector<HTMLScriptElement>(`script[src="${sdkSrc}"]`)
       if (existing) {
-        existing.addEventListener('load', initCard, { once: true })
+        existing.addEventListener('load', () => void initCard(), { once: true })
         existing.addEventListener(
           'error',
           () => !cancelled && setError('Could not load the payment provider. Please refresh.'),
@@ -157,7 +157,7 @@ export default function MdCheckoutClient({
         const script = document.createElement('script')
         script.src = sdkSrc
         script.async = true
-        script.addEventListener('load', initCard, { once: true })
+        script.addEventListener('load', () => void initCard(), { once: true })
         script.addEventListener(
           'error',
           () => !cancelled && setError('Could not load the payment provider. Please refresh.'),

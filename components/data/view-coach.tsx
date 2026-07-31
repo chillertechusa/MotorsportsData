@@ -187,7 +187,7 @@ function UpgradePanel() {
         Included on Race Team and Factory Rig.
       </p>
       <Link
-        href="/data/pricing"
+        href="/pricing"
         className="inline-flex items-center gap-2 h-14 px-8 rounded-2xl bg-green-500 text-zinc-950 font-black uppercase tracking-wide text-base active:bg-green-400 transition-colors"
       >
         See Plans <ArrowRight className="h-5 w-5" />

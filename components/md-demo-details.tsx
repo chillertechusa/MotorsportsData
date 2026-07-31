@@ -104,7 +104,7 @@ export default function MdDemoDetails() {
               <ArrowRight className="h-5 w-5" />
             </Link>
             <Link
-              href="/data/pricing"
+              href="/pricing"
               className="inline-flex items-center gap-2 border border-zinc-700 text-zinc-100 font-semibold px-8 py-4 rounded-lg hover:bg-zinc-800/70 transition-colors text-base"
             >
               View Pricing

@@ -30,12 +30,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // NOTE: /data/plans/[tier] all 307 → their canonical pages below, so we list
     // the canonical pages only. /data itself is auth-protected (not indexable).
     {
-      url: `${BASE_URL}/data/pricing`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.95,
-    },
-    {
       url: `${BASE_URL}/data/security`,
       lastModified: now,
       changeFrequency: 'monthly',

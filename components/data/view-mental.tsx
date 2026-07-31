@@ -538,7 +538,7 @@ export default function ViewMental({ tier }: Props) {
                   </p>
                 </div>
                 <a
-                  href="/data/pricing"
+                  href="/pricing"
                   className="inline-block bg-green-500 text-zinc-950 font-bold text-sm px-6 py-2.5 rounded-lg hover:bg-green-400 transition-colors"
                 >
                   Upgrade to Factory Rig

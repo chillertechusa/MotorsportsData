@@ -1,5 +1,7 @@
 import { Suspense } from 'react'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
+import { getSessionTeamId } from '@/lib/md-auth'
 import { getCoachClients } from '@/app/actions/coach-business'
 import { Users, Plus, MapPin, Tag } from 'lucide-react'
 
@@ -86,7 +88,12 @@ async function RosterContent() {
   )
 }
 
-export default function RosterPage() {
+export default async function RosterPage() {
+  const auth = await getSessionTeamId()
+  if (!auth.ok) {
+    redirect('/data/sign-in?redirect=/data/coach/roster')
+  }
+
   return (
     <Suspense fallback={
       <div className="p-6 space-y-4 animate-pulse">
